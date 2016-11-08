@@ -17,3 +17,5 @@ M:\HappyCouple\HappyCoupleMobile\HappyCoupleMobile\HappyCoupleMobile\obj\Debug\H
 M:\HappyCouple\HappyCoupleMobile\HappyCoupleMobile\HappyCoupleMobile\bin\Debug\HappyCoupleMobile.dll.mdb
 M:\HappyCouple\HappyCoupleMobile\HappyCoupleMobile\HappyCoupleMobile\obj\Debug\HappyCoupleMobile.dll.mdb
 M:\HappyCouple\HappyCoupleMobile\HappyCoupleMobile\HappyCoupleMobile\bin\Debug\HappyCoupleMobile.dll.mdb
+M:\HappyCouple\HappyCoupleMobile\HappyCoupleMobile\HappyCoupleMobile\obj\Debug\HappyCoupleMobile.dll.mdb
+M:\HappyCouple\HappyCoupleMobile\HappyCoupleMobile\HappyCoupleMobile\bin\Debug\HappyCoupleMobile.dll.mdb
