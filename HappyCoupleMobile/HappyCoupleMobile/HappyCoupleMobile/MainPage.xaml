@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:HappyCoupleMobile"
              x:Class="HappyCoupleMobile.MainPage">
 
-	<Label Text="Welcome to Xamarin Forms!" 
+	<Label Text="To będzie nasza Apka ;)" 
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
 
