@@ -12,6 +12,8 @@ namespace HappyCoupleMobile
         public MainPage()
         {
             InitializeComponent();
+
+            //test
         }
     }
 }
