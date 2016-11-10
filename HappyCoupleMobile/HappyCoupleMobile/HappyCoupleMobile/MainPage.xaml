@@ -2,10 +2,75 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:HappyCoupleMobile"
-             x:Class="HappyCoupleMobile.MainPage">
+             xmlns:circle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Class="HappyCoupleMobile.MainPage" 
+             Padding="5,20,5,5"
+             BackgroundColor="White">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="circle:CircleImage" x:Key="MenuIconStyle">
+                <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="FillColor" Value="White"/>
+            </Style>
+            <Style TargetType="Label" x:Key="MenuItemDescStyle">
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="Teal" Grid.Row="1" Grid.Column="0">
+            <circle:CircleImage Style="{StaticResource MenuIconStyle}" Source="clothes.png" BorderColor="White" BorderThickness="1"/>
+            <Label Style="{StaticResource MenuItemDescStyle}" Text="Ubrania" FontAttributes="Bold"/>
+        </StackLayout>
+        <StackLayout BackgroundColor="Teal" Grid.Row="1" Grid.Column="1">
+            <circle:CircleImage Style="{StaticResource MenuIconStyle}" Source="fix.png" BorderColor="White" BorderThickness="1"/>
+            <Label Style="{StaticResource MenuItemDescStyle}" Text="Do naprawy" FontAttributes="Bold"/>
+        </StackLayout>
+        <StackLayout BackgroundColor="Teal" Grid.Row="1" Grid.Column="2">
+            <circle:CircleImage Style="{StaticResource MenuIconStyle}" Source="fun.png" BorderColor="White" BorderThickness="1"/>
+            <Label Style="{StaticResource MenuItemDescStyle}" Text="Rozrywka" FontAttributes="Bold"/>
+        </StackLayout>
 
-	<Label Text="To będzie nasza Apka ;)" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+        <StackLayout BackgroundColor="Teal" Grid.Row="2" Grid.Column="0">
+            <circle:CircleImage Style="{StaticResource MenuIconStyle}" Source="gift.png" BorderColor="White" BorderThickness="1"/>
+            <Label Style="{StaticResource MenuItemDescStyle}" Text="Prezenty" FontAttributes="Bold"/>
+        </StackLayout>
+        <StackLayout BackgroundColor="Teal" Grid.Row="2" Grid.Column="1">
+            <circle:CircleImage Style="{StaticResource MenuIconStyle}" Source="shopping.png" BorderColor="White" BorderThickness="1"/>
+            <Label Style="{StaticResource MenuItemDescStyle}" Text="Zakupy" FontAttributes="Bold"/>
+        </StackLayout>
+        <StackLayout BackgroundColor="Teal" Grid.Row="2" Grid.Column="2">
+            <circle:CircleImage Style="{StaticResource MenuIconStyle}" Source="money.png" BorderColor="White" BorderThickness="1"/>
+            <Label Style="{StaticResource MenuItemDescStyle}" Text="Ka$a" FontAttributes="Bold"/>
+        </StackLayout>
 
+        <StackLayout BackgroundColor="Teal" Grid.Row="3" Grid.Column="0">
+            <circle:CircleImage Style="{StaticResource MenuIconStyle}" Source="outgoings.png" BorderColor="White" BorderThickness="1"/>
+            <Label Style="{StaticResource MenuItemDescStyle}" Text="Wydatki" FontAttributes="Bold"/>
+        </StackLayout>
+        <StackLayout BackgroundColor="Teal" Grid.Row="3" Grid.Column="1">
+            <circle:CircleImage Style="{StaticResource MenuIconStyle}" Source="todo.png" BorderColor="White" BorderThickness="1"/>
+            <Label Style="{StaticResource MenuItemDescStyle}" Text="TODO" FontAttributes="Bold"/>
+        </StackLayout>
+        <StackLayout BackgroundColor="Teal" Grid.Row="3" Grid.Column="2">
+            <circle:CircleImage Style="{StaticResource MenuIconStyle}" VerticalOptions="CenterAndExpand" Source="importance.png" BorderColor="White" BorderThickness="1"/>
+        </StackLayout>
+
+
+    </Grid>
 </ContentPage>
