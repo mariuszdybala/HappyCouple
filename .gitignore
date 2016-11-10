@@ -1,6 +1,7 @@
 bin
 obj
 Debug
+packages
 classic_bin
 classic_obj
 *.dll
