@@ -38,7 +38,7 @@
     <MtouchLink>None</MtouchLink>
     <MtouchArch>i386, x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignProvision>aa55b735-944f-4ed1-b3e3-93b33f7411cf</CodesignProvision>
+    <CodesignProvision>820c162d-7b05-45ef-a090-8c9bacacdc95</CodesignProvision>
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
@@ -66,7 +66,7 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>aa55b735-944f-4ed1-b3e3-93b33f7411cf</CodesignProvision>
+    <CodesignProvision>820c162d-7b05-45ef-a090-8c9bacacdc95</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -77,7 +77,7 @@
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
-    <CodesignProvision>aa55b735-944f-4ed1-b3e3-93b33f7411cf</CodesignProvision>
+    <CodesignProvision>820c162d-7b05-45ef-a090-8c9bacacdc95</CodesignProvision>
     <CodesignKey>iPhone Distribution: Mariusz Dybala (TNPNRQJYEB)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
@@ -89,7 +89,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
-    <CodesignProvision>aa55b735-944f-4ed1-b3e3-93b33f7411cf</CodesignProvision>
+    <CodesignProvision>820c162d-7b05-45ef-a090-8c9bacacdc95</CodesignProvision>
     <CodesignKey>iPhone Distribution: Mariusz Dybala (TNPNRQJYEB)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
