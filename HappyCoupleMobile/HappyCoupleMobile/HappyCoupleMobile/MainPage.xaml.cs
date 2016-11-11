@@ -12,6 +12,22 @@ namespace HappyCoupleMobile
         public MainPage()
         {
             InitializeComponent();
+
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+
+            var h = Ubrania.Height;
+            var w = Ubrania.Width;
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
         }
     }
 }
