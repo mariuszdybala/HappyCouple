@@ -29,6 +29,7 @@
 	<string>1.0</string>
 	<key>CFBundleIconFiles</key>
 	<array>
+		<string>Icon.png</string>
 		<string>Icon-60@2x.png</string>
 		<string>Icon-Small@2x.png</string>
 		<string>Icon-Small.png</string>
@@ -38,5 +39,7 @@
 	<string>LaunchScreen</string>
 	<key>CFBundleShortVersionString</key>
 	<string></string>
+	<key>CFBundleName</key>
+	<string>HappyCoupleMobile</string>
 </dict>
 </plist>
