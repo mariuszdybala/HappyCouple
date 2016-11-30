@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using GalaSoft.MvvmLight.Ioc;
+using HappyCoupleMobile.iOS.Providers;
+using HappyCoupleMobile.Providers.Interfaces;
 using ImageCircle.Forms.Plugin.iOS;
 using UIKit;
 
@@ -23,6 +26,8 @@ namespace HappyCoupleMobile.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            RegisterIoC();
+
             global::Xamarin.Forms.Forms.Init();
 
             ImageCircleRenderer.Init();
@@ -30,6 +35,11 @@ namespace HappyCoupleMobile.iOS
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        private void RegisterIoC()
+        {
+            SimpleIoc.Default.Register<ISystemInfoProvider, SystemInfoProvider>();
         }
     }
 }

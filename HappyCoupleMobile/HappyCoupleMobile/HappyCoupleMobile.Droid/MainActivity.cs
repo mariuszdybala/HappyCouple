@@ -5,6 +5,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using GalaSoft.MvvmLight.Ioc;
+using HappyCoupleMobile.Droid.Providers;
+using HappyCoupleMobile.Providers.Interfaces;
 using ImageCircle.Forms.Plugin.Droid;
 
 namespace HappyCoupleMobile.Droid
@@ -14,6 +17,8 @@ namespace HappyCoupleMobile.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+            RegisterIoC();
+
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
@@ -24,6 +29,11 @@ namespace HappyCoupleMobile.Droid
             ImageCircleRenderer.Init();
 
             LoadApplication(new App());
+        }
+
+        private void RegisterIoC()
+        {
+            SimpleIoc.Default.Register<ISystemInfoProvider,SystemInfoProvider>();
         }
     }
 }
