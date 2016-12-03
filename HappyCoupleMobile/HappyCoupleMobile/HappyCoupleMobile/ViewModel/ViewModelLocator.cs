@@ -18,34 +18,18 @@ using Microsoft.Practices.ServiceLocation;
 
 namespace HappyCoupleMobile.ViewModel
 {
-    /// <summary>
-    /// This class contains static references to all the view models in the
-    /// application and provides an entry point for the bindings.
-    /// </summary>
     public class ViewModelLocator
     {
-        /// <summary>
-        /// Initializes a new instance of the ViewModelLocator class.
-        /// </summary>
         public ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            ////if (ViewModelBase.IsInDesignModeStatic)
-            ////{
-            ////    // Create design time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DesignDataService>();
-            ////}
-            ////else
-            ////{
-            ////    // Create run time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DataService>();
-            ////}
-
-            SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<MainViewModel>(true);
+            SimpleIoc.Default.Register<ToDoListViewModel>(true);
         }
 
         public MainViewModel Main => GetViewModel<MainViewModel>();
+        public ToDoListViewModel ToDoListViewModel => GetViewModel<ToDoListViewModel>();
 
         public T GetViewModel<T>()
         {

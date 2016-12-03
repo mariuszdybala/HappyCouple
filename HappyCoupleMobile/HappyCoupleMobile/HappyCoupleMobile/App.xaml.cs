@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using HappyCoupleMobile.View;
 using Xamarin.Forms;
 
 namespace HappyCoupleMobile
@@ -13,12 +13,12 @@ namespace HappyCoupleMobile
         {
             InitializeComponent();
 
-            MainPage = new HappyCoupleMobile.MainPage();
+            MainPage = new ToDoListView();
         }
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            InitDatabase();
         }
 
         protected override void OnSleep()
@@ -29,6 +29,11 @@ namespace HappyCoupleMobile
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        private void InitDatabase()
+        {
+            
         }
     }
 }
