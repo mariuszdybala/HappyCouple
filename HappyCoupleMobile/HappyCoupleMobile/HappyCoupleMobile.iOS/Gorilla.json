@@ -1,0 +1,7 @@
+﻿{
+  "knownAssemblies": [
+    { "name": "HappyCoupleMobile" },
+    { "name": "GalaSoft.MvvmLight" },
+    { "name": "GalaSoft.MvvmLight.Extras" }
+  ]
+}

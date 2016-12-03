@@ -8,6 +8,8 @@ using HappyCoupleMobile.iOS.Providers;
 using HappyCoupleMobile.Providers.Interfaces;
 using ImageCircle.Forms.Plugin.iOS;
 using UIKit;
+using UXDivers.Gorilla;
+using UXDivers.Gorilla.iOS;
 
 namespace HappyCoupleMobile.iOS
 {
@@ -32,7 +34,8 @@ namespace HappyCoupleMobile.iOS
 
             ImageCircleRenderer.Init();
 
-            LoadApplication(new App());
+            LoadApplication(Player.CreateApplication(new Config("Good Gorilla")));
+            //LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
         }

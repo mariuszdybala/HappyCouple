@@ -4,5 +4,5 @@
              x:Class="HappyCoupleMobile.View.ToDoListView"
              BindingContext="{Binding ToDoListViewModel, Source={StaticResource ViewModelLocator}}"
              BackgroundColor="{StaticResource FirstColor}">
-	<Label Text="{Binding Hello}" VerticalOptions="Center" HorizontalOptions="Center" />
+    <Label Text="{Binding Hello}" VerticalOptions="Center" HorizontalOptions="Center" />
 </ContentPage>
