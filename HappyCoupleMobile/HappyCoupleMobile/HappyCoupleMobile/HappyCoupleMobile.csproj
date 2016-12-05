@@ -43,6 +43,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\TodoItem.cs" />
     <Compile Include="Mvvm\Controls\HighlineView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\BaseSystemInfoProvider.cs" />
@@ -150,7 +151,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="View\ToDoListView.xaml">
