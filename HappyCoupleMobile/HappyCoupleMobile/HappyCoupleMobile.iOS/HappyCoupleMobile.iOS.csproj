@@ -97,6 +97,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Providers\SystemInfoProvider.cs" />
+    <Compile Include="Renderers\RoundedBoxViewRenderer.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <None Include="app.config" />

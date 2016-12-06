@@ -2,29 +2,41 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:control="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
-             x:Class="HappyCoupleMobile.View.PreViewPage"
-             Padding="0,20,0,0">
+             xmlns:renderers="clr-namespace:HappyCoupleMobile.Mvvm.Renderers;assembly=HappyCoupleMobile"
+             x:Class="HappyCoupleMobile.View.PreViewPage">
     <StackLayout Spacing="0" BackgroundColor="White">
-        <StackLayout Orientation="Horizontal" Padding="20,20" BackgroundColor="{StaticResource FirstColor}">
-            <Image Source="{StaticResource Couple}"></Image>
-            <Label Text="Moje listy" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
-            <Image Source="{StaticResource AddList}"></Image>
+        <StackLayout Spacing="0" BackgroundColor="{StaticResource FirstColor}">
+            <StackLayout Orientation="Horizontal" Margin="0,20,0,0" Padding="10,10" BackgroundColor="{StaticResource FirstColor}">
+                <Image Source="{StaticResource Couple}"></Image>
+                <Label Text="Moje Listy" FontFamily="{StaticResource AileronUltraLight}" FontSize="17"
+                       HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                </Label>
+                <Image Source="{StaticResource AddList}"></Image>
+            </StackLayout>
+            <BoxView HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}"></BoxView>
+            </StackLayout>
+        <StackLayout>
+            <StackLayout Spacing="0" Orientation="Horizontal">
+                <StackLayout Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}">
+                    <Label  FontFamily="{StaticResource AileronLight}" HorizontalTextAlignment="Center" Text="Aktywne" TextColor="White" FontSize="15"></Label>
+                </StackLayout>
+                <StackLayout Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="White">
+                    <Label FontFamily="{StaticResource AileronLight}" HorizontalTextAlignment="Center" Text="Zrealizowane" TextColor="{StaticResource SecondColor}" FontSize="15"></Label>
+                </StackLayout>
+            </StackLayout>
         </StackLayout>
-        <control:HighlineView></control:HighlineView>
-        <BoxView HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}"></BoxView>
 
-        <StackLayout Spacing="0" VerticalOptions="EndAndExpand" BackgroundColor="{StaticResource BackgroundMainColor}">
-            <BoxView Margin="0,0,0,5" HeightRequest="1" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}"></BoxView>
+        <renderers:RoundedBoxView BackgroundColor="Aqua" CornerRadius="20"/>
+        <BoxView BackgroundColor="Aqua"></BoxView>
+        <StackLayout Spacing="0" Padding="5" VerticalOptions="EndAndExpand" BackgroundColor="{StaticResource BackgroundMainColor}">
             <StackLayout Spacing="0" Orientation="Horizontal">
                 <StackLayout Spacing="0" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
-                    <Image   HeightRequest="15" Aspect="AspectFit" Source="{StaticResource ToDo}"></Image>
-                    <Label Margin="0,5,0,0" HorizontalTextAlignment="Center" Text="Lists" FontSize="10"></Label>
-                    <BoxView HeightRequest="2" VerticalOptions="End" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}"></BoxView>
+                    <Image   HeightRequest="15" Aspect="AspectFit" Source="{StaticResource ToDo}" ></Image>
+                    <Label Margin="0,5,0,0" HorizontalTextAlignment="Center" Text="Lists" FontSize="10" FontFamily="{StaticResource AileronThin}"></Label>
                 </StackLayout>
                 <StackLayout Spacing="0" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
                     <Image   HeightRequest="15" Aspect="AspectFit" Source="{StaticResource Settings}"></Image>
-                    <Label Margin="0,5,0,0" HorizontalTextAlignment="Center" Text="Settings" FontSize="10"></Label>
-                    <BoxView HeightRequest="2" VerticalOptions="End" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}"></BoxView>
+                    <Label Margin="0,5,0,0" HorizontalTextAlignment="Center" Text="Settings" FontSize="10" FontFamily="{StaticResource AileronThin}"></Label>
                 </StackLayout>
             </StackLayout>
      </StackLayout>
