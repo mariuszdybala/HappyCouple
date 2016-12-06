@@ -15,6 +15,10 @@
             
             <Color x:Key="BackgroundMainColor">#dddddd</Color>
 
+            <x:String x:Key="HelveticaLightFont">HelveticaNeueeTextPro-Light</x:String>
+            <x:String x:Key="HelveticaMediumFont">HelveticaNeueeTextPro-Md</x:String>
+            <x:String x:Key="HelveticaBoldFont">HelveticaNeueeTextPro-Bold</x:String>
+
             <FileImageSource x:Key="Couple">couple.png</FileImageSource>
             <FileImageSource x:Key="AddList">add_list.png</FileImageSource>
             <FileImageSource x:Key="ToDo">todo.png</FileImageSource>

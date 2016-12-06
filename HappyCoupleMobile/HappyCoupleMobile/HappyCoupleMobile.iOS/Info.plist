@@ -19,6 +19,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+  <key>UIAppFonts</key>
+  <array>
+    <string>Fonts/HelveticaNeue45LT.ttf</string>
+    <string>Fonts/HelveticaNeue65MD.ttf</string>
+    <string>Fonts/HelveticaNeue75BD.ttf</string>
+  </array>
 	<key>MinimumOSVersion</key>
 	<string>9.0</string>
 	<key>CFBundleDisplayName</key>
