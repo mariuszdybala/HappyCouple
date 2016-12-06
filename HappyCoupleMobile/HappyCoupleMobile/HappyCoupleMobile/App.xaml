@@ -15,9 +15,22 @@
             
             <Color x:Key="BackgroundMainColor">#dddddd</Color>
 
-            <x:String x:Key="HelveticaLightFont">HelveticaNeueeTextPro-Light</x:String>
-            <x:String x:Key="HelveticaMediumFont">HelveticaNeueeTextPro-Md</x:String>
-            <x:String x:Key="HelveticaBoldFont">HelveticaNeueeTextPro-Bold</x:String>
+            <x:String x:Key="AileronBack">Aileron-Black</x:String>
+            <x:String x:Key="AileronBackItalic">Aileron-BlackItalic</x:String>
+            <x:String x:Key="AileronBold">Aileron-Bold</x:String>
+            <x:String x:Key="AileronBoldItalic">Aileron-BoldItalic</x:String>
+            <x:String x:Key="AileronHeavy">Aileron-Heavy</x:String>
+            <x:String x:Key="AileronHeavyItalic">Aileron-HeavyItalic</x:String>
+            <x:String x:Key="AileronItalic">Aileron-Italic</x:String>
+            <x:String x:Key="AileronLight">Aileron-Light</x:String>
+            <x:String x:Key="AileronLightItalic">Aileron-LightItalic</x:String>
+            <x:String x:Key="AileronRegular">Aileron-Regular</x:String>
+            <x:String x:Key="AileronSemiBold">Aileron-SemiBold</x:String>
+            <x:String x:Key="AileronSemiBoldItalic">Aileron-SemiBoldItalic</x:String>
+            <x:String x:Key="AileronThin">Aileron-Thin</x:String>
+            <x:String x:Key="AileronThinItalic">Aileron-ThinItalic</x:String>
+            <x:String x:Key="AileronUltraLight">Aileron-UltraLight</x:String>
+            <x:String x:Key="AileronUltraLightItalic">Aileron-UltraLightItalic</x:String>
 
             <FileImageSource x:Key="Couple">couple.png</FileImageSource>
             <FileImageSource x:Key="AddList">add_list.png</FileImageSource>

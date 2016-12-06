@@ -6,11 +6,21 @@
              Padding="0,20,0,0"
              BackgroundColor="{StaticResource FirstColor}">
     <StackLayout>
-        <Label Text="Text" FontFamily="{StaticResource HelveticaBoldFont}" VerticalOptions="Center"
+        <Label Text="Text" FontFamily="{StaticResource AileronLight}" VerticalOptions="Center"
                HorizontalOptions="Center" />
-        <Label Text="Text" FontFamily="{StaticResource HelveticaLightFont}" VerticalOptions="Center"
+        <Label Text="Text" FontFamily="{StaticResource AileronHeavy}" VerticalOptions="Center"
                HorizontalOptions="Center" />
-        <Label Text="Text" FontFamily="{StaticResource HelveticaMediumFont}" VerticalOptions="Center"
+        <Label Text="Text" FontFamily="{StaticResource AileronUltraLightItalic}" VerticalOptions="Center"
+               HorizontalOptions="Center" />
+        <Label Text="Text" FontFamily="{StaticResource AileronBold}" VerticalOptions="Center"
+               HorizontalOptions="Center" />
+        <Label Text="Text" FontFamily="{StaticResource AileronBack}" VerticalOptions="Center"
+               HorizontalOptions="Center" />
+        <Label Text="Text" FontFamily="{StaticResource AileronItalic}" VerticalOptions="Center"
+               HorizontalOptions="Center" />
+        <Label Text="Text" FontFamily="{StaticResource AileronThin}" VerticalOptions="Center"
+               HorizontalOptions="Center" />
+        <Label Text="Text" FontFamily="{StaticResource AileronUltraLight}" VerticalOptions="Center"
                HorizontalOptions="Center" />
         <Label Text="Text" VerticalOptions="Center" HorizontalOptions="Center" />
     </StackLayout>

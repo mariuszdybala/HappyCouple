@@ -109,15 +109,22 @@
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork@2x" />
     <None Include="packages.config" />
-    <BundleResource Include="Resources\Fonts\HelveticaNeue45LT.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\Fonts\HelveticaNeue65MD.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\Fonts\HelveticaNeue75BD.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
+    <BundleResource Include="Resources\Fonts\Aileron-Black.otf" />
+    <BundleResource Include="Resources\Fonts\Aileron-BlackItalic.otf" />
+    <BundleResource Include="Resources\Fonts\Aileron-Bold.otf" />
+    <BundleResource Include="Resources\Fonts\Aileron-BoldItalic.otf" />
+    <BundleResource Include="Resources\Fonts\Aileron-Heavy.otf" />
+    <BundleResource Include="Resources\Fonts\Aileron-HeavyItalic.otf" />
+    <BundleResource Include="Resources\Fonts\Aileron-Italic.otf" />
+    <BundleResource Include="Resources\Fonts\Aileron-Light.otf" />
+    <BundleResource Include="Resources\Fonts\Aileron-LightItalic.otf" />
+    <BundleResource Include="Resources\Fonts\Aileron-Regular.otf" />
+    <BundleResource Include="Resources\Fonts\Aileron-SemiBold.otf" />
+    <BundleResource Include="Resources\Fonts\Aileron-SemiBoldItalic.otf" />
+    <BundleResource Include="Resources\Fonts\Aileron-Thin.otf" />
+    <BundleResource Include="Resources\Fonts\Aileron-ThinItalic.otf" />
+    <BundleResource Include="Resources\Fonts\Aileron-UltraLight.otf" />
+    <BundleResource Include="Resources\Fonts\Aileron-UltraLightItalic.otf" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />

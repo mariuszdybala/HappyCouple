@@ -203,15 +203,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <AndroidAsset Include="Assets\fonts\HelveticaNeue45LT.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AndroidAsset>
-    <AndroidAsset Include="Assets\fonts\HelveticaNeue65MD.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AndroidAsset>
-    <AndroidAsset Include="Assets\fonts\HelveticaNeue75BD.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </AndroidAsset>
+    <AndroidAsset Include="Assets\fonts\Aileron-Black.otf" />
+    <AndroidAsset Include="Assets\fonts\Aileron-BlackItalic.otf" />
+    <AndroidAsset Include="Assets\fonts\Aileron-Bold.otf" />
+    <AndroidAsset Include="Assets\fonts\Aileron-BoldItalic.otf" />
+    <AndroidAsset Include="Assets\fonts\Aileron-Heavy.otf" />
+    <AndroidAsset Include="Assets\fonts\Aileron-HeavyItalic.otf" />
+    <AndroidAsset Include="Assets\fonts\Aileron-Italic.otf" />
+    <AndroidAsset Include="Assets\fonts\Aileron-Light.otf" />
+    <AndroidAsset Include="Assets\fonts\Aileron-LightItalic.otf" />
+    <AndroidAsset Include="Assets\fonts\Aileron-Regular.otf" />
+    <AndroidAsset Include="Assets\fonts\Aileron-SemiBold.otf" />
+    <AndroidAsset Include="Assets\fonts\Aileron-SemiBoldItalic.otf" />
+    <AndroidAsset Include="Assets\fonts\Aileron-Thin.otf" />
+    <AndroidAsset Include="Assets\fonts\Aileron-ThinItalic.otf" />
+    <AndroidAsset Include="Assets\fonts\Aileron-UltraLight.otf" />
+    <AndroidAsset Include="Assets\fonts\Aileron-UltraLightItalic.otf" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />

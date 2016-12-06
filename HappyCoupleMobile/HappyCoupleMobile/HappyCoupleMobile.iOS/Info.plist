@@ -21,9 +21,22 @@
 	</array>
   <key>UIAppFonts</key>
   <array>
-    <string>Fonts/HelveticaNeue45LT.ttf</string>
-    <string>Fonts/HelveticaNeue65MD.ttf</string>
-    <string>Fonts/HelveticaNeue75BD.ttf</string>
+    <string>Fonts/Aileron-Black.otf</string>
+    <string>Fonts/Aileron-BlackItalic.otf</string>
+    <string>Fonts/Aileron-Bold.otf</string>
+    <string>Fonts/Aileron-BoldItalic.otf</string>
+    <string>Fonts/Aileron-Heavy.otf</string>
+    <string>Fonts/Aileron-HeavyItalic.otf</string>
+    <string>Fonts/Aileron-Italic.otf</string>
+    <string>Fonts/Aileron-Light.otf</string>
+    <string>Fonts/Aileron-LightItalic.otf</string>
+    <string>Fonts/Aileron-Regular.otf</string>
+    <string>Fonts/Aileron-SemiBold.otf</string>
+    <string>Fonts/Aileron-SemiBoldItalic.otf</string>
+    <string>Fonts/Aileron-Thin.otf</string>
+    <string>Fonts/Aileron-ThinItalic.otf</string>
+    <string>Fonts/Aileron-UltraLight.otf</string>
+    <string>Fonts/Aileron-UltraLightItalic.otf</string>
   </array>
 	<key>MinimumOSVersion</key>
 	<string>9.0</string>
