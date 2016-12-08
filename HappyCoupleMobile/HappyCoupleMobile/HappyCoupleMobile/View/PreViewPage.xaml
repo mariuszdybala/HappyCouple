@@ -8,7 +8,7 @@
         <StackLayout Spacing="0" BackgroundColor="{StaticResource FirstColor}">
             <StackLayout Orientation="Horizontal" Margin="0,20,0,0" Padding="10,10" BackgroundColor="{StaticResource FirstColor}">
                 <Image Source="{StaticResource Couple}"></Image>
-                <Label Text="Moje Listy" FontFamily="{StaticResource AileronUltraLight}" FontSize="17"
+                <Label Text="Moje Listy" FontFamily="{StaticResource AileronUltraLight}" FontSize="17" TextColor="White"
                        HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                 </Label>
                 <Image Source="{StaticResource AddList}"></Image>
@@ -27,7 +27,6 @@
         </StackLayout>
 
         <renderers:RoundedBoxView BackgroundColor="Aqua" CornerRadius="20"/>
-        <BoxView BackgroundColor="Aqua"></BoxView>
         <StackLayout Spacing="0" Padding="5" VerticalOptions="EndAndExpand" BackgroundColor="{StaticResource BackgroundMainColor}">
             <StackLayout Spacing="0" Orientation="Horizontal">
                 <StackLayout Spacing="0" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">

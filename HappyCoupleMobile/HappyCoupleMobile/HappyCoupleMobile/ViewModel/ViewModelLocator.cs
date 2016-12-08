@@ -20,14 +20,6 @@ namespace HappyCoupleMobile.ViewModel
 {
     public class ViewModelLocator
     {
-        public ViewModelLocator()
-        {
-            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-
-            SimpleIoc.Default.Register<MainViewModel>(true);
-            SimpleIoc.Default.Register<ToDoListViewModel>(true);
-        }
-
         public MainViewModel Main => GetViewModel<MainViewModel>();
         public ToDoListViewModel ToDoListViewModel => GetViewModel<ToDoListViewModel>();
 

@@ -7,11 +7,11 @@
     <Application.Resources>
         <ResourceDictionary>
             <vm:ViewModelLocator x:Key="ViewModelLocator"/>
-            
-            <Color x:Key="FirstColor">#3abaff</Color>
-            <Color x:Key="SecondColor">#ff7c3a</Color>
-            <Color x:Key="ThirthColor">#ffde3a</Color>
-            <Color x:Key="FourthColor">#c13aff</Color>
+
+            <Color x:Key="FirstColor">#3658ff</Color>
+            <Color x:Key="SecondColor">#ff9036</Color>
+            <Color x:Key="ThirthColor">#fff536</Color>
+            <Color x:Key="FourthColor">#ee36ff</Color>
             
             <Color x:Key="BackgroundMainColor">#dddddd</Color>
 
