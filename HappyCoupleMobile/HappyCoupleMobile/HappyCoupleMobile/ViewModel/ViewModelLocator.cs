@@ -21,9 +21,10 @@ namespace HappyCoupleMobile.ViewModel
     public class ViewModelLocator
     {
         public MainViewModel Main => GetViewModel<MainViewModel>();
-        public ToDoListViewModel ToDoListViewModel => GetViewModel<ToDoListViewModel>();
 
-        public T GetViewModel<T>()
+        public ShoppingListViewModel ShoppingListViewModel => GetViewModel<ShoppingListViewModel>();
+
+        public static T GetViewModel<T>()
         {
             return ServiceLocator.Current.GetInstance<T>();
         }

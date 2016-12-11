@@ -25,7 +25,7 @@
                 </StackLayout>
             </StackLayout>
         </StackLayout>
-        <Frame Margin="5" Padding="5" OutlineColor="{StaticResource FirstColor}" HasShadow="False">
+        <Frame Margin="5" Padding="5"  OutlineColor="{StaticResource SecondColor}" HasShadow="False">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -48,7 +48,7 @@
                     <Label Text="To Moja lista na świętna świętna świętna święta " FontFamily="{StaticResource AileronLightItalic}" />
                 </StackLayout>
                 <StackLayout  Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
-                    <Image HeightRequest="15" Source="{StaticResource Fruits}"/>
+                    <Image HeightRequest="15" Source="{StaticResource Fruits}" />
                     <Image HeightRequest="15" Source="{StaticResource Fish}"/>
                     <Image HeightRequest="15" Source="{StaticResource Fruits}"/>
                     <Image HeightRequest="15" Source="{StaticResource Grain}"/>
@@ -64,13 +64,13 @@
                     <Label VerticalOptions="Center" Text="2016-45-34" FontSize="12" FontFamily="{StaticResource AileronLight}" />
                 </StackLayout>
                 <StackLayout Grid.Column="2" Grid.Row="0" Grid.RowSpan="3">
-                    <Frame Padding="2" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center" VerticalOptions="Start"  OutlineColor="{StaticResource FirstColor}" HasShadow="False">
+                    <Frame Padding="2" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center" VerticalOptions="Start"  OutlineColor="{StaticResource SecondColor}" HasShadow="False">
                         <Image Source="{StaticResource EditList}" WidthRequest="25" HeightRequest="25"/>
                     </Frame>
-                    <Frame Padding="2" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center" VerticalOptions="Start"  OutlineColor="{StaticResource FirstColor}" HasShadow="False">
+                    <Frame Padding="2" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center" VerticalOptions="Start"  OutlineColor="{StaticResource SecondColor}" HasShadow="False">
                         <Image Source="{StaticResource CloseList}" WidthRequest="25" HeightRequest="25"/>
                     </Frame>
-                    <Frame Padding="2" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center" VerticalOptions="Start"  OutlineColor="{StaticResource FirstColor}" HasShadow="False">
+                    <Frame Padding="2" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center" VerticalOptions="Start"  OutlineColor="{StaticResource SecondColor}" HasShadow="False">
                         <Image Source="{StaticResource Delete}" WidthRequest="25" HeightRequest="25"/>
                     </Frame>
                 </StackLayout>

@@ -34,12 +34,13 @@
 
             <FileImageSource x:Key="Couple">couple.png</FileImageSource>
             <FileImageSource x:Key="AddList">add_list.png</FileImageSource>
+            <FileImageSource x:Key="AddToList">add.png</FileImageSource>
             <FileImageSource x:Key="Fruits">fruits.png</FileImageSource>
             <FileImageSource x:Key="ToDo">todo.png</FileImageSource>
             <FileImageSource x:Key="Settings">fix.png</FileImageSource>
             <FileImageSource x:Key="Olive">olive.png</FileImageSource>
             <FileImageSource x:Key="Drink">drink.png</FileImageSource>
-            <FileImageSource x:Key="Alkohol">alkohol.png</FileImageSource>
+            <FileImageSource x:Key="Alcohol">alkohol.png</FileImageSource>
             <FileImageSource x:Key="Vege">vege.png</FileImageSource>
             <FileImageSource x:Key="Fish">fish.png</FileImageSource>
             <FileImageSource x:Key="Bread">bread.png</FileImageSource>
@@ -51,7 +52,7 @@
             <FileImageSource x:Key="Grain">grain.png</FileImageSource>
             <FileImageSource x:Key="Food">food.png</FileImageSource>
             <FileImageSource x:Key="CloseList">close.png</FileImageSource>
-            <FileImageSource x:Key="Delete">delete.png</FileImageSource>
+            <FileImageSource x:Key="Delete">delete.png</FileImageSource>M:\HappyCouple\HappyCoupleMobile\HappyCoupleMobile\HappyCoupleMobile\App.xaml
             
         </ResourceDictionary>
     </Application.Resources>

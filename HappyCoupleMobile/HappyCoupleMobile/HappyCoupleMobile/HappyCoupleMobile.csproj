@@ -51,8 +51,17 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\BaseDao.cs" />
+    <Compile Include="Data\DatabaseInitializer.cs" />
     <Compile Include="Data\Interfaces\IBaseDao.cs" />
+    <Compile Include="Data\Interfaces\IDatabaseInitializer.cs" />
+    <Compile Include="Data\Interfaces\IProductDao.cs" />
+    <Compile Include="Data\Interfaces\IShoppingListDoa.cs" />
+    <Compile Include="Data\ProductDao.cs" />
+    <Compile Include="Data\ShoppingListDoa.cs" />
+    <Compile Include="Enums\ProductType.cs" />
     <Compile Include="Helpers\Animation.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\ShoppingList.cs" />
     <Compile Include="Model\TodoItem.cs" />
     <Compile Include="Mvvm\Controls\HighlineView.cs" />
     <Compile Include="Mvvm\Controls\ShoppingListPanel.xaml.cs">
@@ -67,16 +76,18 @@
     <Compile Include="Providers\Interfaces\ISqliteConnectionProvider.cs" />
     <Compile Include="Providers\Interfaces\ISystemInfoProvider.cs" />
     <Compile Include="Providers\SqliteConnectionProvider.cs" />
+    <Compile Include="Repositories\Interfaces\IShoppingListRepository.cs" />
+    <Compile Include="Repositories\ShoppingListRepository.cs" />
     <Compile Include="Services\Interfaces\INavigationService.cs" />
     <Compile Include="Services\NavigationPageService.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\ToDoListViewModel.cs" />
+    <Compile Include="ViewModel\ShoppingListViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\PreViewPage.xaml.cs">
       <DependentUpon>PreViewPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ToDoListView.xaml.cs">
-      <DependentUpon>ToDoListView.xaml</DependentUpon>
+    <Compile Include="View\ShoppingListView.xaml.cs">
+      <DependentUpon>ShoppingListView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -172,12 +183,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="View\ToDoListView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="View\PreViewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -185,6 +190,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mvvm\Controls\TopPanelControl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\ShoppingListView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

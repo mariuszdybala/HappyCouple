@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace HappyCoupleMobile.View
 {
-    public partial class ToDoListView : ContentPage
+    public partial class ShoppingListView : ContentPage
     {
-        public ToDoListView()
+        public ShoppingListView()
         {
             InitializeComponent();
         }

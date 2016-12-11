@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
+using HappyCoupleMobile.Data;
+using HappyCoupleMobile.Providers;
+using HappyCoupleMobile.Providers.Interfaces;
 using HappyCoupleMobile.Services;
 using HappyCoupleMobile.View;
 using HappyCoupleMobile.ViewModel;
@@ -22,7 +26,7 @@ namespace HappyCoupleMobile
             FeedIoC();
             InitializeComponent();
 
-            MainPage = new ToDoListView();
+            MainPage = new ShoppingListView();
 
             if (SimpleIoc.Default.IsRegistered<INavigationPageService>())
             {
@@ -30,31 +34,36 @@ namespace HappyCoupleMobile
             }
         }
 
-        protected override void OnStart()
+        protected override async void OnStart()
         {
-            InitDatabase();
+            await InitDatabase();
         }
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
         }
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
         }
         private void FeedIoC()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
+            SimpleIoc.Default.Register<ISqliteConnectionProvider, SqliteConnectionProvider>();
+            SimpleIoc.Default.Register<IDatabaseInitializer, DatabaseInitializer>();
+
+            SimpleIoc.Default.Register<IShoppingListDao,ShoppingListDao>();
+            SimpleIoc.Default.Register<IProductDao,ProductDao>();
+
             SimpleIoc.Default.Register<MainViewModel>(true);
-            SimpleIoc.Default.Register<ToDoListViewModel>(true);
+            SimpleIoc.Default.Register<ShoppingListViewModel>(true);
         }
 
-        private void InitDatabase()
+        private async Task InitDatabase()
         {
-            
+            var databaseInitializer = SimpleIoc.Default.GetInstance<IDatabaseInitializer>();
+            await databaseInitializer.EnsureAllTableExistsAsync();
         }
     }
 }
