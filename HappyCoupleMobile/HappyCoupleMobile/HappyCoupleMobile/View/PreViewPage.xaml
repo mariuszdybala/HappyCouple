@@ -25,8 +25,62 @@
                 </StackLayout>
             </StackLayout>
         </StackLayout>
+        <Frame Margin="5" Padding="5" OutlineColor="{StaticResource FirstColor}" HasShadow="False">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*" />
+                    <ColumnDefinition Width="0.7*" />
+                    <ColumnDefinition Width="0.1*" />
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" HorizontalOptions="Center" VerticalOptions="Center">
+                    <AbsoluteLayout>
+                        <BoxView WidthRequest="50" HeightRequest="50" BackgroundColor="Green" />
+                        <Label AbsoluteLayout.LayoutFlags="PositionProportional"
+                                   AbsoluteLayout.LayoutBounds="0.5,0.5" TextColor="White" Text="29" />
+                    </AbsoluteLayout>
+                </StackLayout>
+                <StackLayout Grid.Column="1" Grid.Row="0">
+                    <Label Text="To Moja lista na świętna świętna świętna święta " FontFamily="{StaticResource AileronLightItalic}" />
+                </StackLayout>
+                <StackLayout  Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                    <Image HeightRequest="15" Source="{StaticResource Fruits}"/>
+                    <Image HeightRequest="15" Source="{StaticResource Fish}"/>
+                    <Image HeightRequest="15" Source="{StaticResource Fruits}"/>
+                    <Image HeightRequest="15" Source="{StaticResource Grain}"/>
+                    <Image HeightRequest="15" Source="{StaticResource Vege}"/>
+                    <Image HeightRequest="15" Source="{StaticResource Dairy}"/>
+                    <Image HeightRequest="15" Source="{StaticResource Dairy}"/>
+                    <Image HeightRequest="15" Source="{StaticResource Dairy}"/>
+                    <Image HeightRequest="15" Source="{StaticResource Food}"/>
+                    <Label TextColor="Gray" Text="..." FontFamily="{StaticResource AileronLight}"/>
+                </StackLayout>
+                <StackLayout Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
+                    <Image HeightRequest="20" VerticalOptions="Center" Source="{StaticResource Date}"></Image>
+                    <Label VerticalOptions="Center" Text="2016-45-34" FontSize="12" FontFamily="{StaticResource AileronLight}" />
+                </StackLayout>
+                <StackLayout Grid.Column="2" Grid.Row="0" Grid.RowSpan="3">
+                    <Frame Padding="2" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center" VerticalOptions="Start"  OutlineColor="{StaticResource FirstColor}" HasShadow="False">
+                        <Image Source="{StaticResource EditList}" WidthRequest="25" HeightRequest="25"/>
+                    </Frame>
+                    <Frame Padding="2" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center" VerticalOptions="Start"  OutlineColor="{StaticResource FirstColor}" HasShadow="False">
+                        <Image Source="{StaticResource CloseList}" WidthRequest="25" HeightRequest="25"/>
+                    </Frame>
+                    <Frame Padding="2" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center" VerticalOptions="Start"  OutlineColor="{StaticResource FirstColor}" HasShadow="False">
+                        <Image Source="{StaticResource Delete}" WidthRequest="25" HeightRequest="25"/>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+        </Frame>
 
-        <renderers:RoundedBoxView BackgroundColor="Aqua" CornerRadius="20"/>
+
+
+        <renderers:RoundedBoxView WidthRequest="20" HeightRequest="20" BackgroundColor="Green" CornerRadius="45"></renderers:RoundedBoxView>
+
         <StackLayout Spacing="0" Padding="5" VerticalOptions="EndAndExpand" BackgroundColor="{StaticResource BackgroundMainColor}">
             <StackLayout Spacing="0" Orientation="Horizontal">
                 <StackLayout Spacing="0" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">

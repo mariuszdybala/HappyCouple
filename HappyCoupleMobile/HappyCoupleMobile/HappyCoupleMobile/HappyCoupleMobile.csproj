@@ -34,14 +34,30 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Gorills|AnyCPU'">
+    <OutputPath>bin\Gorills\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Gorilla|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Gorilla\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\BaseDao.cs" />
     <Compile Include="Data\Interfaces\IBaseDao.cs" />
+    <Compile Include="Helpers\Animation.cs" />
     <Compile Include="Model\TodoItem.cs" />
     <Compile Include="Mvvm\Controls\HighlineView.cs" />
+    <Compile Include="Mvvm\Controls\ShoppingListPanel.xaml.cs">
+      <DependentUpon>ShoppingListPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Mvvm\Controls\TopPanelControl.xaml.cs">
       <DependentUpon>TopPanelControl.xaml</DependentUpon>
     </Compile>
@@ -149,7 +165,12 @@
     <BundleResource Include="Gorilla.json" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Mvvm\Controls\ShoppingListPanel.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="View\ToDoListView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

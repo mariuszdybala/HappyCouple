@@ -33,8 +33,11 @@ namespace HappyCoupleMobile.iOS
 
             ImageCircleRenderer.Init();
 
+#if GORILLA
             LoadApplication(Player.CreateApplication(new Config("Good Gorilla")));
-            //LoadApplication(new App());
+#else
+            LoadApplication(new App());
+#endif
 
             return base.FinishedLaunching(app, options);
         }

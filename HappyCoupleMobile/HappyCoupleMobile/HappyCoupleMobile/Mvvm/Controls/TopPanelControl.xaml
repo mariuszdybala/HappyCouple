@@ -1,17 +1,23 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="HappyCoupleMobile.Mvvm.Controls.TopPanelControl"
              x:Name="TopPanelControl">
-    <ContentView.Content>
-        <StackLayout Spacing="0" BackgroundColor="{StaticResource FirstColor}" BindingContext="{x:Reference TopPanelControl}">
-            <StackLayout Orientation="Horizontal" Margin="0,20,0,0" Padding="10,10" BackgroundColor="{StaticResource FirstColor}">
-                <Image Source="{Binding LeftIconSource}"/>
-                <Label Text="Moje Listy" FontFamily="{StaticResource AileronUltraLight}" FontSize="17" TextColor="White"
+    <StackLayout Spacing="0" BackgroundColor="{StaticResource FirstColor}" BindingContext="{x:Reference TopPanelControl}">
+        <StackLayout Orientation="Horizontal" Margin="0,20,0,0" Padding="10,10" BackgroundColor="{StaticResource FirstColor}">
+            <Image x:Name="LeftIconImage" Source="{Binding LeftIconSource}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnLeftIconImageTapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="Moje Listy" FontFamily="{StaticResource AileronUltraLight}" FontSize="17" TextColor="White"
                        HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
-                <Image Source="{StaticResource AddList}"/>
-            </StackLayout>
-            <BoxView HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}"/>
+            <Image x:Name="RightIconImage" Source="{Binding RightIconSource}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnRightIconImageTapped"/>
+                </Image.GestureRecognizers>
+            </Image>
         </StackLayout>
-    </ContentView.Content>
-</ContentView>
+        <BoxView HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}"/>
+    </StackLayout>
+</StackLayout>

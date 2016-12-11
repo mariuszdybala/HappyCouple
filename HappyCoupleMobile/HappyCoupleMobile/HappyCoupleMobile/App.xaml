@@ -9,7 +9,7 @@
             <vm:ViewModelLocator x:Key="ViewModelLocator"/>
 
             <Color x:Key="FirstColor">#3658ff</Color>
-            <Color x:Key="SecondColor">#ff9036</Color>
+            <Color x:Key="SecondColor">#5f75e6</Color>
             <Color x:Key="ThirthColor">#fff536</Color>
             <Color x:Key="FourthColor">#ee36ff</Color>
             
@@ -34,8 +34,24 @@
 
             <FileImageSource x:Key="Couple">couple.png</FileImageSource>
             <FileImageSource x:Key="AddList">add_list.png</FileImageSource>
+            <FileImageSource x:Key="Fruits">fruits.png</FileImageSource>
             <FileImageSource x:Key="ToDo">todo.png</FileImageSource>
             <FileImageSource x:Key="Settings">fix.png</FileImageSource>
+            <FileImageSource x:Key="Olive">olive.png</FileImageSource>
+            <FileImageSource x:Key="Drink">drink.png</FileImageSource>
+            <FileImageSource x:Key="Alkohol">alkohol.png</FileImageSource>
+            <FileImageSource x:Key="Vege">vege.png</FileImageSource>
+            <FileImageSource x:Key="Fish">fish.png</FileImageSource>
+            <FileImageSource x:Key="Bread">bread.png</FileImageSource>
+            <FileImageSource x:Key="Meat">meat.png</FileImageSource>
+            <FileImageSource x:Key="Spice">spice.png</FileImageSource>
+            <FileImageSource x:Key="Dairy">dairy.png</FileImageSource>
+            <FileImageSource x:Key="EditList">edit.png</FileImageSource>
+            <FileImageSource x:Key="Date">date.png</FileImageSource>
+            <FileImageSource x:Key="Grain">grain.png</FileImageSource>
+            <FileImageSource x:Key="Food">food.png</FileImageSource>
+            <FileImageSource x:Key="CloseList">close.png</FileImageSource>
+            <FileImageSource x:Key="Delete">delete.png</FileImageSource>
             
         </ResourceDictionary>
     </Application.Resources>
