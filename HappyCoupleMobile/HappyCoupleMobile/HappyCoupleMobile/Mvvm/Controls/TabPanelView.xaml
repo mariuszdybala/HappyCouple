@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HappyCoupleMobile.Mvvm.Controls.TabPanelView"
+             x:Name="TabPanelView">
+    <StackLayout Spacing="0" Orientation="Horizontal">
+        <StackLayout Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}">
+            <Label  FontFamily="{StaticResource AileronLight}" HorizontalTextAlignment="Center" Text="Aktywne" TextColor="White" FontSize="15"></Label>
+        </StackLayout>
+        <StackLayout Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="White">
+            <Label FontFamily="{StaticResource AileronLight}" HorizontalTextAlignment="Center" Text="Zrealizowane" TextColor="{StaticResource SecondColor}" FontSize="15"></Label>
+        </StackLayout>
+    </StackLayout>
+</StackLayout>

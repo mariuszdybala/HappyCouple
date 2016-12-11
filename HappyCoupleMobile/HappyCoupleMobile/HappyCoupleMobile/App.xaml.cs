@@ -63,7 +63,9 @@ namespace HappyCoupleMobile
         private async Task InitDatabase()
         {
             var databaseInitializer = SimpleIoc.Default.GetInstance<IDatabaseInitializer>();
-            await databaseInitializer.EnsureAllTableExistsAsync();
+           // await databaseInitializer.EnsureAllTableExistsAsync();
+
+            await databaseInitializer.FullDatabaseInitializeAsync();
         }
     }
 }

@@ -18,13 +18,13 @@ namespace HappyCoupleMobile.Model
         public int AddedById { get; set; }
 
         [Column("edited_by_id")]
-        public int EditedById { get; set; }
+        public int? EditedById { get; set; }
 
         [Column("deleted_by_id")]
-        public int DeletedById { get; set; }
+        public int? DeletedById { get; set; }
 
         [Column("closed_by_id")]
-        public int ClosedById { get; set; }
+        public int? ClosedById { get; set; }
 
         [Column("name")]
         public string Name { get; set; }
@@ -33,18 +33,26 @@ namespace HappyCoupleMobile.Model
         public DateTime AddDate{ get; set; }
 
         [Column("delete_date")]
-        public DateTime DeleteDate { get; set; }
+        public DateTime? DeleteDate { get; set; }
 
         [Column("edit_date")]
-        public DateTime EditDate { get; set; }
+        public DateTime? EditDate { get; set; }
 
         [Column("close_date")]
-        public DateTime CloseDate { get; set; }
+        public DateTime? CloseDate { get; set; }
 
         [Column("comment")]
         public string Comment { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Product> Products { get; set; }
+
+        [Ignore]
+        public int ProductsCount => Products.Count;
+
+        public ShoppingList()
+        {
+            Products = new List<Product>();
+        }
     }
 }
