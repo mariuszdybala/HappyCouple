@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HappyCoupleMobile.Enums;
 using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
 
@@ -43,6 +44,9 @@ namespace HappyCoupleMobile.Model
 
         [Column("comment")]
         public string Comment { get; set; }
+
+        [Column("shopping_list_status")]
+        public ShoppingListStatus Status { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Product> Products { get; set; }

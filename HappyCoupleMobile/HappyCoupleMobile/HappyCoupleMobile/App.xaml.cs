@@ -8,6 +8,8 @@ using GalaSoft.MvvmLight.Views;
 using HappyCoupleMobile.Data;
 using HappyCoupleMobile.Providers;
 using HappyCoupleMobile.Providers.Interfaces;
+using HappyCoupleMobile.Repositories;
+using HappyCoupleMobile.Repositories.Interfaces;
 using HappyCoupleMobile.Services;
 using HappyCoupleMobile.View;
 using HappyCoupleMobile.ViewModel;
@@ -53,8 +55,13 @@ namespace HappyCoupleMobile
             SimpleIoc.Default.Register<ISqliteConnectionProvider, SqliteConnectionProvider>();
             SimpleIoc.Default.Register<IDatabaseInitializer, DatabaseInitializer>();
 
+            SimpleIoc.Default.Register<IShoppingListRepository, ShoppingListRepository>();
+            SimpleIoc.Default.Register<IUserRepository, UserRepository>();
+
+
             SimpleIoc.Default.Register<IShoppingListDao,ShoppingListDao>();
             SimpleIoc.Default.Register<IProductDao,ProductDao>();
+            SimpleIoc.Default.Register<IUserDao,UserDao>();
 
             SimpleIoc.Default.Register<MainViewModel>(true);
             SimpleIoc.Default.Register<ShoppingListViewModel>(true);

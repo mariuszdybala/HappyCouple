@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using HappyCoupleMobile.Enums;
@@ -13,6 +14,8 @@ namespace HappyCoupleMobile.Model
     [Table("Product")]
    public class Product
     {
+        private const int MaxWorld = 4;
+
         [PrimaryKey, AutoIncrement, Column("id")]
         public int Id { get; set; }
 
