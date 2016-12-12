@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<view:BaseHappyContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HappyCoupleMobile.View.ShoppingListView"
              BindingContext="{Binding ShoppingListViewModel, Source={StaticResource ViewModelLocator}}"
              xmlns:control="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
-             xmlns:render="clr-namespace:HappyCoupleMobile.Mvvm.Renderers;assembly=HappyCoupleMobile" BackgroundColor="{StaticResource SecondColor}">
+             xmlns:render="clr-namespace:HappyCoupleMobile.Mvvm.Renderers;assembly=HappyCoupleMobile"
+             xmlns:view="clr-namespace:HappyCoupleMobile.View.Abstract;assembly=HappyCoupleMobile"
+             BackgroundColor="{StaticResource SecondColor}">
     <StackLayout Spacing="0">
         <control:TopPanelControl RightIconSource="{StaticResource AddList}" LeftIconSource="{StaticResource Couple}" RightIconTapCommand="{Binding RightIconTapCommand}" PanelHeader="Moje listy"/>
         <control:TabPanelView/>
@@ -21,4 +23,4 @@
             </StackLayout>
         </ScrollView>
     </StackLayout>
-</ContentPage>
+</view:BaseHappyContentPage>

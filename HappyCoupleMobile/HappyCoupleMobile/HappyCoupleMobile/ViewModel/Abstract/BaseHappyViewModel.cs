@@ -1,16 +1,21 @@
-﻿using GalaSoft.MvvmLight;
+﻿using System;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using HappyCoupleMobile.Model;
 using HappyCoupleMobile.Services;
+using Xamarin.Forms;
 
 namespace HappyCoupleMobile.ViewModel.Abstract
 {
     public class BaseHappyViewModel : ViewModelBase
     {
         private INavigationPageService _navigationService;
-        public User Admin => _simpleAuthService.Admin;
-
         private readonly ISimpleAuthService _simpleAuthService;
+
+        public User Admin => _simpleAuthService.Admin;
+        public ContentPage Page { get; set; }
+
+        public EventHandler ViewAppeared { get; set; }
 
         public INavigationPageService NavigationService
         {
@@ -24,6 +29,15 @@ namespace HappyCoupleMobile.ViewModel.Abstract
         public BaseHappyViewModel(ISimpleAuthService simpleAuthService)
         {
             _simpleAuthService = simpleAuthService;
+        }
+
+        protected virtual void OnViewLoaded(object sender, EventArgs eventArgs)
+        {
+            Page = sender as ContentPage;
+            if (Page != null)
+            {
+                RaisePropertyChanged(nameof(Page));
+            }
         }
     }
 }
