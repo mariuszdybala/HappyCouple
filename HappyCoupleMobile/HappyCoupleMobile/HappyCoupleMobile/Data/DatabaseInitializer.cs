@@ -28,6 +28,7 @@ namespace HappyCoupleMobile.Data
 
             await connection.CreateTableAsync<ShoppingList>().ConfigureAwait(false);
             await connection.CreateTableAsync<Product>().ConfigureAwait(false);
+            await connection.CreateTableAsync<User>().ConfigureAwait(false);
         }
 
         public async Task CleanAllTablesAsync()
@@ -36,6 +37,7 @@ namespace HappyCoupleMobile.Data
 
             await connection.DeleteAllAsync<ShoppingList>().ConfigureAwait(false);
             await connection.DeleteAllAsync<Product>().ConfigureAwait(false);
+            await connection.DeleteAllAsync<User>().ConfigureAwait(false);
         }
 
         public async Task DropAllTablesAsync()
@@ -44,6 +46,7 @@ namespace HappyCoupleMobile.Data
 
             await connection.DropTableAsync<ShoppingList>().ConfigureAwait(false);
             await connection.DropTableAsync<Product>().ConfigureAwait(false);
+            await connection.DropTableAsync<User>().ConfigureAwait(false);
         }
 
         public async Task FullDatabaseInitializeAsync()

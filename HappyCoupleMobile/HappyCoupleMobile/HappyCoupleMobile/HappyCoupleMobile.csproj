@@ -56,13 +56,18 @@
     <Compile Include="Data\Interfaces\IDatabaseInitializer.cs" />
     <Compile Include="Data\Interfaces\IProductDao.cs" />
     <Compile Include="Data\Interfaces\IShoppingListDoa.cs" />
+    <Compile Include="Data\Interfaces\IUserDao.cs" />
+    <Compile Include="Data\MockedData.cs" />
     <Compile Include="Data\ProductDao.cs" />
     <Compile Include="Data\ShoppingListDoa.cs" />
+    <Compile Include="Data\UserDao.cs" />
     <Compile Include="Enums\ProductType.cs" />
+    <Compile Include="Enums\ShoppingListStatus.cs" />
     <Compile Include="Helpers\Animation.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\ShoppingList.cs" />
     <Compile Include="Model\TodoItem.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Mvvm\Controls\HighlineView.cs" />
     <Compile Include="Mvvm\Controls\ShoppingListPanel.xaml.cs">
       <DependentUpon>ShoppingListPanel.xaml</DependentUpon>
@@ -81,9 +86,14 @@
     <Compile Include="Providers\Interfaces\ISystemInfoProvider.cs" />
     <Compile Include="Providers\SqliteConnectionProvider.cs" />
     <Compile Include="Repositories\Interfaces\IShoppingListRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IUserRepository.cs" />
     <Compile Include="Repositories\ShoppingListRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Services\Interfaces\INavigationService.cs" />
+    <Compile Include="Services\Interfaces\ISimpleAuthService.cs" />
     <Compile Include="Services\NavigationPageService.cs" />
+    <Compile Include="Services\SimpleAuthService.cs" />
+    <Compile Include="ViewModel\Abstract\BaseHappyViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ShoppingListViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />

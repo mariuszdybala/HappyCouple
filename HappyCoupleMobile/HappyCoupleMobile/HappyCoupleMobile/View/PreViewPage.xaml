@@ -56,7 +56,7 @@
                     <Image HeightRequest="15" Source="{StaticResource Dairy}"/>
                     <Image HeightRequest="15" Source="{StaticResource Dairy}"/>
                     <Image HeightRequest="15" Source="{StaticResource Dairy}"/>
-                    <Image HeightRequest="15" Source="{StaticResource Food}"/>
+                    <Image HeightRequest="15" Source="{StaticResource Other}"/>
                     <Label TextColor="Gray" Text="..." FontFamily="{StaticResource AileronLight}"/>
                 </StackLayout>
                 <StackLayout Grid.Column="1" Grid.Row="2" Orientation="Horizontal">

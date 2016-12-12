@@ -3,10 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HappyCoupleMobile.Enums;
+using HappyCoupleMobile.Model;
 
 namespace HappyCoupleMobile.Data
 {
-    class MockedData
+    public static class MockedData
     {
+        public static ShoppingList GetShoppingList(string name,int addedBy, string comment, ShoppingListStatus status = ShoppingListStatus.Open)
+        {
+            return new ShoppingList
+            {
+                AddDate = DateTime.Now,
+                AddedById = addedBy,
+                Comment = comment,
+                Status = status
+            };
+        }
+
+        public static Product GetProduct(string name, int addedBy, string comment, int shoppingListId, ProductType productType, int quantity = 1)
+        {
+            return new Product
+            {
+                AddDate = DateTime.Now,
+                AddedById = addedBy,
+                Comment = comment,
+                ProductType = productType,
+                Quantity = quantity,
+                ShoppingListId = shoppingListId
+            };
+        }
     }
 }

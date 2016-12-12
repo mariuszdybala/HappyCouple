@@ -47,7 +47,7 @@ namespace HappyCoupleMobile.Model
         public string Comment { get; set; }
 
         [Column("quantity")]
-        public string Quantity { get; set; }
+        public int Quantity { get; set; }
 
         [Column("shopping_list_fk"), ForeignKey(typeof(ShoppingList))]
         public int? ShoppingListId { get; set; }

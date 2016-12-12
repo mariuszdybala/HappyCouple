@@ -5,7 +5,7 @@
         Fruits,
         Olive,
         Drink,
-        Alkcohol,
+        Alcohol,
         Vege,
         Fish,
         Bread,

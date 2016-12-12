@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using HappyCoupleMobile.Providers.Interfaces;
 using SQLite.Net;
 using SQLite.Net.Async;
+using SQLiteNetExtensionsAsync.Extensions;
 
 namespace HappyCoupleMobile.Data
 {
@@ -47,6 +49,15 @@ namespace HappyCoupleMobile.Data
             SQLiteAsyncConnection connection = GetConnection();
 
             return await connection.GetAsync<T>(id);
+        }
+
+        public async Task<IList<T>> GetWithChildrenAsync()
+        {
+            SQLiteAsyncConnection connection = GetConnection();
+
+            var result = await connection.GetAllWithChildrenAsync<T>().ConfigureAwait(false);
+
+            return result.ToList();
         }
 
         public async Task<T> GetFirstAsync()

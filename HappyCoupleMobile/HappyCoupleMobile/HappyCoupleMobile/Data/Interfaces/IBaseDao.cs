@@ -8,6 +8,7 @@ namespace HappyCoupleMobile.Data
     {
         Task<T> GetFirstAsync();
         Task<T> GetByIdAsync(int id);
+        Task<IList<T>> GetWithChildrenAsync();
 
         Task<int> InsertAsync(T entity);
         Task<int> InsertAllAsync(IEnumerable<T> entities);

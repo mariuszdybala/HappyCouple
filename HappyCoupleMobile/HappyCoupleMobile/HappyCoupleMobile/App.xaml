@@ -50,7 +50,7 @@
             <FileImageSource x:Key="EditList">edit.png</FileImageSource>
             <FileImageSource x:Key="Date">date.png</FileImageSource>
             <FileImageSource x:Key="Grain">grain.png</FileImageSource>
-            <FileImageSource x:Key="Food">food.png</FileImageSource>
+            <FileImageSource x:Key="Other">food.png</FileImageSource>
             <FileImageSource x:Key="CloseList">close.png</FileImageSource>
             <FileImageSource x:Key="Delete">delete.png</FileImageSource>M:\HappyCouple\HappyCoupleMobile\HappyCoupleMobile\HappyCoupleMobile\App.xaml
             
