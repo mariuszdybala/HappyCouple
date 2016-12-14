@@ -28,9 +28,6 @@ namespace HappyCoupleMobile.Model
         [Column("deleted_by_id")]
         public int DeletedById { get; set; }
 
-        [Column("name")]
-        public string Name { get; set; }
-
         [Column("add_date")]
         public DateTime AddDate { get; set; }
 
@@ -40,7 +37,7 @@ namespace HappyCoupleMobile.Model
         [Column("edit_date")]
         public DateTime EditDate { get; set; }
 
-        [Column("product_type")]
+        [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert | CascadeOperation.CascadeRead)]
         public ProductType ProductType { get; set; }
 
         [Column("comment")]

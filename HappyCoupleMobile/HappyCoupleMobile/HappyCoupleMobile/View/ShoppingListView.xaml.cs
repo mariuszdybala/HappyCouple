@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Ioc;
 using HappyCoupleMobile.Model;
 using HappyCoupleMobile.Mvvm.Controls;
+using HappyCoupleMobile.Repositories.Interfaces;
 using HappyCoupleMobile.View.Abstract;
 using HappyCoupleMobile.ViewModel;
 using Xamarin.Forms;
@@ -13,17 +15,29 @@ namespace HappyCoupleMobile.View
 {
     public partial class ShoppingListView : BaseHappyContentPage
     {
+        public bool IsInitialized { get; private set; }
+
         public ShoppingListView()
         {
             InitializeComponent();
         }
 
-        protected override async void OnAppearing()
+        public async Task InitializeShoppingLists()
         {
-            base.OnAppearing();
+            ShoppingListViewModel viewModel = GetBoundViewModel<ShoppingListViewModel>();
+
+            if (viewModel == null)
+            {
+                return;
+            }
+            await viewModel.GetAllShoppingListsAndInitView();
+            viewModel.InitializeViewWithShoppingLists();
+
+
+            IsInitialized = true;
         }
 
-        public void FeedShoppingListContainer()
+        public void FeedShoppingListContainer() 
         {
             ShoppingListViewModel viewModel = GetBoundViewModel<ShoppingListViewModel>();
 

@@ -29,6 +29,8 @@ namespace HappyCoupleMobile.ViewModel.Abstract
         public BaseHappyViewModel(ISimpleAuthService simpleAuthService)
         {
             _simpleAuthService = simpleAuthService;
+
+            ViewAppeared += OnViewLoaded;
         }
 
         protected virtual void OnViewLoaded(object sender, EventArgs eventArgs)

@@ -33,21 +33,10 @@
         <StackLayout Grid.Column="1" Grid.Row="0">
             <Label Text="{Binding ShoppingList.Name}" FontFamily="{StaticResource AileronLight}" />
         </StackLayout>
-        <StackLayout x:Name="ProductTypesContainer"  Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
-            <Image HeightRequest="15" Source="{StaticResource Fruits}"/>
-            <Image HeightRequest="15" Source="{StaticResource Fish}"/>
-            <Image HeightRequest="15" Source="{StaticResource Fruits}"/>
-            <Image HeightRequest="15" Source="{StaticResource Grain}"/>
-            <Image HeightRequest="15" Source="{StaticResource Vege}"/>
-            <Image HeightRequest="15" Source="{StaticResource Dairy}"/>
-            <Image HeightRequest="15" Source="{StaticResource Dairy}"/>
-            <Image HeightRequest="15" Source="{StaticResource Dairy}"/>
-            <Image HeightRequest="15" Source="{StaticResource Other}"/>
-            <Label TextColor="Gray" Text="..." FontFamily="{StaticResource AileronLight}"/>
-        </StackLayout>
+        <StackLayout x:Name="ProductTypesContainer"  Grid.Column="1" Grid.Row="1" Orientation="Horizontal"/>
         <StackLayout Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
             <Image HeightRequest="20" VerticalOptions="Center" Source="{StaticResource Date}"></Image>
-            <Label VerticalOptions="Center" Text="{Binding ShoppingList.EditDate, StringFormat='{0:yyyy.MM.dd}'}" FontSize="12" FontFamily="{StaticResource AileronLight}" />
+            <Label VerticalOptions="Center" Text="{Binding ShoppingList.AddDate, StringFormat='{0:yyyy.MM.dd}'}" FontSize="12" FontFamily="{StaticResource AileronLight}" />
         </StackLayout>
         <StackLayout Grid.Column="2" Grid.Row="0" Grid.RowSpan="3">
             <Image x:Name="AddToListImage" Source="{StaticResource AddToList}" WidthRequest="25" HeightRequest="25">

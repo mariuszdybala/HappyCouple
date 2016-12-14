@@ -17,11 +17,12 @@ namespace HappyCoupleMobile.Data
                 AddDate = DateTime.Now,
                 AddedById = addedBy,
                 Comment = comment,
-                Status = status
+                Status = status,
+                Name = name
             };
         }
 
-        public static Product GetProduct(string name, int addedBy, string comment, int shoppingListId, ProductType productType, int quantity = 1)
+        public static Product GetProduct(int addedBy, string comment, int shoppingListId, ProductType productType, int quantity = 1)
         {
             return new Product
             {
@@ -31,6 +32,18 @@ namespace HappyCoupleMobile.Data
                 ProductType = productType,
                 Quantity = quantity,
                 ShoppingListId = shoppingListId
+            };
+        }
+
+        public static ProductType GetProductType(string name, string iconResourceName)
+        {
+            return new ProductType
+            {
+                Name = name,
+                UserId = 1,
+                IsPrimary = true,
+                IsFavourite = false,
+                IconName = iconResourceName
             };
         }
     }

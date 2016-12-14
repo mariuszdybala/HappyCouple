@@ -44,13 +44,10 @@ namespace HappyCoupleMobile.ViewModel
         public async Task GetAllShoppingListsAndInitView()
         {
             ShoppingLists = await _shoppingListRepository.GetAllShoppingListWithProductsAsync();
-
         }
 
-        protected override void OnViewLoaded(object sender, EventArgs eventArgs)
+        public  void InitializeViewWithShoppingLists()
         {
-            base.OnViewLoaded(sender, eventArgs);
-
             ShoppingListView shoppingListView = Page as ShoppingListView;
 
             shoppingListView?.FeedShoppingListContainer();
