@@ -6,11 +6,12 @@ namespace HappyCoupleMobile.Data
 {
     public interface IProductTypeDao : IBaseDao<ProductType>
     {
-        Task DeleteProductTypeWithoutFavourite(ProductType productType);
-        Task DeleteProductType(ProductType productType);
+        Task DeleteProductTypeWithoutFavouriteAsync(ProductType productType);
+        Task DeleteProductTypeWithoutPrimaryAsync(ProductType productType);
+        Task DeleteProductTypeAsync(ProductType productType);
 
-        Task<IList<ProductType>> GetAllProductTypesAddedByUser();
-        Task<IList<ProductType>> GetAllProductTypesPrimary();
-        Task<IList<ProductType>> GetAllProductTypesFavorite();
+        Task<IList<ProductType>> GetAllProductTypesAddedByUserAsync();
+        Task<IList<ProductType>> GetAllProductTypesPrimaryAsync();
+        Task<IList<ProductType>> GetAllProductTypesFavoriteAsync();
     }
 }

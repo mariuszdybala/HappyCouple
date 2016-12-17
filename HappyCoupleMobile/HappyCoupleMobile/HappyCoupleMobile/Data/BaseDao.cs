@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HappyCoupleMobile.Model.Interfaces;
 using HappyCoupleMobile.Providers.Interfaces;
 using SQLite.Net;
 using SQLite.Net.Async;
@@ -9,7 +10,7 @@ using SQLiteNetExtensionsAsync.Extensions;
 
 namespace HappyCoupleMobile.Data
 {
-    public class BaseDao<T> : IBaseDao<T> where T : class, new()
+    public class BaseDao<T> : IBaseDao<T> where T : class, IModel, new()
     {
         private readonly ISqliteConnectionProvider _sqliteConnectionProvider;
 
@@ -34,7 +35,7 @@ namespace HappyCoupleMobile.Data
         {
             SQLiteAsyncConnection connection = GetConnection();
 
-            await connection.DeleteAsync<T>(entity);
+            await connection.DeleteAsync<T>(entity.Id);
         }
 
         public async Task<IList<T>> GetAllAsync()
@@ -51,11 +52,11 @@ namespace HappyCoupleMobile.Data
             return await connection.GetAsync<T>(id);
         }
 
-        public async Task<IList<T>> GetWithChildrenAsync()
+        public async Task<IList<T>> GetWithChildrenAsync(bool isRecursive = true)
         {
             SQLiteAsyncConnection connection = GetConnection();
 
-            var result = await connection.GetAllWithChildrenAsync<T>().ConfigureAwait(false);
+            var result = await connection.GetAllWithChildrenAsync<T>(recursive: isRecursive).ConfigureAwait(false);
 
             return result.ToList();
         }
@@ -79,6 +80,13 @@ namespace HappyCoupleMobile.Data
             SQLiteAsyncConnection connection = GetConnection();
 
             return await connection.InsertAsync(entity);
+        }
+
+        public async Task InsertWithChildrenAsync(T entity)
+        {
+            SQLiteAsyncConnection connection = GetConnection();
+
+            await connection.InsertWithChildrenAsync(entity);
         }
 
         public async Task UpdateAsync(T entity)

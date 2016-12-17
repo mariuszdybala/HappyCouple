@@ -8,9 +8,10 @@ namespace HappyCoupleMobile.Data
     {
         Task<T> GetFirstAsync();
         Task<T> GetByIdAsync(int id);
-        Task<IList<T>> GetWithChildrenAsync();
+        Task<IList<T>> GetWithChildrenAsync(bool isRecursive = true);
 
         Task<int> InsertAsync(T entity);
+        Task InsertWithChildrenAsync(T entity);
         Task<int> InsertAllAsync(IEnumerable<T> entities);
 
         Task UpdateAsync(T entity);

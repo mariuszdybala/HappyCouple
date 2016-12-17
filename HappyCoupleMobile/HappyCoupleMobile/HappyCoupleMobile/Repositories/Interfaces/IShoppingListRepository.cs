@@ -14,10 +14,12 @@ namespace HappyCoupleMobile.Repositories.Interfaces
 
         Task<IList<ProductType>> GetAllProductTypesPrimary();
         Task<IList<ProductType>> GetAllProductTypesFavorite();
+        Task<IList<ProductType>> GetAllProductTypes();
 
 
         Task InsertShoppingListAsync(ShoppingList shoppingList);
         Task InsertProductAsync(Product product);
+        Task InsertProductWithChildrenAsync(Product product);
         Task InsertProductTypeAsync(ProductType productType);
 
 
@@ -26,6 +28,7 @@ namespace HappyCoupleMobile.Repositories.Interfaces
 
 
         Task DeleteProductWithChildrenAsync(Product product);
+        Task DeleteProductType(ProductType productType);
         Task DeleteShoppingListAsync(ShoppingList shoppingList);
         Task DeleteShoppingListWithProductsAsync(ShoppingList shoppingList);
     }

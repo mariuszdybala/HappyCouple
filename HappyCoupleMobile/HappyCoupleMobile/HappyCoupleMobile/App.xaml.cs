@@ -120,9 +120,16 @@ namespace HappyCoupleMobile
 
             IList<ShoppingList> lists = await shoppingListRepository.GetAllShoppingListWithProductsAsync();
 
-            await shoppingListRepository.InsertProductAsync(MockedData.GetProduct
+            await shoppingListRepository.InsertProductAsync
+                (MockedData.GetProduct
                 (1, "Najlepiej to kupić w lidlu", lists[0].Id,
-                    productTYpes[0], 1));
+                    productTYpes[4].Id, 1));
+
+            await shoppingListRepository.InsertProductAsync(new Product());
+
+            await shoppingListRepository.InsertProductWithChildrenAsync(new Product {ShoppingListId = lists[0].Id,
+                ProductType = productTYpes[4].CopyWithNewName("Ziemniaki")
+            });
 
             var product = await shoppingListRepository.GetAllProductsAsync();
 
@@ -130,7 +137,15 @@ namespace HappyCoupleMobile
 
             var productTYpes1 = await shoppingListRepository.GetAllProductTypesPrimary();
 
+            var productTYpes2 = await shoppingListRepository.GetAllProductTypes();
+
             IList<ShoppingList> lists1 = await shoppingListRepository.GetAllShoppingListWithProductsAsync();
+
+            await shoppingListRepository.DeleteProductWithChildrenAsync(product1[2]);
+
+            var product3 = await shoppingListRepository.GetAllProductsWithChildrenAsync();
+
+            var productTYpes3 = await shoppingListRepository.GetAllProductTypes();
         }
 
         private async Task InsertMockedData()

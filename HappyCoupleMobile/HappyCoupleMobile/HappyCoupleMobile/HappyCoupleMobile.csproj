@@ -66,6 +66,7 @@
     <Compile Include="Enums\AlertType.cs" />
     <Compile Include="Enums\ShoppingListStatus.cs" />
     <Compile Include="Helpers\Animation.cs" />
+    <Compile Include="Model\Interfaces\IModel.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\ProductType.cs" />
     <Compile Include="Model\ShoppingList.cs" />

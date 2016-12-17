@@ -1,9 +1,10 @@
-﻿using SQLite.Net.Attributes;
+﻿using HappyCoupleMobile.Model.Interfaces;
+using SQLite.Net.Attributes;
 
 namespace HappyCoupleMobile.Model
 {
     [Table("User")]
-    public class User
+    public class User : IModel
     {
         [PrimaryKey, AutoIncrement, Column("id")]
         public int Id { get; set; }

@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HappyCoupleMobile.Enums;
+using HappyCoupleMobile.Model.Interfaces;
 using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
 
 namespace HappyCoupleMobile.Model
 {
     [Table("ShoppingList")]
-    public class ShoppingList
+    public class ShoppingList : IModel
     {
         [PrimaryKey, AutoIncrement, Column("id")]
         public int Id { get; set; }

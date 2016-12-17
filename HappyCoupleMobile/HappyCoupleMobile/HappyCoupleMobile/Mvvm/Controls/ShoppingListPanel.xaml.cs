@@ -79,29 +79,29 @@ namespace HappyCoupleMobile.Mvvm.Controls
 
         private static void AddProductTypesToProductTypesContainer(List<Product> products, ShoppingListPanel shoppingListPanel)
         {
-            var types = products.GroupBy(x => x.ProductType).Select(x=>x.Key).ToList();
+            //var types = products.GroupBy(x => x.ProductType).Select(x=>x.Key).ToList();
 
-            foreach (var type in types)
-            {
-                FileImageSource imageSource = Application.Current.Resources[type.ToString()] as FileImageSource;
-
-                if (imageSource == null)
-                {
-                    continue;
-                }
-
-                shoppingListPanel.ProductTypesContainer.Children.Add(new Image {Source = imageSource, HeightRequest = 15});
-
-                if (shoppingListPanel.ProductTypesContainer.Children.Count == 9)
-                {
-                    shoppingListPanel.ProductTypesContainer.Children.Add(new Label
-                    {
-                        TextColor = Color.Gray,
-                        Text = "..."
-                    });
-                    return;
-                }
-            }
+//            foreach (var type in types)
+//            {
+//                FileImageSource imageSource = Application.Current.Resources[type.ToString()] as FileImageSource;
+//
+//                if (imageSource == null)
+//                {
+//                    continue;
+//                }
+//
+//                shoppingListPanel.ProductTypesContainer.Children.Add(new Image {Source = imageSource, HeightRequest = 15});
+//
+//                if (shoppingListPanel.ProductTypesContainer.Children.Count == 9)
+//                {
+//                    shoppingListPanel.ProductTypesContainer.Children.Add(new Label
+//                    {
+//                        TextColor = Color.Gray,
+//                        Text = "..."
+//                    });
+//                    return;
+//                }
+//            }
         }
 
         private void OnAdd(object sender, EventArgs e)

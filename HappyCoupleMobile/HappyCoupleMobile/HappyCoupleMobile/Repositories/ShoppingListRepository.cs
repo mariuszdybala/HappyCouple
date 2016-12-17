@@ -47,12 +47,17 @@ namespace HappyCoupleMobile.Repositories
 
         public async Task<IList<ProductType>> GetAllProductTypesPrimary()
         {
-            return await _productTypeDao.GetAllProductTypesPrimary();
+            return await _productTypeDao.GetAllProductTypesPrimaryAsync();
         }
 
         public async Task<IList<ProductType>> GetAllProductTypesFavorite()
         {
-            return await _productTypeDao.GetAllProductTypesFavorite();
+            return await _productTypeDao.GetAllProductTypesFavoriteAsync();
+        }
+
+        public async Task<IList<ProductType>> GetAllProductTypes()
+        {
+            return await _productTypeDao.GetAllAsync();
         }
 
         public async Task InsertShoppingListAsync(ShoppingList shoppingList)
@@ -63,6 +68,11 @@ namespace HappyCoupleMobile.Repositories
         public async Task InsertProductAsync(Product product)
         {
             await _productDao.InsertAsync(product).ConfigureAwait(false);
+        }
+
+        public async Task InsertProductWithChildrenAsync(Product product)
+        {
+            await _productDao.InsertWithChildrenAsync(product).ConfigureAwait(false);
         }
 
         public async Task InsertProductTypeAsync(ProductType productType)
@@ -82,8 +92,13 @@ namespace HappyCoupleMobile.Repositories
 
         public async Task DeleteProductWithChildrenAsync(Product product)
         {
-            await _productTypeDao.DeleteProductTypeWithoutFavourite(product.ProductType).ConfigureAwait(false);
             await _productDao.DeleteAsync(product).ConfigureAwait(false);
+            await _productTypeDao.DeleteProductTypeWithoutFavouriteAsync(product.ProductType).ConfigureAwait(false);
+        }
+
+        public async Task DeleteProductType(ProductType productType)
+        {
+            await _productTypeDao.DeleteProductTypeAsync(productType).ConfigureAwait(false);
         }
 
         public async Task DeleteShoppingListAsync(ShoppingList shoppingList)

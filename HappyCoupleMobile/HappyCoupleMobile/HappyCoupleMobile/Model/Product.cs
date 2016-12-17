@@ -5,16 +5,16 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using HappyCoupleMobile.Enums;
+using HappyCoupleMobile.Model.Interfaces;
 using Newtonsoft.Json;
 using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
 
 namespace HappyCoupleMobile.Model
 {
-    [Table("Product")]
-   public class Product
+   [Table("Product")]
+   public class Product : IModel
     {
-        private const int MaxWorld = 4;
 
         [PrimaryKey, AutoIncrement, Column("id")]
         public int Id { get; set; }
@@ -36,6 +36,9 @@ namespace HappyCoupleMobile.Model
 
         [Column("edit_date")]
         public DateTime EditDate { get; set; }
+
+        [Column("product_type_fp"), ForeignKey(typeof(ProductType))]
+        public int ProductTypeId { get; set; }
 
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert | CascadeOperation.CascadeRead)]
         public ProductType ProductType { get; set; }

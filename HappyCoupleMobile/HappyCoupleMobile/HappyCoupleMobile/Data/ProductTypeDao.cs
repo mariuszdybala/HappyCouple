@@ -12,9 +12,9 @@ namespace HappyCoupleMobile.Data
         {
         }
 
-        public async Task DeleteProductTypeWithoutFavourite(ProductType productType)
+        public async Task DeleteProductTypeWithoutFavouriteAsync(ProductType productType)
         {
-            if (productType.IsFavourite && productType.IsPrimary)
+            if (productType.IsFavourite || productType.IsPrimary)
             {
                 return;
             }
@@ -22,7 +22,7 @@ namespace HappyCoupleMobile.Data
             await DeleteAsync(productType);
         }
 
-        public async Task DeleteProductType(ProductType product)
+        public async Task DeleteProductTypeWithoutPrimaryAsync(ProductType product)
         {
             if (product.IsPrimary)
             {
@@ -32,21 +32,26 @@ namespace HappyCoupleMobile.Data
             await DeleteAsync(product);
         }
 
-        public async Task<IList<ProductType>> GetAllProductTypesAddedByUser()
+        public async Task DeleteProductTypeAsync(ProductType productType)
+        {
+            await DeleteAsync(productType);
+        }
+
+        public async Task<IList<ProductType>> GetAllProductTypesAddedByUserAsync()
         {
             SQLiteAsyncConnection connection = GetConnection();
 
             return await connection.Table<ProductType>().Where(x => !x.IsPrimary).ToListAsync();
         }
 
-        public async Task<IList<ProductType>> GetAllProductTypesPrimary()
+        public async Task<IList<ProductType>> GetAllProductTypesPrimaryAsync()
         {
             SQLiteAsyncConnection connection = GetConnection();
 
             return await connection.Table<ProductType>().Where(x => x.IsPrimary).ToListAsync();
         }
 
-        public async Task<IList<ProductType>> GetAllProductTypesFavorite()
+        public async Task<IList<ProductType>> GetAllProductTypesFavoriteAsync()
         {
             SQLiteAsyncConnection connection = GetConnection();
 
