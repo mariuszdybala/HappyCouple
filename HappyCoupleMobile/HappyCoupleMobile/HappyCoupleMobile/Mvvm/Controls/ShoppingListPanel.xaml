@@ -44,14 +44,14 @@
                     <TapGestureRecognizer Tapped="OnAdd"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Image x:Name="DeleteImage" Source="{StaticResource Delete}" WidthRequest="25" HeightRequest="25">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnDelete"/>
-                </Image.GestureRecognizers>
-            </Image>
             <Image x:Name="CloseListImage" Source="{StaticResource CloseList}" WidthRequest="25" HeightRequest="25">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnClose"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image x:Name="DeleteImage" Source="{StaticResource DeleteList}" WidthRequest="25" HeightRequest="25">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnDelete"/>
                 </Image.GestureRecognizers>
             </Image>
         </StackLayout>

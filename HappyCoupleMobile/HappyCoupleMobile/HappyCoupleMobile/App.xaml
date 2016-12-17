@@ -51,8 +51,11 @@
             <FileImageSource x:Key="Date">date.png</FileImageSource>
             <FileImageSource x:Key="Grain">grain.png</FileImageSource>
             <FileImageSource x:Key="Other">food.png</FileImageSource>
-            <FileImageSource x:Key="CloseList">close.png</FileImageSource>
+            <FileImageSource x:Key="CloseList">closelist.png</FileImageSource>
+            <FileImageSource x:Key="DeleteList">remove_list.png</FileImageSource>
             <FileImageSource x:Key="Delete">delete.png</FileImageSource>
+            <FileImageSource x:Key="Close">close.png</FileImageSource>
+            <FileImageSource x:Key="Info">info.png</FileImageSource>
 
         </ResourceDictionary>
     </Application.Resources>
