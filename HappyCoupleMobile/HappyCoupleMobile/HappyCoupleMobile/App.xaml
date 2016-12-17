@@ -52,8 +52,8 @@
             <FileImageSource x:Key="Grain">grain.png</FileImageSource>
             <FileImageSource x:Key="Other">food.png</FileImageSource>
             <FileImageSource x:Key="CloseList">close.png</FileImageSource>
-            <FileImageSource x:Key="Delete">delete.png</FileImageSource>M:\HappyCouple\HappyCoupleMobile\HappyCoupleMobile\HappyCoupleMobile\App.xaml
-            
+            <FileImageSource x:Key="Delete">delete.png</FileImageSource>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

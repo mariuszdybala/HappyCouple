@@ -113,44 +113,14 @@ namespace HappyCoupleMobile
             await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Ryż", "Grain"));
             await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Inne", "Other"));
 
-
-            var productTYpes = await shoppingListRepository.GetAllProductTypesPrimary();
-
-            await shoppingListRepository.InsertShoppingListAsync(MockedData.GetShoppingList("Lista Świąteczna", 1, string.Empty));
-
-            IList<ShoppingList> lists = await shoppingListRepository.GetAllShoppingListWithProductsAsync();
-
-            await shoppingListRepository.InsertProductAsync
-                (MockedData.GetProduct
-                (1, "Najlepiej to kupić w lidlu", lists[0].Id,
-                    productTYpes[4].Id, 1));
-
-            await shoppingListRepository.InsertProductAsync(new Product());
-
-            await shoppingListRepository.InsertProductWithChildrenAsync(new Product {ShoppingListId = lists[0].Id,
-                ProductType = productTYpes[4].CopyWithNewName("Ziemniaki")
-            });
-
-            var product = await shoppingListRepository.GetAllProductsAsync();
-
-            var product1 = await shoppingListRepository.GetAllProductsWithChildrenAsync();
-
-            var productTYpes1 = await shoppingListRepository.GetAllProductTypesPrimary();
-
-            var productTYpes2 = await shoppingListRepository.GetAllProductTypes();
-
-            IList<ShoppingList> lists1 = await shoppingListRepository.GetAllShoppingListWithProductsAsync();
-
-            await shoppingListRepository.DeleteProductWithChildrenAsync(product1[2]);
-
-            var product3 = await shoppingListRepository.GetAllProductsWithChildrenAsync();
-
-            var productTYpes3 = await shoppingListRepository.GetAllProductTypes();
+            var productTypes = await shoppingListRepository.GetAllProductTypes();
         }
 
         private async Task InsertMockedData()
         {
             IShoppingListRepository shoppingListRepository = SimpleIoc.Default.GetInstance<IShoppingListRepository>();
+
+            var productTypes = await shoppingListRepository.GetAllProductTypesPrimary();
 
             await shoppingListRepository.InsertShoppingListAsync(
                 MockedData.GetShoppingList("Lista Świąteczna", 1, string.Empty));
@@ -161,53 +131,57 @@ namespace HappyCoupleMobile
 
             IList<ShoppingList> lists = await shoppingListRepository.GetAllShoppingListAsync();
 
-            //            if (lists.Count == 3)
-            //            {
-            //
-            //                await shoppingListRepository
-            //                    .InsertProductAsync(MockedData.GetProduct
-            //                    ("Krewetki", 1, "Najlepiej to kupić w lidlu", lists[2].Id,
-            //                        ProductType.Fish, 1));
-            //                await shoppingListRepository
-            //                    .InsertProductAsync(MockedData.GetProduct
-            //                        ("Bułki", 1, "Biedra", lists[2].Id, ProductType.Bread, 1));
-            //                await shoppingListRepository
-            //                    .InsertProductAsync(MockedData.GetProduct
-            //                    ("Wino", 1, "Najlepiej to kupić w lidlu", lists[2].Id,
-            //                        ProductType.Alcohol, 1));
-            //                await shoppingListRepository
-            //                    .InsertProductAsync(MockedData.GetProduct
-            //                    ("Chipsy", 1, "Najlepiej to kupić w lidlu", lists[2].Id,
-            //                        ProductType.Other, 2));
-            //                await shoppingListRepository
-            //                    .InsertProductAsync(MockedData.GetProduct
-            //                    ("Soki", 1, "Najlepiej to kupić w lidlu", lists[2].Id,
-            //                        ProductType.Drink, 4));
-            //
-            //                await shoppingListRepository
-            //                    .InsertProductAsync(MockedData.GetProduct
-            //                    ("Łosoś", 1, "Najlepiej to kupić w lidlu", lists[1].Id,
-            //                        ProductType.Fish, 1));
-            //                await shoppingListRepository
-            //                    .InsertProductAsync(MockedData.GetProduct
-            //                        ("Bułki", 1, "Biedra", lists[1].Id, ProductType.Bread, 1));
-            //
-            //                await shoppingListRepository
-            //                    .InsertProductAsync(MockedData.GetProduct
-            //                    ("Napoje", 1, "chyba najtaniej będzie w Auchan", lists[0].Id,
-            //                        ProductType.Drink, 1));
-            //                await shoppingListRepository
-            //                    .InsertProductAsync(MockedData.GetProduct
-            //                        ("Wódeczka", 1, "Biedra", lists[0].Id, ProductType.Alcohol, 1));
-            //                await shoppingListRepository
-            //                    .InsertProductAsync(MockedData.GetProduct
-            //                    ("Sałata", 1, "Coś na sałatkę", lists[0].Id, ProductType.Vege,
-            //                        1));
-            //                await shoppingListRepository
-            //                    .InsertProductAsync(MockedData.GetProduct
-            //                    ("Pomidory", 1, "Coś na sałatkę", lists[0].Id,
-            //                        ProductType.Vege, 1));
-            //            }
+                        if (lists.Count == 3)
+                        {
+            
+                            await shoppingListRepository
+                                .InsertProductAsync(MockedData.GetProduct
+                                (1, "Najlepiej to kupić w lidlu", lists[2].Id,
+                                    productTypes[4].Id, 1));
+                            await shoppingListRepository
+                                .InsertProductAsync(MockedData.GetProduct
+                                    ( 1, "Biedra", lists[2].Id,
+                                    productTypes[0].Id, 1));
+                            await shoppingListRepository
+                                .InsertProductAsync(MockedData.GetProduct
+                                ( 1, "Najlepiej to kupić w lidlu", lists[2].Id,
+                                    productTypes[10].Id, 1));
+                            await shoppingListRepository
+                                .InsertProductAsync(MockedData.GetProduct
+                                (1, "Najlepiej to kupić w lidlu", lists[2].Id,
+                                    productTypes[2].Id, 2));
+                            await shoppingListRepository
+                                .InsertProductAsync(MockedData.GetProduct
+                                ( 1, "Najlepiej to kupić w lidlu", lists[2].Id,
+                                    productTypes[4].Id, 4));
+            
+                            await shoppingListRepository
+                                .InsertProductAsync(MockedData.GetProduct
+                                (1, "Najlepiej to kupić w lidlu", lists[1].Id,
+                                   productTypes[8].Id, 1));
+                            await shoppingListRepository
+                                .InsertProductAsync(MockedData.GetProduct
+                                    (1, "Biedra", lists[1].Id, productTypes[3].Id, 1));
+            
+                            await shoppingListRepository
+                                .InsertProductAsync(MockedData.GetProduct
+                                (1, "chyba najtaniej będzie w Auchan", lists[0].Id,
+                                    productTypes[7].Id, 1));
+                            await shoppingListRepository
+                                .InsertProductAsync(MockedData.GetProduct
+                                    (1, "Biedra", lists[0].Id, productTypes[5].Id, 1));
+                            await shoppingListRepository
+                                .InsertProductAsync(MockedData.GetProduct
+                                ( 1, "Coś na sałatkę", lists[0].Id, productTypes[9].Id,
+                                    1));
+                            await shoppingListRepository
+                                .InsertProductAsync(MockedData.GetProduct
+                                (1, "Coś na sałatkę", lists[0].Id,
+                                    productTypes[10].Id, 1));
+                        }
+
+            IList<ShoppingList> shoppingLists = await shoppingListRepository.GetAllShoppingListWithProductsAsync();
+            var products = await shoppingListRepository.GetAllProductsWithChildrenAsync();
         }
 
         private async Task LogUser()

@@ -35,10 +35,10 @@ namespace HappyCoupleMobile.ViewModel
         private void RegisterCommand()
         {
             RightIconTapCommand = new Command(async () => await OnRightIconTap());
-            DeleteListCommand = new Command<ShoppingList>(async (shoppingList) => await OnDeleteList(shoppingList));
-            AddProductToListCommand = new Command<ShoppingList>(async (shoppingList) => await OnAddProductToList(shoppingList));
-            CloseListCommand = new Command<ShoppingList>(async (shoppingList) => await OnCloseList(shoppingList));
-            EditListCommand = new Command<ShoppingList>(async (shoppingList) => await OnEditList(shoppingList));
+            DeleteListCommand = new Command<ShoppingList>(OnDeleteList);
+            AddProductToListCommand = new Command<ShoppingList>(OnAddProductToList);
+            CloseListCommand = new Command<ShoppingList>(OnCloseList);
+            EditListCommand = new Command<ShoppingList>(OnEditList);
         }
 
         public async Task GetAllShoppingListsAndInitView()
@@ -53,24 +53,21 @@ namespace HappyCoupleMobile.ViewModel
             shoppingListView?.FeedShoppingListContainer();
         }
 
-        private Task OnEditList(ShoppingList shoppingList)
+        private void OnEditList(ShoppingList shoppingList)
         {
-            return null;
         }
 
-        private Task OnCloseList(ShoppingList shoppingList)
+        private void OnCloseList(ShoppingList shoppingList)
         {
-            return null;
         }
 
-        private Task OnAddProductToList(ShoppingList shoppingList)
+        private void OnAddProductToList(ShoppingList shoppingList)
         {
-            return null;
         }
 
-        private Task OnDeleteList(ShoppingList shoppingList)
+        private void OnDeleteList(ShoppingList shoppingList)
         {
-            return null;
+
         }
 
 
