@@ -71,6 +71,9 @@
     <Compile Include="Model\ProductType.cs" />
     <Compile Include="Model\ShoppingList.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Mvvm\Controls\AddListPopUpView.xaml.cs">
+      <DependentUpon>AddListPopUpView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Mvvm\Controls\HighlineView.cs" />
     <Compile Include="Mvvm\Controls\ShoppingListPanel.xaml.cs">
       <DependentUpon>ShoppingListPanel.xaml</DependentUpon>
@@ -231,6 +234,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="View\Abstract\BaseHappyContentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mvvm\Controls\AddListPopUpView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

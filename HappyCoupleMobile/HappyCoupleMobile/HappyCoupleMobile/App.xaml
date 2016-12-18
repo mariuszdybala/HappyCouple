@@ -54,7 +54,7 @@
             <FileImageSource x:Key="CloseList">closelist.png</FileImageSource>
             <FileImageSource x:Key="DeleteList">remove_list.png</FileImageSource>
             <FileImageSource x:Key="Delete">delete.png</FileImageSource>
-            <FileImageSource x:Key="Close">close.png</FileImageSource>
+            <FileImageSource x:Key="CloseWindow">closewindow.png</FileImageSource>
             <FileImageSource x:Key="Info">info.png</FileImageSource>
 
         </ResourceDictionary>

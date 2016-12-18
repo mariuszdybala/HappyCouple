@@ -85,14 +85,18 @@
                 </Grid>
             </Frame>
 
-            <StackLayout Padding="10" BackgroundColor="{StaticResource SecondColor}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5">
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" BackgroundColor="{StaticResource SecondColor}">
-                        <Image Source="{StaticResource Close}"></Image>
+            <Frame  Padding="10,5,10,10"  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,0.9,0.35">
+                <StackLayout Spacing="0">
+                    <Image HorizontalOptions="End" Source="{StaticResource CloseWindow}" Scale="1"></Image>
+                    <StackLayout Margin="0,0,0,10" Orientation="Horizontal" HorizontalOptions="Fill">
                         <Image Source="{StaticResource Info}"></Image>
-                        <Label VerticalOptions="Center" Text="Podaj nazwę listy" FontSize="12" FontFamily="{StaticResource AileronLight}" TextColor="White"/>
-                     </StackLayout>
-                    <Entry Text="adadsssssssssssssssssssssas"/>
+                        <Label VerticalOptions="Center" Text="Podaj nazwę listy." FontSize="15"
+                               FontFamily="{StaticResource AileronRegular}" TextColor="Black" />
+                    </StackLayout>
+                    <Entry  FontFamily="{StaticResource AileronLight}" Text="aasdsdadadadaadassdsdadadadaadasdsdadadadaadasdadaadasss" Margin="0,0,0,10" />
+                    <Image Source="{StaticResource CloseList}"></Image>
                 </StackLayout>
+            </Frame>
             
         </AbsoluteLayout>
 

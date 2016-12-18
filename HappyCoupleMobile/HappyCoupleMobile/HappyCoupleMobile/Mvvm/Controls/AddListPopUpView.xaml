@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HappyCoupleMobile.Mvvm.Controls.AddListPopUpView"
+             x:Name="AddListPopUpView">
+    <StackLayout Spacing="0">
+        <Image HorizontalOptions="End" Source="{StaticResource CloseWindow}" Scale="1"></Image>
+        <StackLayout Margin="0,0,0,10" Orientation="Horizontal" HorizontalOptions="Fill">
+            <Image Source="{StaticResource Info}"></Image>
+            <Label VerticalOptions="Center" Text="Podaj nazwę listy." FontSize="15"
+                               FontFamily="{StaticResource AileronRegular}" TextColor="Black" />
+        </StackLayout>
+        <Entry  FontFamily="{StaticResource AileronLight}" Text=""  Margin="0,0,0,10" />
+        <Image Source="{StaticResource CloseList}">
+        </Image>
+    </StackLayout>
+</Frame>
