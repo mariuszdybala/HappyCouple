@@ -81,10 +81,15 @@
     <Compile Include="Mvvm\Controls\TabPanelView.xaml.cs">
       <DependentUpon>TabPanelView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Mvvm\Controls\TappableImage.xaml.cs">
+      <DependentUpon>TappableImage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Mvvm\Controls\TopPanelControl.xaml.cs">
       <DependentUpon>TopPanelControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Mvvm\Converters\ObjectInstanceValueToBooleanConverter.cs" />
     <Compile Include="Mvvm\Converters\ProductCountColorConverter.cs" />
+    <Compile Include="Mvvm\Converters\StringIsNullOrEmptyToBoolConverter.cs" />
     <Compile Include="Mvvm\Messages\AlertType.cs" />
     <Compile Include="Mvvm\Messages\Interface\IAlertMessage.cs" />
     <Compile Include="Mvvm\Renderers\RoundedBoxView.cs" />
@@ -240,6 +245,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mvvm\Controls\AddListPopUpView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mvvm\Controls\TappableImage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

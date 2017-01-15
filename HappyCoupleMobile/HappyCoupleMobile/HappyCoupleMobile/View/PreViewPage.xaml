@@ -8,7 +8,7 @@
         <StackLayout Spacing="0" BackgroundColor="{StaticResource FirstColor}">
             <StackLayout Orientation="Horizontal" Margin="0,20,0,0" Padding="10,10" BackgroundColor="{StaticResource FirstColor}">
                 <Image Source="{StaticResource Couple}"></Image>
-                <Label Text="Moje Listy" FontFamily="{StaticResource AileronUltraLight}" FontSize="17" TextColor="White"
+                <Label Text="Moje Listy" FontFamily="{StaticResource Light}" FontSize="17" TextColor="White"
                        HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                 </Label>
                 <Image Source="{StaticResource AddList}"></Image>
@@ -18,10 +18,10 @@
         <StackLayout>
             <StackLayout Spacing="0" Orientation="Horizontal">
                 <StackLayout Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}">
-                    <Label  FontFamily="{StaticResource AileronLight}" HorizontalTextAlignment="Center" Text="Aktywne" TextColor="White" FontSize="15"></Label>
+                    <Label  FontFamily="{StaticResource Light}" HorizontalTextAlignment="Center" Text="Aktywne" TextColor="White" FontSize="15"></Label>
                 </StackLayout>
                 <StackLayout Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="White">
-                    <Label FontFamily="{StaticResource AileronLight}" HorizontalTextAlignment="Center" Text="Zrealizowane" TextColor="{StaticResource SecondColor}" FontSize="15"></Label>
+                    <Label FontFamily="{StaticResource Light}" HorizontalTextAlignment="Center" Text="Zrealizowane" TextColor="{StaticResource SecondColor}" FontSize="15"></Label>
                 </StackLayout>
             </StackLayout>
         </StackLayout>
@@ -49,7 +49,7 @@
                     </StackLayout>
                     <StackLayout Grid.Column="1" Grid.Row="0">
                         <Label Text="To Moja lista na świętna świętna świętna święta "
-                               FontFamily="{StaticResource AileronLightItalic}" />
+                               FontFamily="{StaticResource Light}" />
                     </StackLayout>
                     <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
                         <Image HeightRequest="15" Source="{StaticResource Fruits}" />
@@ -61,12 +61,12 @@
                         <Image HeightRequest="15" Source="{StaticResource Dairy}" />
                         <Image HeightRequest="15" Source="{StaticResource Dairy}" />
                         <Image HeightRequest="15" Source="{StaticResource Other}" />
-                        <Label TextColor="Gray" Text="..." FontFamily="{StaticResource AileronLight}" />
+                        <Label TextColor="Gray" Text="..." FontFamily="{StaticResource Light}" />
                     </StackLayout>
                     <StackLayout Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
                         <Image HeightRequest="20" VerticalOptions="Center" Source="{StaticResource Date}"></Image>
                         <Label VerticalOptions="Center" Text="2016-45-34" FontSize="12"
-                               FontFamily="{StaticResource AileronLight}" />
+                               FontFamily="{StaticResource Light}" />
                     </StackLayout>
                     <StackLayout Grid.Column="2" Grid.Row="0" Grid.RowSpan="3">
                         <Frame Padding="2" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center"
@@ -85,30 +85,42 @@
                 </Grid>
             </Frame>
 
-            <Frame  Padding="10,5,10,10"  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,0.9,0.35">
+            <Frame  Padding="10,5,10,10" OutlineColor="{StaticResource SecondColor}" BackgroundColor="{StaticResource ThirthColor}"  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,0.9,0.35">
                 <StackLayout Spacing="0">
                     <Image HorizontalOptions="End" Source="{StaticResource CloseWindow}" Scale="1"></Image>
                     <StackLayout Margin="0,0,0,10" Orientation="Horizontal" HorizontalOptions="Fill">
                         <Image Source="{StaticResource Info}"></Image>
                         <Label VerticalOptions="Center" Text="Podaj nazwę listy." FontSize="15"
-                               FontFamily="{StaticResource AileronRegular}" TextColor="Black" />
+                               FontFamily="{StaticResource Medium}" TextColor="Black" />
                     </StackLayout>
-                    <Entry  FontFamily="{StaticResource AileronLight}" Text="aasdsdadadadaadassdsdadadadaadasdsdadadadaadasdadaadasss" Margin="0,0,0,10" />
+                    <Entry  FontFamily="{StaticResource Regular}" Text="aasdsdadadadaadassdsdadadadaadasdsdadadadaadasdadaadasss" Margin="0,0,0,10" />
                     <Image Source="{StaticResource CloseList}"></Image>
                 </StackLayout>
             </Frame>
-            
+
+            <StackLayout Spacing="0">
+                <Image HorizontalOptions="End" Source="{StaticResource CloseWindow}" Scale="1"></Image>
+                <StackLayout Margin="0,0,0,10" Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Image Source="{StaticResource Info}"></Image>
+                    <Label VerticalOptions="Center" Text="Podaj nazwę listy." FontSize="15"
+                               FontFamily="{StaticResource Regular}" TextColor="Black" />
+                </StackLayout>
+                <Entry  FontFamily="{StaticResource Light}" Text=""  Margin="0,0,0,10" />
+                <Image Source="{StaticResource CloseList}">
+                </Image>
+            </StackLayout>
+
         </AbsoluteLayout>
 
         <StackLayout Spacing="0" Padding="5"  BackgroundColor="{StaticResource BackgroundMainColor}">
             <StackLayout Spacing="0" Orientation="Horizontal">
                 <StackLayout Spacing="0" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
                     <Image   HeightRequest="15" Aspect="AspectFit" Source="{StaticResource ToDo}" ></Image>
-                    <Label Margin="0,5,0,0" HorizontalTextAlignment="Center" Text="Lists" FontSize="10" FontFamily="{StaticResource AileronThin}"></Label>
+                    <Label Margin="0,5,0,0" HorizontalTextAlignment="Center" Text="Lists" FontSize="10" FontFamily="{StaticResource Light}"></Label>
                 </StackLayout>
                 <StackLayout Spacing="0" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
                     <Image   HeightRequest="15" Aspect="AspectFit" Source="{StaticResource Settings}"></Image>
-                    <Label Margin="0,5,0,0" HorizontalTextAlignment="Center" Text="Settings" FontSize="10" FontFamily="{StaticResource AileronThin}"></Label>
+                    <Label Margin="0,5,0,0" HorizontalTextAlignment="Center" Text="Settings" FontSize="10" FontFamily="{StaticResource Light}"></Label>
                 </StackLayout>
             </StackLayout>
      </StackLayout>

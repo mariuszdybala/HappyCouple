@@ -21,22 +21,10 @@
 	</array>
   <key>UIAppFonts</key>
   <array>
-    <string>Fonts/Aileron-Black.otf</string>
-    <string>Fonts/Aileron-BlackItalic.otf</string>
-    <string>Fonts/Aileron-Bold.otf</string>
-    <string>Fonts/Aileron-BoldItalic.otf</string>
-    <string>Fonts/Aileron-Heavy.otf</string>
-    <string>Fonts/Aileron-HeavyItalic.otf</string>
-    <string>Fonts/Aileron-Italic.otf</string>
-    <string>Fonts/Aileron-Light.otf</string>
-    <string>Fonts/Aileron-LightItalic.otf</string>
-    <string>Fonts/Aileron-Regular.otf</string>
-    <string>Fonts/Aileron-SemiBold.otf</string>
-    <string>Fonts/Aileron-SemiBoldItalic.otf</string>
-    <string>Fonts/Aileron-Thin.otf</string>
-    <string>Fonts/Aileron-ThinItalic.otf</string>
-    <string>Fonts/Aileron-UltraLight.otf</string>
-    <string>Fonts/Aileron-UltraLightItalic.otf</string>
+    <string>Fonts/Quicksand-Bold.ttf</string>
+    <string>Fonts/Quicksand-Light.ttf</string>
+    <string>Fonts/Quicksand-Medium.ttf</string>
+    <string>Fonts/Quicksand-Regular.ttf</string>
   </array>
 	<key>MinimumOSVersion</key>
 	<string>9.0</string>
@@ -59,6 +47,6 @@
 	<key>CFBundleShortVersionString</key>
 	<string></string>
 	<key>CFBundleName</key>
-	<string>HappyCoupleMobile</string>
+	<string>HappyCouple</string>
 </dict>
 </plist>

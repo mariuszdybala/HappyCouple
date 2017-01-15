@@ -1,17 +1,22 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Frame xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
+             xmlns:converters="clr-namespace:HappyCoupleMobile.Mvvm.Converters;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.Mvvm.Controls.AddListPopUpView"
+             OutlineColor="{StaticResource SecondColor}" 
+             BackgroundColor="{StaticResource ThirthColor}"
              x:Name="AddListPopUpView">
-    <StackLayout Spacing="0">
+    <StackLayout Spacing="0" BindingContext="{x:Reference AddListPopUpView}">
         <Image HorizontalOptions="End" Source="{StaticResource CloseWindow}" Scale="1"></Image>
         <StackLayout Margin="0,0,0,10" Orientation="Horizontal" HorizontalOptions="Fill">
             <Image Source="{StaticResource Info}"></Image>
-            <Label VerticalOptions="Center" Text="Podaj nazwę listy." FontSize="15"
-                               FontFamily="{StaticResource AileronRegular}" TextColor="Black" />
+            <Label VerticalOptions="Center" Text="Podaj nazwę listy." FontSize="15" FontFamily="{StaticResource Medium}" TextColor="Black" />
         </StackLayout>
-        <Entry  FontFamily="{StaticResource AileronLight}" Text=""  Margin="0,0,0,10" />
-        <Image Source="{StaticResource CloseList}">
-        </Image>
+        <Entry x:Name="NewListNameEntry"  FontFamily="{StaticResource Regular}" Text="" Margin="0,0,0,10" />
+        <controls:TappableImage IsVisible="{Binding Source={x:Reference NewListNameEntry}, Path=Text, Converter={converters:StringIsNullOrEmptyToBoolConverter}}" 
+                                Source="{StaticResource CloseList}" 
+                                TappedCommand="{Binding AddNewListCommand}"
+                                TappedCommandParameter="{Binding Source={x:Reference NewListNameEntry}, Path=Text}"/>
     </StackLayout>
 </Frame>

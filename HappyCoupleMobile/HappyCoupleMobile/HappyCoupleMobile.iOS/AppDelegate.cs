@@ -38,7 +38,6 @@ namespace HappyCoupleMobile.iOS
 #else
             LoadApplication(new App());
 #endif
-
             return base.FinishedLaunching(app, options);
         }
 

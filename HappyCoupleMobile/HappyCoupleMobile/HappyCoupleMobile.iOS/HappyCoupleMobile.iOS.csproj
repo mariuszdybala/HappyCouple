@@ -152,22 +152,10 @@
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork@2x" />
     <None Include="packages.config" />
-    <BundleResource Include="Resources\Fonts\Aileron-Black.otf" />
-    <BundleResource Include="Resources\Fonts\Aileron-BlackItalic.otf" />
-    <BundleResource Include="Resources\Fonts\Aileron-Bold.otf" />
-    <BundleResource Include="Resources\Fonts\Aileron-BoldItalic.otf" />
-    <BundleResource Include="Resources\Fonts\Aileron-Heavy.otf" />
-    <BundleResource Include="Resources\Fonts\Aileron-HeavyItalic.otf" />
-    <BundleResource Include="Resources\Fonts\Aileron-Italic.otf" />
-    <BundleResource Include="Resources\Fonts\Aileron-Light.otf" />
-    <BundleResource Include="Resources\Fonts\Aileron-LightItalic.otf" />
-    <BundleResource Include="Resources\Fonts\Aileron-Regular.otf" />
-    <BundleResource Include="Resources\Fonts\Aileron-SemiBold.otf" />
-    <BundleResource Include="Resources\Fonts\Aileron-SemiBoldItalic.otf" />
-    <BundleResource Include="Resources\Fonts\Aileron-Thin.otf" />
-    <BundleResource Include="Resources\Fonts\Aileron-ThinItalic.otf" />
-    <BundleResource Include="Resources\Fonts\Aileron-UltraLight.otf" />
-    <BundleResource Include="Resources\Fonts\Aileron-UltraLightItalic.otf" />
+    <BundleResource Include="Resources\Fonts\Quicksand-Bold.ttf" />
+    <BundleResource Include="Resources\Fonts\Quicksand-Light.ttf" />
+    <BundleResource Include="Resources\Fonts\Quicksand-Medium.ttf" />
+    <BundleResource Include="Resources\Fonts\Quicksand-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -396,15 +384,6 @@
     <BundleResource Include="Resources\Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\add%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\add%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\add_list%403x.png" />
   </ItemGroup>
   <ItemGroup>
@@ -412,15 +391,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\add_list.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\remove_list%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\remove_list%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\remove_list.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\couple%403x.png" />
@@ -560,15 +530,6 @@
     <BundleResource Include="Resources\grain%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\closelist%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\closelist%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\closelist.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\delete.png" />
   </ItemGroup>
   <ItemGroup>
@@ -594,6 +555,33 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\closewindow%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\add_to_list%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\add_to_list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\add_to_list%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete_list%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete_list%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete_list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\set_closed_list%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\set_closed_list%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\set_closed_list.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.2.127\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

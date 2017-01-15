@@ -8,33 +8,22 @@
         <ResourceDictionary>
             <vm:ViewModelLocator x:Key="ViewModelLocator"/>
 
-            <Color x:Key="FirstColor">#3658ff</Color>
-            <Color x:Key="SecondColor">#5f75e6</Color>
-            <Color x:Key="ThirthColor">#fff536</Color>
-            <Color x:Key="FourthColor">#ee36ff</Color>
-            
+            <Color x:Key="FirstColor">#4054B2</Color>
+            <Color x:Key="SecondColor">#424242</Color>
+            <Color x:Key="ThirthColor">#FEE94E</Color>
+            <Color x:Key="FourthColor">#F6585D</Color>
+
             <Color x:Key="BackgroundMainColor">#dddddd</Color>
 
-            <x:String x:Key="AileronBack">Aileron-Black</x:String>
-            <x:String x:Key="AileronBackItalic">Aileron-BlackItalic</x:String>
-            <x:String x:Key="AileronBold">Aileron-Bold</x:String>
-            <x:String x:Key="AileronBoldItalic">Aileron-BoldItalic</x:String>
-            <x:String x:Key="AileronHeavy">Aileron-Heavy</x:String>
-            <x:String x:Key="AileronHeavyItalic">Aileron-HeavyItalic</x:String>
-            <x:String x:Key="AileronItalic">Aileron-Italic</x:String>
-            <x:String x:Key="AileronLight">Aileron-Light</x:String>
-            <x:String x:Key="AileronLightItalic">Aileron-LightItalic</x:String>
-            <x:String x:Key="AileronRegular">Aileron-Regular</x:String>
-            <x:String x:Key="AileronSemiBold">Aileron-SemiBold</x:String>
-            <x:String x:Key="AileronSemiBoldItalic">Aileron-SemiBoldItalic</x:String>
-            <x:String x:Key="AileronThin">Aileron-Thin</x:String>
-            <x:String x:Key="AileronThinItalic">Aileron-ThinItalic</x:String>
-            <x:String x:Key="AileronUltraLight">Aileron-UltraLight</x:String>
-            <x:String x:Key="AileronUltraLightItalic">Aileron-UltraLightItalic</x:String>
+            <x:String x:Key="Bold">Quicksand-Bold</x:String>
+            <x:String x:Key="Light">Quicksand-Light</x:String>
+            <x:String x:Key="Medium">Quicksand-Medium</x:String>
+            <x:String x:Key="Regular">Quicksand-Regular</x:String>
+
 
             <FileImageSource x:Key="Couple">couple.png</FileImageSource>
             <FileImageSource x:Key="AddList">add_list.png</FileImageSource>
-            <FileImageSource x:Key="AddToList">add.png</FileImageSource>
+            <FileImageSource x:Key="AddToList">add_to_list.png</FileImageSource>
             <FileImageSource x:Key="Fruits">fruits.png</FileImageSource>
             <FileImageSource x:Key="ToDo">todo.png</FileImageSource>
             <FileImageSource x:Key="Settings">fix.png</FileImageSource>
@@ -51,8 +40,8 @@
             <FileImageSource x:Key="Date">date.png</FileImageSource>
             <FileImageSource x:Key="Grain">grain.png</FileImageSource>
             <FileImageSource x:Key="Other">food.png</FileImageSource>
-            <FileImageSource x:Key="CloseList">closelist.png</FileImageSource>
-            <FileImageSource x:Key="DeleteList">remove_list.png</FileImageSource>
+            <FileImageSource x:Key="CloseList">set_closed_list.png</FileImageSource>
+            <FileImageSource x:Key="DeleteList">delete_list.png</FileImageSource>
             <FileImageSource x:Key="Delete">delete.png</FileImageSource>
             <FileImageSource x:Key="CloseWindow">closewindow.png</FileImageSource>
             <FileImageSource x:Key="Info">info.png</FileImageSource>

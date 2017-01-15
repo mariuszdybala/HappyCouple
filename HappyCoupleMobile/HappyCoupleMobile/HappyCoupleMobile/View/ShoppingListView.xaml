@@ -7,20 +7,22 @@
              xmlns:render="clr-namespace:HappyCoupleMobile.Mvvm.Renderers;assembly=HappyCoupleMobile"
              xmlns:view="clr-namespace:HappyCoupleMobile.View.Abstract;assembly=HappyCoupleMobile"
              BackgroundColor="{StaticResource SecondColor}">
-    <StackLayout Spacing="0">
-        <control:TopPanelControl RightIconSource="{StaticResource AddList}" LeftIconSource="{StaticResource Couple}" RightIconTapCommand="{Binding RightIconTapCommand}" PanelHeader="Moje listy"/>
-        <control:TabPanelView/>
-        
-        <ScrollView>
-            <StackLayout x:Name="ShoppingListPanelContent" Spacing="0">
-                <control:ShoppingListPanel/>
-                <control:ShoppingListPanel/>
-                <control:ShoppingListPanel/>
-                <control:ShoppingListPanel/>
-                <control:ShoppingListPanel/>
-                <control:ShoppingListPanel/>
-                <control:ShoppingListPanel/>
-            </StackLayout>
-        </ScrollView>
-    </StackLayout>
+    <AbsoluteLayout BackgroundColor="{StaticResource SecondColor}" VerticalOptions="FillAndExpand">
+        <StackLayout Spacing="0">
+            <control:TopPanelControl RightIconSource="{StaticResource AddList}" LeftIconSource="{StaticResource Couple}" RightIconTapCommand="{Binding RightIconTapCommand}" PanelHeader="Moje listy"/>
+            <control:TabPanelView/>
+            <ScrollView>
+                <StackLayout x:Name="ShoppingListPanelContent" Spacing="0">
+                    <control:ShoppingListPanel/>
+                    <control:ShoppingListPanel/>
+                    <control:ShoppingListPanel/>
+                    <control:ShoppingListPanel/>
+                    <control:ShoppingListPanel/>
+                    <control:ShoppingListPanel/>
+                    <control:ShoppingListPanel/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+        <control:AddListPopUpView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,0.9,0.35"/>
+    </AbsoluteLayout>
 </view:BaseHappyContentPage>

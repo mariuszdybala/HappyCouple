@@ -10,7 +10,7 @@
                     <TapGestureRecognizer Tapped="OnLeftIconImageTapped"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="Moje Listy" FontFamily="{StaticResource AileronUltraLight}" FontSize="17" TextColor="White"
+            <Label Text="Moje Listy" FontFamily="{StaticResource Medium}" FontSize="20" TextColor="White"
                        HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
             <Image x:Name="RightIconImage" Source="{Binding RightIconSource}">
                 <Image.GestureRecognizers>

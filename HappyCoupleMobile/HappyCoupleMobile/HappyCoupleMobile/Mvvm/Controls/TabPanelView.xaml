@@ -5,10 +5,10 @@
              x:Name="TabPanelView">
     <StackLayout Spacing="0" Orientation="Horizontal">
         <StackLayout Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}">
-            <Label  FontFamily="{StaticResource AileronLight}" HorizontalTextAlignment="Center" Text="Aktywne" TextColor="White" FontSize="15"></Label>
+            <Label  FontFamily="{StaticResource Medium}" HorizontalTextAlignment="Center" Text="Aktywne" TextColor="White" FontSize="15"></Label>
         </StackLayout>
         <StackLayout Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="White">
-            <Label FontFamily="{StaticResource AileronLight}" HorizontalTextAlignment="Center" Text="Zrealizowane" TextColor="{StaticResource SecondColor}" FontSize="15"></Label>
+            <Label FontFamily="{StaticResource Medium}" HorizontalTextAlignment="Center" Text="Zrealizowane" TextColor="{StaticResource SecondColor}" FontSize="15"></Label>
         </StackLayout>
     </StackLayout>
 </StackLayout>
