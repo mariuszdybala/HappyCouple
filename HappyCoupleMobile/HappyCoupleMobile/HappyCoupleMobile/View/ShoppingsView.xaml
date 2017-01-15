@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<view:BaseHappyContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HappyCoupleMobile.View.ShoppingsView"
+             BindingContext="{Binding ShoppingListViewModel, Source={StaticResource ViewModelLocator}}"
+             xmlns:control="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
+             xmlns:view="clr-namespace:HappyCoupleMobile.View.Abstract;assembly=HappyCoupleMobile"
+             BackgroundColor="{StaticResource SecondColor}" x:Name="ShoppingsView">
+    <AbsoluteLayout BackgroundColor="{StaticResource SecondColor}" VerticalOptions="FillAndExpand">
+        <StackLayout Spacing="0">
+            <control:TopPanelControl RightIconSource="{StaticResource AddList}" LeftIconSource="{StaticResource Couple}" RightIconTapCommand="{Binding RightIconTapCommand}" PanelHeader="Moje listy"/>
+            <StackLayout Spacing="0" Orientation="Horizontal">
+                <StackLayout Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}">
+                    <control:TappableLabel TappedCommand="" FontFamily="{StaticResource Medium}" HorizontalTextAlignment="Center" Text="Aktywne" TextColor="White" FontSize="15"/>
+                </StackLayout>
+                <StackLayout Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="White">
+                    <control:TappableLabel TappedCommand="" FontFamily="{StaticResource Medium}" HorizontalTextAlignment="Center" Text="Zrealizowane" TextColor="{StaticResource SecondColor}" FontSize="15"/>
+                </StackLayout>
+            </StackLayout>
+            <ScrollView>
+                <control:ShoppingListView IsVisible="{Binding Source={x:Reference ShoppingsView} Path=}"
+                                          AddCommand="{Binding AddProductToListCommand}"
+                                          CloseCommand="{Binding CloseListCommand}"
+                                          DeleteCommand="{Binding DeleteListCommand}"
+                                          EditOrListTappedCommand="{Binding EditListCommand}"
+                                          ShoppingListSource="{Binding ClosedShoppingLists}"/>
+                
+                <control:ShoppingListView AddCommand="{Binding AddProductToListCommand}"
+                                          CloseCommand="{Binding CloseListCommand}"
+                                          DeleteCommand="{Binding DeleteListCommand}"
+                                          EditOrListTappedCommand="{Binding EditListCommand}"
+                                          ShoppingListSource="{Binding ClosedShoppingLists}"/>
+            </ScrollView>
+        </StackLayout>
+        <control:AddListPopUpView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,0.9,0.35"/>
+    </AbsoluteLayout>
+</view:BaseHappyContentPage>

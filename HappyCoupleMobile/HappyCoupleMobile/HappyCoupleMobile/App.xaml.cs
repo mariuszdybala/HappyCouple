@@ -30,7 +30,7 @@ namespace HappyCoupleMobile
             FeedIoC();
             InitializeComponent();
 
-            MainPage = new ShoppingListView();
+            MainPage = new ShoppingsView();
 
             if (SimpleIoc.Default.IsRegistered<INavigationPageService>())
             {
@@ -45,11 +45,15 @@ namespace HappyCoupleMobile
 
             await LogUser();
 
-            var homeView = (ShoppingListView)MainPage;
-            if (!homeView.IsInitialized)
+            var homeView = (ShoppingsView)MainPage;
+
+            var shoppingsViewController = homeView.BindingContext as ShoppingListViewModel;
+
+            if (shoppingsViewController != null)
             {
-                await homeView.InitializeShoppingLists();
+               await shoppingsViewController.GetAllShoppingListsAndInitView();
             }
+
         }
 
         protected override void OnSleep()

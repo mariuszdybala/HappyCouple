@@ -84,6 +84,9 @@
     <Compile Include="Mvvm\Controls\TappableImage.xaml.cs">
       <DependentUpon>TappableImage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Mvvm\Controls\TappableLabel.xaml.cs">
+      <DependentUpon>TappableLabel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Mvvm\Controls\TopPanelControl.xaml.cs">
       <DependentUpon>TopPanelControl.xaml</DependentUpon>
     </Compile>
@@ -107,7 +110,6 @@
     <Compile Include="Services\NavigationPageService.cs" />
     <Compile Include="Services\SimpleAuthService.cs" />
     <Compile Include="ViewModel\Abstract\BaseHappyViewModel.cs" />
-    <Compile Include="ViewModel\Interfaces\IShoppingListViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ShoppingListViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
@@ -117,8 +119,11 @@
     <Compile Include="View\PreViewPage.xaml.cs">
       <DependentUpon>PreViewPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ShoppingListView.xaml.cs">
+    <Compile Include="Mvvm\Controls\ShoppingListView.xaml.cs">
       <DependentUpon>ShoppingListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShoppingsView.xaml.cs">
+      <DependentUpon>ShoppingsView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -226,7 +231,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="View\ShoppingListView.xaml">
+    <EmbeddedResource Include="Mvvm\Controls\ShoppingListView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -251,6 +256,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mvvm\Controls\TappableImage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\ShoppingsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mvvm\Controls\TappableLabel.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

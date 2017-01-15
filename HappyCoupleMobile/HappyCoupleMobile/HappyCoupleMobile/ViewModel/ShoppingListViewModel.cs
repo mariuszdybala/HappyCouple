@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using HappyCoupleMobile.Data;
 using HappyCoupleMobile.Model;
 using HappyCoupleMobile.Repositories.Interfaces;
 using HappyCoupleMobile.Services;
 using HappyCoupleMobile.View;
 using HappyCoupleMobile.ViewModel.Abstract;
-using HappyCoupleMobile.ViewModel.Interfaces;
 using Xamarin.Forms;
 
 namespace HappyCoupleMobile.ViewModel
 {
-    public class ShoppingListViewModel : BaseHappyViewModel , IShoppingListViewModel
+    public class ShoppingListViewModel : BaseHappyViewModel
     {
         private readonly IShoppingListRepository _shoppingListRepository;
         public ICommand RightIconTapCommand { get; set; }
@@ -22,14 +20,17 @@ namespace HappyCoupleMobile.ViewModel
         public Command<ShoppingList> AddProductToListCommand { get; set; }
         public Command<ShoppingList> CloseListCommand { get; set; }
         public Command<ShoppingList> EditListCommand { get; set; }
-        public IList<ShoppingList> ShoppingLists { get; set; }
+
+
+        public ObservableCollection<ShoppingList> ActiveShoppingLists { get; set; }
+        public ObservableCollection<ShoppingList> ClosedShoppingLists { get; set; }
 
         public ShoppingListViewModel(ISimpleAuthService simpleAuthService, IShoppingListRepository shoppingListRepository) : base(simpleAuthService)
         {
             _shoppingListRepository = shoppingListRepository;
             RegisterCommand();
 
-            ShoppingLists = new List<ShoppingList>();
+            ActiveShoppingLists = new ObservableCollection<ShoppingList>();
         }
 
         private void RegisterCommand()
@@ -43,14 +44,11 @@ namespace HappyCoupleMobile.ViewModel
 
         public async Task GetAllShoppingListsAndInitView()
         {
-            ShoppingLists = await _shoppingListRepository.GetAllShoppingListWithProductsAsync();
-        }
+            var shoppingLists = await _shoppingListRepository.GetAllShoppingListWithProductsAsync();
 
-        public  void InitializeViewWithShoppingLists()
-        {
-            ShoppingListView shoppingListView = Page as ShoppingListView;
+            ActiveShoppingLists = new ObservableCollection<ShoppingList>(shoppingLists);
 
-            shoppingListView?.FeedShoppingListContainer();
+            RaisePropertyChanged(nameof(ActiveShoppingLists));
         }
 
         private void OnEditList(ShoppingList shoppingList)
@@ -75,7 +73,6 @@ namespace HappyCoupleMobile.ViewModel
         {
             IList<ShoppingList> lists = await _shoppingListRepository.GetAllShoppingListWithProductsAsync();
         }
-
 
     }
 }
