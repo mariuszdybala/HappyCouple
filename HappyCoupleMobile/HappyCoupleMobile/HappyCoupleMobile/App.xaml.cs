@@ -51,9 +51,8 @@ namespace HappyCoupleMobile
 
             if (shoppingsViewController != null)
             {
-               await shoppingsViewController.GetAllShoppingListsAndInitView();
+                await shoppingsViewController.GetAllShoppingListsAndInitView();
             }
-
         }
 
         protected override void OnSleep()

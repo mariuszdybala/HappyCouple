@@ -7,31 +7,41 @@
              xmlns:view="clr-namespace:HappyCoupleMobile.View.Abstract;assembly=HappyCoupleMobile"
              BackgroundColor="{StaticResource SecondColor}" x:Name="ShoppingsView">
     <AbsoluteLayout BackgroundColor="{StaticResource SecondColor}" VerticalOptions="FillAndExpand">
-        <StackLayout Spacing="0">
-            <control:TopPanelControl RightIconSource="{StaticResource AddList}" LeftIconSource="{StaticResource Couple}" RightIconTapCommand="{Binding RightIconTapCommand}" PanelHeader="Moje listy"/>
+        <StackLayout Spacing="0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <control:TopPanelControl RightIconSource="{StaticResource AddList}" LeftIconSource="{StaticResource Couple}" RightIconTapCommand="{Binding AddNewListCommand}" PanelHeader="Moje listy"/>
             <StackLayout Spacing="0" Orientation="Horizontal">
-                <StackLayout Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}">
-                    <control:TappableLabel TappedCommand="" FontFamily="{StaticResource Medium}" HorizontalTextAlignment="Center" Text="Aktywne" TextColor="White" FontSize="15"/>
+                <StackLayout x:Name="ActiveTabPanel" Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}">
+                    <control:TappableLabel x:Name="ActiveTabLabel" 
+                                           TappedCommand="{Binding Source={x:Reference ShoppingsView}, Path=ActiveTabTappedCommand}" 
+                                           FontFamily="{StaticResource Medium}" HorizontalTextAlignment="Center" Text="Aktywne" 
+                                           TextColor="White" FontSize="15"/>
                 </StackLayout>
-                <StackLayout Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="White">
-                    <control:TappableLabel TappedCommand="" FontFamily="{StaticResource Medium}" HorizontalTextAlignment="Center" Text="Zrealizowane" TextColor="{StaticResource SecondColor}" FontSize="15"/>
+                <StackLayout x:Name="ClosedTabPanel" Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="White">
+                    <control:TappableLabel x:Name="ClosedTabLabel" 
+                                           TappedCommand="{Binding Source={x:Reference ShoppingsView}, Path=ClosedTabTappedCommand}" 
+                                           FontFamily="{StaticResource Medium}" HorizontalTextAlignment="Center" Text="Zrealizowane" 
+                                           TextColor="{StaticResource SecondColor}" FontSize="15"/>
                 </StackLayout>
             </StackLayout>
-            <ScrollView>
-                <control:ShoppingListView IsVisible="{Binding Source={x:Reference ShoppingsView} Path=}"
+                <control:ShoppingListView x:Name="ActiveShoppingList" 
+                                          IsVisible="{Binding Source={x:Reference ShoppingsView}, Path=ShowActive}" 
+                                          AddCommand="{Binding AddProductToListCommand}"
+                                          CloseCommand="{Binding CloseListCommand}"
+                                          DeleteCommand="{Binding DeleteListCommand}"
+                                          EditOrListTappedCommand="{Binding EditListCommand}"
+                                          ShoppingListSource="{Binding ActiveShoppingLists}"/>
+
+            <control:ShoppingListView x:Name="ClosedShoppingList" 
+                                          IsVisible="{Binding Source={x:Reference ShoppingsView}, Path=ShowClosed}" 
                                           AddCommand="{Binding AddProductToListCommand}"
                                           CloseCommand="{Binding CloseListCommand}"
                                           DeleteCommand="{Binding DeleteListCommand}"
                                           EditOrListTappedCommand="{Binding EditListCommand}"
                                           ShoppingListSource="{Binding ClosedShoppingLists}"/>
-                
-                <control:ShoppingListView AddCommand="{Binding AddProductToListCommand}"
-                                          CloseCommand="{Binding CloseListCommand}"
-                                          DeleteCommand="{Binding DeleteListCommand}"
-                                          EditOrListTappedCommand="{Binding EditListCommand}"
-                                          ShoppingListSource="{Binding ClosedShoppingLists}"/>
-            </ScrollView>
         </StackLayout>
-        <control:AddListPopUpView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,0.9,0.35"/>
+        <control:AddListPopUpView IsVisible="{Binding ShowAddNewListPopUp}" 
+                                  CloseWindowCommand="{Binding CloseAddNewListPopUpCommand}"  
+                                  AddNewListCommand="{Binding AddNewListCommand}"
+                                  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,0.9,0.35"/>
     </AbsoluteLayout>
 </view:BaseHappyContentPage>

@@ -8,7 +8,8 @@
              BackgroundColor="{StaticResource ThirthColor}"
              x:Name="AddListPopUpView">
     <StackLayout Spacing="0" BindingContext="{x:Reference AddListPopUpView}">
-        <Image HorizontalOptions="End" Source="{StaticResource CloseWindow}" Scale="1"></Image>
+        <controls:TappableImage  Source="{StaticResource CloseWindow}" Scale="1" HorizontalOptions="End"
+                                TappedCommand="{Binding CloseWindowCommand}"/>
         <StackLayout Margin="0,0,0,10" Orientation="Horizontal" HorizontalOptions="Fill">
             <Image Source="{StaticResource Info}"></Image>
             <Label VerticalOptions="Center" Text="Podaj nazwę listy." FontSize="15" FontFamily="{StaticResource Medium}" TextColor="Black" />

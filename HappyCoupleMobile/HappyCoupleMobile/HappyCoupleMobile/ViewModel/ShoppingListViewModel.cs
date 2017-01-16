@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using HappyCoupleMobile.Model;
@@ -15,11 +16,21 @@ namespace HappyCoupleMobile.ViewModel
     public class ShoppingListViewModel : BaseHappyViewModel
     {
         private readonly IShoppingListRepository _shoppingListRepository;
-        public ICommand RightIconTapCommand { get; set; }
+
+        private bool _showAddNewListPopUp;
+
+        public bool ShowAddNewListPopUp
+        {
+            get { return _showAddNewListPopUp; }
+            set { Set(ref _showAddNewListPopUp, value); }
+        }
+
+        public Command<string> AddNewListCommand { get; set; }
         public Command<ShoppingList> DeleteListCommand { get; set; }
         public Command<ShoppingList> AddProductToListCommand { get; set; }
         public Command<ShoppingList> CloseListCommand { get; set; }
         public Command<ShoppingList> EditListCommand { get; set; }
+        public Command CloseAddNewListPopUpCommand { get; set; }
 
 
         public ObservableCollection<ShoppingList> ActiveShoppingLists { get; set; }
@@ -35,12 +46,15 @@ namespace HappyCoupleMobile.ViewModel
 
         private void RegisterCommand()
         {
-            RightIconTapCommand = new Command(async () => await OnRightIconTap());
+            AddNewListCommand = new Command<string>(OnAddNewListCommand);
             DeleteListCommand = new Command<ShoppingList>(OnDeleteList);
             AddProductToListCommand = new Command<ShoppingList>(OnAddProductToList);
             CloseListCommand = new Command<ShoppingList>(OnCloseList);
             EditListCommand = new Command<ShoppingList>(OnEditList);
+            CloseAddNewListPopUpCommand = new Command(OnCloseAddNewListPopUpCommand);
         }
+
+
 
         public async Task GetAllShoppingListsAndInitView()
         {
@@ -48,8 +62,14 @@ namespace HappyCoupleMobile.ViewModel
 
             ActiveShoppingLists = new ObservableCollection<ShoppingList>(shoppingLists);
 
+            ClosedShoppingLists = new ObservableCollection<ShoppingList>();
+            ClosedShoppingLists.Add(ActiveShoppingLists.Last());
+
             RaisePropertyChanged(nameof(ActiveShoppingLists));
+            RaisePropertyChanged(nameof(ClosedShoppingLists));
         }
+
+
 
         private void OnEditList(ShoppingList shoppingList)
         {
@@ -67,11 +87,14 @@ namespace HappyCoupleMobile.ViewModel
         {
 
         }
-
-
-        private async Task OnRightIconTap()
+        private void OnCloseAddNewListPopUpCommand()
         {
-            IList<ShoppingList> lists = await _shoppingListRepository.GetAllShoppingListWithProductsAsync();
+            ShowAddNewListPopUp = false;
+        }
+
+        private void OnAddNewListCommand(string newListName)
+        {
+            ShowAddNewListPopUp = true;
         }
 
     }

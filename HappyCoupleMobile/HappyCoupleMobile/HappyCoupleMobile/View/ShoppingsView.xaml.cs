@@ -12,8 +12,41 @@ namespace HappyCoupleMobile.View
 {
     public partial class ShoppingsView : BaseHappyContentPage
     {
-        public ICommand ActiveTabTappedCommand { get; set; }
-        public ICommand ClosedTabTappedCommand { get; set; }
+        public static readonly BindableProperty ShowActiveProperty = BindableProperty.Create(
+        nameof(ShowActive), typeof(bool), typeof(ShoppingsView), defaultValue: true);
+
+        public static readonly BindableProperty ShowClosedProperty = BindableProperty.Create(
+        nameof(ShowClosed), typeof(bool), typeof(ShoppingsView), defaultValue: false);
+
+        public static readonly BindableProperty ActiveTabTappedCommandProperty = BindableProperty.Create(
+        nameof(ActiveTabTappedCommand), typeof(ICommand), typeof(ShoppingsView));
+
+        public static readonly BindableProperty ClosedTabTappedCommandProperty = BindableProperty.Create(
+        nameof(ClosedTabTappedCommand), typeof(ICommand), typeof(ShoppingsView));
+
+        public bool ShowActive
+        {
+            get { return (bool)GetValue(ShowActiveProperty); }
+            set { SetValue(ShowActiveProperty, value); }
+        }
+
+        public bool ShowClosed
+        {
+            get { return (bool)GetValue(ShowClosedProperty); }
+            set { SetValue(ShowClosedProperty, value); }
+        }
+
+        public ICommand ActiveTabTappedCommand
+        {
+            get { return (ICommand)GetValue(ActiveTabTappedCommandProperty); }
+            set { SetValue(ActiveTabTappedCommandProperty, value); }
+        }
+
+        public ICommand ClosedTabTappedCommand
+        {
+            get { return (ICommand)GetValue(ClosedTabTappedCommandProperty); }
+            set { SetValue(ClosedTabTappedCommandProperty, value); }
+        }
 
         public ShoppingsView()
         {
@@ -25,16 +58,28 @@ namespace HappyCoupleMobile.View
 
         private void OnClosedTabTappedCommand()
         {
+            SwitchTabs();
         }
 
         private void OnActiveTabTappedCommand()
         {
-
+            SwitchTabs();
         }
 
         private void SwitchTabs()
         {
-            
+            ShowActive = !ShowActive;
+            ShowClosed = !ShowClosed;
+
+            SwitchTabsStyles(ShowActive, ActiveTabPanel, ActiveTabLabel);
+            SwitchTabsStyles(ShowClosed, ClosedTabPanel, ClosedTabLabel);
+        }
+
+        private void SwitchTabsStyles(bool isOnTop, StackLayout tabStack, Label tabLabel)
+        {
+            tabStack.BackgroundColor = isOnTop ? (Color)Application.Current.Resources["SecondColor"] : Color.White;
+
+            tabLabel.TextColor = isOnTop ? Color.White : (Color)Application.Current.Resources["SecondColor"];
         }
     }
 }

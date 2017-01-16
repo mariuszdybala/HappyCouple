@@ -3,5 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HappyCoupleMobile.Mvvm.Controls.ShoppingListView"
              BackgroundColor="{StaticResource SecondColor}">
-    <StackLayout x:Name="ShoppingListPanelContent" Spacing="0"/>
+    <ScrollView>
+        <StackLayout x:Name="ShoppingListPanelContent" Spacing="0"/>
+    </ScrollView>
 </StackLayout>

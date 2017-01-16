@@ -9,15 +9,15 @@ namespace HappyCoupleMobile.Mvvm.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var valueStr = value as string;
-            var retValue = string.IsNullOrWhiteSpace(valueStr);
-            if (parameter != null)
-            {
-                var invertBool = System.Convert.ToBoolean(parameter);
-                if (invertBool)
-                {
-                    return !retValue;
-                }
-            }
+            var retValue = !string.IsNullOrWhiteSpace(valueStr);
+//            if (parameter != null)
+//            {
+//                var invertBool = System.Convert.ToBoolean(parameter);
+//                if (invertBool)
+//                {
+//                    return !retValue;
+//                }
+//            }
             return retValue;
         }
 
