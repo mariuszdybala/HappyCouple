@@ -22,7 +22,9 @@ namespace HappyCoupleMobile.ViewModel
     {
         public MainViewModel Main => GetViewModel<MainViewModel>();
 
-        public ShoppingListViewModel ShoppingListViewModel => GetViewModel<ShoppingListViewModel>();
+        public ShoppingsViewModel ShoppingListViewModel => GetViewModel<ShoppingsViewModel>();
+        public EditShoppingListViewModel EditShoppingListViewModel => GetViewModel<EditShoppingListViewModel>();
+        public AddProductViewModel AddProductViewModel => GetViewModel<AddProductViewModel>();
 
         public static T GetViewModel<T>()
         {

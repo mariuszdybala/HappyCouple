@@ -30,7 +30,7 @@ namespace HappyCoupleMobile
             FeedIoC();
             InitializeComponent();
 
-            MainPage = new ShoppingsView();
+            MainPage = new NavigationPage(new ShoppingsView());
 
             if (SimpleIoc.Default.IsRegistered<INavigationPageService>())
             {
@@ -45,9 +45,11 @@ namespace HappyCoupleMobile
 
             await LogUser();
 
-            var homeView = (ShoppingsView)MainPage;
+            var navigationPage = (NavigationPage)MainPage;
 
-            var shoppingsViewController = homeView.BindingContext as ShoppingListViewModel;
+            var homeView = navigationPage.CurrentPage;
+
+            var shoppingsViewController = homeView.BindingContext as ShoppingsViewModel;
 
             if (shoppingsViewController != null)
             {
@@ -70,6 +72,7 @@ namespace HappyCoupleMobile
             SimpleIoc.Default.Register<IDatabaseInitializer, DatabaseInitializer>();
 
             SimpleIoc.Default.Register<ISimpleAuthService, SimpleAuthService>();
+            SimpleIoc.Default.Register<INavigationPageService, NavigationPageService>();
 
             SimpleIoc.Default.Register<IShoppingListRepository, ShoppingListRepository>();
             SimpleIoc.Default.Register<IUserRepository, UserRepository>();
@@ -81,7 +84,9 @@ namespace HappyCoupleMobile
 
 
             SimpleIoc.Default.Register<MainViewModel>(true);
-            SimpleIoc.Default.Register<ShoppingListViewModel>(true);
+            SimpleIoc.Default.Register<ShoppingsViewModel>(true);
+            SimpleIoc.Default.Register<AddProductViewModel>(true);
+            SimpleIoc.Default.Register<EditShoppingListViewModel>(true);
         }
 
         private async Task InitDatabase()

@@ -22,6 +22,7 @@
 
 
             <FileImageSource x:Key="Couple">couple.png</FileImageSource>
+            <FileImageSource x:Key="Back">back.png</FileImageSource>
             <FileImageSource x:Key="AddList">add_list.png</FileImageSource>
             <FileImageSource x:Key="AddToList">add_to_list.png</FileImageSource>
             <FileImageSource x:Key="Fruits">fruits.png</FileImageSource>

@@ -15,19 +15,16 @@ namespace HappyCoupleMobile.Services
 
         public async Task PushAsync<T>() where T : ContentPage, new()
         {
-            ContentPage pushedPage = new T();
-
-            if (_navigation.NavigationStack.Any())
+            ContentPage target = new T();
+            if (_navigation.NavigationStack.Count != 0)
             {
                 var lastPage = _navigation.NavigationStack.Last() as ContentPage;
-
-                if (lastPage?.GetType() == pushedPage.GetType())
+                if (lastPage?.GetType() == target.GetType())
                 {
                     return;
                 }
             }
-
-            await _navigation.PushAsync(pushedPage);
+            await _navigation.PushAsync(target);
         }
 
         public async Task PopAsync()

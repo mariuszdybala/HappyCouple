@@ -13,7 +13,7 @@ using Xamarin.Forms;
 
 namespace HappyCoupleMobile.ViewModel
 {
-    public class ShoppingListViewModel : BaseHappyViewModel
+    public class ShoppingsViewModel : BaseHappyViewModel
     {
         private readonly IShoppingListRepository _shoppingListRepository;
 
@@ -36,7 +36,7 @@ namespace HappyCoupleMobile.ViewModel
         public ObservableCollection<ShoppingList> ActiveShoppingLists { get; set; }
         public ObservableCollection<ShoppingList> ClosedShoppingLists { get; set; }
 
-        public ShoppingListViewModel(ISimpleAuthService simpleAuthService, IShoppingListRepository shoppingListRepository) : base(simpleAuthService)
+        public ShoppingsViewModel(ISimpleAuthService simpleAuthService, IShoppingListRepository shoppingListRepository) : base(simpleAuthService)
         {
             _shoppingListRepository = shoppingListRepository;
             RegisterCommand();
@@ -50,7 +50,7 @@ namespace HappyCoupleMobile.ViewModel
             DeleteListCommand = new Command<ShoppingList>(OnDeleteList);
             AddProductToListCommand = new Command<ShoppingList>(OnAddProductToList);
             CloseListCommand = new Command<ShoppingList>(OnCloseList);
-            EditListCommand = new Command<ShoppingList>(OnEditList);
+            EditListCommand = new Command<ShoppingList>(async(ShoppingList) => await OnEditList(ShoppingList));
             CloseAddNewListPopUpCommand = new Command(OnCloseAddNewListPopUpCommand);
         }
 
@@ -71,8 +71,9 @@ namespace HappyCoupleMobile.ViewModel
 
 
 
-        private void OnEditList(ShoppingList shoppingList)
+        private async Task OnEditList(ShoppingList shoppingList)
         {
+            await NavigateTo<EditShoppingListView>();
         }
 
         private void OnCloseList(ShoppingList shoppingList)

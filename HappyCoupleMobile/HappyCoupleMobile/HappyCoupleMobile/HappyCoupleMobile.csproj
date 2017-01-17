@@ -110,11 +110,19 @@
     <Compile Include="Services\NavigationPageService.cs" />
     <Compile Include="Services\SimpleAuthService.cs" />
     <Compile Include="ViewModel\Abstract\BaseHappyViewModel.cs" />
+    <Compile Include="ViewModel\AddProductViewModel.cs" />
+    <Compile Include="ViewModel\EditShoppingListViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\ShoppingListViewModel.cs" />
+    <Compile Include="ViewModel\ShoppingsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\Abstract\BaseHappyContentPage.xaml.cs">
       <DependentUpon>BaseHappyContentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddProductView.xaml.cs">
+      <DependentUpon>AddProductView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditShoppingListView.xaml.cs">
+      <DependentUpon>EditShoppingListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PreViewPage.xaml.cs">
       <DependentUpon>PreViewPage.xaml</DependentUpon>
@@ -268,6 +276,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mvvm\Controls\TappableLabel.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\EditShoppingListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\AddProductView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using HappyCoupleMobile.Model;
@@ -31,6 +32,16 @@ namespace HappyCoupleMobile.ViewModel.Abstract
             _simpleAuthService = simpleAuthService;
 
             ViewAppeared += OnViewLoaded;
+        }
+
+        public async Task NavigateTo<T>() where T: ContentPage , new()
+        {
+            await NavigationService.PushAsync<T>();
+        }
+
+        public async Task NavigateBack()
+        {
+            await NavigationService.PopAsync();
         }
 
         protected virtual void OnViewLoaded(object sender, EventArgs eventArgs)
