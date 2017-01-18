@@ -25,9 +25,20 @@
             <FileImageSource x:Key="Back">back.png</FileImageSource>
             <FileImageSource x:Key="AddList">add_list.png</FileImageSource>
             <FileImageSource x:Key="AddToList">add_to_list.png</FileImageSource>
-            <FileImageSource x:Key="Fruits">fruits.png</FileImageSource>
             <FileImageSource x:Key="ToDo">todo.png</FileImageSource>
             <FileImageSource x:Key="Settings">fix.png</FileImageSource>
+            <FileImageSource x:Key="CloseList">set_closed_list.png</FileImageSource>
+            <FileImageSource x:Key="DeleteList">delete_list.png</FileImageSource>
+            <FileImageSource x:Key="Delete">delete.png</FileImageSource>
+            <FileImageSource x:Key="CloseWindow">closewindow.png</FileImageSource>
+            <FileImageSource x:Key="Info">info.png</FileImageSource>
+            <FileImageSource x:Key="EditList">edit.png</FileImageSource>
+            <FileImageSource x:Key="Date">date.png</FileImageSource>
+            <FileImageSource x:Key="AddToFavorite">add_favorite.png</FileImageSource>
+            <FileImageSource x:Key="AddToFavoriteFilled">add_favorite_filled.png</FileImageSource>
+
+            <!--            Icons for products-->
+            <FileImageSource x:Key="Fruits">fruits.png</FileImageSource>
             <FileImageSource x:Key="Olive">olive.png</FileImageSource>
             <FileImageSource x:Key="Drink">drink.png</FileImageSource>
             <FileImageSource x:Key="Alcohol">alkohol.png</FileImageSource>
@@ -37,16 +48,9 @@
             <FileImageSource x:Key="Meat">meat.png</FileImageSource>
             <FileImageSource x:Key="Spice">spice.png</FileImageSource>
             <FileImageSource x:Key="Dairy">dairy.png</FileImageSource>
-            <FileImageSource x:Key="EditList">edit.png</FileImageSource>
-            <FileImageSource x:Key="Date">date.png</FileImageSource>
             <FileImageSource x:Key="Grain">grain.png</FileImageSource>
             <FileImageSource x:Key="Other">food.png</FileImageSource>
-            <FileImageSource x:Key="CloseList">set_closed_list.png</FileImageSource>
-            <FileImageSource x:Key="DeleteList">delete_list.png</FileImageSource>
-            <FileImageSource x:Key="Delete">delete.png</FileImageSource>
-            <FileImageSource x:Key="CloseWindow">closewindow.png</FileImageSource>
-            <FileImageSource x:Key="Info">info.png</FileImageSource>
-
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -4,7 +4,7 @@
              xmlns:control="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
              xmlns:renderers="clr-namespace:HappyCoupleMobile.Mvvm.Renderers;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.View.PreViewPage">
-    <StackLayout Spacing="0" BackgroundColor="White">
+    <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
         <StackLayout Spacing="0" BackgroundColor="{StaticResource FirstColor}">
             <StackLayout Orientation="Horizontal" Margin="0,20,0,0" Padding="10,10" BackgroundColor="{StaticResource FirstColor}">
                 <Image Source="{StaticResource Couple}"></Image>
@@ -14,115 +14,65 @@
                 <Image Source="{StaticResource AddList}"></Image>
             </StackLayout>
             <BoxView HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}"></BoxView>
-            </StackLayout>
-        <StackLayout>
-            <StackLayout Spacing="0" Orientation="Horizontal">
-                <StackLayout Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}">
-                    <Label  FontFamily="{StaticResource Light}" HorizontalTextAlignment="Center" Text="Aktywne" TextColor="White" FontSize="15"></Label>
+        </StackLayout>
+        <StackLayout BackgroundColor="{StaticResource SecondColor}" VerticalOptions="FillAndExpand">
+            <StackLayout Padding="5" VerticalOptions="StartAndExpand">
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Nazwa" TextColor="White" />
+                        <Image Source="{StaticResource AddToFavoriteFilled}" />
+                    </StackLayout>
+                    <Entry Text="" Placeholder="Użyj nazwy domyślnej"></Entry>
                 </StackLayout>
-                <StackLayout Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="White">
-                    <Label FontFamily="{StaticResource Light}" HorizontalTextAlignment="Center" Text="Zrealizowane" TextColor="{StaticResource SecondColor}" FontSize="15"></Label>
+                <StackLayout>
+                    <Label Text="Twoja nazwa" TextColor="White"/>
+                    <Entry Text="" Placeholder="Podaj swoją nazwę produktu"></Entry>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Ilość" TextColor="White"/>
+                    <Entry Text="" Placeholder="Podaj ilość" Keyboard="Numeric"></Entry>
+                </StackLayout>
+            </StackLayout>
+            <Frame  IsVisible="True" Margin="5">
+                <ListView>
+                    <ListView.ItemsSource>
+                        <RowDefinitionCollection></RowDefinitionCollection>
+                    </ListView.ItemsSource>
+                </ListView>
+            </Frame>
+            <StackLayout Margin="5" VerticalOptions="EndAndExpand">
+                <StackLayout Margin="2" 
+                             Orientation="Horizontal">
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Label Text="Spożywcze" TextColor="White" HorizontalTextAlignment="Center"/>
+                        <BoxView Color="{StaticResource FourthColor}" HeightRequest="5" />
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Label Text="Inne" TextColor="White" HorizontalTextAlignment="Center"/>
+                        <BoxView Color="{StaticResource SecondColor}" HeightRequest="5" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="2,5" HorizontalOptions="CenterAndExpand">
+                        <Image Source="{StaticResource Alcohol}" />
+                        <Image Source="{StaticResource Bread}" />
+                        <Image Source="{StaticResource Fruits}" />
+                        <Image Source="{StaticResource Olive}" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="2,5"  HorizontalOptions="CenterAndExpand">
+                        <Image Source="{StaticResource Spice}" />
+                        <Image Source="{StaticResource Fish}" />
+                        <Image Source="{StaticResource Dairy}" />
+                        <Image Source="{StaticResource Vege}" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="2,5"  HorizontalOptions="CenterAndExpand">
+                        <Image Source="{StaticResource Grain}" />
+                        <Image Source="{StaticResource Drink}" />
+                        <Image Source="{StaticResource Meat}" />
+                        <Image Source="{StaticResource Other}" />
+                    </StackLayout>
                 </StackLayout>
             </StackLayout>
         </StackLayout>
-
-        <AbsoluteLayout BackgroundColor="Silver" VerticalOptions="FillAndExpand">
-            <Frame Margin="5" Padding="5" OutlineColor="{StaticResource SecondColor}" HasShadow="False">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.2*" />
-                        <ColumnDefinition Width="0.7*" />
-                        <ColumnDefinition Width="0.1*" />
-                    </Grid.ColumnDefinitions>
-                    <StackLayout Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" HorizontalOptions="Center"
-                                 VerticalOptions="Center">
-                        <AbsoluteLayout>
-                            <BoxView WidthRequest="50" HeightRequest="50" BackgroundColor="Green" />
-                            <Label AbsoluteLayout.LayoutFlags="PositionProportional"
-                                   AbsoluteLayout.LayoutBounds="0.5,0.5" TextColor="White" Text="29" />
-                        </AbsoluteLayout>
-                    </StackLayout>
-                    <StackLayout Grid.Column="1" Grid.Row="0">
-                        <Label Text="To Moja lista na świętna świętna świętna święta "
-                               FontFamily="{StaticResource Light}" />
-                    </StackLayout>
-                    <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
-                        <Image HeightRequest="15" Source="{StaticResource Fruits}" />
-                        <Image HeightRequest="15" Source="{StaticResource Fish}" />
-                        <Image HeightRequest="15" Source="{StaticResource Fruits}" />
-                        <Image HeightRequest="15" Source="{StaticResource Grain}" />
-                        <Image HeightRequest="15" Source="{StaticResource Vege}" />
-                        <Image HeightRequest="15" Source="{StaticResource Dairy}" />
-                        <Image HeightRequest="15" Source="{StaticResource Dairy}" />
-                        <Image HeightRequest="15" Source="{StaticResource Dairy}" />
-                        <Image HeightRequest="15" Source="{StaticResource Other}" />
-                        <Label TextColor="Gray" Text="..." FontFamily="{StaticResource Light}" />
-                    </StackLayout>
-                    <StackLayout Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
-                        <Image HeightRequest="20" VerticalOptions="Center" Source="{StaticResource Date}"></Image>
-                        <Label VerticalOptions="Center" Text="2016-45-34" FontSize="12"
-                               FontFamily="{StaticResource Light}" />
-                    </StackLayout>
-                    <StackLayout Grid.Column="2" Grid.Row="0" Grid.RowSpan="3">
-                        <Frame Padding="2" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center"
-                               VerticalOptions="Start" OutlineColor="{StaticResource SecondColor}" HasShadow="False">
-                            <Image Source="{StaticResource AddToList}" WidthRequest="25" HeightRequest="25" />
-                        </Frame>
-                        <Frame Padding="2" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center"
-                               VerticalOptions="Start" OutlineColor="{StaticResource SecondColor}" HasShadow="False">
-                            <Image Source="{StaticResource CloseList}" WidthRequest="25" HeightRequest="25" />
-                        </Frame>
-                        <Frame Padding="2" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center"
-                               VerticalOptions="Start" OutlineColor="{StaticResource SecondColor}" HasShadow="False">
-                            <Image Source="{StaticResource DeleteList}" WidthRequest="25" HeightRequest="25" />
-                        </Frame>
-                    </StackLayout>
-                </Grid>
-            </Frame>
-
-            <Frame  Padding="10,5,10,10" OutlineColor="{StaticResource SecondColor}" BackgroundColor="{StaticResource ThirthColor}"  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,0.9,0.35">
-                <StackLayout Spacing="0">
-                    <Image HorizontalOptions="End" Source="{StaticResource CloseWindow}" Scale="1"></Image>
-                    <StackLayout Margin="0,0,0,10" Orientation="Horizontal" HorizontalOptions="Fill">
-                        <Image Source="{StaticResource Info}"></Image>
-                        <Label VerticalOptions="Center" Text="Podaj nazwę listy." FontSize="15"
-                               FontFamily="{StaticResource Medium}" TextColor="Black" />
-                    </StackLayout>
-                    <Entry  FontFamily="{StaticResource Regular}" Text="aasdsdadadadaadassdsdadadadaadasdsdadadadaadasdadaadasss" Margin="0,0,0,10" />
-                    <Image Source="{StaticResource CloseList}"></Image>
-                </StackLayout>
-            </Frame>
-
-            <StackLayout Spacing="0">
-                <Image HorizontalOptions="End" Source="{StaticResource CloseWindow}" Scale="1"></Image>
-                <StackLayout Margin="0,0,0,10" Orientation="Horizontal" HorizontalOptions="Fill">
-                    <Image Source="{StaticResource Info}"></Image>
-                    <Label VerticalOptions="Center" Text="Podaj nazwę listy." FontSize="15"
-                               FontFamily="{StaticResource Regular}" TextColor="Black" />
-                </StackLayout>
-                <Entry  FontFamily="{StaticResource Light}" Text=""  Margin="0,0,0,10" />
-                <Image Source="{StaticResource CloseList}">
-                </Image>
-            </StackLayout>
-
-        </AbsoluteLayout>
-
-        <StackLayout Spacing="0" Padding="5"  BackgroundColor="{StaticResource BackgroundMainColor}">
-            <StackLayout Spacing="0" Orientation="Horizontal">
-                <StackLayout Spacing="0" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
-                    <Image   HeightRequest="15" Aspect="AspectFit" Source="{StaticResource ToDo}" ></Image>
-                    <Label Margin="0,5,0,0" HorizontalTextAlignment="Center" Text="Lists" FontSize="10" FontFamily="{StaticResource Light}"></Label>
-                </StackLayout>
-                <StackLayout Spacing="0" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
-                    <Image   HeightRequest="15" Aspect="AspectFit" Source="{StaticResource Settings}"></Image>
-                    <Label Margin="0,5,0,0" HorizontalTextAlignment="Center" Text="Settings" FontSize="10" FontFamily="{StaticResource Light}"></Label>
-                </StackLayout>
-            </StackLayout>
-     </StackLayout>
     </StackLayout>
 </ContentPage>
