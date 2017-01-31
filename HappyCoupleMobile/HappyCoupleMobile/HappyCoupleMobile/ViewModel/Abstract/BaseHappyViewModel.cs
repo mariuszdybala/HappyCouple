@@ -18,6 +18,8 @@ namespace HappyCoupleMobile.ViewModel.Abstract
 
         public EventHandler ViewAppeared { get; set; }
 
+        public Command GoBackCommand { get; set; }
+
         public INavigationPageService NavigationService
         {
             get
@@ -30,8 +32,14 @@ namespace HappyCoupleMobile.ViewModel.Abstract
         public BaseHappyViewModel(ISimpleAuthService simpleAuthService)
         {
             _simpleAuthService = simpleAuthService;
+            RegisterBaseCommand();
 
             ViewAppeared += OnViewLoaded;
+        }
+
+        private void RegisterBaseCommand()
+        {
+            GoBackCommand = new Command(async () => await OnGoBackCommand());
         }
 
         public async Task NavigateTo<T>() where T: ContentPage , new()
@@ -51,6 +59,17 @@ namespace HappyCoupleMobile.ViewModel.Abstract
             {
                 RaisePropertyChanged(nameof(Page));
             }
+        }
+
+        private async Task OnGoBackCommand()
+        {
+            CleanResources();
+            await NavigateBack();
+        }
+
+        protected virtual void CleanResources()
+        {
+            
         }
     }
 }

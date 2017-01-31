@@ -3,9 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:view="clr-namespace:HappyCoupleMobile.View.Abstract;assembly=HappyCoupleMobile"
              xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
+             xmlns:attached="clr-namespace:HappyCoupleMobile.Mvvm.AttachedProperties;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.View.EditShoppingListView" 
              BindingContext="{Binding EditShoppingListViewModel, Source={StaticResource ViewModelLocator}}">
     <StackLayout>
         <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Moje listy"/>
+        <Button Text="Dodaj product" Command="{Binding AddProductCommand}"/>
+        <Image Source="{StaticResource Alcohol}" attached:ClickEventAttached.ClickCommand="{Binding ClickCommand}"/>
     </StackLayout>
 </view:BaseHappyContentPage>

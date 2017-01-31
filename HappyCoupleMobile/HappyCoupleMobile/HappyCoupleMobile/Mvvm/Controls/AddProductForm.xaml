@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
+             xmlns:attached="clr-namespace:HappyCoupleMobile.Mvvm.AttachedProperties;assembly=HappyCoupleMobile"
+             x:Class="HappyCoupleMobile.Mvvm.Controls.AddProductForm" 
+             Spacing="0"
+             x:Name="AddProductForm">
+    <StackLayout.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Image" x:Key="EraseImageStyle">
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="Source" Value="{StaticResource Erase}"/>
+            </Style>
+        </ResourceDictionary>
+    </StackLayout.Resources>
+    <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}" VerticalOptions="FillAndExpand" BindingContext="{x:Reference AddProductForm}">
+        <StackLayout Padding="5" VerticalOptions="StartAndExpand">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label VerticalOptions="End" Text="Nazwa" TextColor="White"/>
+                    <Image VerticalOptions="Start" HorizontalOptions="EndAndExpand" 
+                                                Source="{StaticResource AddToFavoriteFilled}"
+                                                attached:ClickEventAttached.ClickCommand="{Binding EraseEntryCommand}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Entry x:Name="NameEntry" HorizontalOptions="FillAndExpand" Text="" Placeholder="Użyj nazwy domyślnej"/>
+                    <Image Style="{StaticResource EraseImageStyle}"
+                                                attached:ClickEventAttached.ClickCommand="{Binding EraseEntryCommand}"
+                                                attached:ClickEventAttached.ClickParameter="{Binding Source={x:Reference NameEntry}}">
+                        <Image.Triggers>
+                            <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference NameEntry}, Path=Text.Length}" Value="0">
+                                <Setter Property="Image.IsVisible" Value="False"/>
+                            </DataTrigger>
+                        </Image.Triggers>
+                    </Image>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Twoja nazwa" TextColor="White"/>
+                <StackLayout Orientation="Horizontal">
+                    <Entry x:Name="NewNameEntry" Text="" HorizontalOptions="FillAndExpand" Placeholder="Podaj swoją nazwę produktu"></Entry>
+                    <Image Style="{StaticResource EraseImageStyle}"
+                                                attached:ClickEventAttached.ClickCommand="{Binding EraseEntryCommand}"
+                                                 attached:ClickEventAttached.ClickParameter="{Binding Source={x:Reference NewNameEntry}}">
+                        <Image.Triggers>
+                            <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference NewNameEntry}, Path=Text.Length}" Value="0">
+                                <Setter Property="Image.IsVisible" Value="False"/>
+                            </DataTrigger>
+                        </Image.Triggers>
+                    </Image>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Ilość" TextColor="White"/>
+                <StackLayout Orientation="Horizontal">
+                    <Entry x:Name="AmontEntry" Text="" HorizontalOptions="FillAndExpand" Placeholder="Podaj ilość" Keyboard="Numeric"></Entry>
+                    <Image Style="{StaticResource EraseImageStyle}"
+                                                attached:ClickEventAttached.ClickCommand="{Binding EraseEntryCommand}"
+                                                attached:ClickEventAttached.ClickParameter="{Binding Source={x:Reference AmontEntry}}">
+                        <Image.Triggers>
+                            <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference AmontEntry}, Path=Text.Length}" Value="0">
+                                <Setter Property="Image.IsVisible" Value="False"/>
+                            </DataTrigger>
+                        </Image.Triggers>
+                    </Image>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Komentarz" TextColor="White"/>
+                <StackLayout Orientation="Horizontal">
+                    <Entry x:Name="DescriptionEntry" Text="" Placeholder="Tu możesz coś dopisać"  HorizontalOptions="FillAndExpand"></Entry>
+                    <Image Style="{StaticResource EraseImageStyle}"
+                                                attached:ClickEventAttached.ClickCommand="{Binding EraseEntryCommand}"
+                                                attached:ClickEventAttached.ClickParameter="{Binding Source={x:Reference DescriptionEntry}}">
+                        <Image.Triggers>
+                            <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference DescriptionEntry}, Path=Text.Length}" Value="0">
+                                <Setter Property="Image.IsVisible" Value="False"/>
+                            </DataTrigger>
+                        </Image.Triggers>
+                    </Image>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+        <Frame  IsVisible="True" Margin="5">
+            <ListView>
+                <ListView.ItemsSource>
+                    <RowDefinitionCollection></RowDefinitionCollection>
+                </ListView.ItemsSource>
+            </ListView>
+        </Frame>
+        <StackLayout Margin="5" VerticalOptions="EndAndExpand">
+            <StackLayout Margin="2" 
+                             Orientation="Horizontal">
+                <StackLayout HorizontalOptions="FillAndExpand">
+                    <Label Text="Spożywcze" TextColor="White" HorizontalTextAlignment="Center"/>
+                    <BoxView Color="{StaticResource FourthColor}" HeightRequest="5" />
+                </StackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand">
+                    <Label Text="Inne" TextColor="White" HorizontalTextAlignment="Center"/>
+                    <BoxView Color="{StaticResource SecondColor}" HeightRequest="5" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" x:Name="ProductTypesContainer"/>
+        </StackLayout>
+    </StackLayout>
+</StackLayout>

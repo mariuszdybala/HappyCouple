@@ -35,6 +35,11 @@ namespace HappyCoupleMobile.Repositories
             return await _productDao.GetAllAsync().ConfigureAwait(false);
         }
 
+        public async Task<IList<ProductType>> GetPrimaryProductTypes()
+        {
+            return await _productTypeDao.GetAllProductTypesPrimaryAsync();
+        }
+
         public async Task<IList<Product>> GetAllProductsWithChildrenAsync()
         {
             return await _productDao.GetWithChildrenAsync().ConfigureAwait(false);

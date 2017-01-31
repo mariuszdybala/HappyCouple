@@ -1,5 +1,9 @@
 ﻿using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Command;
+using HappyCoupleMobile.Mvvm.Messages;
+using HappyCoupleMobile.Mvvm.Messages.Interface;
 using HappyCoupleMobile.Services;
+using HappyCoupleMobile.View;
 using HappyCoupleMobile.ViewModel.Abstract;
 using Xamarin.Forms;
 
@@ -7,7 +11,8 @@ namespace HappyCoupleMobile.ViewModel
 {
     public class EditShoppingListViewModel : BaseHappyViewModel
     {
-        public Command GoBackCommand { get; set; }
+        public RelayCommand AddProductCommand { get; set; }
+        public RelayCommand ClickCommand { get; set; }
 
         public EditShoppingListViewModel(ISimpleAuthService simpleAuthService) : base(simpleAuthService)
         {
@@ -16,12 +21,20 @@ namespace HappyCoupleMobile.ViewModel
 
         private void RegisterCommand()
         {
-            GoBackCommand = new Command(async() => await OnGoBackCommand());
+            AddProductCommand = new RelayCommand(async () => await OnAddProduct());
+            ClickCommand = new RelayCommand(OnClick);
         }
 
-        private async Task OnGoBackCommand()
+        private void OnClick()
         {
-            await NavigateBack();
+            
+        }
+
+        private async Task OnAddProduct()
+        {
+            await NavigateTo<AddProductView>();
+           // IBaseMessage<AddProductViewModel>
+           MessengerInstance.Send<IBaseMessage<AddProductViewModel>>(new BaseMessage<AddProductViewModel>());
         }
     }
 }

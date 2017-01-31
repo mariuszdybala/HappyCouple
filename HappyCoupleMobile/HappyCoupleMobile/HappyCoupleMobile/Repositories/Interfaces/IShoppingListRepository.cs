@@ -9,6 +9,7 @@ namespace HappyCoupleMobile.Repositories.Interfaces
         Task<IList<ShoppingList>> GetAllShoppingListAsync();
         Task<IList<ShoppingList>> GetAllShoppingListWithProductsAsync();
         Task<IList<Product>> GetAllProductsAsync();
+        Task<IList<ProductType>> GetPrimaryProductTypes();
         Task<IList<Product>> GetAllProductsWithChildrenAsync();
         Task<IList<Product>> GetAllProductsForShoppingListAsync(int shoppingListId);
 

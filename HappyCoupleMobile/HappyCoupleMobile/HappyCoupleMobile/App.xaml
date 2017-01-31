@@ -36,6 +36,7 @@
             <FileImageSource x:Key="Date">date.png</FileImageSource>
             <FileImageSource x:Key="AddToFavorite">add_favorite.png</FileImageSource>
             <FileImageSource x:Key="AddToFavoriteFilled">add_favorite_filled.png</FileImageSource>
+            <FileImageSource x:Key="Erase">erase.png</FileImageSource>
 
             <!--            Icons for products-->
             <FileImageSource x:Key="Fruits">fruits.png</FileImageSource>

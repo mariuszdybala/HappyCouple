@@ -66,13 +66,19 @@
     <Compile Include="Enums\AlertType.cs" />
     <Compile Include="Enums\ShoppingListStatus.cs" />
     <Compile Include="Helpers\Animation.cs" />
+    <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Model\Interfaces\IModel.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\ProductType.cs" />
     <Compile Include="Model\ShoppingList.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Mvvm\AttachedProperties\ClickEventAttached.cs" />
+    <Compile Include="Mvvm\AttachedProperties\EditorAttached.cs" />
     <Compile Include="Mvvm\Controls\AddListPopUpView.xaml.cs">
       <DependentUpon>AddListPopUpView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mvvm\Controls\AddProductForm.xaml.cs">
+      <DependentUpon>AddProductForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Mvvm\Controls\HighlineView.cs" />
     <Compile Include="Mvvm\Controls\ShoppingListPanel.xaml.cs">
@@ -94,7 +100,9 @@
     <Compile Include="Mvvm\Converters\ProductCountColorConverter.cs" />
     <Compile Include="Mvvm\Converters\StringIsNullOrEmptyToBoolConverter.cs" />
     <Compile Include="Mvvm\Messages\AlertType.cs" />
+    <Compile Include="Mvvm\Messages\BaseMessage.cs" />
     <Compile Include="Mvvm\Messages\Interface\IAlertMessage.cs" />
+    <Compile Include="Mvvm\Messages\Interface\IBaseMessage.cs" />
     <Compile Include="Mvvm\Renderers\RoundedBoxView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\BaseSystemInfoProvider.cs" />
@@ -106,8 +114,10 @@
     <Compile Include="Repositories\ShoppingListRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Services\Interfaces\INavigationService.cs" />
+    <Compile Include="Services\Interfaces\IProductService.cs" />
     <Compile Include="Services\Interfaces\ISimpleAuthService.cs" />
     <Compile Include="Services\NavigationPageService.cs" />
+    <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\SimpleAuthService.cs" />
     <Compile Include="ViewModel\Abstract\BaseHappyViewModel.cs" />
     <Compile Include="ViewModel\AddProductViewModel.cs" />
@@ -288,6 +298,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="View\AddProductView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mvvm\Controls\AddProductForm.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
