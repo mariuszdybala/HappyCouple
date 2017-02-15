@@ -2,19 +2,28 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using HappyCoupleMobile.Model;
+using HappyCoupleMobile.Mvvm.Messages;
 using HappyCoupleMobile.Mvvm.Messages.Interface;
 using HappyCoupleMobile.Services;
+using HappyCoupleMobile.Services.Interfaces;
+using HappyCoupleMobile.View;
 using HappyCoupleMobile.ViewModel.Abstract;
+using Xamarin.Forms;
 
 namespace HappyCoupleMobile.ViewModel
 {
     public class AddProductViewModel : BaseHappyViewModel
     {
-        private readonly IProductService _productService;
+        private readonly IProductServices _productService;
         public ObservableCollection<ProductType> ProductTypes { get; set; }
 
-        public AddProductViewModel(ISimpleAuthService simpleAuthService, IProductService productService) : base(simpleAuthService)
+        public ObservableCollection<ProductType> FavouritesProductTypes { get; set; }
+
+        public ICommand GoToFavouriteProductsCommand { get; set; }
+
+        public AddProductViewModel(ISimpleAuthService simpleAuthService, IProductServices productService) : base(simpleAuthService)
         {
             _productService = productService;
 
@@ -24,7 +33,15 @@ namespace HappyCoupleMobile.ViewModel
 
         private void RegisterCommandAndMessages()
         {
+            GoToFavouriteProductsCommand = new Command(async() => await OnGoToFavouriteProducts());
+
             MessengerInstance.Register<IBaseMessage<AddProductViewModel>>(this, async(message) => await OnNavigateTo(message));
+        }
+
+        private async Task OnGoToFavouriteProducts()
+        {
+            MessengerInstance.Send<IBaseMessage<FavouriteProductsViewModel>>(new BaseMessage<FavouriteProductsViewModel>());
+            await NavigateTo<FavouriteProductsView>();
         }
 
         private async Task OnNavigateTo(IBaseMessage<AddProductViewModel> message)
@@ -39,11 +56,14 @@ namespace HappyCoupleMobile.ViewModel
                 return;
             }
 
-            var productTypes = await _productService.GetPrimaryProductTypes();
+            var productTypes = await _productService.GetAllProductTypesAync();
 
             ProductTypes = new ObservableCollection<ProductType>(productTypes);
 
+            FavouritesProductTypes = new ObservableCollection<ProductType>(productTypes);
+
             RaisePropertyChanged(nameof(ProductTypes));
+            RaisePropertyChanged(nameof(FavouritesProductTypes));
         }
 
         protected override void CleanResources()

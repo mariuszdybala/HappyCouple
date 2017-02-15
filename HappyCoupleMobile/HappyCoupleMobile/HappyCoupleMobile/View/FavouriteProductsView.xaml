@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<abstract:BaseHappyContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstract="clr-namespace:HappyCoupleMobile.View.Abstract;assembly=HappyCoupleMobile"
+             xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
+             xmlns:abstractions="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             BindingContext="{Binding FavouriteProductsViewModel, Source={StaticResource ViewModelLocator}}"
+             x:Class="HappyCoupleMobile.View.FavouriteProductsView">
+    <StackLayout Spacing="0">
+        <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Zapisane produkty"/>
+        <controls:FavouriteProductTypesCarousel FavouritesProductTypes="{Binding FavouritesProductTypes}" Position="{Binding CarouselPosition}"/>
+    </StackLayout>
+</abstract:BaseHappyContentPage>

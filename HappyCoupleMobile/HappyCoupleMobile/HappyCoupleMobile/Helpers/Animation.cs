@@ -18,7 +18,7 @@ namespace HappyCoupleMobile.Helpers
             await element.ScaleTo(1, 50, Easing.Linear);
         }
 
-        public static async void SetAnimation(this VisualElement element, double scale, uint velocity)
+        public static async Task SetAnimation(this VisualElement element, double scale, uint velocity)
         {
             element.AnchorX = 0.48;
             element.AnchorX = 0.48;

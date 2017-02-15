@@ -7,5 +7,6 @@ namespace HappyCoupleMobile.Data
     public interface IProductDao : IBaseDao<Product>
     {
         Task<IList<Product>> GetAllProductsForShoppingListAsync(int shoppingListId);
+        Task<IList<Product>> GetAllFavouriteProductsWithChildrenAsync();
     }
 }

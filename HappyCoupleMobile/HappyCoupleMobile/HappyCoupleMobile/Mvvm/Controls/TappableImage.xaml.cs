@@ -36,18 +36,18 @@ namespace HappyCoupleMobile.Mvvm.Controls
         {
             InitializeComponent();
 
-            TransitionCommand = new RelayCommand(OnImageTapped);
+            TransitionCommand = new RelayCommand(async () =>await OnImageTapped());
         }
 
-        private void OnImageTapped()
+        public virtual async Task OnImageTapped()
         {
-            AnimateImage();
+            await AnimateImage();
             TappedCommand?.Execute(TappedCommandParameter);
         }
 
-        public void AnimateImage()
+        public async Task AnimateImage()
         {
-            this.SetAnimation(0.95, 120);
+            await this.SetAnimation(0.95, 120);
         }
     }
 }

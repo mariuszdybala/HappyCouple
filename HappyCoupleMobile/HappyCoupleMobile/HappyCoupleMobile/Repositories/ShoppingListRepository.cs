@@ -35,9 +35,9 @@ namespace HappyCoupleMobile.Repositories
             return await _productDao.GetAllAsync().ConfigureAwait(false);
         }
 
-        public async Task<IList<ProductType>> GetPrimaryProductTypes()
+        public async Task<IList<Product>> GetAllFavouriteProductsWithChildrenAsync()
         {
-            return await _productTypeDao.GetAllProductTypesPrimaryAsync();
+            return await _productDao.GetAllFavouriteProductsWithChildrenAsync();
         }
 
         public async Task<IList<Product>> GetAllProductsWithChildrenAsync()
@@ -50,17 +50,7 @@ namespace HappyCoupleMobile.Repositories
             return await _productDao.GetAllProductsForShoppingListAsync(shoppingListId).ConfigureAwait(false);
         }
 
-        public async Task<IList<ProductType>> GetAllProductTypesPrimary()
-        {
-            return await _productTypeDao.GetAllProductTypesPrimaryAsync();
-        }
-
-        public async Task<IList<ProductType>> GetAllProductTypesFavorite()
-        {
-            return await _productTypeDao.GetAllProductTypesFavoriteAsync();
-        }
-
-        public async Task<IList<ProductType>> GetAllProductTypes()
+        public async Task<IList<ProductType>> GetAllProductTypesAsync()
         {
             return await _productTypeDao.GetAllAsync();
         }
@@ -95,15 +85,15 @@ namespace HappyCoupleMobile.Repositories
             await _productDao.UpdateAsync(product).ConfigureAwait(false);
         }
 
-        public async Task DeleteProductWithChildrenAsync(Product product)
+        public async Task DeleteProductAsync(Product product)
         {
             await _productDao.DeleteAsync(product).ConfigureAwait(false);
-            await _productTypeDao.DeleteProductTypeWithoutFavouriteAsync(product.ProductType).ConfigureAwait(false);
         }
 
-        public async Task DeleteProductType(ProductType productType)
+        public async Task DeleteFavouriteProductAsync(Product product)
         {
-            await _productTypeDao.DeleteProductTypeAsync(productType).ConfigureAwait(false);
+            product.IsHidden = true;
+            await _productDao.UpdateAsync(product);
         }
 
         public async Task DeleteShoppingListAsync(ShoppingList shoppingList)
@@ -115,9 +105,9 @@ namespace HappyCoupleMobile.Repositories
         {
             if (shoppingList.Products != null && shoppingList.Products.Any())
             {
-                foreach (Product product in shoppingList.Products)
+                foreach (Product product in shoppingList.Products.Where(x=>!x.IsFavourite))
                 {
-                    await DeleteProductWithChildrenAsync(product).ConfigureAwait(false);
+                    await DeleteProductAsync(product).ConfigureAwait(false);
                 }
             }
 

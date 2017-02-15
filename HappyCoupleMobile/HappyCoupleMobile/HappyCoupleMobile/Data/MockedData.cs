@@ -40,9 +40,6 @@ namespace HappyCoupleMobile.Data
             return new ProductType
             {
                 Name = name,
-                UserId = 1,
-                IsPrimary = true,
-                IsFavourite = false,
                 IconName = iconResourceName
             };
         }

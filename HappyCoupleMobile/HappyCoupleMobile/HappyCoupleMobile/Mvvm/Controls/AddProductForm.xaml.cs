@@ -17,6 +17,9 @@ namespace HappyCoupleMobile.Mvvm.Controls
         public static BindableProperty ProductTypesSourceProperty = BindableProperty
             .Create(nameof(ProductTypesSource), typeof(ObservableCollection<ProductType>), typeof(AddProductForm), propertyChanged: OnProductTypesSourceChanged);
 
+        public static BindableProperty FavouritesProductTypesProperty = BindableProperty
+        .Create(nameof(FavouritesProductTypes), typeof(ObservableCollection<ProductType>), typeof(AddProductForm));
+
         public static BindableProperty AddToFavoriteCommandProperty = BindableProperty.Create
             (nameof(AddToFavoriteCommandProperty).GetBindableName(), typeof(ICommand), typeof(AddProductForm));
 
@@ -35,6 +38,18 @@ namespace HappyCoupleMobile.Mvvm.Controls
             set { SetValue(SelectedProductTypeProperty, value); }
         }
 
+        public ObservableCollection<ProductType> FavouritesProductTypes
+        {
+            get { return (ObservableCollection<ProductType>)GetValue(FavouritesProductTypesProperty); }
+            set { SetValue(FavouritesProductTypesProperty, value); }
+        }
+
+        public ObservableCollection<ProductType> ProductTypesSource
+        {
+            get { return (ObservableCollection<ProductType>)GetValue(ProductTypesSourceProperty); }
+            set { SetValue(ProductTypesSourceProperty, value); }
+        }
+
         public Product Product
         {
             get { return (Product)GetValue(ProductProperty); }
@@ -45,12 +60,6 @@ namespace HappyCoupleMobile.Mvvm.Controls
         {
             get { return (ICommand)GetValue(AddToFavoriteCommandProperty); }
             set { SetValue(AddToFavoriteCommandProperty, value); }
-        }
-
-        public ObservableCollection<ProductType> ProductTypesSource
-        {
-            get { return (ObservableCollection<ProductType>)GetValue(ProductTypesSourceProperty); }
-            set { SetValue(ProductTypesSourceProperty, value); }
         }
 
         public ICommand EraseEntryCommand

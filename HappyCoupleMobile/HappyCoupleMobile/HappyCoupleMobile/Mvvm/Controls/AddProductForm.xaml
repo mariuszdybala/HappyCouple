@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
              xmlns:attached="clr-namespace:HappyCoupleMobile.Mvvm.AttachedProperties;assembly=HappyCoupleMobile"
+             xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             xmlns:toggleImages="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ToggleImages;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.Mvvm.Controls.AddProductForm" 
              Spacing="0"
              x:Name="AddProductForm">
@@ -19,9 +21,7 @@
             <StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label VerticalOptions="End" Text="Nazwa" TextColor="White"/>
-                    <Image VerticalOptions="Start" HorizontalOptions="EndAndExpand" 
-                                                Source="{StaticResource AddToFavoriteFilled}"
-                                                attached:ClickEventAttached.ClickCommand="{Binding EraseEntryCommand}"/>
+                    <toggleImages:FavouriteButton VerticalOptions="Start" HorizontalOptions="EndAndExpand" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Entry x:Name="NameEntry" HorizontalOptions="FillAndExpand" Text="" Placeholder="Użyj nazwy domyślnej"/>
@@ -82,26 +82,22 @@
                 </StackLayout>
             </StackLayout>
         </StackLayout>
-        <Frame  IsVisible="True" Margin="5">
-            <ListView>
-                <ListView.ItemsSource>
-                    <RowDefinitionCollection></RowDefinitionCollection>
-                </ListView.ItemsSource>
-            </ListView>
-        </Frame>
-        <StackLayout Margin="5" VerticalOptions="EndAndExpand">
-            <StackLayout Margin="2" 
+        <StackLayout Padding="5">
+                <StackLayout Margin="2" 
                              Orientation="Horizontal">
-                <StackLayout HorizontalOptions="FillAndExpand">
-                    <Label Text="Spożywcze" TextColor="White" HorizontalTextAlignment="Center"/>
-                    <BoxView Color="{StaticResource FourthColor}" HeightRequest="5" />
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Label Text="Spożywcze" TextColor="White" HorizontalTextAlignment="Center"/>
+                        <BoxView Color="{StaticResource FourthColor}" HeightRequest="5" />
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Label Text="Inne" TextColor="White" HorizontalTextAlignment="Center"/>
+                        <BoxView Color="{StaticResource SecondColor}" HeightRequest="5" />
+                    </StackLayout>
                 </StackLayout>
-                <StackLayout HorizontalOptions="FillAndExpand">
-                    <Label Text="Inne" TextColor="White" HorizontalTextAlignment="Center"/>
-                    <BoxView Color="{StaticResource SecondColor}" HeightRequest="5" />
-                </StackLayout>
-            </StackLayout>
-            <StackLayout Orientation="Vertical" x:Name="ProductTypesContainer"/>
+                <StackLayout Orientation="Vertical" x:Name="ProductTypesContainer"/>
         </StackLayout>
     </StackLayout>
 </StackLayout>
+
+
+

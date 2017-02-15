@@ -8,7 +8,8 @@
     <StackLayout Spacing="0">
         <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Dodaj produkt"/>
         <StackLayout Spacing="0">
-            <controls:AddProductForm ProductTypesSource="{Binding ProductTypes}"/>
+            <controls:AddProductForm ProductTypesSource="{Binding ProductTypes}" FavouritesProductTypes="{Binding FavouritesProductTypes}"/>
+            <Button Text="Wybierz z ulubionych" Command="{Binding GoToFavouriteProductsCommand}"/>
         </StackLayout>
     </StackLayout>
 </views:BaseHappyContentPage>

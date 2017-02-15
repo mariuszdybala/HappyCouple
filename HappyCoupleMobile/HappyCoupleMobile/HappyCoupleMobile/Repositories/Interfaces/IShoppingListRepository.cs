@@ -9,14 +9,11 @@ namespace HappyCoupleMobile.Repositories.Interfaces
         Task<IList<ShoppingList>> GetAllShoppingListAsync();
         Task<IList<ShoppingList>> GetAllShoppingListWithProductsAsync();
         Task<IList<Product>> GetAllProductsAsync();
-        Task<IList<ProductType>> GetPrimaryProductTypes();
+        Task<IList<Product>> GetAllFavouriteProductsWithChildrenAsync();
         Task<IList<Product>> GetAllProductsWithChildrenAsync();
         Task<IList<Product>> GetAllProductsForShoppingListAsync(int shoppingListId);
 
-        Task<IList<ProductType>> GetAllProductTypesPrimary();
-        Task<IList<ProductType>> GetAllProductTypesFavorite();
-        Task<IList<ProductType>> GetAllProductTypes();
-
+        Task<IList<ProductType>> GetAllProductTypesAsync();
 
         Task InsertShoppingListAsync(ShoppingList shoppingList);
         Task InsertProductAsync(Product product);
@@ -28,8 +25,8 @@ namespace HappyCoupleMobile.Repositories.Interfaces
         Task UpdateProductAsync(Product product);
 
 
-        Task DeleteProductWithChildrenAsync(Product product);
-        Task DeleteProductType(ProductType productType);
+        Task DeleteProductAsync(Product product);
+        Task DeleteFavouriteProductAsync(Product product);
         Task DeleteShoppingListAsync(ShoppingList shoppingList);
         Task DeleteShoppingListWithProductsAsync(ShoppingList shoppingList);
     }

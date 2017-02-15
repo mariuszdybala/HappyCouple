@@ -2,10 +2,11 @@
 using System.Threading.Tasks;
 using HappyCoupleMobile.Model;
 
-namespace HappyCoupleMobile.Services
+namespace HappyCoupleMobile.Services.Interfaces
 {
-    public interface IProductService
+    public interface IProductServices
     {
-        Task<IList<ProductType>> GetPrimaryProductTypes();
+        Task<IList<ProductType>> GetAllProductTypesAync();
+        Task<Dictionary<ProductType, IList<Product>>> GetFavouriteTaskProductTypesWithProductsAsync();
     }
 }

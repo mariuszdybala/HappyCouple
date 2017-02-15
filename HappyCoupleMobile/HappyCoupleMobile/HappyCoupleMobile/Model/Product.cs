@@ -19,6 +19,12 @@ namespace HappyCoupleMobile.Model
         [PrimaryKey, AutoIncrement, Column("id")]
         public int Id { get; set; }
 
+        [Column("is_favourite")]
+        public bool IsFavourite { get; set; }
+
+        [Column("is_hidden")]
+        public bool IsHidden { get; set; }
+
         [Column("added_by_id")]
         public int AddedById { get; set; }
 
@@ -40,7 +46,7 @@ namespace HappyCoupleMobile.Model
         [Column("product_type_fp"), ForeignKey(typeof(ProductType))]
         public int ProductTypeId { get; set; }
 
-        [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert | CascadeOperation.CascadeRead)]
+        [OneToOne(CascadeOperations = CascadeOperation.CascadeRead)]
         public ProductType ProductType { get; set; }
 
         [Column("comment")]

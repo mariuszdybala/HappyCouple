@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace HappyCoupleMobile.ViewModel.Abstract
 {
-    public class BaseHappyViewModel : ViewModelBase
+    public abstract class BaseHappyViewModel : ViewModelBase
     {
         private INavigationPageService _navigationService;
         private readonly ISimpleAuthService _simpleAuthService;
@@ -29,7 +29,7 @@ namespace HappyCoupleMobile.ViewModel.Abstract
             set { _navigationService = value; }
         }
 
-        public BaseHappyViewModel(ISimpleAuthService simpleAuthService)
+        protected BaseHappyViewModel(ISimpleAuthService simpleAuthService)
         {
             _simpleAuthService = simpleAuthService;
             RegisterBaseCommand();

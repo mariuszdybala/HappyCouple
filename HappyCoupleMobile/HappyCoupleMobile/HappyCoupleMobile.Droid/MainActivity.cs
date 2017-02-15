@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using CarouselView.FormsPlugin.Android;
 using GalaSoft.MvvmLight.Ioc;
 using HappyCoupleMobile.Droid.Providers;
 using HappyCoupleMobile.Providers.Interfaces;
@@ -27,6 +28,8 @@ namespace HappyCoupleMobile.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
             ImageCircleRenderer.Init();
+
+            CarouselViewRenderer.Init();
 
             LoadApplication(new App());
         }

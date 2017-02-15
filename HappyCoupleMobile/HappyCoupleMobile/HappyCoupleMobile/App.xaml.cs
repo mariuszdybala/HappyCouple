@@ -13,6 +13,7 @@ using HappyCoupleMobile.Providers.Interfaces;
 using HappyCoupleMobile.Repositories;
 using HappyCoupleMobile.Repositories.Interfaces;
 using HappyCoupleMobile.Services;
+using HappyCoupleMobile.Services.Interfaces;
 using HappyCoupleMobile.View;
 using HappyCoupleMobile.ViewModel;
 using Microsoft.Practices.ServiceLocation;
@@ -73,7 +74,7 @@ namespace HappyCoupleMobile
 
             SimpleIoc.Default.Register<ISimpleAuthService, SimpleAuthService>();
             SimpleIoc.Default.Register<INavigationPageService, NavigationPageService>();
-            SimpleIoc.Default.Register<IProductService, ProductService>();
+            SimpleIoc.Default.Register<IProductServices, ProductService>();
 
             SimpleIoc.Default.Register<IShoppingListRepository, ShoppingListRepository>();
             SimpleIoc.Default.Register<IUserRepository, UserRepository>();
@@ -88,6 +89,7 @@ namespace HappyCoupleMobile
             SimpleIoc.Default.Register<ShoppingsViewModel>(true);
             SimpleIoc.Default.Register<AddProductViewModel>(true);
             SimpleIoc.Default.Register<EditShoppingListViewModel>(true);
+            SimpleIoc.Default.Register<FavouriteProductsViewModel>(true);
         }
 
         private async Task InitDatabase()
@@ -122,14 +124,14 @@ namespace HappyCoupleMobile
             await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Ryż", "Grain"));
             await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Inne", "Other"));
 
-            var productTypes = await shoppingListRepository.GetAllProductTypes();
+            var productTypes = await shoppingListRepository.GetAllProductTypesAsync();
         }
 
         private async Task InsertMockedData()
         {
             IShoppingListRepository shoppingListRepository = SimpleIoc.Default.GetInstance<IShoppingListRepository>();
 
-            var productTypes = await shoppingListRepository.GetAllProductTypesPrimary();
+            var productTypes = await shoppingListRepository.GetAllProductTypesAsync();
 
             await shoppingListRepository.InsertShoppingListAsync(
                 MockedData.GetShoppingList("Lista Świąteczna", 1, string.Empty));

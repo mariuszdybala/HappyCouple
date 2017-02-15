@@ -19,5 +19,12 @@ namespace HappyCoupleMobile.Data
             return await connection.QueryAsync<Product>("SELECT * FROM Product WHERE shopping_list_fk=@shoppingListId",
                 shoppingListId);
         }
+
+        public async Task<IList<Product>> GetAllFavouriteProductsWithChildrenAsync()
+        {
+            SQLiteAsyncConnection connection = GetConnection();
+
+            return await connection.Table<Product>().Where(x => x.IsFavourite && !x.IsHidden).ToListAsync();
+        }
     }
 }
