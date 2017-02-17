@@ -5,11 +5,11 @@
              xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.View.AddProductView"
              BindingContext="{Binding AddProductViewModel, Source={StaticResource ViewModelLocator}}">
-    <StackLayout Spacing="0">
+    <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
         <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Dodaj produkt"/>
-        <StackLayout Spacing="0">
+        <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
             <controls:AddProductForm ProductTypesSource="{Binding ProductTypes}" FavouritesProductTypes="{Binding FavouritesProductTypes}"/>
-            <Button Text="Wybierz z ulubionych" Command="{Binding GoToFavouriteProductsCommand}"/>
         </StackLayout>
+        <Button Text="Wybierz z ulubionych" Command="{Binding GoToFavouriteProductsCommand}"/>
     </StackLayout>
 </views:BaseHappyContentPage>

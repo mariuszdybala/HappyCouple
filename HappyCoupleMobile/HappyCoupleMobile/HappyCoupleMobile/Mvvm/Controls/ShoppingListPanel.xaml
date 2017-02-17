@@ -33,7 +33,7 @@
         <StackLayout Grid.Column="1" Grid.Row="0">
             <Label Text="{Binding ShoppingList.Name}" FontFamily="{StaticResource Medium}" />
         </StackLayout>
-        <StackLayout x:Name="ProductTypesContainer"  Grid.Column="1" Grid.Row="1" Orientation="Horizontal"/>
+        <StackLayout x:Name="ProductTypesContainer"  Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Spacing="0"/>
         <StackLayout Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
             <Image HeightRequest="20" VerticalOptions="Center" Source="{StaticResource Date}"></Image>
             <Label VerticalOptions="Center" TextColor="{StaticResource SecondColor}" Text="{Binding ShoppingList.AddDate, StringFormat='{0:yyyy.MM.dd}'}" FontSize="12" FontFamily="{StaticResource Medium}" />

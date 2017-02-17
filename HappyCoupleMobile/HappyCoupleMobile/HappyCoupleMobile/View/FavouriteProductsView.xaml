@@ -4,10 +4,41 @@
              xmlns:abstract="clr-namespace:HappyCoupleMobile.View.Abstract;assembly=HappyCoupleMobile"
              xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
              xmlns:abstractions="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             xmlns:toggleImages="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ToggleImages;assembly=HappyCoupleMobile"
              BindingContext="{Binding FavouriteProductsViewModel, Source={StaticResource ViewModelLocator}}"
              x:Class="HappyCoupleMobile.View.FavouriteProductsView">
     <StackLayout Spacing="0">
         <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Zapisane produkty"/>
-        <controls:FavouriteProductTypesCarousel FavouritesProductTypes="{Binding FavouritesProductTypes}" Position="{Binding CarouselPosition}"/>
+        <Grid BackgroundColor="Teal" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.8*"/>
+            </Grid.RowDefinitions>
+            <controls:FavouriteProductTypesCarousel BackgroundColor="{StaticResource SecondColor}" Grid.Row="0" FavouritesProductTypes="{Binding FavouritesProductTypes}" Position="{Binding CarouselPosition}"/>
+            <ListView Grid.Row="1" ItemsSource="{Binding MockListForProduct}"  BackgroundColor="{StaticResource SecondColor}" 
+                      SeparatorColor="{StaticResource ThirthColor}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <StackLayout>
+                                    <toggleImages:ListItemCheckbox IsToggled="True"/>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="StartAndExpand">
+                                    <Label Text="{Binding }" TextColor="White" FontFamily="{StaticResource Medium}"
+                                           FontSize="15" />
+                                    <Label Text="{Binding }" TextColor="White" FontFamily="{StaticResource Light}"
+                                           FontSize="12" />
+                                </StackLayout>
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand">
+                                    <Label Text="Ilość : 12"
+                                           FontFamily="{StaticResource Medium}" FontSize="15" TextColor="White" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </StackLayout>
 </abstract:BaseHappyContentPage>

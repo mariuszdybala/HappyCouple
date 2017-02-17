@@ -4,12 +4,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CarouselView.FormsPlugin.Abstractions;
 using HappyCoupleMobile.Model;
 using Xamarin.Forms;
 
 namespace HappyCoupleMobile.Mvvm.Controls
 {
-    public partial class FavouriteProductTypesCarousel : StackLayout
+    public partial class FavouriteProductTypesCarousel : CarouselViewControl
     {
         public static BindableProperty FavouritesProductTypesProperty = BindableProperty
         .Create(nameof(FavouritesProductTypes), typeof(ObservableCollection<ProductType>), typeof(FavouriteProductTypesCarousel));
@@ -33,10 +34,13 @@ namespace HappyCoupleMobile.Mvvm.Controls
         public FavouriteProductTypesCarousel()
         {
             InitializeComponent();
-            ProductTypesCarouselName.PositionSelected += PositionSelected;
-            ProductTypesCarouselName.Position = 4;
+
+            PositionSelected += OnPositionSelected;
+
+            Position = 4;
         }
-        private void PositionSelected(object sender, EventArgs eventArgs)
+
+        private void OnPositionSelected(object sender, EventArgs args)
         {
         }
     }

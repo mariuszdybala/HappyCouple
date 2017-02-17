@@ -15,6 +15,7 @@ namespace HappyCoupleMobile.ViewModel
         private readonly IProductServices _productService;
         private int _carouselPosition;
         public ObservableCollection<ProductType> FavouritesProductTypes { get; set; }
+        public ObservableCollection<string> MockListForProduct { get; set; }
 
         public int CarouselPosition
         {
@@ -27,6 +28,7 @@ namespace HappyCoupleMobile.ViewModel
             _productService = productService;
             _productsTypesWithProducts = new Dictionary<ProductType, IList<Product>>();
             FavouritesProductTypes = new ObservableCollection<ProductType>();
+            MockListForProduct = new ObservableCollection<string>();
             RegisterCommandAndMessages();
         }
 
@@ -45,10 +47,20 @@ namespace HappyCoupleMobile.ViewModel
             var productTypes =await _productService.GetAllProductTypesAync();
 
             FavouritesProductTypes = new ObservableCollection<ProductType>(productTypes);
+            MockListForProduct = new ObservableCollection<string>(
+                new List<string>
+                {
+                    "To",
+                    "To jest bardzo bardzo długi product z długim opisem",
+                    "To opisem",
+                    "To jest bardzo bardzo bardzo  długi product z długim opisem",
+                    
+                });
 
             CarouselPosition = 4;
 
             RaisePropertyChanged(nameof(FavouritesProductTypes));
+            RaisePropertyChanged(nameof(MockListForProduct));
         }
 
         protected override void CleanResources()

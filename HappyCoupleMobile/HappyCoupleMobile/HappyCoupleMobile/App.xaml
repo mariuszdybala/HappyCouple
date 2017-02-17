@@ -37,6 +37,9 @@
             <FileImageSource x:Key="AddToFavorite">add_favorite.png</FileImageSource>
             <FileImageSource x:Key="AddToFavoriteFilled">add_favorite_filled.png</FileImageSource>
             <FileImageSource x:Key="Erase">erase.png</FileImageSource>
+            <FileImageSource x:Key="Checked">checked.png</FileImageSource>
+            <FileImageSource x:Key="UnChecked">unchecked.png</FileImageSource>
+            <FileImageSource x:Key="ShoppingBar">shopping_bar.png</FileImageSource>
 
             <!--            Icons for products-->
             <FileImageSource x:Key="Fruits">fruits.png</FileImageSource>

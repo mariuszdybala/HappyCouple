@@ -92,9 +92,9 @@ namespace HappyCoupleMobile.Mvvm.Controls
                     continue;
                 }
 
-                shoppingListPanel.ProductTypesContainer.Children.Add(new Image {Source = imageSource, HeightRequest = 15});
+                shoppingListPanel.ProductTypesContainer.Children.Add(new Image {Source = imageSource, HeightRequest = 25});
 
-                if (shoppingListPanel.ProductTypesContainer.Children.Count == 9)
+                if (shoppingListPanel.ProductTypesContainer.Children.Count == 7)
                 {
                     shoppingListPanel.ProductTypesContainer.Children.Add(new Label
                     {

@@ -1,23 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+<abstractions:CarouselViewControl xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:abstractions="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              x:Class="HappyCoupleMobile.Mvvm.Controls.FavouriteProductTypesCarousel"
-             x:Name="FavouritesProductTypesCarousel">
-    <StackLayout Spacing="0" BindingContext="{x:Reference FavouritesProductTypesCarousel}">
-        <abstractions:CarouselViewControl x:Name="ProductTypesCarouselName" ItemsSource="{Binding FavouritesProductTypes}"
+             x:Name="ProductTypesCarouselName" ItemsSource="{Binding FavouritesProductTypes}"
                                       ShowIndicators="True"
                                       CurrentPageIndicatorTintColor="{StaticResource FourthColor}"
                                       PageIndicatorTintColor="{StaticResource ThirthColor}"
                                       Arrows="True" Position="{Binding Position}">
-            <abstractions:CarouselViewControl.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout BackgroundColor="{StaticResource SecondColor}" Orientation="Horizontal">
-                        <Image Source="{Binding IconName}"/>
-                        <Label Text="{Binding Name}" TextColor="White" />
-                    </StackLayout>
-                </DataTemplate>
-            </abstractions:CarouselViewControl.ItemTemplate>
-        </abstractions:CarouselViewControl>
-    </StackLayout>
-</StackLayout>
+    <abstractions:CarouselViewControl.ItemTemplate>
+        <DataTemplate>
+            <StackLayout BackgroundColor="{StaticResource SecondColor}" VerticalOptions="CenterAndExpand">
+                <Image Source="{Binding IconName}" HorizontalOptions="Center"/>
+                <Label Text="{Binding Name}" HorizontalOptions="Center" TextColor="White" FontFamily="{StaticResource Medium}"/>
+            </StackLayout>
+        </DataTemplate>
+    </abstractions:CarouselViewControl.ItemTemplate>
+</abstractions:CarouselViewControl>

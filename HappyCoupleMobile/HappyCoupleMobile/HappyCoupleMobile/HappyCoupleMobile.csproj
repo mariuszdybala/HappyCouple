@@ -100,6 +100,7 @@
       <DependentUpon>TappableLabel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Mvvm\Controls\ToggleImages\FavouriteButton.cs" />
+    <Compile Include="Mvvm\Controls\ToggleImages\ListItemCheckbox.cs" />
     <Compile Include="Mvvm\Controls\ToggleImages\ToggleImage.cs" />
     <Compile Include="Mvvm\Controls\TopPanelControl.xaml.cs">
       <DependentUpon>TopPanelControl.xaml</DependentUpon>
