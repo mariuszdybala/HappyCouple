@@ -100,7 +100,7 @@ namespace HappyCoupleMobile.Mvvm.Controls
 
         public void InitializeProductTypesContainer(ObservableCollection<ProductType> productTypes)
         {
-            int containerCapacity = 6;
+            int containerCapacity = 4;
             int containersCount = productTypes.Count / containerCapacity;
             int lastContainerCapacity = productTypes.Count % containerCapacity;
 
@@ -131,9 +131,14 @@ namespace HappyCoupleMobile.Mvvm.Controls
 
                 var stackContainer = ProductTypesContainer.Children[currentContainer] as StackLayout;
 
-                var image = new Image {Margin = new Thickness(5,5), Source = (FileImageSource)Application.Current.Resources[productType.IconName] };
+                var productTypeView = new ProductTypeView {Margin = new Thickness(10,10), ProductType = productType };
 
-                stackContainer.Children.Add(image);
+                if (productType.Type == "Chleb")
+                {
+                    productTypeView.IsSelected = true;
+                }
+
+                stackContainer.Children.Add(productTypeView);
 
                 if (stackContainer.Children.Count == containerCapacity)
                 {

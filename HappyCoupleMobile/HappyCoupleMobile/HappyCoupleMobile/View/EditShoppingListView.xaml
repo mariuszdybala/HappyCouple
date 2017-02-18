@@ -9,6 +9,12 @@
     <StackLayout>
         <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Moje listy"/>
         <Button Text="Dodaj product" Command="{Binding AddProductCommand}"/>
-        <Image Source="{StaticResource Alcohol}" attached:ClickEventAttached.ClickCommand="{Binding ClickCommand}"/>
+        <ListView ItemsSource="{Binding FavouritesProductTypes}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell ImageSource="{Binding IconName}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 </view:BaseHappyContentPage>

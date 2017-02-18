@@ -5,68 +5,16 @@
              xmlns:renderers="clr-namespace:HappyCoupleMobile.Mvvm.Renderers;assembly=HappyCoupleMobile"
              xmlns:converters="clr-namespace:HappyCoupleMobile.Mvvm.Converters;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.View.PreViewPage">
-    <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
-        <StackLayout Spacing="0" BackgroundColor="{StaticResource FirstColor}">
-            <StackLayout Orientation="Horizontal" Margin="0,20,0,0" Padding="10,10" BackgroundColor="{StaticResource FirstColor}">
-                <Image Source="{StaticResource Couple}"></Image>
-                <Label Text="Moje Listy" FontFamily="{StaticResource Light}" FontSize="17" TextColor="White"
-                       HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
-                </Label>
-                <Image Source="{StaticResource AddList}"></Image>
-            </StackLayout>
-            <BoxView HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}"></BoxView>
-        </StackLayout>
-        <Frame   Margin="5" 
-                 Padding="5" 
-                 OutlineColor="{StaticResource ThirthColor}" 
-                 HasShadow="False">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.2*" />
-                    <ColumnDefinition Width="0.7*" />
-                    <ColumnDefinition Width="0.1*" />
-                </Grid.ColumnDefinitions>
-                <StackLayout Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" HorizontalOptions="Center"
-                             VerticalOptions="Center">
-                    <AbsoluteLayout>
-                        <BoxView WidthRequest="50" HeightRequest="50" BackgroundColor="Yellow" />
-                        <Label AbsoluteLayout.LayoutFlags="PositionProportional" FontFamily="{StaticResource Medium}"
-                               AbsoluteLayout.LayoutBounds="0.5,0.5" TextColor="{StaticResource SecondColor}" Text="1" />
-                    </AbsoluteLayout>
-                </StackLayout>
-                <StackLayout Grid.Column="1" Grid.Row="0">
-                    <Label Text="TestList" FontFamily="{StaticResource Medium}" />
-                </StackLayout>
-                <StackLayout x:Name="ProductTypesContainer" Grid.Column="1" Grid.Row="1" Spacing="0" Orientation="Horizontal">
-                    <Image Source="{StaticResource Alcohol}" HeightRequest="25" />
-                    <Image Source="{StaticResource Bread}" HeightRequest="25" />
-                    <Image Source="{StaticResource Fruits}" HeightRequest="25" />
-                    <Image Source="{StaticResource Vege}" HeightRequest="25" />
-                    <Image Source="{StaticResource Fish}" HeightRequest="25" />
-                    <Image Source="{StaticResource Spice}" HeightRequest="25" />
-                    <Image Source="{StaticResource Dairy}" HeightRequest="25" />
-                </StackLayout>
-                <StackLayout Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
-                    <Image HeightRequest="20" VerticalOptions="Center" Source="{StaticResource Date}"></Image>
-                    <Label VerticalOptions="Center" TextColor="{StaticResource SecondColor}" Text="12.012017"
-                           FontSize="12" FontFamily="{StaticResource Medium}" />
-                </StackLayout>
-                <StackLayout Grid.Column="2" Grid.Row="0" Grid.RowSpan="3">
-                    <Image x:Name="AddToListImage" Source="{StaticResource AddToList}" WidthRequest="25"
-                           HeightRequest="25">
-                    </Image>
-                    <Image x:Name="CloseListImage" Source="{StaticResource CloseList}" WidthRequest="25"
-                           HeightRequest="25">
-                    </Image>
-                    <Image x:Name="DeleteImage" Source="{StaticResource DeleteList}" WidthRequest="25"
-                           HeightRequest="25">
-                    </Image>
-                </StackLayout>
-            </Grid></Frame>
+    <StackLayout VerticalOptions="EndAndExpand" BackgroundColor="Aqua">
+        <AbsoluteLayout BackgroundColor="{StaticResource SecondColor}" VerticalOptions="FillAndExpand">
+            <Frame BackgroundColor="{StaticResource FirstColor}" 
+                         AbsoluteLayout.LayoutFlags="XProportional" AbsoluteLayout.LayoutBounds="0.5,35,110,110"/>
+            <BoxView BackgroundColor="{StaticResource FourthColor}" 
+                         AbsoluteLayout.LayoutFlags="XProportional" AbsoluteLayout.LayoutBounds="0.5,40,100,100"/>
+            <BoxView BackgroundColor="{StaticResource SecondColor}" 
+                         AbsoluteLayout.LayoutFlags="XProportional" AbsoluteLayout.LayoutBounds="0.5,40,100,10"/>
+            <Image Source="{StaticResource ShoppingBar}" AbsoluteLayout.LayoutFlags="XProportional" AbsoluteLayout.LayoutBounds="0.5,55,50,50"/>
+            <Label Text="10 %" TextColor="White" AbsoluteLayout.LayoutFlags="XProportional" AbsoluteLayout.LayoutBounds="0.5,110"/>    
+        </AbsoluteLayout>
     </StackLayout>
 </ContentPage>

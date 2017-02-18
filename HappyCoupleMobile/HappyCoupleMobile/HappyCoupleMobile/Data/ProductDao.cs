@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using HappyCoupleMobile.Model;
 using HappyCoupleMobile.Providers.Interfaces;
 using SQLite.Net.Async;
+using SQLiteNetExtensionsAsync.Extensions;
 
 namespace HappyCoupleMobile.Data
 {

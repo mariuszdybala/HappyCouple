@@ -12,7 +12,7 @@
         <DataTemplate>
             <StackLayout BackgroundColor="{StaticResource SecondColor}" VerticalOptions="CenterAndExpand">
                 <Image Source="{Binding IconName}" HorizontalOptions="Center"/>
-                <Label Text="{Binding Name}" HorizontalOptions="Center" TextColor="White" FontFamily="{StaticResource Medium}"/>
+                <Label Text="{Binding Type}" HorizontalOptions="Center" TextColor="White" FontFamily="{StaticResource Medium}"/>
             </StackLayout>
         </DataTemplate>
     </abstractions:CarouselViewControl.ItemTemplate>

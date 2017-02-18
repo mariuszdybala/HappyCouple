@@ -655,6 +655,24 @@
   <ItemGroup>
     <BundleResource Include="Resources\shopping_bar.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\beer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\beer%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\beer%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\beer_cap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\beer_cap%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\beer_cap%403x.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -20,18 +20,19 @@ namespace HappyCoupleMobile.Services
             return await _shoppingListRepository.GetAllProductTypesAsync();
         }
 
-        public async Task<Dictionary<ProductType, IList<Product>>> GetFavouriteTaskProductTypesWithProductsAsync()
+        public async Task<Dictionary<string, IList<Product>>> GetFavouriteTaskProductTypesWithProductsAsync()
         {
-            var productTypesDictionary = new Dictionary<ProductType,IList<Product>>();
+            var productTypesDictionary = new Dictionary<string,IList<Product>>();
 
             var allProductTypes = await _shoppingListRepository.GetAllProductTypesAsync();
 
             var allFavouriteProducts = await _shoppingListRepository.GetAllFavouriteProductsWithChildrenAsync();
+
             //TODO Change to Linq.GroupBy
             foreach (var productType in allProductTypes)
             {
                 var products = allFavouriteProducts.Where(x => x.ProductTypeId == productType.Id).ToList();
-                productTypesDictionary.Add(productType, products);
+                productTypesDictionary.Add(productType.Type, products);
             }
 
             return productTypesDictionary;

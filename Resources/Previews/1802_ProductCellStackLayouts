@@ -1,0 +1,20 @@
+        <StackLayout Orientation="Horizontal">
+            <BoxView HeightRequest="20" WidthRequest="20" BackgroundColor="Blue"></BoxView>
+            <StackLayout HorizontalOptions="FillAndExpand">
+                <StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="Silver">
+                    <Label Text="MarcheweczkaMarcheweczkaMarcheweczkaMarcheweczkaMarcheweczkaMarcheweczka"
+                           TextColor="White" FontFamily="{StaticResource Medium}" HorizontalTextAlignment="Start"
+                           FontSize="15" />
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="To jest pyszna marcheweczka trzeba ją kupić"
+                           TextColor="White" FontFamily="{StaticResource Light}" HorizontalTextAlignment="Start"
+                           FontSize="12" />
+                </StackLayout>
+                <StackLayout HorizontalOptions="EndAndExpand" BackgroundColor="Fuchsia" >
+                    <Label Grid.Column="1"
+                           Text="Ilość : 23"
+                           FontFamily="{StaticResource Medium}" FontSize="15" TextColor="White" />
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>

@@ -14,31 +14,8 @@
                 <RowDefinition Height="0.2*"/>
                 <RowDefinition Height="0.8*"/>
             </Grid.RowDefinitions>
-            <controls:FavouriteProductTypesCarousel BackgroundColor="{StaticResource SecondColor}" Grid.Row="0" FavouritesProductTypes="{Binding FavouritesProductTypes}" Position="{Binding CarouselPosition}"/>
-            <ListView Grid.Row="1" ItemsSource="{Binding MockListForProduct}"  BackgroundColor="{StaticResource SecondColor}" 
-                      SeparatorColor="{StaticResource ThirthColor}" HasUnevenRows="True">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="10" Orientation="Horizontal">
-                                <StackLayout>
-                                    <toggleImages:ListItemCheckbox IsToggled="True"/>
-                                </StackLayout>
-                                <StackLayout HorizontalOptions="StartAndExpand">
-                                    <Label Text="{Binding }" TextColor="White" FontFamily="{StaticResource Medium}"
-                                           FontSize="15" />
-                                    <Label Text="{Binding }" TextColor="White" FontFamily="{StaticResource Light}"
-                                           FontSize="12" />
-                                </StackLayout>
-                                <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand">
-                                    <Label Text="Ilość : 12"
-                                           FontFamily="{StaticResource Medium}" FontSize="15" TextColor="White" />
-                                </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <controls:FavouriteProductTypesCarousel ProductTypeSelectedCommand="{Binding ProductTypeSelectedCommand}" BackgroundColor="{StaticResource SecondColor}" Grid.Row="0" FavouritesProductTypes="{Binding FavouritesProductTypes}" Position="{Binding CarouselPosition}"/>
+            <controls:ProductListView Grid.Row="1"  ProductSelectedCommand="{Binding ProductSelectedCommand}" Products="{Binding MockListForProduct}"/>
         </Grid>
     </StackLayout>
 </abstract:BaseHappyContentPage>

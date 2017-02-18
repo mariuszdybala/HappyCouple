@@ -42,10 +42,11 @@
             <FileImageSource x:Key="ShoppingBar">shopping_bar.png</FileImageSource>
 
             <!--            Icons for products-->
+            <FileImageSource x:Key="Beer">beer.png</FileImageSource>
+            <FileImageSource x:Key="Food">food.png</FileImageSource>
             <FileImageSource x:Key="Fruits">fruits.png</FileImageSource>
             <FileImageSource x:Key="Olive">olive.png</FileImageSource>
             <FileImageSource x:Key="Drink">drink.png</FileImageSource>
-            <FileImageSource x:Key="Alcohol">alkohol.png</FileImageSource>
             <FileImageSource x:Key="Vege">vege.png</FileImageSource>
             <FileImageSource x:Key="Fish">fish.png</FileImageSource>
             <FileImageSource x:Key="Bread">bread.png</FileImageSource>
@@ -53,8 +54,7 @@
             <FileImageSource x:Key="Spice">spice.png</FileImageSource>
             <FileImageSource x:Key="Dairy">dairy.png</FileImageSource>
             <FileImageSource x:Key="Grain">grain.png</FileImageSource>
-            <FileImageSource x:Key="Other">food.png</FileImageSource>
-            
+           
         </ResourceDictionary>
     </Application.Resources>
 </Application>

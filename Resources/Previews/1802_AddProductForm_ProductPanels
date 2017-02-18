@@ -1,0 +1,11 @@
+                <StackLayout Margin="2" 
+                             Orientation="Horizontal">
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Label Text="Spożywcze" TextColor="White" HorizontalTextAlignment="Center"/>
+                        <BoxView Color="{StaticResource FourthColor}" HeightRequest="5" />
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Label Text="Inne" TextColor="White" HorizontalTextAlignment="Center"/>
+                        <BoxView Color="{StaticResource SecondColor}" HeightRequest="5" />
+                    </StackLayout>
+                </StackLayout>

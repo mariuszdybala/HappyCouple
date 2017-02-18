@@ -39,7 +39,7 @@ namespace HappyCoupleMobile.Data
         {
             return new ProductType
             {
-                Name = name,
+                Type = name,
                 IconName = iconResourceName
             };
         }

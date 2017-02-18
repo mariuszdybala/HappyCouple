@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using HappyCoupleMobile.Model;
+using HappyCoupleMobile.Mvvm.Messages;
+using HappyCoupleMobile.Mvvm.Messages.Interface;
 using HappyCoupleMobile.Repositories.Interfaces;
 using HappyCoupleMobile.Services;
 using HappyCoupleMobile.View;
@@ -62,8 +61,7 @@ namespace HappyCoupleMobile.ViewModel
 
             ActiveShoppingLists = new ObservableCollection<ShoppingList>(shoppingLists);
 
-            ClosedShoppingLists = new ObservableCollection<ShoppingList>();
-            ClosedShoppingLists.Add(ActiveShoppingLists.Last());
+            ClosedShoppingLists = new ObservableCollection<ShoppingList> {ActiveShoppingLists.Last()};
 
             RaisePropertyChanged(nameof(ActiveShoppingLists));
             RaisePropertyChanged(nameof(ClosedShoppingLists));
@@ -74,6 +72,7 @@ namespace HappyCoupleMobile.ViewModel
         private async Task OnEditList(ShoppingList shoppingList)
         {
             await NavigateTo<EditShoppingListView>();
+            MessengerInstance.Send<IBaseMessage<EditShoppingListView>>(new BaseMessage<EditShoppingListView>());
         }
 
         private void OnCloseList(ShoppingList shoppingList)

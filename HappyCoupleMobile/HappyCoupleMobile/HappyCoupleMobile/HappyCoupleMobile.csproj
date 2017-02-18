@@ -83,10 +83,13 @@
     <Compile Include="Mvvm\Controls\FavouriteProductTypesCarousel.xaml.cs">
       <DependentUpon>FavouriteProductTypesCarousel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Mvvm\Controls\FavouritesProductTypesCarousel.xaml.cs">
-      <DependentUpon>FavouritesProductTypesCarousel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Mvvm\Controls\HighlineView.cs" />
+    <Compile Include="Mvvm\Controls\ProductListView.xaml.cs">
+      <DependentUpon>ProductListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mvvm\Controls\ProductTypeView.xaml.cs">
+      <DependentUpon>ProductTypeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Mvvm\Controls\ShoppingListPanel.xaml.cs">
       <DependentUpon>ShoppingListPanel.xaml</DependentUpon>
     </Compile>
@@ -332,13 +335,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mvvm\Controls\FavouritesProductTypesCarousel.xaml">
+    <EmbeddedResource Include="Mvvm\Controls\FavouriteProductTypesCarousel.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mvvm\Controls\FavouriteProductTypesCarousel.xaml">
+    <EmbeddedResource Include="Mvvm\Controls\ProductListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mvvm\Controls\ProductTypeView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -7,6 +7,6 @@ namespace HappyCoupleMobile.Services.Interfaces
     public interface IProductServices
     {
         Task<IList<ProductType>> GetAllProductTypesAync();
-        Task<Dictionary<ProductType, IList<Product>>> GetFavouriteTaskProductTypesWithProductsAsync();
+        Task<Dictionary<string, IList<Product>>> GetFavouriteTaskProductTypesWithProductsAsync();
     }
 }

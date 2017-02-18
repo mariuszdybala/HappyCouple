@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
+             xmlns:toggleImages="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ToggleImages;assembly=HappyCoupleMobile"
+             x:Class="HappyCoupleMobile.Mvvm.Controls.ProductListView"
+             x:Name="ProductListView">
+    <StackLayout BindingContext="{x:Reference ProductListView}">
+        <ListView x:Name="ProductsList" ItemsSource="{Binding Products}"  BackgroundColor="{StaticResource SecondColor}"
+                      SeparatorColor="{StaticResource ThirthColor}" HasUnevenRows="True" ItemSelected="OnProductSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                   <ViewCell>
+                        <StackLayout Padding="10">
+                            <StackLayout Orientation="Horizontal">
+                                <toggleImages:ListItemCheckbox IsVisible="True" IsToggled="False" />
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding Name}" TextColor="White" FontFamily="{StaticResource Medium}"
+                           HorizontalTextAlignment="Start" FontSize="15" LineBreakMode="CharacterWrap" />
+                                    <Label Text="{Binding Comment}" TextColor="White" FontFamily="{StaticResource Light}"
+                           HorizontalTextAlignment="Start" FontSize="12" LineBreakMode="CharacterWrap" />
+                                </StackLayout>
+                            </StackLayout>
+                            <Label Text="{Binding Quantity, StringFormat='Ilość: {0}'}"
+                           HorizontalTextAlignment="End"
+                           FontFamily="{StaticResource Medium}" FontSize="15" TextColor="White" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</StackLayout>
