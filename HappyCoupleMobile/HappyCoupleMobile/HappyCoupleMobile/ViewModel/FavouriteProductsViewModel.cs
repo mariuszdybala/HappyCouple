@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using HappyCoupleMobile.Model;
+﻿using HappyCoupleMobile.Model;
 using HappyCoupleMobile.Mvvm.Messages.Interface;
 using HappyCoupleMobile.Services;
 using HappyCoupleMobile.Services.Interfaces;
 using HappyCoupleMobile.ViewModel.Abstract;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace HappyCoupleMobile.ViewModel
@@ -45,6 +44,11 @@ namespace HappyCoupleMobile.ViewModel
             ProductTypeSelectedCommand = new Command<ProductType>(async(product) => await OnProductTypeSelected(product));
 
             MessengerInstance.Register<IBaseMessage<FavouriteProductsViewModel>>(this, async (message) => await OnNavigateTo(message));
+        }
+
+        protected override async Task OnNavigateTo(IMessageData message)
+        {
+            await Task.Yield();
         }
 
         private async Task OnProductTypeSelected(ProductType productType)

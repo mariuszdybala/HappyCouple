@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:control="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
-             xmlns:renderers="clr-namespace:HappyCoupleMobile.Mvvm.Renderers;assembly=HappyCoupleMobile"
-             xmlns:converters="clr-namespace:HappyCoupleMobile.Mvvm.Converters;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.View.PreViewPage">
     <StackLayout VerticalOptions="EndAndExpand" BackgroundColor="Aqua">
         <AbsoluteLayout BackgroundColor="{StaticResource SecondColor}" VerticalOptions="FillAndExpand">
@@ -14,7 +11,7 @@
             <BoxView BackgroundColor="{StaticResource SecondColor}" 
                          AbsoluteLayout.LayoutFlags="XProportional" AbsoluteLayout.LayoutBounds="0.5,40,100,10"/>
             <Image Source="{StaticResource ShoppingBar}" AbsoluteLayout.LayoutFlags="XProportional" AbsoluteLayout.LayoutBounds="0.5,55,50,50"/>
-            <Label Text="10 %" TextColor="White" AbsoluteLayout.LayoutFlags="XProportional" AbsoluteLayout.LayoutBounds="0.5,110"/>    
+            <Label Text="37 %" TextColor="White" AbsoluteLayout.LayoutFlags="XProportional" AbsoluteLayout.LayoutBounds="0.5,110"/>    
         </AbsoluteLayout>
     </StackLayout>
 </ContentPage>

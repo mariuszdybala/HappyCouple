@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using HappyCoupleMobile.Model;
@@ -38,10 +39,14 @@ namespace HappyCoupleMobile.ViewModel
             MessengerInstance.Register<IBaseMessage<AddProductViewModel>>(this, async(message) => await OnNavigateTo(message));
         }
 
+        protected override async Task OnNavigateTo(IMessageData message)
+        {
+            await Task.Yield();
+        }
+
         private async Task OnGoToFavouriteProducts()
         {
-            MessengerInstance.Send<IBaseMessage<FavouriteProductsViewModel>>(new BaseMessage<FavouriteProductsViewModel>());
-            await NavigateTo<FavouriteProductsView>();
+            await NavigateTo<FavouriteProductsView, FavouriteProductsViewModel>();
         }
 
         private async Task OnNavigateTo(IBaseMessage<AddProductViewModel> message)

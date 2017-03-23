@@ -20,6 +20,7 @@ namespace HappyCoupleMobile.ViewModel
 {
     public class ViewModelLocator
     {
+#if !GORILLA           
         public MainViewModel Main => GetViewModel<MainViewModel>();
 
         public ShoppingsViewModel ShoppingListViewModel => GetViewModel<ShoppingsViewModel>();
@@ -35,5 +36,6 @@ namespace HappyCoupleMobile.ViewModel
         public static void Cleanup()
         {
         }
+#endif
     }
 }

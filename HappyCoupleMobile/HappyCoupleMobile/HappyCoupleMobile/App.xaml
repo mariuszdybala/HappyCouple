@@ -3,9 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="HappyCoupleMobile.App" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:HappyCoupleMobile.ViewModel"
-             xmlns:forms="http://xamarin.com/schemas/2014/forms">
+             xmlns:forms="http://xamarin.com/schemas/2014/forms"
+             xmlns:converters="clr-namespace:HappyCoupleMobile.Mvvm.Converters;assembly=HappyCoupleMobile">
     <Application.Resources>
         <ResourceDictionary>
+            <converters:BoolToValueConverter x:TypeArguments="Color" x:Key="BoolToColorConverter" TrueValue="Green" FalseValue="Red"/>
+            
             <vm:ViewModelLocator x:Key="ViewModelLocator"/>
 
             <Color x:Key="FirstColor">#4054B2</Color>

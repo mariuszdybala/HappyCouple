@@ -53,7 +53,10 @@ namespace HappyCoupleMobile.ViewModel
             CloseAddNewListPopUpCommand = new Command(OnCloseAddNewListPopUpCommand);
         }
 
-
+        protected override async Task OnNavigateTo(IMessageData message)
+        {
+            await Task.Yield();
+        }
 
         public async Task GetAllShoppingListsAndInitView()
         {
@@ -71,8 +74,7 @@ namespace HappyCoupleMobile.ViewModel
 
         private async Task OnEditList(ShoppingList shoppingList)
         {
-            await NavigateTo<EditShoppingListView>();
-            MessengerInstance.Send<IBaseMessage<EditShoppingListView>>(new BaseMessage<EditShoppingListView>());
+            await NavigateToWithMessage<EditShoppingListView, EditShoppingListViewModel>(new BaseMessage<EditShoppingListViewModel>("ShoppingList", shoppingList));
         }
 
         private void OnCloseList(ShoppingList shoppingList)

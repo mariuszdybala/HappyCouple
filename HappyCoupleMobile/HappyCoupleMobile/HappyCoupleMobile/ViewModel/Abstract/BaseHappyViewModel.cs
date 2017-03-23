@@ -3,7 +3,10 @@ using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using HappyCoupleMobile.Model;
+using HappyCoupleMobile.Mvvm.Messages;
+using HappyCoupleMobile.Mvvm.Messages.Interface;
 using HappyCoupleMobile.Services;
+using HappyCoupleMobile.View;
 using Xamarin.Forms;
 
 namespace HappyCoupleMobile.ViewModel.Abstract
@@ -12,6 +15,8 @@ namespace HappyCoupleMobile.ViewModel.Abstract
     {
         private INavigationPageService _navigationService;
         private readonly ISimpleAuthService _simpleAuthService;
+
+        protected abstract Task OnNavigateTo(IMessageData message);
 
         public User Admin => _simpleAuthService.Admin;
         public ContentPage Page { get; set; }
@@ -42,9 +47,62 @@ namespace HappyCoupleMobile.ViewModel.Abstract
             GoBackCommand = new Command(async () => await OnGoBackCommand());
         }
 
-        public async Task NavigateTo<T>() where T: ContentPage , new()
+        public void RegisterMessage<TVm>(TVm viewModel, bool unRegister = false)
         {
-            await NavigationService.PushAsync<T>();
+            if (unRegister)
+            {
+                MessengerInstance.Register<IBaseMessage<TVm>>(viewModel, async (message) => await OnRecievedMessageWithUnregistration<TVm>(message));
+            }
+            else
+            {
+                MessengerInstance.Register<IBaseMessage<TVm>>(viewModel, async (message) => await OnRecievedMessageWithoutUnregistration<TVm>(message));
+            }
+
+        }
+
+        private async Task OnRecievedMessageWithUnregistration<TVm>(IBaseMessage<TVm> message)
+        {
+            await OnNavigateTo(message, true);
+        }
+
+        private async Task OnRecievedMessageWithoutUnregistration<TVm>(IBaseMessage<TVm> message)
+        {
+            await OnNavigateTo(message, false);
+        }
+
+        private async Task OnNavigateTo<TVm>(IBaseMessage<TVm> messasge, bool unRegister)
+        {
+            if (unRegister)
+            {
+                MessengerInstance.Unregister<TVm>(this);
+            }
+            await OnNavigateTo(messasge);
+        }
+
+        public async Task NavigateTo<TV, TVm>() where TV : ContentPage, new()
+        {
+            SendEmptyMessage<TVm>();
+
+            await NavigationService.PushAsync<TV>();
+        }
+
+        public async Task NavigateToWithMessage<TV,TVm>(IBaseMessage<TVm> message) where TV:ContentPage, new()
+        {
+            SendMessage<TVm>(message);
+
+            await NavigationService.PushAsync<TV>();
+        }
+
+        public void SendEmptyMessage<TVm>()
+        {
+            IBaseMessage<TVm> message = new BaseMessage<TVm>();
+
+            MessengerInstance.Send(message);
+        }
+
+        public void SendMessage<TVm>(IBaseMessage<TVm> message)
+        {
+            MessengerInstance.Send(message);
         }
 
         public async Task NavigateBack()

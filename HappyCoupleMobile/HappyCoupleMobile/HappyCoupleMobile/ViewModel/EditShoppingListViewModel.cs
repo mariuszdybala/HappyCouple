@@ -4,6 +4,7 @@ using GalaSoft.MvvmLight.Command;
 using HappyCoupleMobile.Model;
 using HappyCoupleMobile.Mvvm.Messages;
 using HappyCoupleMobile.Mvvm.Messages.Interface;
+using HappyCoupleMobile.Notification.Interfaces;
 using HappyCoupleMobile.Services;
 using HappyCoupleMobile.Services.Interfaces;
 using HappyCoupleMobile.View;
@@ -12,13 +13,13 @@ using Xamarin.Forms;
 
 namespace HappyCoupleMobile.ViewModel
 {
-    public class EditShoppingListViewModel : BaseHappyViewModel
+    public class EditShoppingListViewModel : BaseHappyViewModel, IProductObserver
     {
         private readonly IProductServices _propProductServices;
         public RelayCommand AddProductCommand { get; set; }
         public RelayCommand ClickCommand { get; set; }
 
-        public ObservableCollection<ProductType> FavouritesProductTypes { get; set; }
+        public ObservableCollection<Product> Products { get; set; }
 
         public EditShoppingListViewModel(ISimpleAuthService simpleAuthService, IProductServices propProductServices) : base(simpleAuthService)
         {
@@ -28,31 +29,52 @@ namespace HappyCoupleMobile.ViewModel
 
         private void RegisterCommand()
         {
-            MessengerInstance.Register<IBaseMessage<EditShoppingListView>>(this, async (message) => await OnNavigateTo(message));
+            RegisterMessage(this);
 
             AddProductCommand = new RelayCommand(async () => await OnAddProduct());
-            ClickCommand = new RelayCommand(OnClick);
         }
 
-        private async Task OnNavigateTo(IBaseMessage<EditShoppingListView> message)
+        protected override async Task OnNavigateTo(IMessageData message)
         {
-            var productTypes = await _propProductServices.GetAllProductTypesAync();
+            var shoppigList = message.GetValue<ShoppingList>();
 
-            FavouritesProductTypes = new ObservableCollection<ProductType>(productTypes);
-
-            RaisePropertyChanged(nameof(FavouritesProductTypes));
+            LoadDataOnView(shoppigList);
         }
 
-        private void OnClick()
+        private void LoadDataOnView(ShoppingList shoppigList)
         {
-            
+            var products = shoppigList.Products;
+
+            Products = new ObservableCollection<Product>(products);
+
+            RaisePropertyChanged(nameof(Products));
         }
 
         private async Task OnAddProduct()
         {
-            await NavigateTo<AddProductView>();
-           // IBaseMessage<AddProductViewModel>
-           MessengerInstance.Send<IBaseMessage<AddProductViewModel>>(new BaseMessage<AddProductViewModel>());
+            await NavigateTo<AddProductView, AddProductViewModel>();
+        }
+
+        public void Upadte(Product data)
+        {
+        }
+
+        public void Remove(Product data)
+        {
+        }
+
+        public void Add(Product data)
+        {
+        }
+
+        public void Remove<TData>(TData data)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Add<TData>(TData data)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
