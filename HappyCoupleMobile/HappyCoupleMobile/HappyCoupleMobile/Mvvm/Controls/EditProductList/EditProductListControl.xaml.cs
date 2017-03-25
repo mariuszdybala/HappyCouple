@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Command;
 using HappyCoupleMobile.Model;
 using Xamarin.Forms;
 
-namespace HappyCoupleMobile.Mvvm.Controls
+namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 {
-    public partial class ProductListView : StackLayout
+    public partial class EditProductListControl : StackLayout
     {
         public static BindableProperty ProductsProperty = BindableProperty
-        .Create(nameof(Products), typeof(ObservableCollection<Product>), typeof(ProductListView));
+        .Create(nameof(Products), typeof(ObservableCollection<Product>), typeof(ProductListView), propertyChanged: OnProductsChanged);
 
         public static BindableProperty ShowCheckboxesProperty = BindableProperty
         .Create(nameof(ShowCheckboxes), typeof(bool), typeof(ProductListView), false);
@@ -67,32 +62,41 @@ namespace HappyCoupleMobile.Mvvm.Controls
             set { SetValue(ProductsProperty, value); }
         }
 
-        public Command<object> ItemTappedCommand { get; set; }
-
-        public ProductListView()
+        public EditProductListControl()
         {
             InitializeComponent();
-            ProductsList.RowHeight = -1;
-
-            ItemTappedCommand = new Command<object>(OnItemTapped);
         }
 
-        private void OnItemTapped(object panelVisibillity)
+        private static void OnProductsChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            var viewCell = (ViewCell)panelVisibillity;
-            var statckLayout = (StackLayout)viewCell.View;
+            if (newvalue == null || newvalue == oldvalue)
+            {
+                return;
+            }
 
-            var grid = statckLayout.Children.OfType<StackLayout>().Last();
+            var products = (ObservableCollection<Product>)newvalue;
+            var editProductsListControl = (EditProductListControl)bindable;
 
-            grid.IsVisible = !grid.IsVisible;
-
-            viewCell.ForceUpdateSize();
+            InsertProducts(products, editProductsListControl);
         }
 
-
-        private void OnProductSelected(object sender, SelectedItemChangedEventArgs e)
+        private static void InsertProducts(ObservableCollection<Product> products, EditProductListControl editProductsListControl)
         {
-            //ControlPanel.IsVisible = !ControlPanel.IsVisible;
+            if (!products.Any())
+            {
+                return;
+            }
+            var productsTypes = products.GroupBy(x => x.ProductType).Select(x => new { Type = x.Key, Products = x });
+
+            foreach (var productType in productsTypes)
+            {
+                var productTypePanel = new ProductTypePanelControl();
+                productTypePanel.ProductType = productType.Type;
+                productTypePanel.Products = productType.Products.ToList();
+
+                editProductsListControl.ProductTypesPanelsContainer.Children.Add(productTypePanel);
+            }
         }
+
     }
 }

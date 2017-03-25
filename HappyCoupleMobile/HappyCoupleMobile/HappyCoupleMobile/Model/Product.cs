@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization.Json;
-using System.Text;
-using System.Threading.Tasks;
-using HappyCoupleMobile.Enums;
 using HappyCoupleMobile.Model.Interfaces;
-using Newtonsoft.Json;
 using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
 
@@ -24,6 +17,9 @@ namespace HappyCoupleMobile.Model
 
         [Column("is_favourite")]
         public bool IsFavourite { get; set; }
+
+        [Column("is_bought")]
+        public bool IsBought { get; set; }
 
         [Column("is_hidden")]
         public bool IsHidden { get; set; }

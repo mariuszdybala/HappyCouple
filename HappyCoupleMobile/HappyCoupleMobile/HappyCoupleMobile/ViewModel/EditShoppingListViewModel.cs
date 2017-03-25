@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Command;
 using HappyCoupleMobile.Model;
@@ -13,17 +14,17 @@ using Xamarin.Forms;
 
 namespace HappyCoupleMobile.ViewModel
 {
-    public class EditShoppingListViewModel : BaseHappyViewModel, IProductObserver
+    public class EditShoppingListViewModel : BaseHappyViewModel, IProductObserver, IShoppingListObserver
     {
-        private readonly IProductServices _propProductServices;
+        private readonly IProductServices _productServices;
         public RelayCommand AddProductCommand { get; set; }
-        public RelayCommand ClickCommand { get; set; }
+        public RelayCommand<Product> ProductCheckedCommand { get; set; }
 
         public ObservableCollection<Product> Products { get; set; }
 
-        public EditShoppingListViewModel(ISimpleAuthService simpleAuthService, IProductServices propProductServices) : base(simpleAuthService)
+        public EditShoppingListViewModel(ISimpleAuthService simpleAuthService, IProductServices productServices) : base(simpleAuthService)
         {
-            _propProductServices = propProductServices;
+            _productServices = productServices;
             RegisterCommand();
         }
 
@@ -32,20 +33,31 @@ namespace HappyCoupleMobile.ViewModel
             RegisterMessage(this);
 
             AddProductCommand = new RelayCommand(async () => await OnAddProduct());
+            ProductCheckedCommand = new RelayCommand<Product>(async (product) => await OnProductChecked(product));
         }
+
+
 
         protected override async Task OnNavigateTo(IMessageData message)
         {
-            var shoppigList = message.GetValue<ShoppingList>();
+            var types = await _productServices.GetAllProductTypesAync();
 
-            LoadDataOnView(shoppigList);
-        }
 
-        private void LoadDataOnView(ShoppingList shoppigList)
-        {
-            var products = shoppigList.Products;
-
-            Products = new ObservableCollection<Product>(products);
+            Products = new ObservableCollection<Product>(
+                new List<Product>
+                {
+                    new Product
+                    {
+                        ProductType =  types[2],
+                        Name = "Marcheweczka",
+                        Comment = "To jest pyszna marcheweczka trzeba ją kupić",
+                        Quantity = 4
+                    },
+                    new Product {ProductType =  types[0], Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+                    new Product {ProductType =  types[1],Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {ProductType =  types[1], Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {ProductType =  types[0], Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10}
+                });
 
             RaisePropertyChanged(nameof(Products));
         }
@@ -53,6 +65,10 @@ namespace HappyCoupleMobile.ViewModel
         private async Task OnAddProduct()
         {
             await NavigateTo<AddProductView, AddProductViewModel>();
+        }
+        private Task OnProductChecked(Product product)
+        {
+            return null;
         }
 
         public void Upadte(Product data)
@@ -67,14 +83,16 @@ namespace HappyCoupleMobile.ViewModel
         {
         }
 
-        public void Remove<TData>(TData data)
+        public void Upadte(ShoppingList data)
         {
-            throw new System.NotImplementedException();
         }
 
-        public void Add<TData>(TData data)
+        public void Remove(ShoppingList data)
         {
-            throw new System.NotImplementedException();
+        }
+
+        public void Add(ShoppingList data)
+        {
         }
     }
 }

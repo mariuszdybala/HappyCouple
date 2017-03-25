@@ -80,6 +80,15 @@
     <Compile Include="Mvvm\Controls\AddProductForm.xaml.cs">
       <DependentUpon>AddProductForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Mvvm\Controls\EditProductList\EditProductListControl.xaml.cs">
+      <DependentUpon>EditProductListControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mvvm\Controls\EditProductList\ProductTypePanelControl.xaml.cs">
+      <DependentUpon>ProductTypePanelControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mvvm\Controls\EditProductList\ProductViewControl.xaml.cs">
+      <DependentUpon>ProductViewControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Mvvm\Controls\FavouriteProductTypesCarousel.xaml.cs">
       <DependentUpon>FavouriteProductTypesCarousel.xaml</DependentUpon>
     </Compile>
@@ -118,6 +127,7 @@
     <Compile Include="Mvvm\Messages\Interface\IBaseMessage.cs" />
     <Compile Include="Mvvm\Messages\Interface\IMessageData.cs" />
     <Compile Include="Mvvm\Messages\MessageData.cs" />
+    <Compile Include="Mvvm\Renderers\ExtendedScrollView.cs" />
     <Compile Include="Mvvm\Renderers\RoundedBoxView.cs" />
     <Compile Include="Notification\Interfaces\INotificationManager.cs" />
     <Compile Include="Notification\Interfaces\INotificator.cs" />
@@ -362,6 +372,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mvvm\Controls\ProductTypeView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mvvm\Controls\EditProductList\EditProductListControl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mvvm\Controls\EditProductList\ProductTypePanelControl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mvvm\Controls\EditProductList\ProductViewControl.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

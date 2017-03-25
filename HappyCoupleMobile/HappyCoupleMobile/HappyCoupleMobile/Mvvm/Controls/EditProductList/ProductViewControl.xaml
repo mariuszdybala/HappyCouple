@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toggleImages="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ToggleImages;assembly=HappyCoupleMobile"
+             x:Class="HappyCoupleMobile.Mvvm.Controls.EditProductList.ProductViewControl" x:Name="ProductViewControl">
+    <StackLayout Padding="10">
+        <StackLayout Orientation="Horizontal">
+            <toggleImages:ListItemCheckbox
+                                       IsVisible="{Binding ShowCheckboxes, Source={x:Reference ProductViewControl}}"
+                                       IsToggled="{Binding IsBought}"
+                                       TappedCommand="{Binding ProductCheckedCommand, Source={x:Reference ProductViewControl}}"
+                                       TappedCommandParameter="{Binding .}" />
+            <StackLayout HorizontalOptions="FillAndExpand">
+                <Label x:Name="NameLabel" Text="{Binding Name}" TextColor="White"
+                                              FontFamily="{StaticResource Medium}"
+                                              HorizontalTextAlignment="Start" FontSize="15"
+                                              LineBreakMode="CharacterWrap" />
+                <Label x:Name="CommentLabel" Text="{Binding Comment}" TextColor="White"
+                                              FontFamily="{StaticResource Light}"
+                                              HorizontalTextAlignment="Start" FontSize="12"
+                                              LineBreakMode="CharacterWrap" />
+            </StackLayout>
+        </StackLayout>
+        <Label x:Name="QuantityLabel" HorizontalTextAlignment="End" FontFamily="{StaticResource Medium}" FontSize="15" TextColor="White" />
+    </StackLayout>
+</StackLayout>

@@ -4,10 +4,19 @@
              xmlns:view="clr-namespace:HappyCoupleMobile.View.Abstract;assembly=HappyCoupleMobile"
              xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
              xmlns:attached="clr-namespace:HappyCoupleMobile.Mvvm.AttachedProperties;assembly=HappyCoupleMobile"
-             x:Class="HappyCoupleMobile.View.EditShoppingListView" 
+             xmlns:editProductList="clr-namespace:HappyCoupleMobile.Mvvm.Controls.EditProductList;assembly=HappyCoupleMobile"
+             x:Class="HappyCoupleMobile.View.EditShoppingListView"
              BindingContext="{Binding EditShoppingListViewModel, Source={StaticResource ViewModelLocator}}">
-    <StackLayout>
-        <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Moje listy"/>
-        <Button Text="Dodaj product" Command="{Binding AddProductCommand}"/>
+  <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
+    <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Edycja listy zakupów"/>
+    <StackLayout Padding="10" BackgroundColor="{StaticResource SecondColor}">
+      <Label Text="To jest nazwa" TextColor="White" FontFamily="{StaticResource Medium}"/>
+      <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+        <Label Text="12" FontFamily="{StaticResource Medium}" TextColor="{StaticResource FourthColor}"/>
+        <Label Text="/" FontFamily="{StaticResource Medium}"/>
+        <Label Text="20" FontFamily="{StaticResource Medium}" TextColor="{StaticResource ThirthColor}"/>
+      </StackLayout>
+      <editProductList:EditProductListControl Products="{Binding Products}"/>
     </StackLayout>
+  </StackLayout>
 </view:BaseHappyContentPage>

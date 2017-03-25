@@ -3,7 +3,7 @@
     public interface IDataObserver<in T>
     {
         void Upadte(T data);
-        void Remove<TData>(TData data);
-        void Add<TData>(TData data);
+        void Remove(T data);
+        void Add(T data);
     }
 }

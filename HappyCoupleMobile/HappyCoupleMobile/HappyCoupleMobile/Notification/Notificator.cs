@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using HappyCoupleMobile.Model;
 using HappyCoupleMobile.Notification.Interfaces;
 
@@ -10,6 +11,11 @@ namespace HappyCoupleMobile.Notification
 
         public void Attach(TObserver observer)
         {
+            if (_observers.Contains(observer))
+            {
+                return;
+            }
+
             _observers.Add(observer);
         }
 

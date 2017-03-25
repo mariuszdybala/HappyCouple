@@ -50,6 +50,8 @@ namespace HappyCoupleMobile
             //await InitDatabase();
             await FullInitDatabase();
 
+            SetNotificationsObservers();
+
             await LogUser();
 
             var navigationPage = (NavigationPage)MainPage;
@@ -64,6 +66,13 @@ namespace HappyCoupleMobile
             }
         }
 
+        private void SetNotificationsObservers()
+        {
+            var notificationManager = SimpleIoc.Default.GetInstance<INotificationManager>();
+
+            notificationManager.RegisterObservers();
+        }
+
         protected override void OnSleep()
         {
         }
@@ -75,8 +84,8 @@ namespace HappyCoupleMobile
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            SimpleIoc.Default.Register<INotificator<IShoppingListObserver, ShoppingList>, IShoppingListNotificator>();
-            SimpleIoc.Default.Register<INotificator<IProductObserver, Product>, IProductObserver>();
+            SimpleIoc.Default.Register<IShoppingListNotificator, ShoppingListNotificator>();
+            SimpleIoc.Default.Register<IProductNotificator, ProductNotificator>();
 
             SimpleIoc.Default.Register<INotificationManager,NotificationManager>();
 

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using HappyCoupleMobile.Model;
 using HappyCoupleMobile.Mvvm.Messages;
 using HappyCoupleMobile.Mvvm.Messages.Interface;
+using HappyCoupleMobile.Notification.Interfaces;
 using HappyCoupleMobile.Repositories.Interfaces;
 using HappyCoupleMobile.Services;
 using HappyCoupleMobile.View;
@@ -12,9 +13,10 @@ using Xamarin.Forms;
 
 namespace HappyCoupleMobile.ViewModel
 {
-    public class ShoppingsViewModel : BaseHappyViewModel
+    public class ShoppingsViewModel : BaseHappyViewModel, IProductObserver, IShoppingListObserver
     {
         private readonly IShoppingListRepository _shoppingListRepository;
+        private readonly INotificationManager _notificationManager;
 
         private bool _showAddNewListPopUp;
 
@@ -35,9 +37,10 @@ namespace HappyCoupleMobile.ViewModel
         public ObservableCollection<ShoppingList> ActiveShoppingLists { get; set; }
         public ObservableCollection<ShoppingList> ClosedShoppingLists { get; set; }
 
-        public ShoppingsViewModel(ISimpleAuthService simpleAuthService, IShoppingListRepository shoppingListRepository) : base(simpleAuthService)
+        public ShoppingsViewModel(ISimpleAuthService simpleAuthService, IShoppingListRepository shoppingListRepository, INotificationManager notificationManager) : base(simpleAuthService)
         {
             _shoppingListRepository = shoppingListRepository;
+            _notificationManager = notificationManager;
             RegisterCommand();
 
             ActiveShoppingLists = new ObservableCollection<ShoppingList>();
@@ -79,6 +82,7 @@ namespace HappyCoupleMobile.ViewModel
 
         private void OnCloseList(ShoppingList shoppingList)
         {
+            _notificationManager.UpdateProduct(new Product());
         }
 
         private void OnAddProductToList(ShoppingList shoppingList)
@@ -87,8 +91,8 @@ namespace HappyCoupleMobile.ViewModel
 
         private void OnDeleteList(ShoppingList shoppingList)
         {
-
         }
+
         private void OnCloseAddNewListPopUpCommand()
         {
             ShowAddNewListPopUp = false;
@@ -99,5 +103,28 @@ namespace HappyCoupleMobile.ViewModel
             ShowAddNewListPopUp = true;
         }
 
+        public void Upadte(Product data)
+        {
+        }
+
+        public void Remove(Product data)
+        {
+        }
+
+        public void Add(Product data)
+        {
+        }
+
+        public void Upadte(ShoppingList data)
+        {
+        }
+
+        public void Remove(ShoppingList data)
+        {
+        }
+
+        public void Add(ShoppingList data)
+        {
+        }
     }
 }

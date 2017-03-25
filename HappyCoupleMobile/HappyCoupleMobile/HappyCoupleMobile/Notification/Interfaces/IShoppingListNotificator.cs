@@ -1,6 +1,8 @@
-﻿namespace HappyCoupleMobile.Notification
+﻿using HappyCoupleMobile.Model;
+
+namespace HappyCoupleMobile.Notification.Interfaces
 {
-    public interface IShoppingListNotificator
+    public interface IShoppingListNotificator : INotificator<IShoppingListObserver, ShoppingList>
     {
         
     }
