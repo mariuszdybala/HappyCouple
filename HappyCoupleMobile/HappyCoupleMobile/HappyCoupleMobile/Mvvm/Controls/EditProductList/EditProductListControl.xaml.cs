@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using HappyCoupleMobile.Model;
@@ -25,6 +26,33 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 
         public static BindableProperty ProductCheckedCommandProperty = BindableProperty.Create
         (nameof(ProductCheckedCommand), typeof(ICommand), typeof(ProductListView));
+
+        public static BindableProperty ProductDeletedCommandProperty = BindableProperty.Create
+        (nameof(ProductDeletedCommand), typeof(ICommand), typeof(ProductListView));
+
+        public static BindableProperty ProductEditCommandProperty = BindableProperty.Create
+        (nameof(ProductEditCommand), typeof(ICommand), typeof(ProductListView));
+
+        public static BindableProperty AddProductCommandProperty = BindableProperty.Create
+        (nameof(AddProductCommand), typeof(ICommand), typeof(ProductListView), defaultBindingMode:BindingMode.OneWayToSource);
+
+        public ICommand AddProductCommand
+        {
+            get { return (ICommand)GetValue(AddProductCommandProperty); }
+            set { SetValue(AddProductCommandProperty, value); }
+        }
+
+        public ICommand ProductEditCommand
+        {
+            get { return (ICommand)GetValue(ProductEditCommandProperty); }
+            set { SetValue(ProductEditCommandProperty, value); }
+        }
+
+        public ICommand ProductDeletedCommand
+        {
+            get { return (ICommand)GetValue(ProductDeletedCommandProperty); }
+            set { SetValue(ProductDeletedCommandProperty, value); }
+        }
 
         public bool ShowControlPanel
         {
@@ -65,7 +93,10 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
         public EditProductListControl()
         {
             InitializeComponent();
+
+            AddProductCommand = new Command<Product>(OnAddProduct);
         }
+
 
         private static void OnProductsChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
@@ -90,13 +121,103 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 
             foreach (var productType in productsTypes)
             {
-                var productTypePanel = new ProductTypePanelControl();
-                productTypePanel.ProductType = productType.Type;
-                productTypePanel.Products = productType.Products.ToList();
+                var productTypePanel = editProductsListControl.CreateNewProductTypePanelControl(productType.Type, productType.Products.ToList());
 
                 editProductsListControl.ProductTypesPanelsContainer.Children.Add(productTypePanel);
             }
         }
 
+        private ProductTypePanelControl CreateNewProductTypePanelControl(ProductType productType, List<Product> products)
+        {
+            var productTypePanel = new ProductTypePanelControl();
+
+            productTypePanel.SetContainerData(productType);
+            productTypePanel.LoadProducts(products);
+
+            AssignEvents(productTypePanel);
+
+            return productTypePanel;
+        }
+
+
+        private void AssignEvents(ProductTypePanelControl productTypePanelControl)
+        {
+            productTypePanelControl.ProductControlPanelInvoked += OnControlPanelInvoked;
+            productTypePanelControl.ProductDelete += OnDeleteProduct;
+            productTypePanelControl.ProductChecked += OnProductChecked;
+            productTypePanelControl.ProductEdit += OnEditProduct;
+        }
+
+        private void OnAddProduct(Product product)
+        {
+
+        }
+
+        private void OnUpdateProduct(Product product)
+        {
+
+        }
+
+        private void OnDeleteProduct(Product product)
+        {
+            DeleteProductFromView(product);
+
+            if (ProductDeletedCommand == null)
+            {
+                return;
+            }
+
+            if (ProductDeletedCommand.CanExecute(product))
+            {
+                ProductDeletedCommand.Execute(product);
+            }
+        }
+
+        private void DeleteProductFromView(Product product)
+        {
+            var productTypePanel = ProductTypesPanelsContainer.Children.OfType<ProductTypePanelControl>().FirstOrDefault(x => x.ProductType.Id == product.ProductType.Id);
+
+            productTypePanel.DeleteProductFromView(product);
+
+            if (!productTypePanel.Products.Any())
+            {
+                ProductTypesPanelsContainer.Children.Remove(productTypePanel);
+            }
+        }
+
+        private void OnEditProduct(Product product)
+        {
+            if (ProductEditCommand == null)
+            {
+                return;
+            }
+
+            if (ProductEditCommand.CanExecute(product))
+            {
+                ProductEditCommand.Execute(product);
+            }
+        }
+
+        private void OnProductChecked(Product product)
+        {
+            if (ProductCheckedCommand == null)
+            {
+                return;
+            }
+
+            if (ProductCheckedCommand.CanExecute(product))
+            {
+                ProductCheckedCommand.Execute(product);
+            }
+        }
+
+        private void OnControlPanelInvoked(Product product)
+        {
+
+            foreach (var productTypePanelControl in ProductTypesPanelsContainer.Children.OfType<ProductTypePanelControl>())
+            {
+                productTypePanelControl.HideControlPanels(product);
+            }
+        }
     }
 }

@@ -57,7 +57,16 @@
             <FileImageSource x:Key="Spice">spice.png</FileImageSource>
             <FileImageSource x:Key="Dairy">dairy.png</FileImageSource>
             <FileImageSource x:Key="Grain">grain.png</FileImageSource>
-           
+            
+            <Style x:Key="MediumWhiteFont" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontFamily" Value="{StaticResource Medium}"/>
+            </Style>
+
+            <Style x:Key="MediumWhite11Font" TargetType="Label" BasedOn="{StaticResource MediumWhiteFont}">
+                <Setter Property="FontSize" Value="11"/>
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

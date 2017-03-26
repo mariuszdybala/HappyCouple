@@ -11,12 +11,13 @@
     <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Edycja listy zakupów"/>
     <StackLayout Padding="10" BackgroundColor="{StaticResource SecondColor}">
       <Label Text="To jest nazwa" TextColor="White" FontFamily="{StaticResource Medium}"/>
+      <Button Text="AddProduct" Command="{Binding AddProductButtonCommand}"/>
       <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
         <Label Text="12" FontFamily="{StaticResource Medium}" TextColor="{StaticResource FourthColor}"/>
         <Label Text="/" FontFamily="{StaticResource Medium}"/>
         <Label Text="20" FontFamily="{StaticResource Medium}" TextColor="{StaticResource ThirthColor}"/>
       </StackLayout>
-      <editProductList:EditProductListControl Products="{Binding Products}"/>
+      <editProductList:EditProductListControl Products="{Binding Products}" AddProductCommand="{Binding GoBackCommand, Mode=OneWayToSource}"/>
     </StackLayout>
   </StackLayout>
 </view:BaseHappyContentPage>
