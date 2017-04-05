@@ -1,23 +1,24 @@
 ﻿using System;
 using HappyCoupleMobile.Model;
+using HappyCoupleMobile.VM;
 using Xamarin.Forms;
 
 namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 {
     public partial class ProductViewControl : StackLayout
     {
-        public event Action<Product> Checked;
-        public event Action<Product> Delete;
-        public event Action<Product> Edit;
-        public event Action<Product> Add;
-        public event Action<Product> ControlPanelInvoked;
+        public event Action<ProductVm> Checked;
+        public event Action<ProductVm> Delete;
+        public event Action<ProductVm> Edit;
+        public event Action<ProductVm> Add;
+        public event Action<ProductVm> ControlPanelInvoked;
 
         public static BindableProperty ProductProperty = BindableProperty
-        .Create(nameof(Product), typeof(Product), typeof(ProductViewControl), null);
+        .Create(nameof(Product), typeof(ProductVm), typeof(ProductViewControl), null);
 
-        public Product Product
+        public ProductVm Product
         {
-            get { return (Product)GetValue(ProductProperty); }
+            get { return (ProductVm)GetValue(ProductProperty); }
             set { SetValue(ProductProperty, value); }
         }
 

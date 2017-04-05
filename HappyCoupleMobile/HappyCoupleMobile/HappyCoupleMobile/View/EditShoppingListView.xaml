@@ -17,7 +17,7 @@
         <Label Text="/" FontFamily="{StaticResource Medium}"/>
         <Label Text="20" FontFamily="{StaticResource Medium}" TextColor="{StaticResource ThirthColor}"/>
       </StackLayout>
-      <editProductList:EditProductListControl Products="{Binding Products}" AddProductCommand="{Binding GoBackCommand, Mode=OneWayToSource}"/>
+      <editProductList:EditProductListControl x:Name="EditProductListControl"  Products="{Binding Products}" AddProductCommand="{Binding GoBackCommand, Mode=OneWayToSource}" ProductDeletedCommand="{Binding DeleteProductCommand}"/>
     </StackLayout>
   </StackLayout>
 </view:BaseHappyContentPage>

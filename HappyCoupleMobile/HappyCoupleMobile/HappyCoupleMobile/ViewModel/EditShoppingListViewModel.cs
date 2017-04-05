@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
@@ -11,6 +12,7 @@ using HappyCoupleMobile.Services;
 using HappyCoupleMobile.Services.Interfaces;
 using HappyCoupleMobile.View;
 using HappyCoupleMobile.ViewModel.Abstract;
+using HappyCoupleMobile.VM;
 using Xamarin.Forms;
 
 namespace HappyCoupleMobile.ViewModel
@@ -21,11 +23,12 @@ namespace HappyCoupleMobile.ViewModel
         public RelayCommand AddProductCommand { get; set; }
         public RelayCommand<Product> ProductCheckedCommand { get; set; }
 
-        public ObservableCollection<Product> Products { get; set; }
+        public ObservableCollection<ProductVm> Products { get; set; }
 
         public Command GoBackCommand { get; set; }
 
         public Command AddProductButtonCommand { get; set; }
+        public Command<Product> DeleteProductCommand { get; set; }
 
 
         public EditShoppingListViewModel(ISimpleAuthService simpleAuthService, IProductServices productServices) : base(simpleAuthService)
@@ -40,9 +43,15 @@ namespace HappyCoupleMobile.ViewModel
 
             //mocks
             AddProductButtonCommand = new Command(AddProductButton);
+            DeleteProductCommand = new Command<Product>(OnDeleteProduct);
+
 
             AddProductCommand = new RelayCommand(async () => await OnAddProduct());
             ProductCheckedCommand = new RelayCommand<Product>(async (product) => await OnProductChecked(product));
+        }
+
+        private void OnDeleteProduct(Product product)
+        {
         }
 
         private void AddProductButton()
@@ -56,7 +65,7 @@ namespace HappyCoupleMobile.ViewModel
             var types = await _productServices.GetAllProductTypesAync();
 
 
-            Products = new ObservableCollection<Product>(
+            var productsModels = new List<Product>(
                 new List<Product>
                 {
                     new Product
@@ -72,6 +81,8 @@ namespace HappyCoupleMobile.ViewModel
                     new Product {Id = 3,ProductType =  types[1], Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
                     new Product {Id = 4,ProductType =  types[0], Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10}
                 });
+
+            Products = new ObservableCollection<ProductVm>(productsModels.Select(x=>new ProductVm(x)));
 
             RaisePropertyChanged(nameof(Products));
         }

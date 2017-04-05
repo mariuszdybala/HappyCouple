@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using HappyCoupleMobile.Model;
+using HappyCoupleMobile.VM;
 using Xamarin.Forms;
 
 namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
@@ -10,7 +11,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
     public partial class EditProductListControl : StackLayout
     {
         public static BindableProperty ProductsProperty = BindableProperty
-        .Create(nameof(Products), typeof(ObservableCollection<Product>), typeof(ProductListView), propertyChanged: OnProductsChanged);
+        .Create(nameof(Products), typeof(ObservableCollection<ProductVm>), typeof(ProductListView), propertyChanged: OnProductsChanged);
 
         public static BindableProperty ShowCheckboxesProperty = BindableProperty
         .Create(nameof(ShowCheckboxes), typeof(bool), typeof(ProductListView), false);
@@ -35,6 +36,15 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 
         public static BindableProperty AddProductCommandProperty = BindableProperty.Create
         (nameof(AddProductCommand), typeof(ICommand), typeof(ProductListView), defaultBindingMode:BindingMode.OneWayToSource);
+
+        public static BindableProperty UnSubscribeAllEventsCommandProperty = BindableProperty.Create
+        (nameof(UnSubscribeAllEventsCommand), typeof(ICommand), typeof(ProductListView), defaultBindingMode: BindingMode.OneWayToSource);
+
+        public ICommand UnSubscribeAllEventsCommand
+        {
+            get { return (ICommand)GetValue(UnSubscribeAllEventsCommandProperty); }
+            set { SetValue(UnSubscribeAllEventsCommandProperty, value); }
+        }
 
         public ICommand AddProductCommand
         {
@@ -94,9 +104,9 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
         {
             InitializeComponent();
 
-            AddProductCommand = new Command<Product>(OnAddProduct);
+            AddProductCommand = new Command<ProductVm>(OnAddProduct);
+            AddProductCommand = new Command(OnUnSubscribeAllEvents);
         }
-
 
         private static void OnProductsChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
@@ -105,13 +115,13 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
                 return;
             }
 
-            var products = (ObservableCollection<Product>)newvalue;
+            var products = (ObservableCollection<ProductVm>)newvalue;
             var editProductsListControl = (EditProductListControl)bindable;
 
             InsertProducts(products, editProductsListControl);
         }
 
-        private static void InsertProducts(ObservableCollection<Product> products, EditProductListControl editProductsListControl)
+        private static void InsertProducts(ObservableCollection<ProductVm> products, EditProductListControl editProductsListControl)
         {
             if (!products.Any())
             {
@@ -127,7 +137,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             }
         }
 
-        private ProductTypePanelControl CreateNewProductTypePanelControl(ProductType productType, List<Product> products)
+        private ProductTypePanelControl CreateNewProductTypePanelControl(ProductType productType, List<ProductVm> products)
         {
             var productTypePanel = new ProductTypePanelControl();
 
@@ -139,7 +149,6 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             return productTypePanel;
         }
 
-
         private void AssignEvents(ProductTypePanelControl productTypePanelControl)
         {
             productTypePanelControl.ProductControlPanelInvoked += OnControlPanelInvoked;
@@ -148,17 +157,17 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             productTypePanelControl.ProductEdit += OnEditProduct;
         }
 
-        private void OnAddProduct(Product product)
+        private void OnAddProduct(ProductVm product)
         {
 
         }
 
-        private void OnUpdateProduct(Product product)
+        private void OnUpdateProduct(ProductVm product)
         {
 
         }
 
-        private void OnDeleteProduct(Product product)
+        private void OnDeleteProduct(ProductVm product)
         {
             DeleteProductFromView(product);
 
@@ -173,7 +182,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             }
         }
 
-        private void DeleteProductFromView(Product product)
+        private void DeleteProductFromView(ProductVm product)
         {
             var productTypePanel = ProductTypesPanelsContainer.Children.OfType<ProductTypePanelControl>().FirstOrDefault(x => x.ProductType.Id == product.ProductType.Id);
 
@@ -185,7 +194,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             }
         }
 
-        private void OnEditProduct(Product product)
+        private void OnEditProduct(ProductVm product)
         {
             if (ProductEditCommand == null)
             {
@@ -198,7 +207,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             }
         }
 
-        private void OnProductChecked(Product product)
+        private void OnProductChecked(ProductVm product)
         {
             if (ProductCheckedCommand == null)
             {
@@ -211,12 +220,20 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             }
         }
 
-        private void OnControlPanelInvoked(Product product)
+        private void OnControlPanelInvoked(ProductVm product)
         {
 
             foreach (var productTypePanelControl in ProductTypesPanelsContainer.Children.OfType<ProductTypePanelControl>())
             {
                 productTypePanelControl.HideControlPanels(product);
+            }
+        }
+
+        private void OnUnSubscribeAllEvents()
+        {
+            foreach (var productTypePanelControl in ProductTypesPanelsContainer.Children.OfType<ProductTypePanelControl>())
+            {
+                productTypePanelControl.UnSubscribeAllEvents();
             }
         }
     }
