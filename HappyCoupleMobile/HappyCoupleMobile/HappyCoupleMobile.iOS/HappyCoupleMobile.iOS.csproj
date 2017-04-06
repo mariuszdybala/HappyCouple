@@ -137,9 +137,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Custom\Helpers.cs" />
+    <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Providers\SystemInfoProvider.cs" />
+    <Compile Include="Renderers\CircularProgressRenderer.cs" />
     <Compile Include="Renderers\CustomViewCellRenderer.cs" />
     <Compile Include="Renderers\ExtendedScrollViewRenderer.cs" />
     <Compile Include="Renderers\RoundedBoxViewRenderer.cs" />
@@ -186,6 +188,9 @@
     <Reference Include="CarouselView.FormsPlugin.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\CarouselView.FormsPlugin.3.0.0\lib\Xamarin.iOS10\CarouselView.FormsPlugin.iOS.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="DACircularProgress, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DACircularProgress.2.3.1.0\lib\Xamarin.iOS\DACircularProgress.dll</HintPath>
     </Reference>
     <Reference Include="EngineIoClientDotNet, Version=0.9.22.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EngineIoClientDotNet.0.9.22\lib\xamarinios10\EngineIoClientDotNet.dll</HintPath>

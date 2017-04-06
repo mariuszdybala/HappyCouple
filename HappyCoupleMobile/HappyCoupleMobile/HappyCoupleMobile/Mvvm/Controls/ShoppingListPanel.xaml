@@ -25,7 +25,7 @@
         </Grid.ColumnDefinitions>
         <StackLayout Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" HorizontalOptions="Center" VerticalOptions="Center">
             <AbsoluteLayout>
-                <renderers:RoundedBoxView WidthRequest="50" HeightRequest="50" CornerRadius="25" BackgroundColor="{Binding ShoppingList, Converter={converters:ProductCountColorConverter}}" />
+                <renderers:CircularProgress WidthRequest="50" HeightRequest="50"/>
                 <Label AbsoluteLayout.LayoutFlags="PositionProportional" FontFamily="{StaticResource Medium}"
                                    AbsoluteLayout.LayoutBounds="0.5,0.5" TextColor="{StaticResource SecondColor}" Text="{Binding ShoppingList.ProductsCount}" />
             </AbsoluteLayout>

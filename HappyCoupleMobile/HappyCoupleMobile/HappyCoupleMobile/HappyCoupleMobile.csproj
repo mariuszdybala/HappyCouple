@@ -127,6 +127,7 @@
     <Compile Include="Mvvm\Messages\Interface\IBaseMessage.cs" />
     <Compile Include="Mvvm\Messages\Interface\IMessageData.cs" />
     <Compile Include="Mvvm\Messages\MessageData.cs" />
+    <Compile Include="Mvvm\Renderers\CircularProgress.cs" />
     <Compile Include="Mvvm\Renderers\ExtendedScrollView.cs" />
     <Compile Include="Mvvm\Renderers\RoundedBoxView.cs" />
     <Compile Include="Notification\Interfaces\INotificationManager.cs" />
