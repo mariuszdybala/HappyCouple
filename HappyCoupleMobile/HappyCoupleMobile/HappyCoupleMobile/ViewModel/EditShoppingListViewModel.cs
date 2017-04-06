@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,9 +21,31 @@ namespace HappyCoupleMobile.ViewModel
     public class EditShoppingListViewModel : BaseHappyViewModel, IProductObserver, IShoppingListObserver
     {
         private readonly IProductServices _productServices;
+        private string _boughtProductsCount;
+        private string _leftProductsCount;
+        private string _progressPercent;
+
+        public string BoughtProductsCount
+        {
+            get { return _boughtProductsCount; }
+            set { Set(ref _boughtProductsCount, value); }
+        }
+
+        public string LeftProductsCount
+        {
+            get { return _leftProductsCount; }
+            set { Set(ref _leftProductsCount, value); }
+        }
+
+        public string ProgressPercent
+        {
+            get { return _progressPercent; }
+            set { Set(ref _progressPercent, value); }
+        }
+
         public RelayCommand AddProductCommand { get; set; }
-        public RelayCommand<Product> ProductCheckedCommand { get; set; }
-        public Command<Product> DeleteProductCommand { get; set; }
+        public RelayCommand<ProductVm> ProductCheckedCommand { get; set; }
+        public Command<ProductVm> DeleteProductCommand { get; set; }
 
         public ObservableCollection<ProductVm> Products { get; set; }
 
@@ -38,15 +61,11 @@ namespace HappyCoupleMobile.ViewModel
             RegisterMessage(this);
 
             //mocks
-            DeleteProductCommand = new Command<Product>(OnDeleteProduct);
+            DeleteProductCommand = new Command<ProductVm>(OnDeleteProduct);
 
 
             AddProductCommand = new RelayCommand(async () => await OnAddProduct());
-            ProductCheckedCommand = new RelayCommand<Product>(async (product) => await OnProductChecked(product));
-        }
-
-        private void OnDeleteProduct(Product product)
-        {
+            ProductCheckedCommand = new RelayCommand<ProductVm>(async (product) => await OnProductChecked(product));
         }
 
         private async void AddProductButton()
@@ -91,16 +110,43 @@ namespace HappyCoupleMobile.ViewModel
 
             Products = new ObservableCollection<ProductVm>(productsModels.Select(x => new ProductVm(x)));
 
+            SetViewProperties();
+
             RaisePropertyChanged(nameof(Products));
+        }
+
+        private void SetViewProperties()
+        {
+            CalculateCurrentShoppingProgress();
+        }
+
+        private void CalculateCurrentShoppingProgress()
+        {
+            var totalProductsCountValue = Products.Count;
+            var boughtProductsCountValue = Products.Count(x => x.ProductModel.IsBought);
+            var leftProductsCountValue = Products.Count(x => !x.ProductModel.IsBought);
+
+            BoughtProductsCount = boughtProductsCountValue.ToString();
+            LeftProductsCount = leftProductsCountValue.ToString();
+
+            var progressPercent = leftProductsCountValue == 0 ? 100 : boughtProductsCountValue * 100 / totalProductsCountValue;
+
+            ProgressPercent = progressPercent.ToString();
         }
 
         private async Task OnAddProduct()
         {
             await NavigateTo<AddProductView, AddProductViewModel>();
         }
-        private Task OnProductChecked(Product product)
+        private async Task OnProductChecked(ProductVm product)
         {
-            return null;
+            CalculateCurrentShoppingProgress();
+
+            Task.Yield();
+        }
+
+        private void OnDeleteProduct(ProductVm product)
+        {
         }
 
         public void Upadte(Product data)

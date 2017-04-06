@@ -5,18 +5,34 @@
              xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
              xmlns:attached="clr-namespace:HappyCoupleMobile.Mvvm.AttachedProperties;assembly=HappyCoupleMobile"
              xmlns:editProductList="clr-namespace:HappyCoupleMobile.Mvvm.Controls.EditProductList;assembly=HappyCoupleMobile"
+             xmlns:renderers="clr-namespace:HappyCoupleMobile.Mvvm.Renderers;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.View.EditShoppingListView"
              BindingContext="{Binding EditShoppingListViewModel, Source={StaticResource ViewModelLocator}}">
   <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
     <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Edycja listy zakupów" RightIconSource="{StaticResource AddProduct}" RightIconTapCommand="{Binding AddProductCommand}"/>
-    <StackLayout Padding="10" BackgroundColor="{StaticResource SecondColor}">
-      <Label Text="To jest nazwa" TextColor="White" FontFamily="{StaticResource Medium}"/>
-      <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-        <Label Text="12" FontFamily="{StaticResource Medium}" TextColor="{StaticResource FourthColor}"/>
-        <Label Text="/" FontFamily="{StaticResource Medium}"/>
-        <Label Text="20" FontFamily="{StaticResource Medium}" TextColor="{StaticResource ThirthColor}"/>
+    <Grid Padding="10">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="0.2*" />
+        <ColumnDefinition Width="0.8*" />
+      </Grid.ColumnDefinitions>
+      <StackLayout Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" HorizontalOptions="Center" VerticalOptions="Center">
+          <renderers:CircularProgress WidthRequest="50" HeightRequest="50" Percent="{Binding ProgressPercent}"/>
       </StackLayout>
-      <editProductList:EditProductListControl x:Name="EditProductListControl"  Products="{Binding Products}" ButtonDeleteCommand="{Binding DeleteProductCommand}"/>
-    </StackLayout>
+      <StackLayout Grid.Column="1" Grid.Row="0">
+        <Label Text="To jest nazwa" TextColor="White" FontFamily="{StaticResource Medium}"/>
+      </StackLayout>
+      <StackLayout Grid.Column="1" Grid.Row="1">
+        <StackLayout Orientation="Horizontal">
+          <Label x:Name="BuyedProductsLabel" Text="{Binding BoughtProductsCount}" FontFamily="{StaticResource Medium}" TextColor="{StaticResource FifthColor}"/>
+          <Label Text="/" FontFamily="{StaticResource Medium}"/>
+          <Label x:Name="CountProductsLabel" Text="{Binding LeftProductsCount}" FontFamily="{StaticResource Medium}" TextColor="{StaticResource FourthColor}"/>
+        </StackLayout>
+      </StackLayout>
+      </Grid>
+    <editProductList:EditProductListControl x:Name="EditProductListControl"  Products="{Binding Products}" ButtonDeleteCommand="{Binding DeleteProductCommand}" ProductCheckedCommand="{Binding ProductCheckedCommand}"/>
   </StackLayout>
 </view:BaseHappyContentPage>

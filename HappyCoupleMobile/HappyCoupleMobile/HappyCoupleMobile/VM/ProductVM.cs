@@ -41,6 +41,17 @@ namespace HappyCoupleMobile.VM
             }
         }
 
+        private bool _isBought;
+        public bool IsBought
+        {
+            get { return _isBought; }
+            set
+            {
+                Set(ref _isBought, value);
+                ProductModel.IsBought = value;
+            }
+        }
+
 
         public ProductVm(Product product)
         {
@@ -49,6 +60,7 @@ namespace HappyCoupleMobile.VM
             Name = ProductModel.Name;
             Comment = ProductModel.Comment;
             Quantity = ProductModel.Quantity;
+            IsBought = ProductModel.IsBought;
         }
     }
 }
