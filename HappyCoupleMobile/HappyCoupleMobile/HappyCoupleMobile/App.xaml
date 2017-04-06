@@ -43,6 +43,7 @@
             <FileImageSource x:Key="Checked">checked.png</FileImageSource>
             <FileImageSource x:Key="UnChecked">unchecked.png</FileImageSource>
             <FileImageSource x:Key="ShoppingBar">shopping_bar.png</FileImageSource>
+            <FileImageSource x:Key="AddProduct">add_product.png</FileImageSource>
 
             <!--            Icons for products-->
             <FileImageSource x:Key="Beer">beer.png</FileImageSource>

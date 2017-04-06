@@ -22,13 +22,9 @@ namespace HappyCoupleMobile.ViewModel
         private readonly IProductServices _productServices;
         public RelayCommand AddProductCommand { get; set; }
         public RelayCommand<Product> ProductCheckedCommand { get; set; }
+        public Command<Product> DeleteProductCommand { get; set; }
 
         public ObservableCollection<ProductVm> Products { get; set; }
-
-        public Command GoBackCommand { get; set; }
-
-        public Command AddProductButtonCommand { get; set; }
-        public Command<Product> DeleteProductCommand { get; set; }
 
 
         public EditShoppingListViewModel(ISimpleAuthService simpleAuthService, IProductServices productServices) : base(simpleAuthService)
@@ -42,7 +38,6 @@ namespace HappyCoupleMobile.ViewModel
             RegisterMessage(this);
 
             //mocks
-            AddProductButtonCommand = new Command(AddProductButton);
             DeleteProductCommand = new Command<Product>(OnDeleteProduct);
 
 
@@ -54,16 +49,28 @@ namespace HappyCoupleMobile.ViewModel
         {
         }
 
-        private void AddProductButton()
+        private async void AddProductButton()
         {
-            GoBackCommand.Execute(new Product{Name = "Test"});
+            var types = await _productServices.GetAllProductTypesAync();
+
+            var newProduct = new Product
+            {
+                Id = 5,
+                ProductType = types[6],
+                Name = "Marcheweczka",
+                Comment = "To jest pyszna marcheweczka trzeba ją kupić",
+                Quantity = 4
+            };
+
+            Products.Add(new ProductVm(newProduct));
+
+            RaisePropertyChanged(nameof(Products));
         }
 
 
         protected override async Task OnNavigateTo(IMessageData message)
         {
             var types = await _productServices.GetAllProductTypesAync();
-
 
             var productsModels = new List<Product>(
                 new List<Product>
@@ -82,7 +89,7 @@ namespace HappyCoupleMobile.ViewModel
                     new Product {Id = 4,ProductType =  types[0], Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10}
                 });
 
-            Products = new ObservableCollection<ProductVm>(productsModels.Select(x=>new ProductVm(x)));
+            Products = new ObservableCollection<ProductVm>(productsModels.Select(x => new ProductVm(x)));
 
             RaisePropertyChanged(nameof(Products));
         }

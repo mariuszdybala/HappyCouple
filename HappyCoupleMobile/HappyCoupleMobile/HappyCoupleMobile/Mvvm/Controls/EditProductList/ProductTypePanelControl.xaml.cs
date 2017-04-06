@@ -12,8 +12,8 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
     public partial class ProductTypePanelControl : StackLayout
     {
         public event Action<ProductVm> ProductChecked;
-        public event Action<ProductVm> ProductDelete;
-        public event Action<ProductVm> ProductEdit;
+        public event Action<ProductVm> ProductDeleteButtonClick;
+        public event Action<ProductVm> ProductEditButtonClick;
         public event Action<ProductVm> ProductControlPanelInvoked;
 
         public ProductType ProductType { get; set; }
@@ -36,20 +36,32 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             HeaderLabel.Text = ProductType.Type;
         }
 
-        public void LoadProducts(IList<ProductVm> products)
+        public void AddProductsToContainer(IList<ProductVm> products)
         {
             Products.AddRange(products);
 
             foreach (var product in Products)
             {
-                var productView = new ProductViewControl { Product = product };
-
-                productView.HideAddControlItem();
-
-                AssignEvents(productView);
-
-                ProductsContainer.Children.Add(productView);
+                CreateNewProductViewControl(product);
             }
+        }
+
+        public void AddProductToContainer(ProductVm product)
+        {
+            Products.Insert(0,product);
+
+            CreateNewProductViewControl(product);
+        }
+
+        private void CreateNewProductViewControl(ProductVm product)
+        {
+            var productView = new ProductViewControl { Product = product };
+
+            productView.HideAddControlItem();
+
+            AssignEvents(productView);
+
+            ProductsContainer.Children.Insert(0,productView);
         }
 
         public void UnSubscribeAllEvents()
@@ -81,14 +93,14 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             ProductControlPanelInvoked?.Invoke(product);
         }
 
-        private void OnDeleteProduct(ProductVm product)
+        private void OnDeleteButtonClickProductButtonClick(ProductVm product)
         {
-            ProductDelete?.Invoke(product);
+            ProductDeleteButtonClick?.Invoke(product);
         }
 
-        private void OnEditProduct(ProductVm product)
+        private void OnEditButtonClickProductButtonClick(ProductVm product)
         {
-            ProductEdit?.Invoke(product);
+            ProductEditButtonClick?.Invoke(product);
         }
 
         private void OnProductChecked(ProductVm product)
@@ -99,17 +111,17 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
         private void AssignEvents(ProductViewControl productViewControl)
         {
             productViewControl.ControlPanelInvoked += OnControlPanelInvoked;
-            productViewControl.Delete += OnDeleteProduct;
+            productViewControl.DeleteButtonClick += OnDeleteButtonClickProductButtonClick;
             productViewControl.Checked += OnProductChecked;
-            productViewControl.Edit += OnEditProduct;
+            productViewControl.EditButtonClick += OnEditButtonClickProductButtonClick;
         }
 
         private void UnSubscribeEventsFromProductViewControl(ProductViewControl productViewControl)
         {
             productViewControl.ControlPanelInvoked -= OnControlPanelInvoked;
-            productViewControl.Delete -= OnDeleteProduct;
+            productViewControl.DeleteButtonClick -= OnDeleteButtonClickProductButtonClick;
             productViewControl.Checked -= OnProductChecked;
-            productViewControl.Edit -= OnEditProduct;
+            productViewControl.EditButtonClick -= OnEditButtonClickProductButtonClick;
         }
     }
 }

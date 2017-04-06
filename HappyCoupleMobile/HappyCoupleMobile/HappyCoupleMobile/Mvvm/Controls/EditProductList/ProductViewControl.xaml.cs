@@ -8,9 +8,9 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
     public partial class ProductViewControl : StackLayout
     {
         public event Action<ProductVm> Checked;
-        public event Action<ProductVm> Delete;
-        public event Action<ProductVm> Edit;
-        public event Action<ProductVm> Add;
+        public event Action<ProductVm> DeleteButtonClick;
+        public event Action<ProductVm> EditButtonClick;
+        public event Action<ProductVm> AddButtonClick;
         public event Action<ProductVm> ControlPanelInvoked;
 
         public static BindableProperty ProductProperty = BindableProperty
@@ -51,17 +51,17 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 
         private void OnDeleteProduct()
         {
-            Delete?.Invoke(Product);
+            DeleteButtonClick?.Invoke(Product);
         }
 
         private void OnEditProduct()
         {
-            Edit?.Invoke(Product);
+            EditButtonClick?.Invoke(Product);
         }
 
         private void OnAddProduct()
         {
-            Add?.Invoke(Product);
+            AddButtonClick?.Invoke(Product);
         }
 
         private void OnProductChecked()
