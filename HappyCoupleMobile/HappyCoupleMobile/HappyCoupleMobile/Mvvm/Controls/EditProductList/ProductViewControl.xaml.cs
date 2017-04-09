@@ -10,7 +10,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
         public event Action<ProductVm> Checked;
         public event Action<ProductVm> DeleteButtonClick;
         public event Action<ProductVm> EditButtonClick;
-        public event Action<ProductVm> AddButtonClick;
+        public event Action<ProductVm> SelectProductButtonClick;
         public event Action<ProductVm> ControlPanelInvoked;
 
         public static BindableProperty ProductProperty = BindableProperty
@@ -23,7 +23,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
         }
 
         public Command ProductCheckedCommand { get; set; }
-        public Command AddProductCommand { get; set; }
+        public Command SelectProductCommand { get; set; }
         public Command EditProductCheckedCommand { get; set; }
         public Command DeleteProductCheckedCommand { get; set; }
         public Command ProductItemTappedCommand { get; set; }
@@ -33,7 +33,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             InitializeComponent();
 
             ProductCheckedCommand = new Command(OnProductChecked);
-            AddProductCommand = new Command(OnAddProduct);
+            SelectProductCommand = new Command(OnSelectProduct);
             EditProductCheckedCommand = new Command(OnEditProduct);
             DeleteProductCheckedCommand = new Command(OnDeleteProduct);
             ProductItemTappedCommand = new Command(OnProductItemTapped);
@@ -59,9 +59,9 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             EditButtonClick?.Invoke(Product);
         }
 
-        private void OnAddProduct()
+        private void OnSelectProduct()
         {
-            AddButtonClick?.Invoke(Product);
+            SelectProductButtonClick?.Invoke(Product);
         }
 
         private void OnProductChecked()
@@ -69,9 +69,19 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             Checked?.Invoke(Product);
         }
 
-        public void HideAddControlItem()
+        public void HideSelectControlItem()
         {
             AddStack.IsVisible = false;
+        }
+
+        public void HideEditControlItem()
+        {
+            EditStack.IsVisible = false;
+        }
+
+        public void HideCheckbox()
+        {
+            IsBoughtCheckbox.IsVisible = false;
         }
 
         public void HideControlPanel()

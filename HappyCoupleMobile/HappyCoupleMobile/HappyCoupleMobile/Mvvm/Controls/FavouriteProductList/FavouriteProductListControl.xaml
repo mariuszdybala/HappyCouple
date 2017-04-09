@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:renderers="clr-namespace:HappyCoupleMobile.Mvvm.Renderers;assembly=HappyCoupleMobile"
+             x:Class="HappyCoupleMobile.Mvvm.Controls.FavouriteProductList.FavouriteProductListControl"
+             x:Name="FavouriteProductListControl" Spacing="0" BackgroundColor="{StaticResource SecondColor}">
+    <renderers:ExtendedScrollView>
+        <StackLayout x:Name="ProductsContainer"/>
+    </renderers:ExtendedScrollView>
+</StackLayout>

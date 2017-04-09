@@ -6,7 +6,7 @@ namespace HappyCoupleMobile.Mvvm.Renderers
     public class CircularProgress : StackLayout
     {
         public static BindableProperty PercentProperty = BindableProperty
-        .Create(nameof(Percent), typeof(int), typeof(ProductListView), 0);
+        .Create(nameof(Percent), typeof(int), typeof(CircularProgress), 0);
 
         public int Percent
         {

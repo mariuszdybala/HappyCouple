@@ -87,7 +87,7 @@ namespace HappyCoupleMobile
             SimpleIoc.Default.Register<IShoppingListNotificator, ShoppingListNotificator>();
             SimpleIoc.Default.Register<IProductNotificator, ProductNotificator>();
 
-            SimpleIoc.Default.Register<INotificationManager,NotificationManager>();
+            SimpleIoc.Default.Register<INotificationManager, NotificationManager>();
 
             SimpleIoc.Default.Register<ISqliteConnectionProvider, SqliteConnectionProvider>();
             SimpleIoc.Default.Register<IDatabaseInitializer, DatabaseInitializer>();
@@ -133,16 +133,16 @@ namespace HappyCoupleMobile
 
             await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Owoce", "Fruits"));
             await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Oliwa", "Olive"));
-            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Sok", "Drink"));
-            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Marchewka", "Vege"));
+            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Napoje", "Drink"));
+            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Warzywa", "Vege"));
             await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Rybka", "Fish"));
             await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Chleb", "Bread"));
             await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Mięso", "Meat"));
-            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Bazylia", "Spice"));
-            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Mleko", "Dairy"));
-            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Ryż", "Grain"));
+            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Przyprawy", "Spice"));
+            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Nabiał", "Dairy"));
+            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Sypkie", "Grain"));
             await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Food", "Food"));
-            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Beer", "Beer"));
+            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Alko", "Beer"));
 
 
             var productTypes = await shoppingListRepository.GetAllProductTypesAsync();
@@ -168,47 +168,51 @@ namespace HappyCoupleMobile
 
                 await shoppingListRepository
                     .InsertProductAsync(MockedData.GetProduct
-                    (1, "Najlepiej to kupić w lidlu", lists[2].Id,
+                    ("Marchewka",1, "Najlepiej to kupić w lidlu", lists[2].Id,
                         productTypes[3].Id, 1));
                 await shoppingListRepository
                     .InsertProductAsync(MockedData.GetProduct
-                        (1, "Biedra", lists[2].Id,
+                    ("Marchewka",1, "Tez najlepiej to kupić w lidlu", lists[2].Id,
+                    productTypes[3].Id, 1));
+                await shoppingListRepository
+                    .InsertProductAsync(MockedData.GetProduct
+                        ("Gruszka", 1, "Biedra", lists[2].Id,
                         productTypes[0].Id, 1));
                 await shoppingListRepository
                     .InsertProductAsync(MockedData.GetProduct
-                    (1, "Najlepiej to kupić w lidlu", lists[2].Id,
+                    ("Piwko", 1, "Najlepiej to kupić w lidlu", lists[2].Id,
                         productTypes[10].Id, 1));
                 await shoppingListRepository
                     .InsertProductAsync(MockedData.GetProduct
-                    (1, "Najlepiej to kupić w lidlu", lists[2].Id,
+                    ("Ogórek", 1, "Najlepiej to kupić w lidlu", lists[2].Id,
                         productTypes[2].Id, 2));
                 await shoppingListRepository
                     .InsertProductAsync(MockedData.GetProduct
-                    (1, "Najlepiej to kupić w lidlu", lists[2].Id,
+                    ("Bułki", 1, "Najlepiej to kupić w lidlu", lists[2].Id,
                         productTypes[4].Id, 4));
 
                 await shoppingListRepository
                     .InsertProductAsync(MockedData.GetProduct
-                    (1, "Najlepiej to kupić w lidlu", lists[1].Id,
+                    ("Mąka", 1, "Najlepiej to kupić w lidlu", lists[1].Id,
                        productTypes[8].Id, 1));
                 await shoppingListRepository
                     .InsertProductAsync(MockedData.GetProduct
-                        (1, "Biedra", lists[1].Id, productTypes[3].Id, 1));
+                        ("Chleb", 1, "Biedra", lists[1].Id, productTypes[3].Id, 1));
 
                 await shoppingListRepository
                     .InsertProductAsync(MockedData.GetProduct
-                    (1, "chyba najtaniej będzie w Auchan", lists[0].Id,
+                    ("Papryka", 1, "chyba najtaniej będzie w Auchan", lists[0].Id,
                         productTypes[7].Id, 1));
                 await shoppingListRepository
                     .InsertProductAsync(MockedData.GetProduct
-                        (1, "Biedra", lists[0].Id, productTypes[5].Id, 1));
+                        ("Kurczak", 1, "Biedra", lists[0].Id, productTypes[5].Id, 1));
                 await shoppingListRepository
                     .InsertProductAsync(MockedData.GetProduct
-                    (1, "Coś na sałatkę", lists[0].Id, productTypes[9].Id,
+                    ("Skałata", 1, "Coś na sałatkę", lists[0].Id, productTypes[9].Id,
                         1));
                 await shoppingListRepository
                     .InsertProductAsync(MockedData.GetProduct
-                    (1, "Coś na sałatkę", lists[0].Id,
+                    ("Ogórek", 1, "Coś na sałatkę", lists[0].Id,
                         productTypes[10].Id, 1));
             }
 

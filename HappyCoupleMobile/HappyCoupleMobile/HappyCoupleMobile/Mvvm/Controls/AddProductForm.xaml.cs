@@ -17,9 +17,6 @@ namespace HappyCoupleMobile.Mvvm.Controls
         public static BindableProperty ProductTypesSourceProperty = BindableProperty
             .Create(nameof(ProductTypesSource), typeof(ObservableCollection<ProductType>), typeof(AddProductForm), propertyChanged: OnProductTypesSourceChanged);
 
-        public static BindableProperty FavouritesProductTypesProperty = BindableProperty
-        .Create(nameof(FavouritesProductTypes), typeof(ObservableCollection<ProductType>), typeof(AddProductForm));
-
         public static BindableProperty AddToFavoriteCommandProperty = BindableProperty.Create
             (nameof(AddToFavoriteCommandProperty).GetBindableName(), typeof(ICommand), typeof(AddProductForm));
 
@@ -36,12 +33,6 @@ namespace HappyCoupleMobile.Mvvm.Controls
         {
             get { return (ProductType)GetValue(SelectedProductTypeProperty); }
             set { SetValue(SelectedProductTypeProperty, value); }
-        }
-
-        public ObservableCollection<ProductType> FavouritesProductTypes
-        {
-            get { return (ObservableCollection<ProductType>)GetValue(FavouritesProductTypesProperty); }
-            set { SetValue(FavouritesProductTypesProperty, value); }
         }
 
         public ObservableCollection<ProductType> ProductTypesSource
@@ -131,12 +122,7 @@ namespace HappyCoupleMobile.Mvvm.Controls
 
                 var stackContainer = ProductTypesContainer.Children[currentContainer] as StackLayout;
 
-                var productTypeView = new ProductTypeView {Margin = new Thickness(10,10), ProductType = productType };
-
-                if (productType.Type == "Chleb")
-                {
-                    productTypeView.IsSelected = true;
-                }
+                var productTypeView = CreateProductTypeView(productType);
 
                 stackContainer.Children.Add(productTypeView);
 
@@ -145,7 +131,38 @@ namespace HappyCoupleMobile.Mvvm.Controls
                     currentContainer++;
                 }
             }
+        }
 
+        private ProductTypeView CreateProductTypeView(ProductType productType)
+        {
+            var productTypeView = new ProductTypeView { Margin = new Thickness(5, 5), ProductType = productType };
+            productTypeView.ProductTypeSelected += OnProductTypeSelected;
+
+            return productTypeView;
+        }
+
+        private void OnProductTypeSelected(ProductType productType)
+        {
+            SelectedProductType = productType;
+
+            UnSelectProductTypes(productType);
+        }
+
+        private void UnSelectProductTypes(ProductType productType)
+        {
+            foreach (var productTypeStack in ProductTypesContainer.Children.OfType<StackLayout>())
+            {
+
+                foreach (var currentProductType in productTypeStack.Children.OfType<ProductTypeView>().Where(x => x.ProductType.Id != productType.Id))
+                {
+                    currentProductType.IsSelected = false;
+                }
+            }
+        }
+
+        private void OnProductAddedToFavourite(bool isToggled)
+        {
+            AddToFavoriteCommand?.Execute(isToggled);
         }
     }
 }

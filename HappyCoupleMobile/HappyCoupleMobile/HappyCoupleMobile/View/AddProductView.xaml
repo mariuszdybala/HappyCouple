@@ -3,13 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:HappyCoupleMobile.View.Abstract;assembly=HappyCoupleMobile"
              xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
+             xmlns:toggleImages="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ToggleImages;assembly=HappyCoupleMobile"
+             xmlns:buttons="clr-namespace:HappyCoupleMobile.Mvvm.Controls.Buttons;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.View.AddProductView"
              BindingContext="{Binding AddProductViewModel, Source={StaticResource ViewModelLocator}}">
     <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
-        <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Dodaj produkt"/>
+        <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Dodaj produkt"
+                                  RightIconSource="{StaticResource AddFromFavourites}" RightIconTapCommand="{Binding GoToFavouriteProductsCommand}"/>
         <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
-            <controls:AddProductForm ProductTypesSource="{Binding ProductTypes}" FavouritesProductTypes="{Binding FavouritesProductTypes}"/>
+            <controls:AddProductForm ProductTypesSource="{Binding ProductTypes}"/>
         </StackLayout>
-        <Button Text="Wybierz z ulubionych" Command="{Binding GoToFavouriteProductsCommand}"/>
+      <buttons:AddProductButton/>
     </StackLayout>
 </views:BaseHappyContentPage>

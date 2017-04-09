@@ -2,6 +2,12 @@
 <Frame xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="HappyCoupleMobile.Mvvm.Controls.ProductTypeView"
-             x:Name="ProductTypeView" HasShadow="False" Padding="2">
+             x:Name="ProductTypeView" 
+             HasShadow="False" 
+             Padding="2" 
+             BackgroundColor="{StaticResource SecondColor}">
     <Image BindingContext="{x:Reference ProductTypeView}" Source="{Binding ProductType.IconName}"/>
+    <Frame.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding ProductTypeSelectedCommand, Source={x:Reference ProductTypeView}}"/>
+    </Frame.GestureRecognizers>
 </Frame>

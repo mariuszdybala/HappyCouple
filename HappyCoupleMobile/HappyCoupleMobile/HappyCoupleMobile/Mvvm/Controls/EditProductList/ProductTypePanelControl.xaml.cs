@@ -57,7 +57,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
         {
             var productView = new ProductViewControl { Product = product };
 
-            productView.HideAddControlItem();
+            productView.HideSelectControlItem();
 
             AssignEvents(productView);
 
@@ -93,12 +93,12 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             ProductControlPanelInvoked?.Invoke(product);
         }
 
-        private void OnDeleteButtonClickProductButtonClick(ProductVm product)
+        private void OnDeleteButtonClick(ProductVm product)
         {
             ProductDeleteButtonClick?.Invoke(product);
         }
 
-        private void OnEditButtonClickProductButtonClick(ProductVm product)
+        private void OnEditButtonClick(ProductVm product)
         {
             ProductEditButtonClick?.Invoke(product);
         }
@@ -111,17 +111,17 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
         private void AssignEvents(ProductViewControl productViewControl)
         {
             productViewControl.ControlPanelInvoked += OnControlPanelInvoked;
-            productViewControl.DeleteButtonClick += OnDeleteButtonClickProductButtonClick;
+            productViewControl.DeleteButtonClick += OnDeleteButtonClick;
             productViewControl.Checked += OnProductChecked;
-            productViewControl.EditButtonClick += OnEditButtonClickProductButtonClick;
+            productViewControl.EditButtonClick += OnEditButtonClick;
         }
 
         private void UnSubscribeEventsFromProductViewControl(ProductViewControl productViewControl)
         {
             productViewControl.ControlPanelInvoked -= OnControlPanelInvoked;
-            productViewControl.DeleteButtonClick -= OnDeleteButtonClickProductButtonClick;
+            productViewControl.DeleteButtonClick -= OnDeleteButtonClick;
             productViewControl.Checked -= OnProductChecked;
-            productViewControl.EditButtonClick -= OnEditButtonClickProductButtonClick;
+            productViewControl.EditButtonClick -= OnEditButtonClick;
         }
     }
 }

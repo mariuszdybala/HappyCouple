@@ -23,7 +23,7 @@
           <renderers:CircularProgress WidthRequest="50" HeightRequest="50" Percent="{Binding ProgressPercent}"/>
       </StackLayout>
       <StackLayout Grid.Column="1" Grid.Row="0">
-        <Label Text="To jest nazwa" TextColor="White" FontFamily="{StaticResource Medium}"/>
+        <Label Text="{Binding ShoppingListName}" TextColor="White" FontFamily="{StaticResource Medium}"/>
       </StackLayout>
       <StackLayout Grid.Column="1" Grid.Row="1">
         <StackLayout Orientation="Horizontal">
@@ -33,6 +33,10 @@
         </StackLayout>
       </StackLayout>
       </Grid>
-    <editProductList:EditProductListControl x:Name="EditProductListControl"  Products="{Binding Products}" ButtonDeleteCommand="{Binding DeleteProductCommand}" ProductCheckedCommand="{Binding ProductCheckedCommand}"/>
+    <editProductList:EditProductListControl x:Name="EditProductListControl"  Products="{Binding Products}" 
+                                            ButtonDeleteCommand="{Binding DeleteProductCommand}" 
+                                            ButtonEditCommand="{Binding EditProductCommand}"
+                                            ProductCheckedCommand="{Binding ProductCheckedCommand}"
+                                            UnSubscribeAllEventsCommand="{Binding UnSubscribeAllEventsFromViewCommand, Mode=OneWayToSource}"/>
   </StackLayout>
 </view:BaseHappyContentPage>

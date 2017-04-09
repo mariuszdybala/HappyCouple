@@ -52,7 +52,7 @@ namespace HappyCoupleMobile.ViewModel
             DeleteListCommand = new Command<ShoppingList>(OnDeleteList);
             AddProductToListCommand = new Command<ShoppingList>(OnAddProductToList);
             CloseListCommand = new Command<ShoppingList>(OnCloseList);
-            EditListCommand = new Command<ShoppingList>(async(ShoppingList) => await OnEditList(ShoppingList));
+            EditListCommand = new Command<ShoppingList>(async(shoppingList) => await OnEditList(shoppingList));
             CloseAddNewListPopUpCommand = new Command(OnCloseAddNewListPopUpCommand);
         }
 

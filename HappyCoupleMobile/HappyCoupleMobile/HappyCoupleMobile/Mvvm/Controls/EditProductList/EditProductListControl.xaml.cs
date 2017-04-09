@@ -12,31 +12,31 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
     public partial class EditProductListControl : StackLayout
     {
         public static BindableProperty ProductsProperty = BindableProperty
-        .Create(nameof(Products), typeof(ObservableCollection<ProductVm>), typeof(ProductListView), propertyChanged: OnProductsChanged);
+        .Create(nameof(Products), typeof(ObservableCollection<ProductVm>), typeof(EditProductListControl), propertyChanged: OnProductsChanged);
 
         public static BindableProperty ShowCheckboxesProperty = BindableProperty
-        .Create(nameof(ShowCheckboxes), typeof(bool), typeof(ProductListView), false);
+        .Create(nameof(ShowCheckboxes), typeof(bool), typeof(EditProductListControl), false);
 
         public static BindableProperty IsCheckedProperty = BindableProperty
-        .Create(nameof(IsChecked), typeof(bool), typeof(ProductListView), false);
+        .Create(nameof(IsChecked), typeof(bool), typeof(EditProductListControl), false);
 
         public static BindableProperty ShowControlPanelProperty = BindableProperty
-         .Create(nameof(ShowControlPanel), typeof(bool), typeof(ProductListView), false);
+         .Create(nameof(ShowControlPanel), typeof(bool), typeof(EditProductListControl), false);
 
         public static BindableProperty ProductSelectedCommandProperty = BindableProperty.Create
-        (nameof(ProductSelectedCommand), typeof(ICommand), typeof(ProductListView));
+        (nameof(ProductSelectedCommand), typeof(ICommand), typeof(EditProductListControl));
 
         public static BindableProperty ProductCheckedCommandProperty = BindableProperty.Create
-        (nameof(ProductCheckedCommand), typeof(ICommand), typeof(ProductListView));
+        (nameof(ProductCheckedCommand), typeof(ICommand), typeof(EditProductListControl));
 
         public static BindableProperty ButtonDeleteCommandProperty = BindableProperty.Create
-        (nameof(ButtonDeleteCommand), typeof(ICommand), typeof(ProductListView));
+        (nameof(ButtonDeleteCommand), typeof(ICommand), typeof(EditProductListControl));
 
-        public static BindableProperty ProductEditCommandProperty = BindableProperty.Create
-        (nameof(ButtonEditCommand), typeof(ICommand), typeof(ProductListView));
+        public static BindableProperty ButtonEditCommandProperty = BindableProperty.Create
+        (nameof(ButtonEditCommand), typeof(ICommand), typeof(EditProductListControl));
 
         public static BindableProperty UnSubscribeAllEventsCommandProperty = BindableProperty.Create
-        (nameof(UnSubscribeAllEventsCommand), typeof(ICommand), typeof(ProductListView), defaultBindingMode: BindingMode.OneWayToSource);
+        (nameof(UnSubscribeAllEventsCommand), typeof(ICommand), typeof(EditProductListControl), defaultBindingMode: BindingMode.OneWayToSource);
 
         public ICommand UnSubscribeAllEventsCommand
         {
@@ -46,8 +46,8 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 
         public ICommand ButtonEditCommand
         {
-            get { return (ICommand)GetValue(ProductEditCommandProperty); }
-            set { SetValue(ProductEditCommandProperty, value); }
+            get { return (ICommand)GetValue(ButtonEditCommandProperty); }
+            set { SetValue(ButtonEditCommandProperty, value); }
         }
 
         public ICommand ButtonDeleteCommand
@@ -165,10 +165,6 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
                 var newProduct = (ProductVm) e.NewItems[0];
                 InsertProduct(newProduct);
             }
-            else if (e.Action == NotifyCollectionChangedAction.Remove)
-            {
-                // OnDeleteButtonClickProductButtonClick((ProductVm)e.NewItems[0]);
-            }
         }
 
         private ProductTypePanelControl CreateNewProductTypePanelControl(ProductType productType, List<ProductVm> products)
@@ -190,7 +186,6 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             productTypePanelControl.ProductChecked += OnProductChecked;
             productTypePanelControl.ProductEditButtonClick += OnEditProductButtonClick;
         }
-
 
         private void OnEditProductButtonClick(ProductVm product)
         {

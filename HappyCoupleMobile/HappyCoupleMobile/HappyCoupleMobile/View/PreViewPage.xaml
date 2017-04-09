@@ -4,13 +4,17 @@
              xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
              xmlns:toggleImages="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ToggleImages;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.View.PreViewPage" Padding="5">
-    <StackLayout BackgroundColor="{StaticResource SecondColor}" Padding="5">
-        <Frame BackgroundColor="{StaticResource ThirthColor}" Padding="2">
-            <StackLayout x:Name="PanelHeader" BackgroundColor="{StaticResource FirstColor}" Orientation="Horizontal">
-                <Image Source="{StaticResource Vege}" />
-                <Label Text="Warzywka" TextColor="White" FontFamily="{StaticResource Medium}" VerticalTextAlignment="Center" />
-            </StackLayout>
-        </Frame>
-        <StackLayout x:Name="ProductsContainer"/>
-        </StackLayout>
+    <Frame VerticalOptions="CenterAndExpand" HeightRequest="25" 
+           HorizontalOptions="Center"
+           BackgroundColor="{StaticResource FirstColor}" Padding="5"
+           WidthRequest="200">
+           <StackLayout Orientation="Horizontal" Spacing="0">
+            <Image Source="{StaticResource AddProduct}"
+                   HorizontalOptions="CenterAndExpand"/>
+            <Label Text="Add Product" TextColor="White" 
+                   FontFamily="{StaticResource Medium}" 
+                   VerticalTextAlignment="Center"
+                   HorizontalOptions="StartAndExpand"/>
+           </StackLayout>
+    </Frame>
 </ContentPage>

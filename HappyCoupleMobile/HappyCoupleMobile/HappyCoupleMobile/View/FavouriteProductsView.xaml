@@ -5,6 +5,7 @@
              xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
              xmlns:abstractions="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              xmlns:toggleImages="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ToggleImages;assembly=HappyCoupleMobile"
+             xmlns:favouriteProductList="clr-namespace:HappyCoupleMobile.Mvvm.Controls.FavouriteProductList;assembly=HappyCoupleMobile"
              BindingContext="{Binding FavouriteProductsViewModel, Source={StaticResource ViewModelLocator}}"
              x:Class="HappyCoupleMobile.View.FavouriteProductsView">
     <StackLayout Spacing="0">
@@ -15,7 +16,10 @@
                 <RowDefinition Height="0.8*"/>
             </Grid.RowDefinitions>
             <controls:FavouriteProductTypesCarousel ProductTypeSelectedCommand="{Binding ProductTypeSelectedCommand}" BackgroundColor="{StaticResource SecondColor}" Grid.Row="0" FavouritesProductTypes="{Binding FavouritesProductTypes}" Position="{Binding CarouselPosition}"/>
-            <controls:ProductListView Grid.Row="1"  ProductSelectedCommand="{Binding ProductSelectedCommand}" Products="{Binding MockListForProduct}"/>
+          <favouriteProductList:FavouriteProductListControl Grid.Row="1"  Products="{Binding MockListForProduct}"
+                                                            ButtonSelectProductCommand="{Binding ProductSelectedCommand}"
+                                                            ButtonDeleteCommand="{Binding DeleteProductCommand}"
+                                                            UnSubscribeAllEventsCommand="{Binding UnSubscribeAllEventsFromViewCommand, Mode=OneWayToSource}"/>
         </Grid>
     </StackLayout>
 </abstract:BaseHappyContentPage>

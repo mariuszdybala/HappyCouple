@@ -22,10 +22,11 @@ namespace HappyCoupleMobile.Data
             };
         }
 
-        public static Product GetProduct(int addedBy, string comment, int shoppingListId, int productTypeID, int quantity = 1)
+        public static Product GetProduct(string name, int addedBy, string comment, int shoppingListId, int productTypeID, int quantity = 1)
         {
             return new Product
             {
+                Name = name,
                 AddDate = DateTime.Now,
                 AddedById = addedBy,
                 Comment = comment,

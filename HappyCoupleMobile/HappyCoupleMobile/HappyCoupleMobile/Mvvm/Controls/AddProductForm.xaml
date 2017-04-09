@@ -19,24 +19,6 @@
     <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}" VerticalOptions="FillAndExpand" BindingContext="{x:Reference AddProductForm}">
         <StackLayout Padding="5" VerticalOptions="StartAndExpand">
             <StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label VerticalOptions="End" Text="Nazwa" TextColor="White"/>
-                    <toggleImages:FavouriteButton VerticalOptions="Start" HorizontalOptions="EndAndExpand" />
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Entry x:Name="NameEntry" HorizontalOptions="FillAndExpand" Text="" Placeholder="Użyj nazwy domyślnej"/>
-                    <Image Style="{StaticResource EraseImageStyle}"
-                                                attached:ClickEventAttached.ClickCommand="{Binding EraseEntryCommand}"
-                                                attached:ClickEventAttached.ClickParameter="{Binding Source={x:Reference NameEntry}}">
-                        <Image.Triggers>
-                            <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference NameEntry}, Path=Text.Length}" Value="0">
-                                <Setter Property="Image.IsVisible" Value="False"/>
-                            </DataTrigger>
-                        </Image.Triggers>
-                    </Image>
-                </StackLayout>
-            </StackLayout>
-            <StackLayout>
                 <Label Text="Twoja nazwa" TextColor="White"/>
                 <StackLayout Orientation="Horizontal">
                     <Entry x:Name="NewNameEntry" Text="" HorizontalOptions="FillAndExpand" Placeholder="Podaj swoją nazwę produktu"></Entry>
@@ -81,9 +63,15 @@
                     </Image>
                 </StackLayout>
             </StackLayout>
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label VerticalTextAlignment="Center" Text="Dodaj do ulubionych" TextColor="White"/>
+                    <toggleImages:FavouriteButton VerticalOptions="Start" HorizontalOptions="EndAndExpand" Toggled="OnProductAddedToFavourite"/>
+                </StackLayout>
+            </StackLayout>
         </StackLayout>
         <StackLayout Padding="5">
-                <StackLayout Orientation="Vertical" x:Name="ProductTypesContainer"/>
+            <StackLayout Orientation="Vertical" x:Name="ProductTypesContainer"/>
         </StackLayout>
     </StackLayout>
 </StackLayout>

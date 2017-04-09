@@ -11,6 +11,8 @@ namespace HappyCoupleMobile.Mvvm.Controls
 {
     public partial class ProductTypeView : Frame
     {
+        public event Action<ProductType> ProductTypeSelected;
+
         public static BindableProperty ProductTypeProperty = BindableProperty.Create
         (nameof(ProductType), typeof(ProductType), typeof(ProductTypeView), null);
 
@@ -29,9 +31,23 @@ namespace HappyCoupleMobile.Mvvm.Controls
             set { SetValue(ProductTypeProperty, value); }
         }
 
+        public ICommand ProductTypeSelectedCommand { get; set; }
+
         public ProductTypeView()
         {
             InitializeComponent();
+            ProductTypeSelectedCommand = new Command(OnProductTypeSelected);
+        }
+
+        private void OnProductTypeSelected()
+        {
+            IsSelected = true;
+            BackgroundColor = (Color) Application.Current.Resources["ThirthColor"];
+
+            if (IsSelected)
+            {
+                ProductTypeSelected?.Invoke(ProductType);
+            }
         }
 
         private static void OnIsSelectedChanged(BindableObject bindable, object oldvalue, object newvalue)

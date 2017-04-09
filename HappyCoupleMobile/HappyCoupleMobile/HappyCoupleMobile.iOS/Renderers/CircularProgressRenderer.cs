@@ -20,13 +20,6 @@ namespace HappyCoupleMobile.iOS.Renderers
         {
             base.OnElementChanged(e);
 
-            var circularProgress = Element as CircularProgress;
-
-            if (circularProgress == null)
-            {
-                return;
-            }
-
             var rect = new CGRect(0,0, 50, 50);
             progressView = new CircularProgressView(rect);
 

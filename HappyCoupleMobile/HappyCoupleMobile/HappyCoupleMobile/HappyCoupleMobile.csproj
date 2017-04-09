@@ -80,6 +80,9 @@
     <Compile Include="Mvvm\Controls\AddProductForm.xaml.cs">
       <DependentUpon>AddProductForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Mvvm\Controls\Buttons\AddProductButton.xaml.cs">
+      <DependentUpon>AddProductButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Mvvm\Controls\EditProductList\EditProductListControl.xaml.cs">
       <DependentUpon>EditProductListControl.xaml</DependentUpon>
     </Compile>
@@ -89,13 +92,13 @@
     <Compile Include="Mvvm\Controls\EditProductList\ProductViewControl.xaml.cs">
       <DependentUpon>ProductViewControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Mvvm\Controls\FavouriteProductList\FavouriteProductListControl.xaml.cs">
+      <DependentUpon>FavouriteProductListControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Mvvm\Controls\FavouriteProductTypesCarousel.xaml.cs">
       <DependentUpon>FavouriteProductTypesCarousel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Mvvm\Controls\HighlineView.cs" />
-    <Compile Include="Mvvm\Controls\ProductListView.xaml.cs">
-      <DependentUpon>ProductListView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Mvvm\Controls\ProductTypeView.xaml.cs">
       <DependentUpon>ProductTypeView.xaml</DependentUpon>
     </Compile>
@@ -364,12 +367,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mvvm\Controls\ProductListView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Mvvm\Controls\ProductTypeView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -395,6 +392,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mvvm\Controls\FavouriteProductList\FavouriteProductListControl.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mvvm\Controls\Buttons\AddProductButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />

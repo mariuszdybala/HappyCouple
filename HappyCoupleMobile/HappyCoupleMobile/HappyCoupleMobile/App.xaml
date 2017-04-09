@@ -40,6 +40,7 @@
             <FileImageSource x:Key="Date">date.png</FileImageSource>
             <FileImageSource x:Key="AddToFavorite">add_favorite.png</FileImageSource>
             <FileImageSource x:Key="AddToFavoriteFilled">add_favorite_filled.png</FileImageSource>
+            <FileImageSource x:Key="AddFromFavourites">add_from_favourite.png</FileImageSource>
             <FileImageSource x:Key="Erase">erase.png</FileImageSource>
             <FileImageSource x:Key="Checked">checked.png</FileImageSource>
             <FileImageSource x:Key="UnChecked">unchecked.png</FileImageSource>

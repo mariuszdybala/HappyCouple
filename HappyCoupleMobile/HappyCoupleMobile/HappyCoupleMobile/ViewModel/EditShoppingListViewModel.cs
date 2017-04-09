@@ -24,6 +24,7 @@ namespace HappyCoupleMobile.ViewModel
         private string _boughtProductsCount;
         private string _leftProductsCount;
         private string _progressPercent;
+        private string _shoppingListName;
 
         public string BoughtProductsCount
         {
@@ -43,9 +44,18 @@ namespace HappyCoupleMobile.ViewModel
             set { Set(ref _progressPercent, value); }
         }
 
-        public RelayCommand AddProductCommand { get; set; }
-        public RelayCommand<ProductVm> ProductCheckedCommand { get; set; }
+        public string ShoppingListName
+        {
+            get { return _shoppingListName; }
+            set { Set(ref _shoppingListName, value); }
+        }
+
+        public Command AddProductCommand { get; set; }
+
+        public Command<ProductVm> ProductCheckedCommand { get; set; }
         public Command<ProductVm> DeleteProductCommand { get; set; }
+        public Command<ProductVm> EditProductCommand { get; set; }
+        public Command UnSubscribeAllEventsFromViewCommand { get; set; }
 
         public ObservableCollection<ProductVm> Products { get; set; }
 
@@ -60,63 +70,27 @@ namespace HappyCoupleMobile.ViewModel
         {
             RegisterMessage(this);
 
-            //mocks
             DeleteProductCommand = new Command<ProductVm>(OnDeleteProduct);
-
-
-            AddProductCommand = new RelayCommand(async () => await OnAddProduct());
-            ProductCheckedCommand = new RelayCommand<ProductVm>(async (product) => await OnProductChecked(product));
+            EditProductCommand = new Command<ProductVm>(OnEditProduct);
+            AddProductCommand = new Command(async () => await OnAddProduct());
+            ProductCheckedCommand = new Command<ProductVm>(async (product) => await OnProductChecked(product));
         }
-
-        private async void AddProductButton()
-        {
-            var types = await _productServices.GetAllProductTypesAync();
-
-            var newProduct = new Product
-            {
-                Id = 5,
-                ProductType = types[6],
-                Name = "Marcheweczka",
-                Comment = "To jest pyszna marcheweczka trzeba ją kupić",
-                Quantity = 4
-            };
-
-            Products.Add(new ProductVm(newProduct));
-
-            RaisePropertyChanged(nameof(Products));
-        }
-
 
         protected override async Task OnNavigateTo(IMessageData message)
         {
-            var types = await _productServices.GetAllProductTypesAync();
+            var shoppingList = message.GetValue<ShoppingList>();
 
-            var productsModels = new List<Product>(
-                new List<Product>
-                {
-                    new Product
-                    {
-                        Id = 0,
-                        ProductType =  types[2],
-                        Name = "Marcheweczka",
-                        Comment = "To jest pyszna marcheweczka trzeba ją kupić",
-                        Quantity = 4
-                    },
-                    new Product {Id = 1,ProductType =  types[0], Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-                    new Product {Id = 2,ProductType =  types[1],Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
-                    new Product {Id = 3,ProductType =  types[1], Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
-                    new Product {Id = 4,ProductType =  types[0], Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10}
-                });
 
-            Products = new ObservableCollection<ProductVm>(productsModels.Select(x => new ProductVm(x)));
+            Products = new ObservableCollection<ProductVm>(shoppingList.Products.Select(x => new ProductVm(x)));
 
-            SetViewProperties();
+            SetViewProperties(shoppingList.Name);
 
             RaisePropertyChanged(nameof(Products));
         }
 
-        private void SetViewProperties()
+        private void SetViewProperties(string shoppingListName)
         {
+            ShoppingListName = shoppingListName;
             CalculateCurrentShoppingProgress();
         }
 
@@ -147,6 +121,12 @@ namespace HappyCoupleMobile.ViewModel
 
         private void OnDeleteProduct(ProductVm product)
         {
+            Products.Remove(product);
+            CalculateCurrentShoppingProgress();
+        }
+
+        private void OnEditProduct(ProductVm product)
+        {
         }
 
         public void Upadte(Product data)
@@ -171,6 +151,12 @@ namespace HappyCoupleMobile.ViewModel
 
         public void Add(ShoppingList data)
         {
+        }
+
+
+        protected override void CleanResources()
+        {
+            UnSubscribeAllEventsFromViewCommand.Execute(null);
         }
     }
 }

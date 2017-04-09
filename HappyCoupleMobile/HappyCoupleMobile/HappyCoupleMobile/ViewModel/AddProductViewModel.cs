@@ -19,9 +19,6 @@ namespace HappyCoupleMobile.ViewModel
     {
         private readonly IProductServices _productService;
         public ObservableCollection<ProductType> ProductTypes { get; set; }
-
-        public ObservableCollection<ProductType> FavouritesProductTypes { get; set; }
-
         public ICommand GoToFavouriteProductsCommand { get; set; }
 
         public AddProductViewModel(ISimpleAuthService simpleAuthService, IProductServices productService) : base(simpleAuthService)
@@ -65,10 +62,7 @@ namespace HappyCoupleMobile.ViewModel
 
             ProductTypes = new ObservableCollection<ProductType>(productTypes);
 
-            FavouritesProductTypes = new ObservableCollection<ProductType>(productTypes);
-
             RaisePropertyChanged(nameof(ProductTypes));
-            RaisePropertyChanged(nameof(FavouritesProductTypes));
         }
 
         protected override void CleanResources()

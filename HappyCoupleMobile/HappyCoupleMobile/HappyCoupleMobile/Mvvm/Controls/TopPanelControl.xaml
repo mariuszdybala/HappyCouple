@@ -18,6 +18,6 @@
                 </Image.GestureRecognizers>
             </Image>
         </StackLayout>
-        <BoxView HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}"/>
+        <BoxView HeightRequest="1" BackgroundColor="{StaticResource ThirthColor}"/>
     </StackLayout>
 </StackLayout>
