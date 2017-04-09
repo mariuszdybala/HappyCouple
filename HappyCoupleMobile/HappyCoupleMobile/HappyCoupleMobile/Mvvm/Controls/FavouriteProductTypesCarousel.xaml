@@ -10,8 +10,8 @@
                                       Arrows="True" Position="{Binding Position}">
     <abstractions:CarouselViewControl.ItemTemplate>
         <DataTemplate>
-            <StackLayout BackgroundColor="{StaticResource SecondColor}" VerticalOptions="CenterAndExpand">
-                <Image Source="{Binding IconName}" HorizontalOptions="Center"/>
+            <StackLayout BackgroundColor="{StaticResource SecondColor}" VerticalOptions="CenterAndExpand" Padding="5">
+                <Image Source="{Binding IconName, Converter={StaticResource IconNameToImageSourceConverter}}" HorizontalOptions="Center"/>
                 <Label Text="{Binding Type}" HorizontalOptions="Center" TextColor="White" FontFamily="{StaticResource Medium}"/>
             </StackLayout>
         </DataTemplate>

@@ -91,6 +91,13 @@ namespace HappyCoupleMobile.Mvvm.Controls
 
         public void InitializeProductTypesContainer(ObservableCollection<ProductType> productTypes)
         {
+            //            foreach (var productType in productTypes)
+            //            {
+            //                var imageSource = (FileImageSource) Application.Current.Resources[productType.IconName];
+            //                ProductTypesContainer.Children.Add(new Image {Source =  imageSource});
+            //
+            //            }
+
             int containerCapacity = 4;
             int containersCount = productTypes.Count / containerCapacity;
             int lastContainerCapacity = productTypes.Count % containerCapacity;
@@ -152,7 +159,6 @@ namespace HappyCoupleMobile.Mvvm.Controls
         {
             foreach (var productTypeStack in ProductTypesContainer.Children.OfType<StackLayout>())
             {
-
                 foreach (var currentProductType in productTypeStack.Children.OfType<ProductTypeView>().Where(x => x.ProductType.Id != productType.Id))
                 {
                     currentProductType.IsSelected = false;

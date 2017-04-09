@@ -5,6 +5,7 @@
              xmlns:attached="clr-namespace:HappyCoupleMobile.Mvvm.AttachedProperties;assembly=HappyCoupleMobile"
              xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              xmlns:toggleImages="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ToggleImages;assembly=HappyCoupleMobile"
+             xmlns:buttons="clr-namespace:HappyCoupleMobile.Mvvm.Controls.Buttons;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.Mvvm.Controls.AddProductForm" 
              Spacing="0"
              x:Name="AddProductForm">

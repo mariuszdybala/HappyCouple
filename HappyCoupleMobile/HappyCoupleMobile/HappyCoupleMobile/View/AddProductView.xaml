@@ -13,6 +13,6 @@
         <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
             <controls:AddProductForm ProductTypesSource="{Binding ProductTypes}"/>
         </StackLayout>
-      <buttons:AddProductButton/>
+      <buttons:AddProductButton VerticalOptions="EndAndExpand" Margin="0,0,0,10"/>
     </StackLayout>
 </views:BaseHappyContentPage>

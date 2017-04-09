@@ -121,6 +121,7 @@
       <DependentUpon>TopPanelControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Mvvm\Converters\BoolToValueConverter.cs" />
+    <Compile Include="Mvvm\Converters\IconNameToImageSourceConverter.cs" />
     <Compile Include="Mvvm\Converters\ObjectInstanceValueToBooleanConverter.cs" />
     <Compile Include="Mvvm\Converters\ProductCountColorConverter.cs" />
     <Compile Include="Mvvm\Converters\StringIsNullOrEmptyToBoolConverter.cs" />
