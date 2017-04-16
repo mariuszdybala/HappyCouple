@@ -9,8 +9,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -19,17 +17,17 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-  <key>UIAppFonts</key>
-  <array>
-    <string>Fonts/Quicksand-Bold.ttf</string>
-    <string>Fonts/Quicksand-Light.ttf</string>
-    <string>Fonts/Quicksand-Medium.ttf</string>
-    <string>Fonts/Quicksand-Regular.ttf</string>
-  </array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Fonts/Quicksand-Bold.ttf</string>
+		<string>Fonts/Quicksand-Light.ttf</string>
+		<string>Fonts/Quicksand-Medium.ttf</string>
+		<string>Fonts/Quicksand-Regular.ttf</string>
+	</array>
 	<key>MinimumOSVersion</key>
 	<string>9.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>HappyCoupleMobile</string>
+	<string>HappyCouple</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.md.HappyCoupleMobile</string>
 	<key>CFBundleVersion</key>
