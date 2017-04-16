@@ -159,6 +159,18 @@
     <BundleResource Include="Resources\Fonts\Quicksand-Light.ttf" />
     <BundleResource Include="Resources\Fonts\Quicksand-Medium.ttf" />
     <BundleResource Include="Resources\Fonts\Quicksand-Regular.ttf" />
+    <BundleResource Include="Resources\home_screen.png" />
+    <BundleResource Include="Resources\home_screen%402x.png" />
+    <BundleResource Include="Resources\home_screen%403x.png" />
+    <BundleResource Include="Resources\home_background.png" />
+    <BundleResource Include="Resources\home_background%402x.png" />
+    <BundleResource Include="Resources\home_background%403x.png" />
+    <BundleResource Include="Resources\home_welcome.png" />
+    <BundleResource Include="Resources\home_welcome%402x.png" />
+    <BundleResource Include="Resources\home_welcome%403x.png" />
+    <BundleResource Include="Resources\home_sign.png" />
+    <BundleResource Include="Resources\home_sign%402x.png" />
+    <BundleResource Include="Resources\home_sign%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%402x.png" />
