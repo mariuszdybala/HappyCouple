@@ -118,8 +118,6 @@
     <MtouchUseLlvm>False</MtouchUseLlvm>
     <MtouchUseThumb>False</MtouchUseThumb>
     <MtouchEnableBitcode>False</MtouchEnableBitcode>
-    <MtouchUseSGen>False</MtouchUseSGen>
-    <MtouchUseRefCounting>False</MtouchUseRefCounting>
     <OptimizePNGs>True</OptimizePNGs>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
@@ -161,13 +159,11 @@
     <BundleResource Include="Resources\Fonts\Quicksand-Light.ttf" />
     <BundleResource Include="Resources\Fonts\Quicksand-Medium.ttf" />
     <BundleResource Include="Resources\Fonts\Quicksand-Regular.ttf" />
+    <BundleResource Include="Resources\happy_home_screen.png" />
+    <BundleResource Include="Resources\happy_home_screen%402x.png" />
+    <BundleResource Include="Resources\happy_home_screen%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default-568h%402x.png" />
-    <BundleResource Include="Resources\Default-Portrait.png" />
-    <BundleResource Include="Resources\Default-Portrait%402x.png" />
-    <BundleResource Include="Resources\Default.png" />
-    <BundleResource Include="Resources\Default%402x.png" />
     <BundleResource Include="Resources\Icon-60%402x.png" />
     <BundleResource Include="Resources\Icon-60%403x.png" />
     <BundleResource Include="Resources\Icon-76.png" />

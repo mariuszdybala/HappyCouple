@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="X5k-f2-b5h">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="X5k-f2-b5h">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,16 +17,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="Icon-60.png" translatesAutoresizingMaskIntoConstraints="NO" id="23">
-                                <rect key="frame" x="270" y="270" width="60" height="60"/>
-                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="74" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="happy_home_screen.png">
+                                <rect key="frame" x="247" y="189" width="145" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="23" firstAttribute="centerY" secondItem="yd7-JS-zBw" secondAttribute="centerY" priority="1" id="39"/>
-                            <constraint firstItem="23" firstAttribute="centerX" secondItem="yd7-JS-zBw" secondAttribute="centerX" priority="1" id="41"/>
-                        </constraints>
+                        <color key="backgroundColor" customColorSpace="sRGB" colorSpace="calibratedRGB" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XAI-xm-WK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -34,6 +31,54 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon-60.png" width="180" height="180"/>
+        <image name="Icon-60.png" width="60" height="60"/>
+        <image name="Icon-76.png" width="76" height="76"/>
+        <image name="Icon-Small-40.png" width="40" height="40"/>
+        <image name="Icon-Small.png" width="29" height="29"/>
+        <image name="fix.png" width="50" height="50"/>
+        <image name="clothes.png" width="50" height="50"/>
+        <image name="fun.png" width="50" height="50"/>
+        <image name="gift.png" width="50" height="50"/>
+        <image name="importance.png" width="64" height="64"/>
+        <image name="money.png" width="50" height="50"/>
+        <image name="outgoings.png" width="50" height="50"/>
+        <image name="shopping.png" width="50" height="50"/>
+        <image name="todo.png" width="50" height="50"/>
+        <image name="Icon.png" width="57" height="57"/>
+        <image name="add_list.png" width="30" height="30"/>
+        <image name="couple.png" width="30" height="30"/>
+        <image name="fruits.png" width="30" height="30"/>
+        <image name="olive.png" width="30" height="30"/>
+        <image name="drink.png" width="30" height="30"/>
+        <image name="dring.png" width="30" height="30"/>
+        <image name="alkohol.png" width="30" height="30"/>
+        <image name="vege.png" width="30" height="30"/>
+        <image name="fish.png" width="30" height="30"/>
+        <image name="bread.png" width="30" height="30"/>
+        <image name="meat.png" width="30" height="30"/>
+        <image name="spice.png" width="30" height="30"/>
+        <image name="dairy.png" width="30" height="30"/>
+        <image name="edit.png" width="30" height="30"/>
+        <image name="date.png" width="30" height="30"/>
+        <image name="food.png" width="30" height="30"/>
+        <image name="grain.png" width="30" height="30"/>
+        <image name="delete.png" width="30" height="30"/>
+        <image name="info.png" width="30" height="30"/>
+        <image name="closewindow.png" width="30" height="30"/>
+        <image name="add_to_list.png" width="30" height="30"/>
+        <image name="delete_list.png" width="30" height="30"/>
+        <image name="set_closed_list.png" width="30" height="30"/>
+        <image name="back.png" width="30" height="30"/>
+        <image name="add_favorite_filled.png" width="30" height="30"/>
+        <image name="add_favorite.png" width="30" height="30"/>
+        <image name="erase.png" width="30" height="30"/>
+        <image name="unchecked.png" width="30" height="30"/>
+        <image name="checked.png" width="30" height="30"/>
+        <image name="shopping_bar.png" width="50" height="50"/>
+        <image name="beer.png" width="30" height="30"/>
+        <image name="beer_cap.png" width="30" height="30"/>
+        <image name="add_product.png" width="30" height="30"/>
+        <image name="add_from_favourite.png" width="30" height="30"/>
+        <image name="happy_home_screen.png" width="100" height="100"/>
     </resources>
 </document>
