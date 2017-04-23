@@ -10,13 +10,13 @@ namespace HappyCoupleMobile.Data
 {
     public static class MockedData
     {
-        public static ShoppingList GetShoppingList(string name,int addedBy, string comment, ShoppingListStatus status = ShoppingListStatus.Open)
+        public static ShoppingList GetShoppingList(int id, string name,int addedBy, ShoppingListStatus status = ShoppingListStatus.Active)
         {
             return new ShoppingList
             {
+                Id = id,
                 AddDate = DateTime.Now,
                 AddedById = addedBy,
-                Comment = comment,
                 Status = status,
                 Name = name
             };

@@ -43,17 +43,11 @@ namespace HappyCoupleMobile.Model
         [Column("close_date")]
         public DateTime? CloseDate { get; set; }
 
-        [Column("comment")]
-        public string Comment { get; set; }
-
         [Column("shopping_list_status")]
         public ShoppingListStatus Status { get; set; }
 
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Product> Products { get; set; }
-
-        [Ignore]
-        public int ProductsCount => Products.Count;
 
         public ShoppingList()
         {

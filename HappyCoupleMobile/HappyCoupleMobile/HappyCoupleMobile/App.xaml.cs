@@ -95,6 +95,7 @@ namespace HappyCoupleMobile
             SimpleIoc.Default.Register<ISimpleAuthService, SimpleAuthService>();
             SimpleIoc.Default.Register<INavigationPageService, NavigationPageService>();
             SimpleIoc.Default.Register<IProductServices, ProductService>();
+            SimpleIoc.Default.Register<IShoppingListService, ShoppingListService>();
 
             SimpleIoc.Default.Register<IShoppingListRepository, ShoppingListRepository>();
             SimpleIoc.Default.Register<IUserRepository, UserRepository>();
@@ -155,11 +156,11 @@ namespace HappyCoupleMobile
             var productTypes = await shoppingListRepository.GetAllProductTypesAsync();
 
             await shoppingListRepository.InsertShoppingListAsync(
-                MockedData.GetShoppingList("Lista Świąteczna", 1, string.Empty));
+                MockedData.GetShoppingList(0,"Lista Świąteczna", 1));
             await shoppingListRepository.InsertShoppingListAsync(
-                MockedData.GetShoppingList("Cotygodniowe zakupy", 1, string.Empty));
+                MockedData.GetShoppingList(1, "Cotygodniowe zakupy", 1));
             await shoppingListRepository.InsertShoppingListAsync(
-                MockedData.GetShoppingList("Imprezka na weekend", 1, string.Empty));
+                MockedData.GetShoppingList(2, "Imprezka na weekend", 1));
 
             IList<ShoppingList> lists = await shoppingListRepository.GetAllShoppingListAsync();
 

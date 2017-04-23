@@ -1,9 +1,8 @@
 ﻿namespace HappyCoupleMobile.Enums
 {
-    public enum ShoppingListStatus
+    public enum ShoppingListTabType
     {
-        Closed,
         Active,
-        Deleted
+        Closed
     }
 }

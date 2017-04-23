@@ -8,35 +8,44 @@
              xmlns:renderers="clr-namespace:HappyCoupleMobile.Mvvm.Renderers;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.View.EditShoppingListView"
              BindingContext="{Binding EditShoppingListViewModel, Source={StaticResource ViewModelLocator}}">
-  <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
-    <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Edycja listy zakupów" RightIconSource="{StaticResource AddProduct}" RightIconTapCommand="{Binding AddProductCommand}"/>
-    <Grid Padding="10">
-      <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-      </Grid.RowDefinitions>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="0.2*" />
-        <ColumnDefinition Width="0.8*" />
-      </Grid.ColumnDefinitions>
-      <StackLayout Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" HorizontalOptions="Center" VerticalOptions="Center">
-          <renderers:CircularProgress WidthRequest="50" HeightRequest="50" Percent="{Binding ProgressPercent}"/>
-      </StackLayout>
-      <StackLayout Grid.Column="1" Grid.Row="0">
-        <Label Text="{Binding ShoppingListName}" TextColor="White" FontFamily="{StaticResource Medium}"/>
-      </StackLayout>
-      <StackLayout Grid.Column="1" Grid.Row="1">
-        <StackLayout Orientation="Horizontal">
-          <Label x:Name="BuyedProductsLabel" Text="{Binding BoughtProductsCount}" FontFamily="{StaticResource Medium}" TextColor="{StaticResource FifthColor}"/>
-          <Label Text="/" FontFamily="{StaticResource Medium}"/>
-          <Label x:Name="CountProductsLabel" Text="{Binding LeftProductsCount}" FontFamily="{StaticResource Medium}" TextColor="{StaticResource FourthColor}"/>
-        </StackLayout>
-      </StackLayout>
-      </Grid>
-    <editProductList:EditProductListControl x:Name="EditProductListControl"  Products="{Binding Products}" 
+    <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
+        <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Edycja listy zakupów" RightIconSource="{StaticResource AddProduct}" RightIconTapCommand="{Binding AddProductCommand}"/>
+        <Grid Padding="10,15,10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*" />
+                <ColumnDefinition Width="0.8*" />
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" HorizontalOptions="Center" VerticalOptions="Center">
+                <renderers:CircularProgress WidthRequest="50" HeightRequest="50" Percent="{Binding ShoppingList.ProgressPercent}"/>
+            </StackLayout>
+            <StackLayout Grid.Column="1" Grid.Row="0">
+                <Label Text="{Binding ShoppingList.Name}" TextColor="White" FontFamily="{StaticResource Medium}"/>
+            </StackLayout>
+            <StackLayout Grid.Column="1" Grid.Row="1">
+                <StackLayout Orientation="Horizontal">
+                    <Label x:Name="BuyedProductsLabel" Text="{Binding ShoppingList.BoughtProductsCount}" FontFamily="{StaticResource Medium}" TextColor="{StaticResource FifthColor}"/>
+                    <Label Text="/" FontFamily="{StaticResource Medium}"/>
+                    <Label x:Name="CountProductsLabel" Text="{Binding ShoppingList.LeftProductsCount}" FontFamily="{StaticResource Medium}" TextColor="{StaticResource FourthColor}"/>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+        <editProductList:EditProductListControl x:Name="EditProductListControl"  Products="{Binding ShoppingList.Products}" 
+                                            IsVisible="{Binding ShoppingList.ShowPlaceholder, Converter={StaticResource InverseBooleanConverter}}"
                                             ButtonDeleteCommand="{Binding DeleteProductCommand}" 
                                             ButtonEditCommand="{Binding EditProductCommand}"
                                             ProductCheckedCommand="{Binding ProductCheckedCommand}"
                                             UnSubscribeAllEventsCommand="{Binding UnSubscribeAllEventsFromViewCommand, Mode=OneWayToSource}"/>
-  </StackLayout>
+        <StackLayout VerticalOptions="StartAndExpand" IsVisible="{Binding ShoppingList.ShowPlaceholder}"
+                   Spacing="10" Margin="0,40,0,0">
+            <Image Source="{StaticResource EmptyProducts}"/>
+            <Label Text="Nie masz żadnych" Style="{StaticResource MediumWhite20Font}"
+                   HorizontalTextAlignment="Center"/>
+            <Label Text="produktów" Style="{StaticResource MediumWhite20Font}"
+                 HorizontalTextAlignment="Center"/>
+        </StackLayout>
+    </StackLayout>
 </view:BaseHappyContentPage>

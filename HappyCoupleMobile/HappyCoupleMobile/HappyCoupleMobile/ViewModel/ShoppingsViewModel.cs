@@ -1,22 +1,31 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using HappyCoupleMobile.Data;
+using HappyCoupleMobile.Enums;
 using HappyCoupleMobile.Model;
 using HappyCoupleMobile.Mvvm.Messages;
 using HappyCoupleMobile.Mvvm.Messages.Interface;
 using HappyCoupleMobile.Notification.Interfaces;
 using HappyCoupleMobile.Repositories.Interfaces;
 using HappyCoupleMobile.Services;
+using HappyCoupleMobile.Services.Interfaces;
 using HappyCoupleMobile.View;
 using HappyCoupleMobile.ViewModel.Abstract;
+using HappyCoupleMobile.VM;
 using Xamarin.Forms;
 
 namespace HappyCoupleMobile.ViewModel
 {
     public class ShoppingsViewModel : BaseHappyViewModel, IProductObserver, IShoppingListObserver
     {
+        private readonly IShoppingListService _shoppingListService;
         private readonly IShoppingListRepository _shoppingListRepository;
         private readonly INotificationManager _notificationManager;
+
+        private ObservableCollection<ShoppingListVm> _closedShoppingLists;
+        private ObservableCollection<ShoppingListVm> _activeShoppingLists;
 
         private bool _showAddNewListPopUp;
 
@@ -26,33 +35,51 @@ namespace HappyCoupleMobile.ViewModel
             set { Set(ref _showAddNewListPopUp, value); }
         }
 
-        public Command<string> AddNewListCommand { get; set; }
-        public Command<ShoppingList> DeleteListCommand { get; set; }
-        public Command<ShoppingList> AddProductToListCommand { get; set; }
-        public Command<ShoppingList> CloseListCommand { get; set; }
-        public Command<ShoppingList> EditListCommand { get; set; }
+        public Command AddNewListCommand { get; set; }
+        public Command<string> CreateNewListCommand { get; set; }
+        public Command<ShoppingListVm> DeleteListCommand { get; set; }
+        public Command<ShoppingListVm> AddProductToListCommand { get; set; }
+        public Command<ShoppingListVm> CloseListCommand { get; set; }
+        public Command<ShoppingListVm> EditListCommand { get; set; }
         public Command CloseAddNewListPopUpCommand { get; set; }
 
-
-        public ObservableCollection<ShoppingList> ActiveShoppingLists { get; set; }
-        public ObservableCollection<ShoppingList> ClosedShoppingLists { get; set; }
-
-        public ShoppingsViewModel(ISimpleAuthService simpleAuthService, IShoppingListRepository shoppingListRepository, INotificationManager notificationManager) : base(simpleAuthService)
+        public ObservableCollection<ShoppingListVm> ActiveShoppingLists
         {
+            get { return _activeShoppingLists; }
+            set
+            {
+                Set(ref _activeShoppingLists, value);
+            }
+        }
+
+        public ObservableCollection<ShoppingListVm> ClosedShoppingLists
+        {
+            get { return _closedShoppingLists; }
+            set
+            {
+                Set(ref _closedShoppingLists, value);
+            }
+        }
+
+        public ShoppingsViewModel(ISimpleAuthService simpleAuthService, IShoppingListService shoppingListService, IShoppingListRepository shoppingListRepository,
+                                    INotificationManager notificationManager) : base(simpleAuthService)
+        {
+            _shoppingListService = shoppingListService;
             _shoppingListRepository = shoppingListRepository;
             _notificationManager = notificationManager;
             RegisterCommand();
 
-            ActiveShoppingLists = new ObservableCollection<ShoppingList>();
+            ActiveShoppingLists = new ObservableCollection<ShoppingListVm>();
         }
 
         private void RegisterCommand()
         {
-            AddNewListCommand = new Command<string>(OnAddNewListCommand);
-            DeleteListCommand = new Command<ShoppingList>(OnDeleteList);
-            AddProductToListCommand = new Command<ShoppingList>(OnAddProductToList);
-            CloseListCommand = new Command<ShoppingList>(OnCloseList);
-            EditListCommand = new Command<ShoppingList>(async(shoppingList) => await OnEditList(shoppingList));
+            AddNewListCommand = new Command(OnAddNewListCommand);
+            CreateNewListCommand = new Command<string>(async (newListName) => await OnCreateNewListCommand(newListName));
+            DeleteListCommand = new Command<ShoppingListVm>(OnDeleteList);
+            AddProductToListCommand = new Command<ShoppingListVm>(OnAddProductToList);
+            CloseListCommand = new Command<ShoppingListVm>(OnCloseList);
+            EditListCommand = new Command<ShoppingListVm>(async(shoppingList) => await OnEditList(shoppingList));
             CloseAddNewListPopUpCommand = new Command(OnCloseAddNewListPopUpCommand);
         }
 
@@ -65,32 +92,39 @@ namespace HappyCoupleMobile.ViewModel
         {
             var shoppingLists = await _shoppingListRepository.GetAllShoppingListWithProductsAsync();
 
-            ActiveShoppingLists = new ObservableCollection<ShoppingList>(shoppingLists);
+            ActiveShoppingLists = new ObservableCollection<ShoppingListVm>(shoppingLists.Select(x=>new ShoppingListVm(x)));
 
-            ClosedShoppingLists = new ObservableCollection<ShoppingList> {ActiveShoppingLists.Last()};
+            var closedList = MockedData.GetShoppingList(5, "Imprezka na weekend - nieaktywana już", 1, ShoppingListStatus.Closed);
+
+            ClosedShoppingLists = new ObservableCollection<ShoppingListVm> { new ShoppingListVm(closedList) };
 
             RaisePropertyChanged(nameof(ActiveShoppingLists));
             RaisePropertyChanged(nameof(ClosedShoppingLists));
         }
 
-
-
-        private async Task OnEditList(ShoppingList shoppingList)
+        private async Task OnEditList(ShoppingListVm shoppingList)
         {
-            await NavigateToWithMessage<EditShoppingListView, EditShoppingListViewModel>(new BaseMessage<EditShoppingListViewModel>("ShoppingList", shoppingList));
+            await NavigateToWithMessage<EditShoppingListView, EditShoppingListViewModel>(new BaseMessage<EditShoppingListViewModel>(MessagesKeys.ShoppingListKey, shoppingList));
         }
 
-        private void OnCloseList(ShoppingList shoppingList)
-        {
-            _notificationManager.UpdateProduct(new Product());
-        }
-
-        private void OnAddProductToList(ShoppingList shoppingList)
+        private void OnCloseList(ShoppingListVm shoppingList)
         {
         }
 
-        private void OnDeleteList(ShoppingList shoppingList)
+        private void OnAddProductToList(ShoppingListVm shoppingList)
         {
+        }
+
+        private void OnDeleteList(ShoppingListVm shoppingList)
+        {
+            if (shoppingList.Status == ShoppingListStatus.Active)
+            {
+                ActiveShoppingLists.Remove(shoppingList);
+            }
+            else
+            {
+                ClosedShoppingLists.Remove(shoppingList);
+            }
         }
 
         private void OnCloseAddNewListPopUpCommand()
@@ -98,7 +132,25 @@ namespace HappyCoupleMobile.ViewModel
             ShowAddNewListPopUp = false;
         }
 
-        private void OnAddNewListCommand(string newListName)
+        private async Task OnCreateNewListCommand(string newListName)
+        {
+            //var newShowppingList = await _shoppingListService.AddShoppingList(ActiveShoppingLists, newListName);
+
+            //await NavigateToWithMessage<EditShoppingListView, EditShoppingListViewModel>(new BaseMessage<EditShoppingListViewModel>("ShoppingList", newShowppingList));
+
+
+            ActiveShoppingLists.Add(new ShoppingListVm(
+                new ShoppingList
+                {
+                    Id = ActiveShoppingLists.Any()? ActiveShoppingLists.Max(x=>x.Id) + 1 : 0,
+                    Name = newListName,
+                    AddDate = DateTime.UtcNow
+                }));
+
+            OnCloseAddNewListPopUpCommand();
+        }
+
+        private void OnAddNewListCommand()
         {
             ShowAddNewListPopUp = true;
         }
@@ -125,6 +177,7 @@ namespace HappyCoupleMobile.ViewModel
 
         public void Add(ShoppingList data)
         {
+            
         }
     }
 }

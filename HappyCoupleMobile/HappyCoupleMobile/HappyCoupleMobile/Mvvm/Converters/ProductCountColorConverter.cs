@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HappyCoupleMobile.Model;
+using HappyCoupleMobile.VM;
 using Xamarin.Forms;
 
 namespace HappyCoupleMobile.Mvvm.Converters
@@ -13,7 +14,7 @@ namespace HappyCoupleMobile.Mvvm.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            ShoppingList shoppingList = value as ShoppingList;
+            ShoppingListVm shoppingList = value as ShoppingListVm;
             if (shoppingList == null)
             {
                 return (Color)Application.Current.Resources["FirstColor"];

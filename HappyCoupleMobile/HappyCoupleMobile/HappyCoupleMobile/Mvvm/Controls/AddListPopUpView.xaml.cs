@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace HappyCoupleMobile.Mvvm.Controls
 {
-    public partial class AddListPopUpView : Frame
+    public partial class AddListPopUpView : StackLayout
     {
         public static readonly BindableProperty AddNewListCommandProperty = BindableProperty.Create(nameof(AddNewListCommand),
         typeof(ICommand), typeof(AddListPopUpView));
@@ -29,9 +29,32 @@ namespace HappyCoupleMobile.Mvvm.Controls
             set { SetValue(CloseWindowCommandProperty, value); }
         }
 
+        public Command<string> AddNewListInternalCommand => new Command<string>(OnAddNewListInternal);
+        public Command<Entry> EraseEntryInternalCommand => new Command<Entry>(OnEraseEntry);
+
+
         public AddListPopUpView()
         {
             InitializeComponent();
+        }
+
+        private void OnEraseEntry(Entry entry)
+        {
+            entry.Text = string.Empty;
+        }
+
+        private void OnAddNewListInternal(string listName)
+        {
+            if (string.IsNullOrWhiteSpace(listName))
+            {
+                ListNameMissingLabel.IsVisible = true;
+
+                return;
+            }
+
+            ListNameMissingLabel.IsVisible = false;
+
+            AddNewListCommand?.Execute(listName);
         }
     }
 }

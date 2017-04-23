@@ -26,5 +26,18 @@ namespace HappyCoupleMobile.Helpers
             await Task.Delay(75);
             await element.ScaleTo(1, velocity, Easing.Linear);
         }
+
+        public static async Task SetLoopAnimation(this VisualElement element, double scale, uint velocity)
+        {
+            element.AnchorX = 0.48;
+            element.AnchorX = 0.48;
+
+            while (true)
+            {
+                await element.ScaleTo(scale, velocity, Easing.Linear);
+                await Task.Delay(75);
+                await element.ScaleTo(1, velocity, Easing.Linear);
+            }
+        }
     }
 }

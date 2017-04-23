@@ -65,6 +65,7 @@
     <Compile Include="Data\UserDao.cs" />
     <Compile Include="Enums\AlertType.cs" />
     <Compile Include="Enums\ShoppingListStatus.cs" />
+    <Compile Include="Enums\ShoppingListTabType.cs" />
     <Compile Include="Helpers\Animation.cs" />
     <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Model\Interfaces\IModel.cs" />
@@ -82,6 +83,9 @@
     </Compile>
     <Compile Include="Mvvm\Controls\Buttons\AddProductButton.xaml.cs">
       <DependentUpon>AddProductButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mvvm\Controls\Buttons\ImageButton.xaml.cs">
+      <DependentUpon>ImageButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Mvvm\Controls\EditProductList\EditProductListControl.xaml.cs">
       <DependentUpon>EditProductListControl.xaml</DependentUpon>
@@ -122,6 +126,7 @@
     </Compile>
     <Compile Include="Mvvm\Converters\BoolToValueConverter.cs" />
     <Compile Include="Mvvm\Converters\IconNameToImageSourceConverter.cs" />
+    <Compile Include="Mvvm\Converters\InverseBooleanConverter.cs" />
     <Compile Include="Mvvm\Converters\ObjectInstanceValueToBooleanConverter.cs" />
     <Compile Include="Mvvm\Converters\ProductCountColorConverter.cs" />
     <Compile Include="Mvvm\Converters\StringIsNullOrEmptyToBoolConverter.cs" />
@@ -131,6 +136,7 @@
     <Compile Include="Mvvm\Messages\Interface\IBaseMessage.cs" />
     <Compile Include="Mvvm\Messages\Interface\IMessageData.cs" />
     <Compile Include="Mvvm\Messages\MessageData.cs" />
+    <Compile Include="Mvvm\Messages\MessagesKeys.cs" />
     <Compile Include="Mvvm\Renderers\CircularProgress.cs" />
     <Compile Include="Mvvm\Renderers\ExtendedScrollView.cs" />
     <Compile Include="Mvvm\Renderers\RoundedBoxView.cs" />
@@ -156,9 +162,11 @@
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Services\Interfaces\INavigationService.cs" />
     <Compile Include="Services\Interfaces\IProductService.cs" />
+    <Compile Include="Services\Interfaces\IShoppingListService.cs" />
     <Compile Include="Services\Interfaces\ISimpleAuthService.cs" />
     <Compile Include="Services\NavigationPageService.cs" />
     <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\ShoppingListService.cs" />
     <Compile Include="Services\SimpleAuthService.cs" />
     <Compile Include="ViewModel\Abstract\BaseHappyViewModel.cs" />
     <Compile Include="ViewModel\AddProductViewModel.cs" />
@@ -189,6 +197,7 @@
       <DependentUpon>ShoppingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="VM\ProductVm.cs" />
+    <Compile Include="VM\ShoppingListVm.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -402,6 +411,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mvvm\Controls\Buttons\AddProductButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mvvm\Controls\Buttons\ImageButton.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -3,7 +3,7 @@
     public interface IMessageData
     {
         void AddData(string key, object value);
-        TValue GetValue<TValue>(string key) where TValue : new();
+        object GetValue(string key);
         TValue GetValue<TValue>() where TValue : new();
     }
 }

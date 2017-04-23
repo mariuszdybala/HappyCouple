@@ -9,14 +9,6 @@
              x:Class="HappyCoupleMobile.Mvvm.Controls.AddProductForm" 
              Spacing="0"
              x:Name="AddProductForm">
-    <StackLayout.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Image" x:Key="EraseImageStyle">
-                <Setter Property="VerticalOptions" Value="Start"/>
-                <Setter Property="Source" Value="{StaticResource Erase}"/>
-            </Style>
-        </ResourceDictionary>
-    </StackLayout.Resources>
     <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}" VerticalOptions="FillAndExpand" BindingContext="{x:Reference AddProductForm}">
         <StackLayout Padding="5" VerticalOptions="StartAndExpand">
             <StackLayout>

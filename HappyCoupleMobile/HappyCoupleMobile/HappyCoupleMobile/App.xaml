@@ -9,6 +9,7 @@
         <ResourceDictionary>
             <converters:BoolToValueConverter x:TypeArguments="Color" x:Key="BoolToColorConverter" TrueValue="Green" FalseValue="Red"/>
             <converters:IconNameToImageSourceConverter x:Key="IconNameToImageSourceConverter"/>
+            <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
             
             <vm:ViewModelLocator x:Key="ViewModelLocator"/>
 
@@ -47,6 +48,7 @@
             <FileImageSource x:Key="UnChecked">unchecked.png</FileImageSource>
             <FileImageSource x:Key="ShoppingBar">shopping_bar.png</FileImageSource>
             <FileImageSource x:Key="AddProduct">add_product.png</FileImageSource>
+            <FileImageSource x:Key="EmptyProducts">empty_products.png</FileImageSource>
 
             <!--            Icons for products-->
             <FileImageSource x:Key="Beer">beer.png</FileImageSource>
@@ -62,6 +64,12 @@
             <FileImageSource x:Key="Dairy">dairy.png</FileImageSource>
             <FileImageSource x:Key="Grain">grain.png</FileImageSource>
             
+            <!--conrols-->
+            <Style TargetType="Image" x:Key="EraseImageStyle">
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="Source" Value="{StaticResource Erase}"/>
+            </Style>
+
             <Style x:Key="MediumWhiteFont" TargetType="Label">
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="FontFamily" Value="{StaticResource Medium}"/>
@@ -69,6 +77,9 @@
 
             <Style x:Key="MediumWhite11Font" TargetType="Label" BasedOn="{StaticResource MediumWhiteFont}">
                 <Setter Property="FontSize" Value="11"/>
+            </Style>
+            <Style x:Key="MediumWhite20Font" TargetType="Label" BasedOn="{StaticResource MediumWhiteFont}">
+                <Setter Property="FontSize" Value="20"/>
             </Style>
 
         </ResourceDictionary>

@@ -1,9 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.Mvvm.Controls.ShoppingListView"
+             x:Name="ShoppingListView"
              BackgroundColor="{StaticResource SecondColor}">
     <ScrollView>
         <StackLayout x:Name="ShoppingListPanelContent" Spacing="0"/>
     </ScrollView>
+    <StackLayout x:Name="EmptyListPlaceholderStack" VerticalOptions="StartAndExpand"
+                   Spacing="10" Margin="0,40,0,0">
+        <Image Source="{StaticResource EmptyProducts}"/>
+        <Label Text="Nie masz żadnych list." Style="{StaticResource MediumWhite20Font}"
+                   HorizontalTextAlignment="Center"/>
+        <Label x:Name="AddListLabelPlaceholder" Text="Dodaj listę" Style="{StaticResource MediumWhite20Font}"
+                 HorizontalTextAlignment="Center"/>
+        <controls:TappableImage x:Name="AddListImagePlaceholder" Source="{StaticResource AddList}"
+                               TappedCommand="{Binding Source={x:Reference ShoppingListView}, Path=AddShoppingListCommand}" />
+    </StackLayout>
 </StackLayout>

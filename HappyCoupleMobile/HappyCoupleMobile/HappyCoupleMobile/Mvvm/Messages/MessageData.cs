@@ -28,19 +28,19 @@ namespace HappyCoupleMobile.Mvvm.Messages
             Data.Add(key, value);
         }
 
-        public TValue GetValue<TValue>(string key) where TValue : new()
+        public object GetValue(string key) 
         {
-            if (Data.ContainsKey(key))
+            if (!Data.ContainsKey(key))
             {
-                return new TValue();
+                return null;
             }
 
             var value = Data[key];
 
-            return (TValue)value;
+            return value;
         }
 
-        public TValue GetValue<TValue>() where TValue : new()
+        public TValue GetValue<TValue>() where TValue: new()
         {
             foreach (var data in Data)
             {

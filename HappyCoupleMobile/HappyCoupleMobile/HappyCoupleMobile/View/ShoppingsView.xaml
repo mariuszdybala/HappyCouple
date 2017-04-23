@@ -23,25 +23,27 @@
                                            TextColor="{StaticResource SecondColor}" FontSize="15"/>
                 </StackLayout>
             </StackLayout>
-                <control:ShoppingListView x:Name="ActiveShoppingList" 
+                <control:ShoppingListView x:Name="ActiveShoppingList" ShoppingListTabType="Active"
                                           IsVisible="{Binding Source={x:Reference ShoppingsView}, Path=ShowActive}" 
                                           AddCommand="{Binding AddProductToListCommand}"
                                           CloseCommand="{Binding CloseListCommand}"
                                           DeleteCommand="{Binding DeleteListCommand}"
                                           EditOrListTappedCommand="{Binding EditListCommand}"
-                                          ShoppingListSource="{Binding ActiveShoppingLists}"/>
+                                          ShoppingListSource="{Binding ActiveShoppingLists}"
+                                          AddShoppingListCommand="{Binding AddNewListCommand}"/>
 
-            <control:ShoppingListView x:Name="ClosedShoppingList" 
+            <control:ShoppingListView x:Name="ClosedShoppingList" ShoppingListTabType="Closed"
                                           IsVisible="{Binding Source={x:Reference ShoppingsView}, Path=ShowClosed}" 
                                           AddCommand="{Binding AddProductToListCommand}"
                                           CloseCommand="{Binding CloseListCommand}"
                                           DeleteCommand="{Binding DeleteListCommand}"
                                           EditOrListTappedCommand="{Binding EditListCommand}"
-                                          ShoppingListSource="{Binding ClosedShoppingLists}"/>
+                                          ShoppingListSource="{Binding ClosedShoppingLists}"
+                                          AddShoppingListCommand="{Binding AddNewListCommand}"/>
         </StackLayout>
-        <control:AddListPopUpView IsVisible="{Binding ShowAddNewListPopUp}" 
+        <control:AddListPopUpView IsVisible="{Binding ShowAddNewListPopUp}"
                                   CloseWindowCommand="{Binding CloseAddNewListPopUpCommand}"  
-                                  AddNewListCommand="{Binding AddNewListCommand}"
-                                  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,0.9,0.35"/>
+                                  AddNewListCommand="{Binding CreateNewListCommand}"
+                                  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.6,0.9,0.35"/>
     </AbsoluteLayout>
 </view:BaseHappyContentPage>

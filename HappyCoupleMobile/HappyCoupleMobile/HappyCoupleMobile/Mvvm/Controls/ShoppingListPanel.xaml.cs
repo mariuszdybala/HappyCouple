@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using HappyCoupleMobile.Helpers;
 using HappyCoupleMobile.Model;
+using HappyCoupleMobile.VM;
 using Xamarin.Forms;
 
 namespace HappyCoupleMobile.Mvvm.Controls
@@ -13,7 +14,7 @@ namespace HappyCoupleMobile.Mvvm.Controls
     public partial class ShoppingListPanel : Frame
     {
         public static readonly BindableProperty ShoppingListProperty = BindableProperty.Create(
-        nameof(ShoppingList), typeof(ShoppingList), typeof(ShoppingListPanel), propertyChanged: OnShoppingListChanged);
+        nameof(ShoppingList), typeof(ShoppingListVm), typeof(ShoppingListPanel), propertyChanged: OnShoppingListChanged);
 
         public static readonly BindableProperty AddCommandProperty = BindableProperty.Create(
         nameof(AddCommand), typeof(ICommand), typeof(ShoppingListPanel), defaultBindingMode: BindingMode.OneWay);
@@ -27,9 +28,9 @@ namespace HappyCoupleMobile.Mvvm.Controls
         public static readonly BindableProperty EditOrListTappedCommandProperty = BindableProperty.Create(
         nameof(EditOrListTappedCommand), typeof(ICommand), typeof(ShoppingListPanel), defaultBindingMode: BindingMode.OneWay);
 
-        public ShoppingList ShoppingList
+        public ShoppingListVm ShoppingList
         {
-            get { return (ShoppingList)GetValue(ShoppingListProperty); }
+            get { return (ShoppingListVm)GetValue(ShoppingListProperty); }
             set { SetValue(ShoppingListProperty, value); }
         }
 
@@ -68,7 +69,7 @@ namespace HappyCoupleMobile.Mvvm.Controls
                 return;
             }
 
-            var shoppingList = (ShoppingList)newvalue;
+            var shoppingList = (ShoppingListVm)newvalue;
             var shoppingListPanel = (ShoppingListPanel)bindable;
 
             if (shoppingList.Products.Any())
@@ -77,7 +78,7 @@ namespace HappyCoupleMobile.Mvvm.Controls
             }
         }
 
-        private static void AddProductTypesToProductTypesContainer(List<Product> products, ShoppingListPanel shoppingListPanel)
+        private static void AddProductTypesToProductTypesContainer(IList<ProductVm> products, ShoppingListPanel shoppingListPanel)
         {
             var types = products.GroupBy(x => x.ProductType).Select(x=>x.Key).ToList();
 

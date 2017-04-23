@@ -1,23 +1,40 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Frame xmlns="http://xamarin.com/schemas/2014/forms" 
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
              xmlns:converters="clr-namespace:HappyCoupleMobile.Mvvm.Converters;assembly=HappyCoupleMobile"
+             xmlns:attachedProperties="clr-namespace:HappyCoupleMobile.Mvvm.AttachedProperties;assembly=HappyCoupleMobile"
+             xmlns:buttons="clr-namespace:HappyCoupleMobile.Mvvm.Controls.Buttons;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.Mvvm.Controls.AddListPopUpView"
-             OutlineColor="{StaticResource SecondColor}" 
-             BackgroundColor="{StaticResource ThirthColor}"
+             BackgroundColor="{StaticResource FirstColor}"
              x:Name="AddListPopUpView">
-    <StackLayout Spacing="0" BindingContext="{x:Reference AddListPopUpView}">
-        <controls:TappableImage  Source="{StaticResource CloseWindow}" Scale="1" HorizontalOptions="End"
-                                TappedCommand="{Binding CloseWindowCommand}"/>
-        <StackLayout Margin="0,0,0,10" Orientation="Horizontal" HorizontalOptions="Fill">
-            <Image Source="{StaticResource Info}"></Image>
-            <Label VerticalOptions="Center" Text="Podaj nazwę listy." FontSize="15" FontFamily="{StaticResource Medium}" TextColor="Black" />
+    <StackLayout VerticalOptions="FillAndExpand" Padding="10" Spacing="0" Margin="2" BackgroundColor="{StaticResource SecondColor}">
+        <StackLayout Spacing="0" BindingContext="{x:Reference AddListPopUpView}">
+            <controls:TappableImage Source="{StaticResource CloseWindow}" Scale="1" HorizontalOptions="End"
+                                    TappedCommand="{Binding CloseWindowCommand}" />
+            <StackLayout Margin="0,0,0,10" Orientation="Horizontal" HorizontalOptions="Fill">
+                <Image Source="{StaticResource Info}"></Image>
+                <Label VerticalOptions="Center" Text="Podaj nazwę listy." FontSize="15"
+                       FontFamily="{StaticResource Medium}" TextColor="White" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Entry x:Name="NewListNameEntry" FontFamily="{StaticResource Regular}" Margin="0,0,0,10"  
+                       Text="" HorizontalOptions="FillAndExpand" Placeholder="Twoja nazwa listy"></Entry>
+                <Image Style="{StaticResource EraseImageStyle}"                                                 
+                       attachedProperties:ClickEventAttached.ClickCommand="{Binding EraseEntryInternalCommand}"
+                       attachedProperties:ClickEventAttached.ClickParameter="{Binding Source={x:Reference NewListNameEntry}}">>
+                    <Image.Triggers>
+                        <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference NewListNameEntry}, Path=Text.Length}" Value="0">
+                            <Setter Property="Image.IsVisible" Value="False"/>
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+            </StackLayout>
+            <Label x:Name="ListNameMissingLabel" Text="Zanim zapiszesz, wpisz nazwę ;)" TextColor="{StaticResource FourthColor}"
+                   FontFamily="{StaticResource Medium}" FontSize="12" IsVisible="False"/>
+            <buttons:ImageButton ButtonText="Utwórz listę" ButtonImage="{StaticResource Checked}" Margin="0,10,0,0"
+                                 ImageButtonClickedCommand="{Binding AddNewListInternalCommand}"
+                                 ImageButtonCommandParameter="{Binding Source={x:Reference NewListNameEntry}, Path=Text}"/>
         </StackLayout>
-        <Entry x:Name="NewListNameEntry"  FontFamily="{StaticResource Regular}" Text="" Margin="0,0,0,10" />
-        <controls:TappableImage IsVisible="{Binding Source={x:Reference NewListNameEntry}, Path=Text, Converter={converters:StringIsNullOrEmptyToBoolConverter}}" 
-                                Source="{StaticResource CloseList}" 
-                                TappedCommand="{Binding AddNewListCommand}"
-                                TappedCommandParameter="{Binding Source={x:Reference NewListNameEntry}, Path=Text}"/>
     </StackLayout>
-</Frame>
+</StackLayout>

@@ -4,17 +4,10 @@
              xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
              xmlns:toggleImages="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ToggleImages;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.View.PreViewPage" Padding="5">
-    <Frame VerticalOptions="CenterAndExpand" HeightRequest="25" 
+    <StackLayout VerticalOptions="CenterAndExpand" HeightRequest="25" 
            HorizontalOptions="Center"
            BackgroundColor="{StaticResource FirstColor}" Padding="5"
            WidthRequest="200">
-           <StackLayout Orientation="Horizontal" Spacing="0">
-            <Image Source="{StaticResource AddProduct}"
-                   HorizontalOptions="CenterAndExpand"/>
-            <Label Text="Add Product" TextColor="White" 
-                   FontFamily="{StaticResource Medium}" 
-                   VerticalTextAlignment="Center"
-                   HorizontalOptions="StartAndExpand"/>
-           </StackLayout>
-    </Frame>
+        <Label Text="asda"></Label>
+    </StackLayout>
 </ContentPage>
