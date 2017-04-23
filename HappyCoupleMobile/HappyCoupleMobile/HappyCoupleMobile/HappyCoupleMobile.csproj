@@ -132,10 +132,13 @@
     <Compile Include="Mvvm\Converters\StringIsNullOrEmptyToBoolConverter.cs" />
     <Compile Include="Mvvm\Messages\AlertType.cs" />
     <Compile Include="Mvvm\Messages\BaseMessage.cs" />
+    <Compile Include="Mvvm\Messages\FeedbackMessage.cs" />
     <Compile Include="Mvvm\Messages\Interface\IAlertMessage.cs" />
     <Compile Include="Mvvm\Messages\Interface\IBaseMessage.cs" />
+    <Compile Include="Mvvm\Messages\Interface\IFeedbackMessage.cs" />
     <Compile Include="Mvvm\Messages\Interface\IMessageData.cs" />
     <Compile Include="Mvvm\Messages\MessageData.cs" />
+    <Compile Include="Mvvm\Messages\Messages.cs" />
     <Compile Include="Mvvm\Messages\MessagesKeys.cs" />
     <Compile Include="Mvvm\Renderers\CircularProgress.cs" />
     <Compile Include="Mvvm\Renderers\ExtendedScrollView.cs" />

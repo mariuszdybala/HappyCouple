@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HappyCoupleMobile.Model;
 using HappyCoupleMobile.Repositories.Interfaces;
 using HappyCoupleMobile.Services.Interfaces;
+using HappyCoupleMobile.VM;
 
 namespace HappyCoupleMobile.Services
 {
@@ -36,6 +38,22 @@ namespace HappyCoupleMobile.Services
             }
 
             return productTypesDictionary;
+        }
+
+        public ProductVm CreateProductVm(string name, string comment, string quantity, ProductType productType, User user)
+        {
+            var product = new Product();
+
+            product.Name = name;
+            product.Comment = comment;
+            product.Quantity = int.Parse(quantity);
+            product.AddDate = DateTime.UtcNow;
+            product.AddedById = user.Id;
+            product.ProductType = productType;
+            product.ProductTypeId = productType.Id;
+
+            return new ProductVm(product);
+
         }
     }
 

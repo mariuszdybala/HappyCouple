@@ -55,7 +55,6 @@ namespace HappyCoupleMobile.Notification
         {
 #if !GORILLA
             _productNotificator.Attach(ViewModelLocator.GetViewModel<ShoppingsViewModel>());
-            _productNotificator.Attach(ViewModelLocator.GetViewModel<EditShoppingListViewModel>());
 #endif
         }
 

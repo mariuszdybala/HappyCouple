@@ -14,46 +14,31 @@
             <StackLayout>
                 <Label Text="Twoja nazwa" TextColor="White"/>
                 <StackLayout Orientation="Horizontal">
-                    <Entry x:Name="NewNameEntry" Text="" HorizontalOptions="FillAndExpand" Placeholder="Podaj swoją nazwę produktu"></Entry>
-                    <Image Style="{StaticResource EraseImageStyle}"
+                    <Entry x:Name="NewNameEntry" Text="{Binding ProductName}" HorizontalOptions="FillAndExpand"
+                           Placeholder="Podaj swoją nazwę produktu" TextChanged="OnNewNameEntryTextChanged"/>
+                    <Image x:Name="NewNameEraseImage" Style="{StaticResource EraseImageStyle}" IsVisible="False"
                                                 attached:ClickEventAttached.ClickCommand="{Binding EraseEntryCommand}"
-                                                 attached:ClickEventAttached.ClickParameter="{Binding Source={x:Reference NewNameEntry}}">
-                        <Image.Triggers>
-                            <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference NewNameEntry}, Path=Text.Length}" Value="0">
-                                <Setter Property="Image.IsVisible" Value="False"/>
-                            </DataTrigger>
-                        </Image.Triggers>
-                    </Image>
+                                                 attached:ClickEventAttached.ClickParameter="{Binding Source={x:Reference NewNameEntry}}"/>
                 </StackLayout>
             </StackLayout>
             <StackLayout>
                 <Label Text="Ilość" TextColor="White"/>
                 <StackLayout Orientation="Horizontal">
-                    <Entry x:Name="AmontEntry" Text="" HorizontalOptions="FillAndExpand" Placeholder="Podaj ilość" Keyboard="Numeric"></Entry>
-                    <Image Style="{StaticResource EraseImageStyle}"
+                    <Entry x:Name="QuantityEntry" Text="{Binding ProductQuantity}" HorizontalOptions="FillAndExpand" Placeholder="Podaj ilość" 
+                           Keyboard="Numeric" TextChanged="OnQuantityEntryTextChanged"/>
+                    <Image x:Name="QuantitytEraseImage" Style="{StaticResource EraseImageStyle}" IsVisible="False"
                                                 attached:ClickEventAttached.ClickCommand="{Binding EraseEntryCommand}"
-                                                attached:ClickEventAttached.ClickParameter="{Binding Source={x:Reference AmontEntry}}">
-                        <Image.Triggers>
-                            <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference AmontEntry}, Path=Text.Length}" Value="0">
-                                <Setter Property="Image.IsVisible" Value="False"/>
-                            </DataTrigger>
-                        </Image.Triggers>
-                    </Image>
+                                                attached:ClickEventAttached.ClickParameter="{Binding Source={x:Reference QuantityEntry}}"/>
                 </StackLayout>
             </StackLayout>
             <StackLayout>
                 <Label Text="Komentarz" TextColor="White"/>
                 <StackLayout Orientation="Horizontal">
-                    <Entry x:Name="DescriptionEntry" Text="" Placeholder="Tu możesz coś dopisać"  HorizontalOptions="FillAndExpand"></Entry>
-                    <Image Style="{StaticResource EraseImageStyle}"
+                    <Entry x:Name="DescriptionEntry" Text="{Binding ProductComment}" Placeholder="Tu możesz coś dopisać"  
+                           HorizontalOptions="FillAndExpand" TextChanged="OnDescriptionEntryTextChanged"/>
+                    <Image x:Name="DescriptionEraseImage" Style="{StaticResource EraseImageStyle}" IsVisible="False"
                                                 attached:ClickEventAttached.ClickCommand="{Binding EraseEntryCommand}"
-                                                attached:ClickEventAttached.ClickParameter="{Binding Source={x:Reference DescriptionEntry}}">
-                        <Image.Triggers>
-                            <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference DescriptionEntry}, Path=Text.Length}" Value="0">
-                                <Setter Property="Image.IsVisible" Value="False"/>
-                            </DataTrigger>
-                        </Image.Triggers>
-                    </Image>
+                                                attached:ClickEventAttached.ClickParameter="{Binding Source={x:Reference DescriptionEntry}}"/>
                 </StackLayout>
             </StackLayout>
             <StackLayout>

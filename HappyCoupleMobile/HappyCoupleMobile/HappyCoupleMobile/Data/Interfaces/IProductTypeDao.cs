@@ -6,5 +6,6 @@ namespace HappyCoupleMobile.Data
 {
     public interface IProductTypeDao : IBaseDao<ProductType>
     {
+        Task<ProductType> GetProductTypeByTypeNameAsync(string name);
     }
 }

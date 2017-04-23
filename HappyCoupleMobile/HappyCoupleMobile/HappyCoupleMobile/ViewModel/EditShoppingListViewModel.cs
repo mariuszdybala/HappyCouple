@@ -18,7 +18,7 @@ using Xamarin.Forms;
 
 namespace HappyCoupleMobile.ViewModel
 {
-    public class EditShoppingListViewModel : BaseHappyViewModel, IProductObserver, IShoppingListObserver
+    public class EditShoppingListViewModel : BaseHappyViewModel
     {
         private readonly IProductServices _productServices;
         private ShoppingListVm _shoppingList;
@@ -45,7 +45,7 @@ namespace HappyCoupleMobile.ViewModel
 
         private void RegisterCommand()
         {
-            RegisterMessage(this);
+            RegisterNavigateToMessage(this);
 
             DeleteProductCommand = new Command<ProductVm>(OnDeleteProduct);
             EditProductCommand = new Command<ProductVm>(OnEditProduct);
@@ -60,8 +60,19 @@ namespace HappyCoupleMobile.ViewModel
 
         private async Task OnAddProduct()
         {
+            RegisterFeedBackMessage(this, true);
             await NavigateTo<AddProductView, AddProductViewModel>();
+
         }
+
+        protected override async Task OnFeedback(IFeedbackMessage feedbackMessage)
+        {
+            var newProductVm = (ProductVm)feedbackMessage.GetValue(MessagesKeys.ProductKey);
+
+            ShoppingList.Products.Add(newProductVm);
+            ShoppingList.CalculateCurrentShoppingProgress();
+        }
+
         private async Task OnProductChecked(ProductVm product)
         {
             ShoppingList.CalculateCurrentShoppingProgress();
@@ -78,31 +89,6 @@ namespace HappyCoupleMobile.ViewModel
         private void OnEditProduct(ProductVm product)
         {
         }
-
-        public void Upadte(Product data)
-        {
-        }
-
-        public void Remove(Product data)
-        {
-        }
-
-        public void Add(Product data)
-        {
-        }
-
-        public void Upadte(ShoppingList data)
-        {
-        }
-
-        public void Remove(ShoppingList data)
-        {
-        }
-
-        public void Add(ShoppingList data)
-        {
-        }
-
 
         protected override void CleanResources()
         {

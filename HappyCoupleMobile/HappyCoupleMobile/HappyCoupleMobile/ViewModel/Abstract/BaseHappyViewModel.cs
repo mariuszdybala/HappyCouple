@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using HappyCoupleMobile.Enums;
 using HappyCoupleMobile.Model;
 using HappyCoupleMobile.Mvvm.Messages;
 using HappyCoupleMobile.Mvvm.Messages.Interface;
@@ -47,7 +48,13 @@ namespace HappyCoupleMobile.ViewModel.Abstract
             GoBackCommand = new Command(async () => await OnGoBackCommand());
         }
 
-        public void RegisterMessage<TVm>(TVm viewModel, bool unRegister = false)
+
+        public void ShowAlertMessage(AlertType alertType, string message)
+        {
+            Device.BeginInvokeOnMainThread(() => MessengerInstance.Send<IAlertMessage>(new AlertMessage(message, alertType)));
+        }
+
+        public void RegisterNavigateToMessage<TVm>(TVm viewModel, bool unRegister = false)
         {
             if (unRegister)
             {
@@ -58,6 +65,42 @@ namespace HappyCoupleMobile.ViewModel.Abstract
                 MessengerInstance.Register<IBaseMessage<TVm>>(viewModel, async (message) => await OnRecievedMessageWithoutUnregistration<TVm>(message));
             }
 
+        }
+
+        public void RegisterFeedBackMessage<TVm>(TVm viewModel, bool unRegister = false)
+        {
+            if (unRegister)
+            {
+                MessengerInstance.Register<IFeedbackMessage>(viewModel, async (message) => await OnRecievedFeedbackMessageWithUnregistration(message));
+            }
+            else
+            {
+                MessengerInstance.Register<IFeedbackMessage>(viewModel, async (message) => await OnRecievedFeedbackMessageWithoutUnregistration(message));
+            }
+        }
+
+        private async Task OnRecievedFeedbackMessageWithUnregistration(IFeedbackMessage feedbackMessage)
+        {
+            await OnFeedbackMessage(feedbackMessage, true);
+        }
+
+        private async Task OnRecievedFeedbackMessageWithoutUnregistration(IFeedbackMessage feedbackMessage)
+        {
+            await OnFeedbackMessage(feedbackMessage, false);
+        }
+
+        private async Task OnFeedbackMessage(IFeedbackMessage messasge, bool unRegister)
+        {
+            if (unRegister)
+            {
+                MessengerInstance.Unregister<IFeedbackMessage>(this);
+            }
+            await OnFeedback(messasge);
+        }
+
+        protected virtual async Task OnFeedback(IFeedbackMessage feedbackMessage)
+        {
+            await Task.Yield();
         }
 
         private async Task OnRecievedMessageWithUnregistration<TVm>(IBaseMessage<TVm> message)
@@ -74,7 +117,7 @@ namespace HappyCoupleMobile.ViewModel.Abstract
         {
             if (unRegister)
             {
-                MessengerInstance.Unregister<TVm>(this);
+                MessengerInstance.Unregister<IBaseMessage<TVm>>(this);
             }
             await OnNavigateTo(messasge);
         }
@@ -86,7 +129,7 @@ namespace HappyCoupleMobile.ViewModel.Abstract
             await NavigationService.PushAsync<TV>();
         }
 
-        public async Task NavigateToWithMessage<TV,TVm>(IBaseMessage<TVm> message) where TV:ContentPage, new()
+        public async Task NavigateToWithMessage<TV, TVm>(IBaseMessage<TVm> message) where TV : ContentPage, new()
         {
             SendMessage<TVm>(message);
 
@@ -103,6 +146,11 @@ namespace HappyCoupleMobile.ViewModel.Abstract
         public void SendMessage<TVm>(IBaseMessage<TVm> message)
         {
             MessengerInstance.Send(message);
+        }
+
+        public void SendFeedbackMessage(IFeedbackMessage feedbackMessage)
+        {
+            MessengerInstance.Send(feedbackMessage);
         }
 
         public async Task NavigateBack()
@@ -127,7 +175,7 @@ namespace HappyCoupleMobile.ViewModel.Abstract
 
         protected virtual void CleanResources()
         {
-            
+
         }
     }
 }

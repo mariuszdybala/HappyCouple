@@ -14,20 +14,23 @@ namespace HappyCoupleMobile.Mvvm.Controls
 {
     public partial class AddProductForm : StackLayout
     {
+        public static BindableProperty ProductNameProperty = BindableProperty.Create
+        (nameof(ProductName), typeof(string), typeof(AddProductForm), defaultBindingMode:BindingMode.TwoWay);
+
+        public static BindableProperty ProductCommentProperty = BindableProperty.Create
+        (nameof(ProductComment).GetBindableName(), typeof(string), typeof(AddProductForm), defaultBindingMode: BindingMode.TwoWay);
+
+        public static BindableProperty ProductQuantityProperty = BindableProperty.Create
+        (nameof(ProductQuantity), typeof(string), typeof(AddProductForm), defaultBindingMode: BindingMode.TwoWay);
+
         public static BindableProperty ProductTypesSourceProperty = BindableProperty
             .Create(nameof(ProductTypesSource), typeof(ObservableCollection<ProductType>), typeof(AddProductForm), propertyChanged: OnProductTypesSourceChanged);
 
         public static BindableProperty AddToFavoriteCommandProperty = BindableProperty.Create
             (nameof(AddToFavoriteCommandProperty).GetBindableName(), typeof(ICommand), typeof(AddProductForm));
 
-        public static BindableProperty EraseEntryCommandProperty = BindableProperty.Create
-            (nameof(EraseEntryCommandProperty).GetBindableName(), typeof(ICommand), typeof(AddProductForm));
-
-        public static BindableProperty ProductProperty = BindableProperty.Create
-            (nameof(ProductProperty).GetBindableName(), typeof(Product), typeof(AddProductForm));
-
         public static BindableProperty SelectedProductTypeProperty = BindableProperty.Create
-            (nameof(SelectedProductTypeProperty).GetBindableName(), typeof(ProductType), typeof(AddProductForm));
+            (nameof(SelectedProductType), typeof(ProductType), typeof(AddProductForm), defaultBindingMode: BindingMode.TwoWay);
 
         public ProductType SelectedProductType
         {
@@ -41,10 +44,22 @@ namespace HappyCoupleMobile.Mvvm.Controls
             set { SetValue(ProductTypesSourceProperty, value); }
         }
 
-        public Product Product
+        public string ProductName
         {
-            get { return (Product)GetValue(ProductProperty); }
-            set { SetValue(ProductProperty, value); }
+            get { return (string)GetValue(ProductNameProperty); }
+            set { SetValue(ProductNameProperty, value); }
+        }
+
+        public string ProductQuantity
+        {
+            get { return (string)GetValue(ProductQuantityProperty); }
+            set { SetValue(ProductQuantityProperty, value); }
+        }
+
+        public string ProductComment
+        {
+            get { return (string)GetValue(ProductCommentProperty); }
+            set { SetValue(ProductCommentProperty, value); }
         }
 
         public ICommand AddToFavoriteCommand
@@ -53,17 +68,12 @@ namespace HappyCoupleMobile.Mvvm.Controls
             set { SetValue(AddToFavoriteCommandProperty, value); }
         }
 
-        public ICommand EraseEntryCommand
-        {
-            get { return (ICommand)GetValue(EraseEntryCommandProperty); }
-            set { SetValue(EraseEntryCommandProperty, value); }
-        }
+        public ICommand EraseEntryCommand => new Command<Entry>(OnEraseEntry);
+
 
         public AddProductForm()
         {
             InitializeComponent();
-
-            EraseEntryCommand = new Command<Entry>(OnEraseEntry);
         }
 
         private void OnEraseEntry(Entry entry)
@@ -169,6 +179,36 @@ namespace HappyCoupleMobile.Mvvm.Controls
         private void OnProductAddedToFavourite(bool isToggled)
         {
             AddToFavoriteCommand?.Execute(isToggled);
+        }
+
+        private void OnNewNameEntryTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (NewNameEraseImage == null)
+            {
+                return;
+            }
+
+            NewNameEraseImage.IsVisible = !string.IsNullOrWhiteSpace(e.NewTextValue);
+        }
+
+        private void OnQuantityEntryTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (QuantitytEraseImage == null)
+            {
+                return;
+            }
+
+            QuantitytEraseImage.IsVisible = !string.IsNullOrWhiteSpace(e.NewTextValue);
+        }
+
+        private void OnDescriptionEntryTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (DescriptionEraseImage == null)
+            {
+                return;
+            }
+
+            DescriptionEraseImage.IsVisible = !string.IsNullOrWhiteSpace(e.NewTextValue);
         }
     }
 }

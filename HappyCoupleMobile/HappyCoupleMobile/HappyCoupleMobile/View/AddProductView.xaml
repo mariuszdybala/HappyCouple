@@ -11,8 +11,12 @@
         <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Dodaj produkt"
                                   RightIconSource="{StaticResource AddFromFavourites}" RightIconTapCommand="{Binding GoToFavouriteProductsCommand}"/>
         <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
-            <controls:AddProductForm ProductTypesSource="{Binding ProductTypes}"/>
+            <controls:AddProductForm ProductTypesSource="{Binding ProductTypes}" 
+                                     ProductComment="{Binding ProductComment}"
+                                     ProductName="{Binding ProductName}"
+                                     ProductQuantity="{Binding ProductQuantity}"
+                                     SelectedProductType="{Binding ProductType}"/>
         </StackLayout>
-      <buttons:AddProductButton VerticalOptions="EndAndExpand" Margin="0,0,0,10"/>
+        <buttons:AddProductButton VerticalOptions="EndAndExpand" Margin="0,0,0,10" AddProductButtonClickedCommand="{Binding SaveProductCommand}"/>
     </StackLayout>
 </views:BaseHappyContentPage>

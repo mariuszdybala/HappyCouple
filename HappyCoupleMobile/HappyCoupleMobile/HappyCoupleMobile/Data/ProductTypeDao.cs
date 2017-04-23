@@ -11,5 +11,12 @@ namespace HappyCoupleMobile.Data
         public ProductTypeDao(ISqliteConnectionProvider sqliteConnectionProvider) : base(sqliteConnectionProvider)
         {
         }
+
+        public async Task<ProductType> GetProductTypeByTypeNameAsync(string name)
+        {
+            SQLiteAsyncConnection connection = GetConnection();
+
+            return await connection.Table<ProductType>().Where(x => x.Type == name).FirstOrDefaultAsync();
+        }
     }
 }

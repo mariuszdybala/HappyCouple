@@ -113,5 +113,10 @@ namespace HappyCoupleMobile.Repositories
 
             await DeleteShoppingListAsync(shoppingList).ConfigureAwait(false);
         }
+
+        public async Task<ProductType> GetProductTypeByTypeNameAsync(string name)
+        {
+            return await _productTypeDao.GetProductTypeByTypeNameAsync(name);
+        }
     }
 }

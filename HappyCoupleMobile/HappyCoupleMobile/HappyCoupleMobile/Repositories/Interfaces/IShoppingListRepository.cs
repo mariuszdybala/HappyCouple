@@ -14,6 +14,7 @@ namespace HappyCoupleMobile.Repositories.Interfaces
         Task<IList<Product>> GetAllProductsForShoppingListAsync(int shoppingListId);
 
         Task<IList<ProductType>> GetAllProductTypesAsync();
+        Task<ProductType> GetProductTypeByTypeNameAsync(string name);
 
         Task InsertShoppingListAsync(ShoppingList shoppingList);
         Task InsertProductAsync(Product product);
