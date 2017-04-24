@@ -10,6 +10,7 @@ namespace HappyCoupleMobile.VM
     public class ShoppingListVm : ViewModelBase
     {
         private ObservableCollection<ProductVm> _products;
+        private ObservableCollection<ProductType> _productTypes;
 
         private string _name;
         private DateTime _addDate;
@@ -91,8 +92,16 @@ namespace HappyCoupleMobile.VM
             set
             {
                 Set(ref _products, value);
-                ShowPlaceholder = !Products.Any();
-                ProductsCount = Products.Count;
+                UpdateAdditionalData();
+            }
+        }
+
+        public ObservableCollection<ProductType> ProductTypes
+        {
+            get { return _productTypes; }
+            set
+            {
+                Set(ref _productTypes, value);
             }
         }
 
@@ -126,6 +135,34 @@ namespace HappyCoupleMobile.VM
             var progressPercent = leftProductsCountValue == 0 ? 100 : boughtProductsCountValue * 100 / totalProductsCountValue;
 
             ProgressPercent = progressPercent.ToString();
+        }
+
+        public void UpdateAdditionalData()
+        {
+            CalculateCurrentShoppingProgress();
+            ShowPlaceholder = !Products.Any();
+            ProductsCount = Products.Count;
+            UpdateProductTypeList();
+        }
+
+        private void UpdateProductTypeList()
+        {
+            var productTypes = Products.GroupBy(x => x.ProductType).Select(x => x.Key);
+
+            ProductTypes = new ObservableCollection<ProductType>(productTypes);
+            RaisePropertyChanged(() => ProductTypes);
+        }
+
+        public void AddProduct(ProductVm product)
+        {
+            Products.Add(product);
+            UpdateAdditionalData();
+        }
+
+        public void DeleteProduct(ProductVm product)
+        {
+            Products.Remove(product);
+            UpdateAdditionalData();
         }
     }
 }

@@ -55,7 +55,6 @@ namespace HappyCoupleMobile.ViewModel
         public AddProductViewModel(ISimpleAuthService simpleAuthService, IProductServices productService) : base(simpleAuthService)
         {
             _productService = productService;
-
             ProductTypes = new ObservableCollection<ProductType>();
             RegisterCommandAndMessages();
         }
@@ -64,15 +63,13 @@ namespace HappyCoupleMobile.ViewModel
         {
             RegisterNavigateToMessage(this);
 
-            GoToFavouriteProductsCommand = new Command(async() => await OnGoToFavouriteProducts());
-            SaveProductCommand = new Command(OnSaveProduct);
-
-            MessengerInstance.Register<IBaseMessage<AddProductViewModel>>(this, async(message) => await OnNavigateTo(message));
+            GoToFavouriteProductsCommand = new Command(async () => await OnGoToFavouriteProducts());
+            SaveProductCommand = new Command(async () => await OnSaveProduct());
         }
 
         protected override async Task OnNavigateTo(IMessageData message)
         {
-            await Task.Yield();
+            await LoadProductTypes();
         }
 
         private async Task OnGoToFavouriteProducts()
@@ -80,7 +77,7 @@ namespace HappyCoupleMobile.ViewModel
             await NavigateTo<FavouriteProductsView, FavouriteProductsViewModel>();
         }
 
-        private void OnSaveProduct()
+        private async Task OnSaveProduct()
         {
             if (ProductType == null)
             {
@@ -91,11 +88,12 @@ namespace HappyCoupleMobile.ViewModel
             var newProduct = _productService.CreateProductVm(ProductName, ProductComment, ProductQuantity, ProductType, Admin);
 
             SendFeedbackMessage(new FeedbackMessage(MessagesKeys.ProductKey, newProduct));
+
+            await NavigateBack();
         }
 
         private async Task OnNavigateTo(IBaseMessage<AddProductViewModel> message)
         {
-            await LoadProductTypes();
         }
 
         private async Task LoadProductTypes()
@@ -114,7 +112,7 @@ namespace HappyCoupleMobile.ViewModel
 
         protected override void CleanResources()
         {
-            ProductType  = null;
+            ProductType = null;
             ProductComment = ProductQuantity = ProductName = null;
         }
     }

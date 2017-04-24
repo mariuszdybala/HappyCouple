@@ -128,14 +128,16 @@ namespace HappyCoupleMobile.Mvvm.Controls
 
         private void InsertNewShoppingListPanel(ShoppingListVm shoppingList)
         {
-            ShoppingListPanelContent.Children.Insert(0, new ShoppingListPanel
+            var shoppingListPanel = new ShoppingListPanel
             {
                 ShoppingList = shoppingList,
                 AddCommand = AddCommand,
                 CloseCommand = CloseCommand,
                 DeleteCommand = DeleteCommand,
-                EditOrListTappedCommand = EditOrListTappedCommand
-            });
+                EditOrListTappedCommand = EditOrListTappedCommand,
+            };
+
+            ShoppingListPanelContent.Children.Insert(0, shoppingListPanel);
 
             SetEmptyListPlaceholderStackVisibility();
         }

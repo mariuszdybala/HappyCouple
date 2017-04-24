@@ -20,7 +20,7 @@ namespace HappyCoupleMobile.Mvvm.Controls
         nameof(RightIconSource), typeof(FileImageSource), typeof(TopPanelControl), null);
 
         public static readonly BindableProperty PanelHeaderProperty = BindableProperty.Create(
-        nameof(PanelHeader), typeof(string), typeof(TopPanelControl), string.Empty);
+        nameof(PanelHeader), typeof(string), typeof(TopPanelControl));
 
         public static readonly BindableProperty RightIconTapCommandProperty = BindableProperty.Create(
         nameof(RightIconTapCommand), typeof(ICommand), typeof(TopPanelControl), defaultBindingMode: BindingMode.OneWay);

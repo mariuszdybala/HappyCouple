@@ -8,6 +8,7 @@ using HappyCoupleMobile.Mvvm.Messages;
 using HappyCoupleMobile.Mvvm.Messages.Interface;
 using HappyCoupleMobile.Services;
 using HappyCoupleMobile.View;
+using HappyCoupleMobile.VM;
 using Xamarin.Forms;
 
 namespace HappyCoupleMobile.ViewModel.Abstract

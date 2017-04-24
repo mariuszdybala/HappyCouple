@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +16,9 @@ namespace HappyCoupleMobile.Mvvm.Controls
     public partial class ShoppingListPanel : Frame
     {
         public static readonly BindableProperty ShoppingListProperty = BindableProperty.Create(
-        nameof(ShoppingList), typeof(ShoppingListVm), typeof(ShoppingListPanel), propertyChanged: OnShoppingListChanged);
+        nameof(ShoppingList), typeof(ShoppingListVm), typeof(ShoppingListPanel));
+
+       
 
         public static readonly BindableProperty AddCommandProperty = BindableProperty.Create(
         nameof(AddCommand), typeof(ICommand), typeof(ShoppingListPanel), defaultBindingMode: BindingMode.OneWay);
@@ -33,6 +37,8 @@ namespace HappyCoupleMobile.Mvvm.Controls
             get { return (ShoppingListVm)GetValue(ShoppingListProperty); }
             set { SetValue(ShoppingListProperty, value); }
         }
+
+
 
         public ICommand AddCommand
         {
@@ -62,50 +68,7 @@ namespace HappyCoupleMobile.Mvvm.Controls
             InitializeComponent();
         }
 
-        private static void OnShoppingListChanged(BindableObject bindable, object oldvalue, object newvalue)
-        {
-            if (newvalue == null || newvalue == oldvalue)
-            {
-                return;
-            }
-
-            var shoppingList = (ShoppingListVm)newvalue;
-            var shoppingListPanel = (ShoppingListPanel)bindable;
-
-            if (shoppingList.Products.Any())
-            {
-                AddProductTypesToProductTypesContainer(shoppingList.Products, shoppingListPanel);
-            }
-        }
-
-        private static void AddProductTypesToProductTypesContainer(IList<ProductVm> products, ShoppingListPanel shoppingListPanel)
-        {
-            var types = products.GroupBy(x => x.ProductType).Select(x=>x.Key).ToList();
-
-            foreach (var type in types)
-            {
-                FileImageSource imageSource = Application.Current.Resources.ContainsKey(type.IconName)
-                    ? Application.Current.Resources[type.IconName] as FileImageSource
-                    : Application.Current.Resources["Other"] as FileImageSource;
-
-                if (imageSource == null)
-                {
-                    continue;
-                }
-
-                shoppingListPanel.ProductTypesContainer.Children.Add(new Image {Source = imageSource, HeightRequest = 25});
-
-                if (shoppingListPanel.ProductTypesContainer.Children.Count == 7)
-                {
-                    shoppingListPanel.ProductTypesContainer.Children.Add(new Label
-                    {
-                        TextColor = Color.Gray,
-                        Text = "..."
-                    });
-                    return;
-                }
-            }
-        }
+        
 
         private void OnAdd(object sender, EventArgs e)
         {

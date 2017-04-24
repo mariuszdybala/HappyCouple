@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:renderers="clr-namespace:HappyCoupleMobile.Mvvm.Renderers;assembly=HappyCoupleMobile"
              xmlns:converters="clr-namespace:HappyCoupleMobile.Mvvm.Converters;assembly=HappyCoupleMobile"
+             xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.Mvvm.Controls.ShoppingListPanel"
              Margin="5" 
              Padding="5" 
@@ -33,7 +34,7 @@
         <StackLayout Grid.Column="1" Grid.Row="0">
             <Label Text="{Binding ShoppingList.Name}" FontFamily="{StaticResource Medium}" />
         </StackLayout>
-        <StackLayout x:Name="ProductTypesContainer"  Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Spacing="0"/>
+        <controls:ProductTypesContainer Grid.Column="1" Grid.Row="1" ProductTypes="{Binding ShoppingList.ProductTypes}" Orientation="Horizontal" Spacing="0"/>
         <StackLayout Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
             <Image HeightRequest="20" VerticalOptions="Center" Source="{StaticResource Date}"></Image>
             <Label VerticalOptions="Center" TextColor="{StaticResource SecondColor}" Text="{Binding ShoppingList.AddDate, StringFormat='{0:yyyy.MM.dd}'}" FontSize="12" FontFamily="{StaticResource Medium}" />

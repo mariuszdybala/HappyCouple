@@ -69,8 +69,7 @@ namespace HappyCoupleMobile.ViewModel
         {
             var newProductVm = (ProductVm)feedbackMessage.GetValue(MessagesKeys.ProductKey);
 
-            ShoppingList.Products.Add(newProductVm);
-            ShoppingList.CalculateCurrentShoppingProgress();
+            ShoppingList.AddProduct(newProductVm);
         }
 
         private async Task OnProductChecked(ProductVm product)
@@ -82,8 +81,7 @@ namespace HappyCoupleMobile.ViewModel
 
         private void OnDeleteProduct(ProductVm product)
         {
-            ShoppingList.Products.Remove(product);
-            ShoppingList.CalculateCurrentShoppingProgress();
+            ShoppingList.DeleteProduct(product);
         }
 
         private void OnEditProduct(ProductVm product)
