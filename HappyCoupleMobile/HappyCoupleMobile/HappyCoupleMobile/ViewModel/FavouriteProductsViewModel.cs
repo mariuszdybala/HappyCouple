@@ -16,16 +16,17 @@ namespace HappyCoupleMobile.ViewModel
     {
         private Dictionary<string, IList<Product>> _productsTypesWithProducts;
         private readonly IProductServices _productService;
-        private int _carouselPosition;
+        private ProductType _selectedProductType;
 
-        public ObservableCollection<ProductType> FavouritesProductTypes { get; set; }
+        public ProductType SelectedProductType
+        {
+            get { return _selectedProductType; }
+            set { Set(ref _selectedProductType, value); }
+        }
+
+        public ObservableCollection<ProductType> ProductTypes { get; set; }
         public ObservableCollection<ProductVm> MockListForProduct { get; set; }
 
-        public int CarouselPosition
-        {
-            get { return _carouselPosition; }
-            set { Set(ref _carouselPosition, value); }
-        }
         public Command<ProductVm> DeleteProductCommand { get; set; }
         public Command<ProductVm> ProductSelectedCommand { get; set; }
 
@@ -36,13 +37,15 @@ namespace HappyCoupleMobile.ViewModel
         {
             _productService = productService;
             _productsTypesWithProducts = new Dictionary<string, IList<Product>>();
-            FavouritesProductTypes = new ObservableCollection<ProductType>();
+            ProductTypes = new ObservableCollection<ProductType>();
             MockListForProduct = new ObservableCollection<ProductVm>();
             RegisterCommandAndMessages();
         }
 
         public void RegisterCommandAndMessages()
         {
+            RegisterNavigateToMessage(this);
+
             ProductSelectedCommand = new Command<ProductVm>(async(product) => await OnProductSelected(product));
             DeleteProductCommand = new Command<ProductVm>(OnDeleteProduct);
 
@@ -53,7 +56,8 @@ namespace HappyCoupleMobile.ViewModel
 
         protected override async Task OnNavigateTo(IMessageData message)
         {
-            await Task.Yield();
+            await LoadProductTypes();
+            await LoadFavouriteProducts();
         }
 
         private void OnDeleteProduct(ProductVm product)
@@ -70,12 +74,6 @@ namespace HappyCoupleMobile.ViewModel
             await Task.Yield();
         }
 
-        private async Task OnNavigateTo(IBaseMessage<FavouriteProductsViewModel> message)
-        {
-            await LoadProductTypes();
-            await LoadFavouriteProducts();
-        }
-
         private async Task LoadFavouriteProducts()
         {
             _productsTypesWithProducts = await _productService.GetFavouriteTaskProductTypesWithProductsAsync();
@@ -85,7 +83,7 @@ namespace HappyCoupleMobile.ViewModel
         {
             var productTypes =await _productService.GetAllProductTypesAync();
 
-            FavouritesProductTypes = new ObservableCollection<ProductType>(productTypes);
+            ProductTypes = new ObservableCollection<ProductType>(productTypes);
 
             var mockListForProduct = 
                 new List<Product>
@@ -105,9 +103,8 @@ namespace HappyCoupleMobile.ViewModel
 
             MockListForProduct = new ObservableCollection<ProductVm>(mockListForProduct.Select(x=> new ProductVm(x)));
 
-            CarouselPosition = 4;
 
-            RaisePropertyChanged(nameof(FavouritesProductTypes));
+            RaisePropertyChanged(nameof(ProductTypes));
             RaisePropertyChanged(nameof(MockListForProduct));
         }
 

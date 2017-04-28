@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CarouselView.FormsPlugin.iOS;
 using Foundation;
 using GalaSoft.MvvmLight.Ioc;
 using HappyCoupleMobile.iOS.Providers;
@@ -33,8 +32,6 @@ namespace HappyCoupleMobile.iOS
             global::Xamarin.Forms.Forms.Init();
 
             ImageCircleRenderer.Init();
-
-            CarouselViewRenderer.Init();
 
 #if GORILLA
             LoadApplication(Player.CreateApplication(new Config("Good Gorilla")));

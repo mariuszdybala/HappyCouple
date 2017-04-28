@@ -3,23 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:abstract="clr-namespace:HappyCoupleMobile.View.Abstract;assembly=HappyCoupleMobile"
              xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
-             xmlns:abstractions="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              xmlns:toggleImages="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ToggleImages;assembly=HappyCoupleMobile"
              xmlns:favouriteProductList="clr-namespace:HappyCoupleMobile.Mvvm.Controls.FavouriteProductList;assembly=HappyCoupleMobile"
+             xmlns:horizontalCarousel="clr-namespace:HappyCoupleMobile.Mvvm.Controls.HorizontalCarousel;assembly=HappyCoupleMobile"
              BindingContext="{Binding FavouriteProductsViewModel, Source={StaticResource ViewModelLocator}}"
              x:Class="HappyCoupleMobile.View.FavouriteProductsView">
-    <StackLayout Spacing="0">
+    <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
         <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Zapisane produkty"/>
-        <Grid BackgroundColor="Teal" RowSpacing="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0.2*"/>
-                <RowDefinition Height="0.8*"/>
-            </Grid.RowDefinitions>
-            <controls:FavouriteProductTypesCarousel ProductTypeSelectedCommand="{Binding ProductTypeSelectedCommand}" BackgroundColor="{StaticResource SecondColor}" Grid.Row="0" FavouritesProductTypes="{Binding FavouritesProductTypes}" Position="{Binding CarouselPosition}"/>
-          <favouriteProductList:FavouriteProductListControl Grid.Row="1"  Products="{Binding MockListForProduct}"
-                                                            ButtonSelectProductCommand="{Binding ProductSelectedCommand}"
-                                                            ButtonDeleteCommand="{Binding DeleteProductCommand}"
-                                                            UnSubscribeAllEventsCommand="{Binding UnSubscribeAllEventsFromViewCommand, Mode=OneWayToSource}"/>
-        </Grid>
+        <StackLayout Margin="0,10,0,0">
+            <horizontalCarousel:HorizontalCarousel ProductTypes="{Binding ProductTypes}"
+                                                   SelectedProductType="{Binding SelectedProductType}"
+                                                   ProductTypeSelecedCommand="{Binding ProductTypeSelectedCommand}" />
+            <favouriteProductList:FavouriteProductListControl Products="{Binding MockListForProduct}"
+                                                              ButtonSelectProductCommand="{Binding ProductSelectedCommand}"
+                                                              ButtonDeleteCommand="{Binding DeleteProductCommand}"
+                                                              UnSubscribeAllEventsCommand="{Binding UnSubscribeAllEventsFromViewCommand, Mode=OneWayToSource}" />
+        </StackLayout>
     </StackLayout>
 </abstract:BaseHappyContentPage>

@@ -4,10 +4,67 @@
              xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
              xmlns:toggleImages="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ToggleImages;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.View.PreViewPage" Padding="5">
-    <StackLayout VerticalOptions="CenterAndExpand" HeightRequest="25" 
-           HorizontalOptions="Center"
-           BackgroundColor="{StaticResource FirstColor}" Padding="5"
-           WidthRequest="200">
-        <Label Text="asda"></Label>
+<!--    <ScrollView Orientation="Horizontal" VerticalOptions="Start">-->
+<!--        <StackLayout VerticalOptions="CenterAndExpand"-->
+<!--                         Orientation="Horizontal">-->
+<!--            <Frame Padding="2" BackgroundColor="{StaticResource FirstColor}" HorizontalOptions="Center">-->
+<!--                <StackLayout Orientation="Horizontal" Padding="2,1,10,1">-->
+<!--                    <Image Source="{StaticResource Meat}" />-->
+<!--                    <Label Text="Wędlina" VerticalTextAlignment="Center" TextColor="White" />-->
+<!--                </StackLayout>-->
+<!--            </Frame>-->
+<!--            <Frame Padding="2" BackgroundColor="{StaticResource FirstColor}" HorizontalOptions="Center">-->
+<!--                <StackLayout Orientation="Horizontal" Padding="2,1,10,1">-->
+<!--                    <Image Source="{StaticResource Spice}" />-->
+<!--                    <Label Text="Przyprawy" VerticalTextAlignment="Center" TextColor="White" />-->
+<!--                </StackLayout>-->
+<!--            </Frame>-->
+<!--            <Frame Padding="2" BackgroundColor="{StaticResource FirstColor}" HorizontalOptions="Center">-->
+<!--                <StackLayout Orientation="Horizontal" Padding="2,1,10,1">-->
+<!--                    <Image Source="{StaticResource Beer}" />-->
+<!--                    <Label Text="Piwko" VerticalTextAlignment="Center" TextColor="White" />-->
+<!--                </StackLayout>-->
+<!--            </Frame>-->
+<!--            <Frame Padding="2" BackgroundColor="{StaticResource FirstColor}" HorizontalOptions="Center">-->
+<!--                <StackLayout Orientation="Horizontal" Padding="2,1,10,1">-->
+<!--                    <Image Source="{StaticResource Bread}" />-->
+<!--                    <Label Text="Pieczywo" VerticalTextAlignment="Center" TextColor="White" />-->
+<!--                </StackLayout>-->
+<!--            </Frame>-->
+<!--            <Frame Padding="2" BackgroundColor="{StaticResource FirstColor}" HorizontalOptions="Center">-->
+<!--                <StackLayout Orientation="Horizontal" Padding="2,1,10,1">-->
+<!--                    <Image Source="{StaticResource Fruits}" />-->
+<!--                    <Label Text="Owoce" VerticalTextAlignment="Center" TextColor="White" />-->
+<!--                </StackLayout>-->
+<!--            </Frame>-->
+<!--        </StackLayout>-->
+<!--    </ScrollView>-->
+    <StackLayout>
+        <StackLayout Spacing="0" BackgroundColor="Aqua">
+            <StackLayout Orientation="Horizontal" Spacing="0" BackgroundColor="BlueViolet"
+                         HorizontalOptions="StartAndExpand">
+                <StackLayout Margin="10,5,10,0" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow">
+                    <Label
+                        Text="(123ASDASD)"
+                        VerticalOptions="StartAndExpand" InputTransparent="True"  HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+                <Label Margin="0,5,0,0"
+                       Text="Rafał asddfdfdfdfdfdfdfddfdfdfdfdfdfdfdfdfdfdadadd "
+                       VerticalOptions="Center" InputTransparent="True" LineBreakMode="TailTruncation" />
+
+            </StackLayout>
+        </StackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Label Margin="10,5,10,0" Grid.Column="1" HorizontalOptions="StartAndExpand" BackgroundColor="Yellow"
+                    Text="(123ASDASD)"
+                    VerticalOptions="Center" InputTransparent="True" LineBreakMode="NoWrap" />
+            <Label Margin="0,5,0,0" Grid.Column="0"
+                   Text="Rafał asda"
+                   VerticalOptions="Center" InputTransparent="True" LineBreakMode="TailTruncation" />
+        </Grid>
     </StackLayout>
 </ContentPage>

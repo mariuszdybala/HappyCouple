@@ -11,7 +11,7 @@
         <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Dodaj produkt"
                                   RightIconSource="{StaticResource AddFromFavourites}" RightIconTapCommand="{Binding GoToFavouriteProductsCommand}"/>
         <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
-            <controls:AddProductForm ProductTypesSource="{Binding ProductTypes}" 
+            <controls:AddProductForm 
                                      ProductComment="{Binding ProductComment}"
                                      ProductName="{Binding ProductName}"
                                      ProductQuantity="{Binding ProductQuantity}"

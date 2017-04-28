@@ -61,7 +61,7 @@ namespace HappyCoupleMobile.ViewModel
         private async Task OnAddProduct()
         {
             RegisterFeedBackMessage(this, true);
-            await NavigateTo<AddProductView, AddProductViewModel>();
+            await NavigateTo<FavouriteProductsView, FavouriteProductsViewModel>();
 
         }
 

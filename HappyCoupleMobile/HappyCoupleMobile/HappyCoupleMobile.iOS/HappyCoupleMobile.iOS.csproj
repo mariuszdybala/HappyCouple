@@ -143,6 +143,7 @@
     <Compile Include="Renderers\CustomViewCellRenderer.cs" />
     <Compile Include="Renderers\ExtendedScrollViewRenderer.cs" />
     <Compile Include="Renderers\RoundedBoxViewRenderer.cs" />
+    <Compile Include="Renderers\ScrollBarLessScrollViewRenderer.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <None Include="app.config" />
@@ -186,14 +187,6 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="CarouselView.FormsPlugin.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CarouselView.FormsPlugin.3.0.0\lib\Xamarin.iOS10\CarouselView.FormsPlugin.Abstractions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="CarouselView.FormsPlugin.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CarouselView.FormsPlugin.3.0.0\lib\Xamarin.iOS10\CarouselView.FormsPlugin.iOS.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="DACircularProgress, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\DACircularProgress.2.3.1.0\lib\Xamarin.iOS\DACircularProgress.dll</HintPath>
     </Reference>

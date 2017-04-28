@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HappyCoupleMobile.Mvvm.Controls.HorizontalCarousel.ProductTypeCarouselItem"
+             x:Name="ProductTypeCarouselItem" 
+             Padding="2" 
+             BackgroundColor="{StaticResource SecondColor}" 
+             OutlineColor="White"
+             HorizontalOptions="Center">
+    <StackLayout Orientation="Horizontal" Padding="2,1,10,1" BindingContext="{x:Reference ProductTypeCarouselItem}">
+        <Image Source="{Binding ProductType.IconName, Converter={StaticResource IconNameToImageSourceConverter}}" />
+        <Label x:Name="ProductTypeNameLabel"  Text="{Binding ProductType.Type}" VerticalTextAlignment="Center" FontFamily="{StaticResource Medium}" TextColor="White" />
+    </StackLayout>
+    <Frame.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding ProductTypeSelectedCommand, Source={x:Reference ProductTypeCarouselItem}}"/>
+    </Frame.GestureRecognizers>
+</Frame>
