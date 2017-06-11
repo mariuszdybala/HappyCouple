@@ -1,11 +1,13 @@
 ﻿using System;
 using HappyCoupleMobile.Model;
+using HappyCoupleMobile.Mvvm.Controls.ContextMenu;
+using HappyCoupleMobile.Mvvm.Renderers;
 using HappyCoupleMobile.VM;
 using Xamarin.Forms;
 
 namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 {
-    public partial class ProductViewControl : StackLayout
+    public partial class ProductViewControl : ContextMenuLayout
     {
         public event Action<ProductVm> Checked;
         public event Action<ProductVm> DeleteButtonClick;
@@ -26,7 +28,9 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
         public Command SelectProductCommand { get; set; }
         public Command EditProductCheckedCommand { get; set; }
         public Command DeleteProductCheckedCommand { get; set; }
-        public Command ProductItemTappedCommand { get; set; }
+
+		public override ContextMenuView ContextMenu => ProductContextMenu;
+        public override Xamarin.Forms.View DataContent => ProductData;
 
         public ProductViewControl()
         {
@@ -36,18 +40,12 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             SelectProductCommand = new Command(OnSelectProduct);
             EditProductCheckedCommand = new Command(OnEditProduct);
             DeleteProductCheckedCommand = new Command(OnDeleteProduct);
-            ProductItemTappedCommand = new Command(OnProductItemTapped);
         }
 
-        private void OnProductItemTapped()
-        {
-            ControlPanel.IsVisible = !ControlPanel.IsVisible;
-
-            if (ControlPanel.IsVisible)
-            {
-                ControlPanelInvoked?.Invoke(Product);
-            }
-        }
+		public override void OnTapInternal()
+		{
+			ControlPanelInvoked?.Invoke(Product);
+		}
 
         private void OnDeleteProduct()
         {
@@ -71,12 +69,12 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 
         public void HideSelectControlItem()
         {
-            AddStack.IsVisible = false;
+            SelectMenuItem.IsVisible = false;
         }
 
         public void HideEditControlItem()
         {
-            EditStack.IsVisible = false;
+            EditMenuItem.IsVisible = false;
         }
 
         public void HideCheckbox()
@@ -86,7 +84,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 
         public void HideControlPanel()
         {
-            ControlPanel.IsVisible = false;
+            CloseMenu();
         }
     }
 }

@@ -39,5 +39,13 @@ namespace HappyCoupleMobile.Helpers
                 await element.ScaleTo(1, velocity, Easing.Linear);
             }
         }
+
+        public static async Task MimicTapEffect(this Layout layout, Color? effectColor = null, int effectDurationMiliseconds = 50)
+        {
+            Color colorBeforeChange = layout.BackgroundColor;
+            layout.BackgroundColor = effectColor ?? Color.FromHex("#D9D9D9");
+            await Task.Delay(effectDurationMiliseconds);
+            layout.BackgroundColor = colorBeforeChange;
+        }
     }
 }

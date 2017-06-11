@@ -205,10 +205,43 @@
     </Compile>
     <Compile Include="VM\ProductVm.cs" />
     <Compile Include="VM\ShoppingListVm.cs" />
+    <Compile Include="Mvvm\Controls\ChooseProductPopUpView.xaml.cs">
+      <DependentUpon>ChooseProductPopUpView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mvvm\Controls\FavouriteProductList\FavouriteProductListView.xaml.cs">
+      <DependentUpon>FavouriteProductListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mvvm\Renderers\GestureStackLayout.cs" />
+    <Compile Include="Enums\SwipeDirection.cs" />
+    <Compile Include="Mvvm\Controls\TappableStackLayout.xaml.cs">
+      <DependentUpon>TappableStackLayout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mvvm\Controls\ContextMenu\ContextMenuLayout.cs" />
+    <Compile Include="Mvvm\Controls\ContextMenu\ContextMenuView.xaml.cs">
+      <DependentUpon>ContextMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Mvvm\Controls\ContextMenu\ContextMenuItemView.xaml.cs">
+      <DependentUpon>ContextMenuItemView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mvvm\Controls\ChooseProductPopUpView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mvvm\Controls\FavouriteProductList\FavouriteProductListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mvvm\Controls\TappableStackLayout.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mvvm\Controls\ContextMenu\ContextMenuView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mvvm\Controls\ContextMenu\ContextMenuItemView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -393,6 +426,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\Interfaces\" />
+    <Folder Include="Mvvm\Controls\ContextMenu\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mvvm\Controls\FavouriteProductList\FavouriteProductListControl.xaml">

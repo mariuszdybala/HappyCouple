@@ -1,61 +1,40 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+<?xml version="1.0" encoding="UTF-8"?>
+<contextmenu:ContextMenuLayout xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toggleImages="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ToggleImages;assembly=HappyCoupleMobile"
-             xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
-             x:Class="HappyCoupleMobile.Mvvm.Controls.EditProductList.ProductViewControl" x:Name="ProductViewControl">
-    <StackLayout Padding="5">
-        <StackLayout Orientation="Horizontal">
-            <BoxView Margin="5,0,5,0" WidthRequest="1" BackgroundColor="{StaticResource ThirthColor}"/>
-            <toggleImages:ListItemCheckbox x:Name="IsBoughtCheckbox" IsToggled="{Binding Product.IsBought, Source={x:Reference ProductViewControl}}" 
-                                           TappedCommand="{Binding ProductCheckedCommand, Source={x:Reference ProductViewControl}}"/>
-            <StackLayout HorizontalOptions="FillAndExpand">
-                <Label x:Name="NameLabel" Text="{Binding Product.Name, Source={x:Reference ProductViewControl}}"   
-                                          TextColor="White"
-                                          FontFamily="{StaticResource Medium}"
-                                          HorizontalTextAlignment="Start" FontSize="15"
-                                          LineBreakMode="CharacterWrap" />
-                <Label x:Name="CommentLabel" Text="{Binding Product.Comment, Source={x:Reference ProductViewControl}}"  
-                                             TextColor="White"
-                                             FontFamily="{StaticResource Light}"
-                                             HorizontalTextAlignment="Start" FontSize="12"
-                                             LineBreakMode="CharacterWrap" />
-            </StackLayout>
-        </StackLayout>
-        <Label x:Name="QuantityLabel" 
-               Text="{Binding Product.Quantity, Source={x:Reference ProductViewControl}, StringFormat='Ilość: {0}'}"
-               HorizontalTextAlignment="End" FontFamily="{StaticResource Medium}" FontSize="15" TextColor="White" />
-        <StackLayout.GestureRecognizers>
-            <TapGestureRecognizer Command="{Binding Source={x:Reference ProductViewControl}, Path=ProductItemTappedCommand}"/>
-        </StackLayout.GestureRecognizers>
-    </StackLayout>
-    <Grid x:Name="ControlPanel" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsVisible="False">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.4*"/>
-            <ColumnDefinition Width="0.2*"/>
-            <ColumnDefinition Width="0.4*"/>
-        </Grid.ColumnDefinitions>
-        <StackLayout x:Name="EditStack" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="0">
-            <controls:TappableImage x:Name="EditIcons" Source="{StaticResource EditList}" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True"/>
-            <Label x:Name="EditLabel" VerticalOptions="Center" HorizontalOptions="Center" Text="Edycja" Style="{StaticResource MediumWhite11Font}"/>
-            <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding Source={x:Reference ProductViewControl}, Path=EditProductCheckedCommand}"/>
-            </StackLayout.GestureRecognizers>
-        </StackLayout>
-        <StackLayout x:Name="AddStack" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Spacing="0"
-                                    IsVisible="True">
-            <controls:TappableImage x:Name="AddIcon" Source="{StaticResource CloseList}" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True"/>
-            <Label x:Name="AddLabel" VerticalOptions="Center" HorizontalOptions="Center" Text="Dodaj" Style="{StaticResource MediumWhite11Font}"/>
-            <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding Source={x:Reference ProductViewControl}, Path=SelectProductCommand}"/>
-            </StackLayout.GestureRecognizers>
-        </StackLayout>
-        <StackLayout x:Name="DeleteStack" Grid.Column="2" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Vertical" Spacing="0">
-            <controls:TappableImage x:Name="DeleteIcon" Source="{StaticResource Delete}" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True"/>
-            <Label x:Name="DeleteLabel" VerticalOptions="Center" HorizontalOptions="Center" Text="Usuń" Style="{StaticResource MediumWhite11Font}"/>
-            <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding Source={x:Reference ProductViewControl}, Path=DeleteProductCheckedCommand}"/>
-            </StackLayout.GestureRecognizers>
-        </StackLayout>
-    </Grid>
-</StackLayout>
+             xmlns:contextmenu="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ContextMenu;assembly=HappyCoupleMobile"
+             x:Class="HappyCoupleMobile.Mvvm.Controls.EditProductList.ProductViewControl" 
+			 x:Name="ProductViewControl">
+    <AbsoluteLayout x:Name="MainLayout" VerticalOptions="FillAndExpand" BindingContext="{x:Reference ProductViewControl}">
+        <contextmenu:ContextMenuView x:Name="ProductContextMenu">
+            <contextmenu:ContextMenuItemView x:Name="EditMenuItem" ContextMenuText="Edytuj" BackgroundColor="{StaticResource FirstColor}" ContextMenuIcon="{StaticResource EditList}" TappedCommand="{Binding EditProductCheckedCommand}" TappedCommandParameter="{Binding Product}"/>
+            <contextmenu:ContextMenuItemView x:Name="SelectMenuItem" ContextMenuText="Dodaj" BackgroundColor="{StaticResource FifthColor}" ContextMenuIcon="{StaticResource CloseList}" TappedCommand="{Binding SelectProductCommand}" TappedCommandParameter="{Binding Product}"/>
+            <contextmenu:ContextMenuItemView x:Name="DeleteMenuItem" ContextMenuText="Usuń" BackgroundColor="{StaticResource FourthColor}" ContextMenuIcon="{StaticResource Delete}" TappedCommand="{Binding DeleteProductCheckedCommand}" TappedCommandParameter="{Binding Product}"/>
+        </contextmenu:ContextMenuView>
+	    <StackLayout x:Name="ProductData" BackgroundColor="{StaticResource SecondColor}" Padding="5" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" >
+	        <StackLayout Orientation="Horizontal">
+	            <BoxView Margin="5,0,5,0" WidthRequest="1" BackgroundColor="{StaticResource ThirthColor}"/>
+	            <toggleImages:ListItemCheckbox x:Name="IsBoughtCheckbox" IsToggled="{Binding Product.IsBought, Source={x:Reference ProductViewControl}}" 
+	                                           TappedCommand="{Binding ProductCheckedCommand, Source={x:Reference ProductViewControl}}"/>
+	            <StackLayout HorizontalOptions="FillAndExpand">
+	                <Label x:Name="NameLabel" Text="{Binding Product.Name, Source={x:Reference ProductViewControl}}"   
+	                                          TextColor="White"
+	                                          FontFamily="{StaticResource Medium}"
+	                                          HorizontalTextAlignment="Start" FontSize="15"
+	                                          LineBreakMode="CharacterWrap" />
+	                <Label x:Name="CommentLabel" Text="{Binding Product.Comment, Source={x:Reference ProductViewControl}}"  
+	                                             TextColor="White"
+	                                             FontFamily="{StaticResource Light}"
+	                                             HorizontalTextAlignment="Start" FontSize="12"
+	                                             LineBreakMode="CharacterWrap" />
+	            </StackLayout>
+	        </StackLayout>
+	        <Label x:Name="QuantityLabel" 
+	               Text="{Binding Product.Quantity, Source={x:Reference ProductViewControl}, StringFormat='Ilość: {0}'}"
+	               HorizontalTextAlignment="End" FontFamily="{StaticResource Medium}" FontSize="15" TextColor="White" />
+	        <StackLayout.GestureRecognizers>
+	            <TapGestureRecognizer Command="{Binding Source={x:Reference ProductViewControl}, Path=ProductItemTappedCommand}"/>
+	        </StackLayout.GestureRecognizers>
+	    </StackLayout>
+        </AbsoluteLayout>
+</contextmenu:ContextMenuLayout>

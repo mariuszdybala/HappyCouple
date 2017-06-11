@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<controls:TappableStackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="HappyCoupleMobile.Mvvm.Controls.ContextMenu.ContextMenuItemView"
+    xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
+    HorizontalOptions="End"
+    WidthRequest="100"
+    x:Name="MenuItemView" BackgroundColor="{StaticResource SecondColor}">
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Image Source="{Binding Source={x:Reference MenuItemView}, Path=ContextMenuIcon }"/>
+        <Label Text="{Binding Source={x:Reference MenuItemView}, Path=ContextMenuText }" FontFamily="{StaticResource Medium}" TextColor="White"/>
+    </StackLayout>
+</controls:TappableStackLayout>

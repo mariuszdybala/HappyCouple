@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using GalaSoft.MvvmLight.Command;
-using HappyCoupleMobile.Model;
+﻿using System.Threading.Tasks;
 using HappyCoupleMobile.Mvvm.Messages;
 using HappyCoupleMobile.Mvvm.Messages.Interface;
-using HappyCoupleMobile.Notification.Interfaces;
 using HappyCoupleMobile.Services;
 using HappyCoupleMobile.Services.Interfaces;
 using HappyCoupleMobile.View;
@@ -76,7 +68,7 @@ namespace HappyCoupleMobile.ViewModel
         {
             ShoppingList.CalculateCurrentShoppingProgress();
 
-            Task.Yield();
+            await Task.Yield();
         }
 
         private void OnDeleteProduct(ProductVm product)

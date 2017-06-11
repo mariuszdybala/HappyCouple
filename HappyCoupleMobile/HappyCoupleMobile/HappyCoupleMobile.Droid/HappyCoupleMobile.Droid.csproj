@@ -210,6 +210,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="Renderers\GestureStackLayoutRenderer.cs" />
+    <Compile Include="Custom\CustomGestureListener.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -416,6 +418,9 @@
       <Project>{1b0e8bd3-4b58-4da5-a826-63fef64a078e}</Project>
       <Name>HappyCoupleMobile</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Custom\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
