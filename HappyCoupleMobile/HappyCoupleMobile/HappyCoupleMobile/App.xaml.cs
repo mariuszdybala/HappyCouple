@@ -169,7 +169,7 @@ namespace HappyCoupleMobile
 
                 await shoppingListRepository
                     .InsertProductAsync(MockedData.GetProduct
-                    ("Marchewka",1, "Najlepiej to kupić w lidlu", lists[2].Id,
+                    ("Marchewka",1, "Najlepiej to kupić w lidlu Najlepiej to kupić w lidlu Najlepiej to kupić w lidlu Najlepiej to kupić w lidlu Najlepiej to kupić w lidlu", lists[2].Id,
                         productTypes[3].Id, 1));
                 await shoppingListRepository
                     .InsertProductAsync(MockedData.GetProduct

@@ -9,7 +9,8 @@
              x:Class="HappyCoupleMobile.View.EditShoppingListView"
              BindingContext="{Binding EditShoppingListViewModel, Source={StaticResource ViewModelLocator}}">
     <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
-        <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Edycja listy zakupów" RightIconSource="{StaticResource AddProduct}" RightIconTapCommand="{Binding AddProductCommand}"/>
+        <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Edycja listy zakupów" 
+                    RightIconSource="{StaticResource AddProduct}" RightIconTapCommand="{Binding AddProductCommand}"/>
         <Grid Padding="10,15,10,10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />

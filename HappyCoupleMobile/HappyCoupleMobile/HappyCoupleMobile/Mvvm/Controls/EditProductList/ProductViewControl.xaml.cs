@@ -1,7 +1,5 @@
 ﻿using System;
-using HappyCoupleMobile.Model;
 using HappyCoupleMobile.Mvvm.Controls.ContextMenu;
-using HappyCoupleMobile.Mvvm.Renderers;
 using HappyCoupleMobile.VM;
 using Xamarin.Forms;
 
@@ -27,7 +25,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
         public Command ProductCheckedCommand { get; set; }
         public Command SelectProductCommand { get; set; }
         public Command EditProductCheckedCommand { get; set; }
-        public Command DeleteProductCheckedCommand { get; set; }
+        public Command DeleteProductCheckedCommand => new Command(OnDeleteProduct);
 
 		public override ContextMenuView ContextMenu => ProductContextMenu;
         public override Xamarin.Forms.View DataContent => ProductData;
@@ -39,7 +37,6 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             ProductCheckedCommand = new Command(OnProductChecked);
             SelectProductCommand = new Command(OnSelectProduct);
             EditProductCheckedCommand = new Command(OnEditProduct);
-            DeleteProductCheckedCommand = new Command(OnDeleteProduct);
         }
 
 		public override void OnTapInternal()

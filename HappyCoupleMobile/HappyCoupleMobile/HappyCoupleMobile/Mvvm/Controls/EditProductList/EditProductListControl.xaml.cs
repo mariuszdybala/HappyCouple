@@ -109,12 +109,14 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             var products = (ObservableCollection<ProductVm>)newvalue;
             var editProductsListControl = (EditProductListControl)bindable;
 
+            editProductsListControl.ProductTypesPanelsContainer.Children.Clear();
+
             InitialProductList(products, editProductsListControl);
         }
 
         private static void InitialProductList(ObservableCollection<ProductVm> products, EditProductListControl editProductsListControl)
         {
-            editProductsListControl.UnSubscribeFromProductListEvents(products);
+            //editProductsListControl.UnSubscribeFromProductListEvents(products);
 
             if (!products.Any())
             {
@@ -127,7 +129,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
                 editProductsListControl.InsertNewProductsToNewType(productType.Type, productType.Products.ToList());
             }
 
-            editProductsListControl.AssingEventsToProductList(products);
+            //editProductsListControl.AssingEventsToProductList(products);
         }
 
         private void InsertProduct(ProductVm product)
@@ -143,7 +145,6 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             {
                 InsertNewProductsToExistingType(productTypePanelForNewProduct, product);
             }
-
         }
 
         private void InsertNewProductsToNewType(ProductType productType, IList<ProductVm> products)
@@ -165,6 +166,11 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
                 var newProduct = (ProductVm) e.NewItems[0];
                 InsertProduct(newProduct);
             }
+            else if (e.Action == NotifyCollectionChangedAction.Remove)
+			{
+                var productToDelete = (ProductVm)e.OldItems[0];
+                DeleteProductFromView(productToDelete);
+			}
         }
 
         private ProductTypePanelControl CreateNewProductTypePanelControl(ProductType productType, List<ProductVm> products)
@@ -174,7 +180,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             productTypePanel.SetContainerData(productType);
             productTypePanel.AddProductsToContainer(products);
 
-            AssignEvents(productTypePanel);
+            //AssignEvents(productTypePanel);
 
             return productTypePanel;
         }
@@ -182,7 +188,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
         private void AssignEvents(ProductTypePanelControl productTypePanelControl)
         {
             productTypePanelControl.ProductControlPanelInvoked += OnControlPanelInvoked;
-            productTypePanelControl.ProductDeleteButtonClick += OnDeleteButtonClickProductButtonClick;
+            //productTypePanelControl.ProductDeleteButtonClick += OnDeleteButtonClickProductButtonClick;
             productTypePanelControl.ProductChecked += OnProductChecked;
             productTypePanelControl.ProductEditButtonClick += OnEditProductButtonClick;
         }
@@ -202,8 +208,6 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 
         private void OnDeleteButtonClickProductButtonClick(ProductVm product)
         {
-            DeleteProductFromView(product);
-
             if (ButtonDeleteCommand == null)
             {
                 return;
