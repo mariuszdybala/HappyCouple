@@ -60,31 +60,31 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 
             //AssignEvents(productView);
 
-            ProductsContainer.Children.Insert(0,productView);
+            //ProductsContainer.Children.Insert(0,productView);
         }
 
         public void UnSubscribeAllEvents()
         {
-            foreach (var productViewControl in ProductsContainer.Children.OfType<ProductViewControl>())
-            {
-                //UnSubscribeEventsFromProductViewControl(productViewControl);
-            }
+//            foreach (var productViewControl in ProductsContainer.Children.OfType<ProductViewControl>())
+//            {
+//                //UnSubscribeEventsFromProductViewControl(productViewControl);
+//            }
         }
 
         public void HideControlPanels(ProductVm product)
         {
-            foreach (var productViewControl in ProductsContainer.Children.OfType<ProductViewControl>().Where(x => x.Product.Id != product.Id))
-            {
-                productViewControl.HideControlPanel();
-            }
+//            foreach (var productViewControl in ProductsContainer.Children.OfType<ProductViewControl>().Where(x => x.Product.Id != product.Id))
+//            {
+//                productViewControl.HideControlPanel();
+//            }
         }
 
         public void DeleteProductFromView(ProductVm product)
         {
-            Products.Remove(product);
-            var productView = ProductsContainer.Children.OfType<ProductViewControl>().FirstOrDefault(x=>x.Product.Id == product.Id);
-
-            ProductsContainer.Children.Remove(productView);
+//            Products.Remove(product);
+//            var productView = ProductsContainer.Children.OfType<ProductViewControl>().FirstOrDefault(x=>x.Product.Id == product.Id);
+//
+//            ProductsContainer.Children.Remove(productView);
         }
 
         private void OnControlPanelInvoked(ProductVm product)

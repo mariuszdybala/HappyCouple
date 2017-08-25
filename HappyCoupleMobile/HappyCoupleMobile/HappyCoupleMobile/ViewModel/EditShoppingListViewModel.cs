@@ -47,10 +47,16 @@ namespace HappyCoupleMobile.ViewModel
 
         protected override async Task OnNavigateTo(IMessageData message)
         {
+	        CreateGroupedProductList();
             ShoppingList = (ShoppingListVm)message.GetValue(MessagesKeys.ShoppingListKey);
         }
 
-        private async Task OnAddProduct()
+	    private void CreateGroupedProductList()
+	    {
+
+	    }
+
+	    private async Task OnAddProduct()
         {
             RegisterFeedBackMessage(this, true);
             await NavigateTo<FavouriteProductsView, FavouriteProductsViewModel>();

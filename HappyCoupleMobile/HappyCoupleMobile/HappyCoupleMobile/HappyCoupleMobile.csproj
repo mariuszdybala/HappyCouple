@@ -50,6 +50,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Custom\GroupedProductList.cs" />
     <Compile Include="Data\BaseDao.cs" />
     <Compile Include="Data\DatabaseInitializer.cs" />
     <Compile Include="Data\Interfaces\IBaseDao.cs" />

@@ -53,6 +53,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 	    public bool ShowSelectButton {set => SelectMenuItem.IsVisible = value;}
 	    public bool ShowDeleteButton {set => DeleteMenuItem.IsVisible = value;}
 	    public bool ShowCheckboxButton {set => IsBoughtCheckbox.IsVisible = value;}
+	    public bool ShowQuantityButton {set => QuantityLabel.IsVisible = value;}
 
 		public override ContextMenuView ContextMenu => ProductContextMenu;
         public override Xamarin.Forms.View DataContent => ProductData;

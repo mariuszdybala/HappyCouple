@@ -85,7 +85,7 @@ namespace HappyCoupleMobile.ViewModel
 
             ProductTypes = new ObservableCollection<ProductType>(productTypes);
 
-            var mockListForProduct = 
+            var mockListForProduct =
                 new List<Product>
                 {
                     new Product
@@ -110,8 +110,7 @@ namespace HappyCoupleMobile.ViewModel
 
         protected override void CleanResources()
         {
-            // ProductTypes = new ObservableCollection<ProductType>();
-            UnSubscribeAllEventsFromViewCommand.Execute(null);
+
         }
     }
 }

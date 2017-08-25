@@ -6,18 +6,29 @@
              xmlns:toggleImages="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ToggleImages;assembly=HappyCoupleMobile"
              xmlns:favouriteProductList="clr-namespace:HappyCoupleMobile.Mvvm.Controls.FavouriteProductList;assembly=HappyCoupleMobile"
              xmlns:horizontalCarousel="clr-namespace:HappyCoupleMobile.Mvvm.Controls.HorizontalCarousel;assembly=HappyCoupleMobile"
+             xmlns:editProductList="clr-namespace:HappyCoupleMobile.Mvvm.Controls.EditProductList;assembly=HappyCoupleMobile"
              BindingContext="{Binding FavouriteProductsViewModel, Source={StaticResource ViewModelLocator}}"
-             x:Class="HappyCoupleMobile.View.FavouriteProductsView">
+             x:Class="HappyCoupleMobile.View.FavouriteProductsView"
+		     x:Name="FavouriteProductsView">
     <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
         <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Zapisane produkty"/>
         <StackLayout Margin="0,10,0,0">
             <horizontalCarousel:HorizontalCarousel ProductTypes="{Binding ProductTypes}"
                                                    SelectedProductType="{Binding SelectedProductType}"
                                                    ProductTypeSelecedCommand="{Binding ProductTypeSelectedCommand}" />
-            <favouriteProductList:FavouriteProductListControl Products="{Binding MockListForProduct}"
-                                                              ButtonSelectProductCommand="{Binding ProductSelectedCommand}"
-                                                              ButtonDeleteCommand="{Binding DeleteProductCommand}"
-                                                              UnSubscribeAllEventsCommand="{Binding UnSubscribeAllEventsFromViewCommand, Mode=OneWayToSource}" />
+	        <ListView Margin="0,10,0,0" BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding MockListForProduct}">
+		        <ListView.ItemTemplate>
+			        <DataTemplate>
+				        <ViewCell>
+					        <editProductList:ProductViewControl Product="{Binding .}"
+					                                            ShowCheckboxButton="False" ShowQuantityButton="False"
+					                                            DeleteCommand="{Binding BindingContext.DeleteProductCommand, Source={x:Reference FavouriteProductsView}}"
+					                                            EditCommand="{Binding BindingContext.EditProductCommand, Source={x:Reference FavouriteProductsView}}"
+					                                            SelectCommand="{Binding BindingContext.ProductSelectedCommand, Source={x:Reference FavouriteProductsView}}" />
+				        </ViewCell>
+			        </DataTemplate>
+		        </ListView.ItemTemplate>>
+	        </ListView>
         </StackLayout>
     </StackLayout>
 </abstract:BaseHappyContentPage>

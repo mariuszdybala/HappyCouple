@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using GalaSoft.MvvmLight;
+using HappyCoupleMobile.Custom;
 using HappyCoupleMobile.Enums;
 using HappyCoupleMobile.Model;
 
@@ -9,7 +11,7 @@ namespace HappyCoupleMobile.VM
 {
     public class ShoppingListVm : ViewModelBase
     {
-        private ObservableCollection<ProductVm> _products;
+        private ObservableCollection<GroupedProductList> _groupedProducts;
         private ObservableCollection<ProductType> _productTypes;
 
         private string _name;
@@ -86,15 +88,17 @@ namespace HappyCoupleMobile.VM
 	        set => Set(ref _productsCount, value);
         }
 
-        public ObservableCollection<ProductVm> Products
+        public ObservableCollection<GroupedProductList> GroupedProducts
         {
-            get => _products;
+            get => _groupedProducts;
 	        set
             {
-                Set(ref _products, value);
+                Set(ref _groupedProducts, value);
                 UpdateAdditionalData();
             }
         }
+
+	    public IList<ProductVm> Products => GroupedProducts.SelectMany(x=>x).ToList();
 
         public ObservableCollection<ProductType> ProductTypes
         {
@@ -117,10 +121,15 @@ namespace HappyCoupleMobile.VM
         {
             var productVms = ShoppingList.Products.Select(x => new ProductVm(x));
 
-            Products = new ObservableCollection<ProductVm>(productVms);
+	        var groupedData = productVms.OrderBy(x => x.ProductType.IconName)
+		        .GroupBy(x => x.ProductType)
+		        .Select(x => new GroupedProductList(x))
+		        .ToList();
+
+	        GroupedProducts = new ObservableCollection<GroupedProductList>(groupedData);
         }
 
-        public void CalculateCurrentShoppingProgress()
+	    public void CalculateCurrentShoppingProgress()
         {
             var totalProductsCountValue = Products.Count;
             var boughtProductsCountValue = Products.Count(x => x.ProductModel.IsBought);
@@ -144,21 +153,38 @@ namespace HappyCoupleMobile.VM
 
         private void UpdateProductTypeList()
         {
-            var productTypes = Products.GroupBy(x => x.ProductType).Select(x => x.Key);
-
-            ProductTypes = new ObservableCollection<ProductType>(productTypes);
+            ProductTypes = new ObservableCollection<ProductType>(GroupedProducts.Select(x=>x.ProductType));
             RaisePropertyChanged(() => ProductTypes);
         }
 
         public void AddProduct(ProductVm product)
         {
-            Products.Add(product);
+	        if (GroupedProducts.All(x => x.ProductType != product.ProductType))
+	        {
+		        GroupedProducts.Add(new GroupedProductList(product.ProductType));
+	        }
+
+	        GroupedProducts.FirstOrDefault(x=>x.ProductType == product.ProductType).Add(product);
+
             UpdateAdditionalData();
         }
 
         public void DeleteProduct(ProductVm product)
         {
-            Products.Remove(product);
+	        var productGroup = GroupedProducts.FirstOrDefault(x => x.ProductType == product.ProductType);
+
+	        if (productGroup == null)
+	        {
+		        return;
+	        }
+
+	        productGroup.Remove(product);
+
+	        if (!productGroup.Any())
+	        {
+		        GroupedProducts.Remove(productGroup);
+	        }
+
             UpdateAdditionalData();
         }
     }

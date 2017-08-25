@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="HappyCoupleMobile.Mvvm.Controls.EditProductList.ProductTypePanelControl" 
-             BackgroundColor="{StaticResource SecondColor}" 
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HappyCoupleMobile.Mvvm.Controls.EditProductList.ProductTypePanelControl"
+             BackgroundColor="{StaticResource SecondColor}"
              Padding="5">
     <Frame BackgroundColor="{StaticResource ThirthColor}" Padding="2">
         <StackLayout x:Name="PanelHeader" BackgroundColor="{StaticResource FirstColor}" Orientation="Horizontal" Padding="2">
@@ -10,5 +10,4 @@
             <Label x:Name="HeaderLabel" TextColor="White" FontFamily="{StaticResource Medium}" VerticalTextAlignment="Center" />
         </StackLayout>
     </Frame>
-    <StackLayout x:Name="ProductsContainer"/>
 </StackLayout>

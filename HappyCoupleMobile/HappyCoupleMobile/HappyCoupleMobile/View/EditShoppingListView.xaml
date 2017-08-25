@@ -35,14 +35,7 @@
                 </StackLayout>
             </StackLayout>
         </Grid>
-<!--        <editProductList:EditProductListControl x:Name="EditProductListControl"  Products="{Binding ShoppingList.Products}" -->
-<!--                                            IsVisible="{Binding ShoppingList.ShowPlaceholder, Converter={StaticResource InverseBooleanConverter}}"-->
-<!--                                            ButtonDeleteCommand="{Binding DeleteProductCommand}" -->
-<!--                                            ButtonEditCommand="{Binding EditProductCommand}"-->
-<!--                                            ProductCheckedCommand="{Binding ProductCheckedCommand}"-->
-<!--                                            UnSubscribeAllEventsCommand="{Binding UnSubscribeAllEventsFromViewCommand, Mode=OneWayToSource}"/>-->
-
-	    <ListView BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding ShoppingList.Products}">
+	    <ListView Margin="0,10,0,0" IsGroupingEnabled="True" BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding ShoppingList.GroupedProducts}">
 		    <ListView.ItemTemplate>
 			    <DataTemplate>
 				    <ViewCell>
@@ -53,9 +46,20 @@
 					                                        CheckedCommand="{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}" />
 				    </ViewCell>
 			    </DataTemplate>
-		    </ListView.ItemTemplate>>
+		    </ListView.ItemTemplate>
+		    <ListView.GroupHeaderTemplate>
+			    <DataTemplate>
+				    <ViewCell>
+					    <Frame BackgroundColor="{StaticResource ThirthColor}" Padding="2">
+						    <StackLayout x:Name="PanelHeader" BackgroundColor="{StaticResource FirstColor}" Orientation="Horizontal" Padding="2">
+							    <Image x:Name="HeaderImage" Source="{Binding ProductType.IconName, Converter={StaticResource IconNameToImageSourceConverter}}"/>
+							    <Label x:Name="HeaderLabel" TextColor="White" Text="{Binding ProductType.IconName}" FontFamily="{StaticResource Medium}" VerticalTextAlignment="Center" />
+						    </StackLayout>
+					    </Frame>
+				    </ViewCell>
+			    </DataTemplate>
+		    </ListView.GroupHeaderTemplate>
 	    </ListView>
-
         <StackLayout VerticalOptions="StartAndExpand" IsVisible="{Binding ShoppingList.ShowPlaceholder}"
                    Spacing="10" Margin="0,40,0,0">
             <Image Source="{StaticResource EmptyProducts}"/>
