@@ -59,7 +59,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 
             productView.HideSelectControlItem();
 
-            AssignEvents(productView);
+            //AssignEvents(productView);
 
             ProductsContainer.Children.Insert(0,productView);
         }
@@ -68,7 +68,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
         {
             foreach (var productViewControl in ProductsContainer.Children.OfType<ProductViewControl>())
             {
-                UnSubscribeEventsFromProductViewControl(productViewControl);
+                //UnSubscribeEventsFromProductViewControl(productViewControl);
             }
         }
 
@@ -108,20 +108,20 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             ProductChecked?.Invoke(product);
         }
 
-        private void AssignEvents(ProductViewControl productViewControl)
-        {
-            productViewControl.ControlPanelInvoked += OnControlPanelInvoked;
-            productViewControl.DeleteButtonClick += OnDeleteButtonClick;
-            productViewControl.Checked += OnProductChecked;
-            productViewControl.EditButtonClick += OnEditButtonClick;
-        }
-
-        private void UnSubscribeEventsFromProductViewControl(ProductViewControl productViewControl)
-        {
-            productViewControl.ControlPanelInvoked -= OnControlPanelInvoked;
-            productViewControl.DeleteButtonClick -= OnDeleteButtonClick;
-            productViewControl.Checked -= OnProductChecked;
-            productViewControl.EditButtonClick -= OnEditButtonClick;
-        }
+//        private void AssignEvents(ProductViewControl productViewControl)
+//        {
+//            productViewControl.ControlPanelInvoked += OnControlPanelInvoked;
+//            productViewControl.DeleteButtonClick += OnDeleteButtonClick;
+//            productViewControl.Checked += OnProductChecked;
+//            productViewControl.EditButtonClick += OnEditButtonClick;
+//        }
+//
+//        private void UnSubscribeEventsFromProductViewControl(ProductViewControl productViewControl)
+//        {
+//            productViewControl.ControlPanelInvoked -= OnControlPanelInvoked;
+//            productViewControl.DeleteButtonClick -= OnDeleteButtonClick;
+//            productViewControl.Checked -= OnProductChecked;
+//            productViewControl.EditButtonClick -= OnEditButtonClick;
+//        }
     }
 }

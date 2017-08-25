@@ -28,8 +28,8 @@ namespace HappyCoupleMobile.VM
 
         public string Name
         {
-            get { return _name; }
-            set
+            get => _name;
+	        set
             {
                 Set(ref _name, value);
                 ShoppingList.Name = value;
@@ -38,8 +38,8 @@ namespace HappyCoupleMobile.VM
 
         public DateTime AddDate
         {
-            get { return _addDate; }
-            set
+            get => _addDate;
+	        set
             {
                 Set(ref _addDate, value);
                 ShoppingList.AddDate = value;
@@ -48,8 +48,8 @@ namespace HappyCoupleMobile.VM
 
         public ShoppingListStatus Status
         {
-            get { return _status; }
-            set
+            get => _status;
+	        set
             {
                 Set(ref _status, value);
                 ShoppingList.Status = value;
@@ -58,38 +58,38 @@ namespace HappyCoupleMobile.VM
 
         public string BoughtProductsCount
         {
-            get { return _boughtProductsCount; }
-            set { Set(ref _boughtProductsCount, value); }
+            get => _boughtProductsCount;
+	        set => Set(ref _boughtProductsCount, value);
         }
 
         public string LeftProductsCount
         {
-            get { return _leftProductsCount; }
-            set { Set(ref _leftProductsCount, value); }
+            get => _leftProductsCount;
+	        set => Set(ref _leftProductsCount, value);
         }
 
         public string ProgressPercent
         {
-            get { return _progressPercent; }
-            set { Set(ref _progressPercent, value); }
+            get => _progressPercent;
+	        set => Set(ref _progressPercent, value);
         }
 
         public bool ShowPlaceholder
         {
-            get { return _showPlaceholder; }
-            set { Set(ref _showPlaceholder, value); }
+            get => _showPlaceholder;
+	        set => Set(ref _showPlaceholder, value);
         }
 
         public int ProductsCount
         {
-            get { return _productsCount; }
-            set { Set(ref _productsCount, value); }
+            get => _productsCount;
+	        set => Set(ref _productsCount, value);
         }
 
         public ObservableCollection<ProductVm> Products
         {
-            get { return _products; }
-            set
+            get => _products;
+	        set
             {
                 Set(ref _products, value);
                 UpdateAdditionalData();
@@ -98,11 +98,8 @@ namespace HappyCoupleMobile.VM
 
         public ObservableCollection<ProductType> ProductTypes
         {
-            get { return _productTypes; }
-            set
-            {
-                Set(ref _productTypes, value);
-            }
+            get => _productTypes;
+	        set => Set(ref _productTypes, value);
         }
 
         public ShoppingListVm(ShoppingList shoppingList)

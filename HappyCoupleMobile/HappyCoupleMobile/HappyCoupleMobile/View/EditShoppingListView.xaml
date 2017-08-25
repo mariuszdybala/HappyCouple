@@ -7,9 +7,10 @@
              xmlns:editProductList="clr-namespace:HappyCoupleMobile.Mvvm.Controls.EditProductList;assembly=HappyCoupleMobile"
              xmlns:renderers="clr-namespace:HappyCoupleMobile.Mvvm.Renderers;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.View.EditShoppingListView"
-             BindingContext="{Binding EditShoppingListViewModel, Source={StaticResource ViewModelLocator}}">
+             BindingContext="{Binding EditShoppingListViewModel, Source={StaticResource ViewModelLocator}}"
+             x:Name="EditShoppingListView">
     <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
-        <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Edycja listy zakupów" 
+        <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Edycja listy zakupów"
                     RightIconSource="{StaticResource AddProduct}" RightIconTapCommand="{Binding AddProductCommand}"/>
         <Grid Padding="10,15,10,10">
             <Grid.RowDefinitions>
@@ -34,12 +35,26 @@
                 </StackLayout>
             </StackLayout>
         </Grid>
-        <editProductList:EditProductListControl x:Name="EditProductListControl"  Products="{Binding ShoppingList.Products}" 
-                                            IsVisible="{Binding ShoppingList.ShowPlaceholder, Converter={StaticResource InverseBooleanConverter}}"
-                                            ButtonDeleteCommand="{Binding DeleteProductCommand}" 
-                                            ButtonEditCommand="{Binding EditProductCommand}"
-                                            ProductCheckedCommand="{Binding ProductCheckedCommand}"
-                                            UnSubscribeAllEventsCommand="{Binding UnSubscribeAllEventsFromViewCommand, Mode=OneWayToSource}"/>
+<!--        <editProductList:EditProductListControl x:Name="EditProductListControl"  Products="{Binding ShoppingList.Products}" -->
+<!--                                            IsVisible="{Binding ShoppingList.ShowPlaceholder, Converter={StaticResource InverseBooleanConverter}}"-->
+<!--                                            ButtonDeleteCommand="{Binding DeleteProductCommand}" -->
+<!--                                            ButtonEditCommand="{Binding EditProductCommand}"-->
+<!--                                            ProductCheckedCommand="{Binding ProductCheckedCommand}"-->
+<!--                                            UnSubscribeAllEventsCommand="{Binding UnSubscribeAllEventsFromViewCommand, Mode=OneWayToSource}"/>-->
+
+	    <ListView BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding ShoppingList.Products}">
+		    <ListView.ItemTemplate>
+			    <DataTemplate>
+				    <ViewCell>
+					    <editProductList:ProductViewControl Product="{Binding .}"
+					                                        DeleteCommand="{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}"
+					                                        EditCommand="{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}"
+					                                        CheckedCommand="{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}" />
+				    </ViewCell>
+			    </DataTemplate>
+		    </ListView.ItemTemplate>>
+	    </ListView>
+
         <StackLayout VerticalOptions="StartAndExpand" IsVisible="{Binding ShoppingList.ShowPlaceholder}"
                    Spacing="10" Margin="0,40,0,0">
             <Image Source="{StaticResource EmptyProducts}"/>

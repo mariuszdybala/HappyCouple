@@ -1,40 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<contextmenu:ContextMenuLayout xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:toggleImages="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ToggleImages;assembly=HappyCoupleMobile"
-             xmlns:contextmenu="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ContextMenu;assembly=HappyCoupleMobile"
-             x:Class="HappyCoupleMobile.Mvvm.Controls.EditProductList.ProductViewControl" 
-			 x:Name="ProductViewControl">
-    <AbsoluteLayout x:Name="MainLayout" VerticalOptions="FillAndExpand" BindingContext="{x:Reference ProductViewControl}">
-        <contextmenu:ContextMenuView x:Name="ProductContextMenu">
-            <contextmenu:ContextMenuItemView x:Name="EditMenuItem" ContextMenuText="Edytuj" BackgroundColor="{StaticResource FirstColor}" ContextMenuIcon="{StaticResource EditList}" TappedCommand="{Binding EditProductCheckedCommand}" TappedCommandParameter="{Binding Product}"/>
-            <contextmenu:ContextMenuItemView x:Name="SelectMenuItem" ContextMenuText="Dodaj" BackgroundColor="{StaticResource FifthColor}" ContextMenuIcon="{StaticResource CloseList}" TappedCommand="{Binding SelectProductCommand}" TappedCommandParameter="{Binding Product}"/>
-            <contextmenu:ContextMenuItemView x:Name="DeleteMenuItem" ContextMenuText="Usuń" BackgroundColor="{StaticResource FourthColor}" ContextMenuIcon="{StaticResource Delete}" TappedCommand="{Binding DeleteProductCheckedCommand}" TappedCommandParameter="{Binding Product}"/>
-        </contextmenu:ContextMenuView>
-	    <StackLayout x:Name="ProductData" BackgroundColor="{StaticResource SecondColor}" Padding="5" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" >
-	        <StackLayout Orientation="Horizontal">
-	            <BoxView Margin="5,0,5,0" WidthRequest="1" BackgroundColor="{StaticResource ThirthColor}"/>
-	            <toggleImages:ListItemCheckbox x:Name="IsBoughtCheckbox" IsToggled="{Binding Product.IsBought, Source={x:Reference ProductViewControl}}" 
-	                                           TappedCommand="{Binding ProductCheckedCommand, Source={x:Reference ProductViewControl}}"/>
-	            <StackLayout HorizontalOptions="FillAndExpand">
-	                <Label x:Name="NameLabel" Text="{Binding Product.Name, Source={x:Reference ProductViewControl}}"   
-	                                          TextColor="White"
-	                                          FontFamily="{StaticResource Medium}"
-	                                          HorizontalTextAlignment="Start" FontSize="15"
-	                                          LineBreakMode="CharacterWrap" />
-	                <Label x:Name="CommentLabel" Text="{Binding Product.Comment, Source={x:Reference ProductViewControl}}"  
-	                                             TextColor="White"
-	                                             FontFamily="{StaticResource Light}"
-	                                             HorizontalTextAlignment="Start" FontSize="12"
-	                                             LineBreakMode="CharacterWrap" />
-	            </StackLayout>
-	        </StackLayout>
-	        <Label x:Name="QuantityLabel" 
-	               Text="{Binding Product.Quantity, Source={x:Reference ProductViewControl}, StringFormat='Ilość: {0}'}"
-	               HorizontalTextAlignment="End" FontFamily="{StaticResource Medium}" FontSize="15" TextColor="White" />
-	        <StackLayout.GestureRecognizers>
-	            <TapGestureRecognizer Command="{Binding Source={x:Reference ProductViewControl}, Path=ProductItemTappedCommand}"/>
-	        </StackLayout.GestureRecognizers>
-	    </StackLayout>
-        </AbsoluteLayout>
+
+<contextmenu:ContextMenuLayout xmlns="http://xamarin.com/schemas/2014/forms"
+                               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                               xmlns:toggleImages="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ToggleImages;assembly=HappyCoupleMobile"
+                               xmlns:contextmenu="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ContextMenu;assembly=HappyCoupleMobile"
+                               xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
+                               x:Class="HappyCoupleMobile.Mvvm.Controls.EditProductList.ProductViewControl"
+                               x:Name="ProductViewControl">
+	<AbsoluteLayout x:Name="MainLayout" VerticalOptions="FillAndExpand" BindingContext="{x:Reference ProductViewControl}">
+		<contextmenu:ContextMenuView x:Name="ProductContextMenu">
+			<contextmenu:ContextMenuItemView x:Name="EditMenuItem" ContextMenuText="Edytuj"
+			                                 BackgroundColor="{StaticResource FirstColor}"
+			                                 ContextMenuIcon="{StaticResource EditList}"
+			                                 TappedCommand="{Binding EditCommand}"
+			                                 TappedCommandParameter="{Binding Product}" />
+			<contextmenu:ContextMenuItemView x:Name="SelectMenuItem" ContextMenuText="Dodaj"
+			                                 BackgroundColor="{StaticResource FifthColor}"
+			                                 ContextMenuIcon="{StaticResource CloseList}"
+			                                 TappedCommand="{Binding SelectCommand}"
+			                                 TappedCommandParameter="{Binding Product}" />
+			<contextmenu:ContextMenuItemView x:Name="DeleteMenuItem" ContextMenuText="Usuń"
+			                                 BackgroundColor="{StaticResource FourthColor}"
+			                                 ContextMenuIcon="{StaticResource Delete}"
+			                                 TappedCommand="{Binding DeleteCommand}"
+			                                 TappedCommandParameter="{Binding Product}" />
+		</contextmenu:ContextMenuView>
+		<StackLayout x:Name="ProductData" BackgroundColor="{StaticResource SecondColor}" Orientation="Horizontal" Padding="5"
+		             AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+			<BoxView Margin="5,0,5,0" WidthRequest="1" BackgroundColor="{StaticResource ThirthColor}" />
+			<toggleImages:ListItemCheckbox x:Name="IsBoughtCheckbox"
+			                               IsToggled="{Binding Product.IsBought}"
+			                               TappedCommand="{Binding CheckedCommand}" />
+			<StackLayout HorizontalOptions="FillAndExpand">
+				<Label x:Name="NameLabel"
+				       TextColor="White"
+				       FontFamily="{StaticResource Medium}"
+				       HorizontalTextAlignment="Start" FontSize="15"
+				       LineBreakMode="CharacterWrap" />
+				<Label x:Name="CommentLabel"
+				       TextColor="White"
+				       FontFamily="{StaticResource Light}"
+				       HorizontalTextAlignment="Start" FontSize="12"
+				       LineBreakMode="CharacterWrap" />
+				<Label x:Name="QuantityLabel"
+				       HorizontalTextAlignment="End" FontFamily="{StaticResource Medium}" FontSize="15" TextColor="White" />
+			</StackLayout>
+		</StackLayout>
+	</AbsoluteLayout>
 </contextmenu:ContextMenuLayout>

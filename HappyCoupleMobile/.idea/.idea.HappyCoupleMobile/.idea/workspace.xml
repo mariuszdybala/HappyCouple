@@ -1,0 +1,1273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7658b654-cda0-4628-aa5f-2269b180334e" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="EditShoppingListView.xaml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/View/EditShoppingListView.xaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="32" column="74" lean-forward="false" selection-start-line="32" selection-start-column="74" selection-end-line="32" selection-end-column="74" />
+              <folding>
+                <marker date="1503660801000" expanded="true" signature="40:4923" ph="&lt;&lt;StackLayout Spacing=&quot;0&quot; BackgroundColor=&quot;{StaticResource SecondColor}&quot;&gt;&#10;        &lt;controls:TopPanelControl LeftIconSource=&quot;{StaticResource Back}&quot; LeftIconTapCommand=&quot;{Binding GoBackCommand}&quot; PanelHeader=&quot;Edycja listy zakupów&quot;&#10;                    RightIconSource=&quot;{StaticResource AddProduct}&quot; RightIconTapCommand=&quot;{Binding AddProductCommand}&quot;/&gt;&#10;        &lt;Grid Padding=&quot;10,15,10,10&quot;&gt;&#10;            &lt;Grid.RowDefinitions&gt;&#10;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;/Grid.RowDefinitions&gt;&#10;            &lt;Grid.ColumnDefinitions&gt;&#10;                &lt;ColumnDefinition Width=&quot;0.2*&quot; /&gt;&#10;                &lt;ColumnDefinition Width=&quot;0.8*&quot; /&gt;&#10;            &lt;/Grid.ColumnDefinitions&gt;&#10;            &lt;StackLayout Grid.Column=&quot;0&quot; Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot; HorizontalOptions=&quot;Center&quot; VerticalOptions=&quot;Center&quot;&gt;&#10;                &lt;renderers:CircularProgress WidthRequest=&quot;50&quot; HeightRequest=&quot;50&quot; Percent=&quot;{Binding ShoppingList.ProgressPercent}&quot;/&gt;&#10;            &lt;/StackLayout&gt;&#10;            &lt;StackLayout Grid.Column=&quot;1&quot; Grid.Row=&quot;0&quot;&gt;&#10;                &lt;Label Text=&quot;{Binding ShoppingList.Name}&quot; TextColor=&quot;White&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;            &lt;/StackLayout&gt;&#10;            &lt;StackLayout Grid.Column=&quot;1&quot; Grid.Row=&quot;1&quot;&gt;&#10;                &lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;&#10;                    &lt;Label x:Name=&quot;BuyedProductsLabel&quot; Text=&quot;{Binding ShoppingList.BoughtProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FifthColor}&quot;/&gt;&#10;                    &lt;Label Text=&quot;/&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;                    &lt;Label x:Name=&quot;CountProductsLabel&quot; Text=&quot;{Binding ShoppingList.LeftProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FourthColor}&quot;/&gt;&#10;                &lt;/StackLayout&gt;&#10;            &lt;/StackLayout&gt;&#10;        &lt;/Grid&gt;&#10;&lt;!--        &lt;editProductList:EditProductListControl x:Name=&quot;EditProductListControl&quot;  Products=&quot;{Binding ShoppingList.Products}&quot; --&gt;&#10;&lt;!--                                            IsVisible=&quot;{Binding ShoppingList.ShowPlaceholder, Converter={StaticResource InverseBooleanConverter}}&quot;--&gt;&#10;&lt;!--                                            ButtonDeleteCommand=&quot;{Binding DeleteProductCommand}&quot; --&gt;&#10;&lt;!--                                            ButtonEditCommand=&quot;{Binding EditProductCommand}&quot;--&gt;&#10;&lt;!--                                            ProductCheckedCommand=&quot;{Binding ProductCheckedCommand}&quot;--&gt;&#10;&lt;!--                                            UnSubscribeAllEventsCommand=&quot;{Binding UnSubscribeAllEventsFromViewCommand, Mode=OneWayToSource}&quot;/&gt;--&gt;&#10;&#10;&#9;    &lt;ListView BackgroundColor=&quot;{StaticResource SecondColor}&quot; SeparatorVisibility=&quot;None&quot; HasUnevenRows=&quot;True&quot; ItemsSource=&quot;{Binding ShoppingList.Products}&quot;&gt;&#10;&#9;&#9;    &lt;ListView.ItemTemplate&gt;&#10;&#9;&#9;&#9;    &lt;DataTemplate&gt;&#10;&#9;&#9;&#9;&#9;    &lt;ViewCell&gt;&#10;&#9;&#9;&#9;&#9;&#9;    &lt;editProductList:ProductViewControl Product=&quot;{Binding .}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        DeleteCommand=&quot;{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        EditCommand=&quot;{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        CheckedCommand=&quot;{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}&quot; /&gt;&#10;&#9;&#9;&#9;&#9;    &lt;/ViewCell&gt;&#10;&#9;&#9;&#9;    &lt;/DataTemplate&gt;&#10;&#9;&#9;    &lt;/ListView.ItemTemplate&gt;&gt;&#10;&#9;    &lt;/ListView&gt;&#10;&#10;        &lt;StackLayout VerticalOptions=&quot;StartAndExpand&quot; IsVisible=&quot;{Binding ShoppingList.ShowPlaceholder}&quot;&#10;                   Spacing=&quot;10&quot; Margin=&quot;0,40,0,0&quot;&gt;&#10;            &lt;Image Source=&quot;{StaticResource EmptyProducts}&quot;/&gt;&#10;            &lt;Label Text=&quot;Nie masz żadnych&quot; Style=&quot;{StaticResource MediumWhite20Font}&quot;&#10;                   HorizontalTextAlignment=&quot;Center&quot;/&gt;&#10;            &lt;Label Text=&quot;produktów&quot; Style=&quot;{StaticResource MediumWhite20Font}&quot;&#10;                 HorizontalTextAlignment=&quot;Center&quot;/&gt;&#10;        &lt;/StackLayout&gt;&#10;    &lt;/StackLayout&gt;.../&gt;" />
+                <marker date="1503660801000" expanded="true" signature="950:4894" ph="&lt;&lt;controls:TopPanelControl LeftIconSource=&quot;{StaticResource Back}&quot; LeftIconTapCommand=&quot;{Binding GoBackCommand}&quot; PanelHeader=&quot;Edycja listy zakupów&quot;&#10;                    RightIconSource=&quot;{StaticResource AddProduct}&quot; RightIconTapCommand=&quot;{Binding AddProductCommand}&quot;/&gt; &lt;Grid Padding=&quot;10,15,10,10&quot;&gt;&#10;            &lt;Grid.RowDefinitions&gt;&#10;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;/Grid.RowDefinitions&gt;&#10;            &lt;Grid.ColumnDefinitions&gt;&#10;                &lt;ColumnDefinition Width=&quot;0.2*&quot; /&gt;&#10;                &lt;ColumnDefinition Width=&quot;0.8*&quot; /&gt;&#10;            &lt;/Grid.ColumnDefinitions&gt;&#10;            &lt;StackLayout Grid.Column=&quot;0&quot; Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot; HorizontalOptions=&quot;Center&quot; VerticalOptions=&quot;Center&quot;&gt;&#10;                &lt;renderers:CircularProgress WidthRequest=&quot;50&quot; HeightRequest=&quot;50&quot; Percent=&quot;{Binding ShoppingList.ProgressPercent}&quot;/&gt;&#10;            &lt;/StackLayout&gt;&#10;            &lt;StackLayout Grid.Column=&quot;1&quot; Grid.Row=&quot;0&quot;&gt;&#10;                &lt;Label Text=&quot;{Binding ShoppingList.Name}&quot; TextColor=&quot;White&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;            &lt;/StackLayout&gt;&#10;            &lt;StackLayout Grid.Column=&quot;1&quot; Grid.Row=&quot;1&quot;&gt;&#10;                &lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;&#10;                    &lt;Label x:Name=&quot;BuyedProductsLabel&quot; Text=&quot;{Binding ShoppingList.BoughtProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FifthColor}&quot;/&gt;&#10;                    &lt;Label Text=&quot;/&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;                    &lt;Label x:Name=&quot;CountProductsLabel&quot; Text=&quot;{Binding ShoppingList.LeftProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FourthColor}&quot;/&gt;&#10;                &lt;/StackLayout&gt;&#10;            &lt;/StackLayout&gt;&#10;        &lt;/Grid&gt; &lt;ListView BackgroundColor=&quot;{StaticResource SecondColor}&quot; SeparatorVisibility=&quot;None&quot; HasUnevenRows=&quot;True&quot; ItemsSource=&quot;{Binding ShoppingList.Products}&quot;&gt;&#10;&#9;&#9;    &lt;ListView.ItemTemplate&gt;&#10;&#9;&#9;&#9;    &lt;DataTemplate&gt;&#10;&#9;&#9;&#9;&#9;    &lt;ViewCell&gt;&#10;&#9;&#9;&#9;&#9;&#9;    &lt;editProductList:ProductViewControl Product=&quot;{Binding .}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        DeleteCommand=&quot;{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        EditCommand=&quot;{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        CheckedCommand=&quot;{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}&quot; /&gt;&#10;&#9;&#9;&#9;&#9;    &lt;/ViewCell&gt;&#10;&#9;&#9;&#9;    &lt;/DataTemplate&gt;&#10;&#9;&#9;    &lt;/ListView.ItemTemplate&gt;&gt;&#10;&#9;    &lt;/ListView&gt; &lt;StackLayout VerticalOptions=&quot;StartAndExpand&quot; IsVisible=&quot;{Binding ShoppingList.ShowPlaceholder}&quot;&#10;                   Spacing=&quot;10&quot; Margin=&quot;0,40,0,0&quot;&gt;&#10;            &lt;Image Source=&quot;{StaticResource EmptyProducts}&quot;/&gt;&#10;            &lt;Label Text=&quot;Nie masz żadnych&quot; Style=&quot;{StaticResource MediumWhite20Font}&quot;&#10;                   HorizontalTextAlignment=&quot;Center&quot;/&gt;&#10;            &lt;Label Text=&quot;produktów&quot; Style=&quot;{StaticResource MediumWhite20Font}&quot;&#10;                 HorizontalTextAlignment=&quot;Center&quot;/&gt;&#10;        &lt;/StackLayout&gt;.../&gt;" />
+                <marker date="1503660801000" expanded="true" signature="1031:1293" ph="&lt;.../&gt;" />
+                <marker date="1503660801000" expanded="true" signature="1302:2776" ph="&lt;&lt;Grid.RowDefinitions&gt;&#10;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;/Grid.RowDefinitions&gt; &lt;Grid.ColumnDefinitions&gt;&#10;                &lt;ColumnDefinition Width=&quot;0.2*&quot; /&gt;&#10;                &lt;ColumnDefinition Width=&quot;0.8*&quot; /&gt;&#10;            &lt;/Grid.ColumnDefinitions&gt; &lt;StackLayout Grid.Column=&quot;0&quot; Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot; HorizontalOptions=&quot;Center&quot; VerticalOptions=&quot;Center&quot;&gt;&#10;                &lt;renderers:CircularProgress WidthRequest=&quot;50&quot; HeightRequest=&quot;50&quot; Percent=&quot;{Binding ShoppingList.ProgressPercent}&quot;/&gt;&#10;            &lt;/StackLayout&gt; &lt;StackLayout Grid.Column=&quot;1&quot; Grid.Row=&quot;0&quot;&gt;&#10;                &lt;Label Text=&quot;{Binding ShoppingList.Name}&quot; TextColor=&quot;White&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;            &lt;/StackLayout&gt; &lt;StackLayout Grid.Column=&quot;1&quot; Grid.Row=&quot;1&quot;&gt;&#10;                &lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;&#10;                    &lt;Label x:Name=&quot;BuyedProductsLabel&quot; Text=&quot;{Binding ShoppingList.BoughtProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FifthColor}&quot;/&gt;&#10;                    &lt;Label Text=&quot;/&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;                    &lt;Label x:Name=&quot;CountProductsLabel&quot; Text=&quot;{Binding ShoppingList.LeftProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FourthColor}&quot;/&gt;&#10;                &lt;/StackLayout&gt;&#10;            &lt;/StackLayout&gt;.../&gt;" />
+                <marker date="1503660801000" expanded="true" signature="1343:1495" ph="&lt;&lt;RowDefinition Height=&quot;Auto&quot; /&gt; &lt;RowDefinition Height=&quot;Auto&quot; /&gt;.../&gt;" />
+                <marker date="1503660801000" expanded="true" signature="1508:1670" ph="&lt;&lt;ColumnDefinition Width=&quot;0.2*&quot; /&gt; &lt;ColumnDefinition Width=&quot;0.8*&quot; /&gt;.../&gt;" />
+                <marker date="1503660801000" expanded="true" signature="1683:1953" ph="&lt;&lt;renderers:CircularProgress WidthRequest=&quot;50&quot; HeightRequest=&quot;50&quot; Percent=&quot;{Binding ShoppingList.ProgressPercent}&quot;/&gt;.../&gt;" />
+                <marker date="1503660801000" expanded="true" signature="1966:2150" ph="&lt;&lt;Label Text=&quot;{Binding ShoppingList.Name}&quot; TextColor=&quot;White&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;.../&gt;" />
+                <marker date="1503660801000" expanded="true" signature="2163:2760" ph="&lt;&lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;&#10;                    &lt;Label x:Name=&quot;BuyedProductsLabel&quot; Text=&quot;{Binding ShoppingList.BoughtProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FifthColor}&quot;/&gt;&#10;                    &lt;Label Text=&quot;/&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;                    &lt;Label x:Name=&quot;CountProductsLabel&quot; Text=&quot;{Binding ShoppingList.LeftProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FourthColor}&quot;/&gt;&#10;                &lt;/StackLayout&gt;.../&gt;" />
+                <marker date="1503660801000" expanded="true" signature="2222:2733" ph="&lt;&lt;Label x:Name=&quot;BuyedProductsLabel&quot; Text=&quot;{Binding ShoppingList.BoughtProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FifthColor}&quot;/&gt; &lt;Label Text=&quot;/&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt; &lt;Label x:Name=&quot;CountProductsLabel&quot; Text=&quot;{Binding ShoppingList.LeftProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FourthColor}&quot;/&gt;.../&gt;" />
+                <marker date="1503660801000" expanded="true" signature="3531:4363" ph="&lt;&lt;ListView.ItemTemplate&gt;&#10;&#9;&#9;&#9;    &lt;DataTemplate&gt;&#10;&#9;&#9;&#9;&#9;    &lt;ViewCell&gt;&#10;&#9;&#9;&#9;&#9;&#9;    &lt;editProductList:ProductViewControl Product=&quot;{Binding .}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        DeleteCommand=&quot;{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        EditCommand=&quot;{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        CheckedCommand=&quot;{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}&quot; /&gt;&#10;&#9;&#9;&#9;&#9;    &lt;/ViewCell&gt;&#10;&#9;&#9;&#9;    &lt;/DataTemplate&gt;&#10;&#9;&#9;    &lt;/ListView.ItemTemplate&gt;&gt;.../&gt;" />
+                <marker date="1503660801000" expanded="true" signature="3689:4345" ph="&lt;&lt;DataTemplate&gt;&#10;&#9;&#9;&#9;&#9;    &lt;ViewCell&gt;&#10;&#9;&#9;&#9;&#9;&#9;    &lt;editProductList:ProductViewControl Product=&quot;{Binding .}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        DeleteCommand=&quot;{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        EditCommand=&quot;{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        CheckedCommand=&quot;{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}&quot; /&gt;&#10;&#9;&#9;&#9;&#9;    &lt;/ViewCell&gt;&#10;&#9;&#9;&#9;    &lt;/DataTemplate&gt;.../&gt;" />
+                <marker date="1503660801000" expanded="true" signature="3720:4314" ph="&lt;&lt;ViewCell&gt;&#10;&#9;&#9;&#9;&#9;&#9;    &lt;editProductList:ProductViewControl Product=&quot;{Binding .}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        DeleteCommand=&quot;{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        EditCommand=&quot;{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        CheckedCommand=&quot;{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}&quot; /&gt;&#10;&#9;&#9;&#9;&#9;    &lt;/ViewCell&gt;.../&gt;" />
+                <marker date="1503660801000" expanded="true" signature="3743:4291" ph="&lt;&lt;editProductList:ProductViewControl Product=&quot;{Binding .}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        DeleteCommand=&quot;{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        EditCommand=&quot;{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        CheckedCommand=&quot;{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}&quot; /&gt;.../&gt;" />
+                <marker date="1503660801000" expanded="true" signature="3763:4271" ph="&lt;.../&gt;" />
+                <marker date="1503660801000" expanded="true" signature="4373:4875" ph="&lt;&lt;Image Source=&quot;{StaticResource EmptyProducts}&quot;/&gt; &lt;Label Text=&quot;Nie masz żadnych&quot; Style=&quot;{StaticResource MediumWhite20Font}&quot;&#10;                   HorizontalTextAlignment=&quot;Center&quot;/&gt; &lt;Label Text=&quot;produktów&quot; Style=&quot;{StaticResource MediumWhite20Font}&quot;&#10;                 HorizontalTextAlignment=&quot;Center&quot;/&gt;.../&gt;" />
+                <marker date="1503660801000" expanded="true" signature="4594:4721" ph="&lt;.../&gt;" />
+                <marker date="1503660801000" expanded="true" signature="4734:4852" ph="&lt;.../&gt;" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProductViewControl.xaml.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/ProductViewControl.xaml.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1425">
+              <caret line="79" column="43" lean-forward="true" selection-start-line="79" selection-start-column="43" selection-end-line="79" selection-end-column="43" />
+              <folding>
+                <marker date="1503661035000" expanded="false" signature="6:141" ph="..." />
+                <marker date="1503661035000" expanded="true" signature="200:3017" ph="{...}" />
+                <marker date="1503661035000" expanded="true" signature="266:3015" ph="{...}" />
+                <marker date="1503661035000" expanded="true" signature="1141:1261" ph="{...}" />
+                <marker date="1503661035000" expanded="true" signature="1297:1421" ph="{...}" />
+                <marker date="1503661035000" expanded="true" signature="1457:1581" ph="{...}" />
+                <marker date="1503661035000" expanded="true" signature="1618:1744" ph="{...}" />
+                <marker date="1503661035000" expanded="true" signature="1775:1896" ph="{...}" />
+                <marker date="1503661035000" expanded="true" signature="2071:2126" ph="{...}" />
+                <marker date="1503661035000" expanded="true" signature="2228:2545" ph="{...}" />
+                <marker date="1503661035000" expanded="true" signature="2263:2294" ph="{...}" />
+                <marker date="1503661035000" expanded="true" signature="2588:2602" ph="{...}" />
+                <marker date="1503661035000" expanded="true" signature="2647:2713" ph="{...}" />
+                <marker date="1503661035000" expanded="true" signature="2756:2820" ph="{...}" />
+                <marker date="1503661035000" expanded="true" signature="2856:2924" ph="{...}" />
+                <marker date="1503661035000" expanded="true" signature="2964:3009" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EditShoppingListViewModel.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/ViewModel/EditShoppingListViewModel.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="57" column="9" lean-forward="false" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
+              <folding>
+                <marker date="1503657257000" expanded="false" signature="6:319" ph="..." />
+                <marker date="1503657257000" expanded="true" signature="358:2866" ph="{...}" />
+                <marker date="1503657257000" expanded="true" signature="424:2864" ph="{...}" />
+                <marker date="1503657257000" expanded="true" signature="580:693" ph="{...}" />
+                <marker date="1503657257000" expanded="true" signature="1169:1269" ph="{...}" />
+                <marker date="1503657257000" expanded="true" signature="1309:1714" ph="{...}" />
+                <marker date="1503657257000" expanded="true" signature="1788:1899" ph="{...}" />
+                <marker date="1503657257000" expanded="true" signature="1942:2095" ph="{...}" />
+                <marker date="1503657257000" expanded="true" signature="2179:2344" ph="{...}" />
+                <marker date="1503657257000" expanded="true" signature="2408:2522" ph="{...}" />
+                <marker date="1503657257000" expanded="true" signature="2579:2648" ph="{...}" />
+                <marker date="1503657257000" expanded="true" signature="2703:2723" ph="{...}" />
+                <marker date="1503657257000" expanded="true" signature="2773:2858" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProductTypePanelControl.xaml.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/ProductTypePanelControl.xaml.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="383">
+              <caret line="70" column="18" lean-forward="false" selection-start-line="70" selection-start-column="18" selection-end-line="70" selection-end-column="18" />
+              <folding>
+                <marker date="1503660665000" expanded="false" signature="6:195" ph="..." />
+                <marker date="1503660665000" expanded="true" signature="254:4137" ph="{...}" />
+                <marker date="1503660665000" expanded="true" signature="319:4135" ph="{...}" />
+                <marker date="1503660665000" expanded="true" signature="725:827" ph="{...}" />
+                <marker date="1503660665000" expanded="true" signature="890:1148" ph="{...}" />
+                <marker date="1503660665000" expanded="true" signature="1219:1409" ph="{...}" />
+                <marker date="1503660665000" expanded="true" signature="1317:1399" ph="{...}" />
+                <marker date="1503660665000" expanded="true" signature="1471:1582" ph="{...}" />
+                <marker date="1503660665000" expanded="true" signature="1651:1902" ph="{...}" />
+                <marker date="1503660665000" expanded="true" signature="1946:2177" ph="{...}" />
+                <marker date="1503660665000" expanded="true" signature="2060:2167" ph="{...}" />
+                <marker date="1503660665000" expanded="true" signature="2235:2481" ph="{...}" />
+                <marker date="1503660665000" expanded="true" signature="2388:2471" ph="{...}" />
+                <marker date="1503660665000" expanded="true" signature="2543:2795" ph="{...}" />
+                <marker date="1503660665000" expanded="true" signature="2858:2935" ph="{...}" />
+                <marker date="1503660665000" expanded="true" signature="2996:3071" ph="{...}" />
+                <marker date="1503660665000" expanded="true" signature="3130:3203" ph="{...}" />
+                <marker date="1503660665000" expanded="true" signature="3261:3326" ph="{...}" />
+                <marker date="1503660665000" expanded="true" signature="3328:4129" ph="/* private void AssignEvents(ProductViewControl productViewControl) ... */" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FavouriteProductListControl.xaml.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/FavouriteProductList/FavouriteProductListControl.xaml.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="241">
+              <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+              <folding>
+                <marker date="1503660678000" expanded="false" signature="6:285" ph="..." />
+                <marker date="1503660678000" expanded="true" signature="349:5988" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="418:5986" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="1342:1520" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="1577:1740" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="1785:1947" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="1999:2175" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="2221:2358" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="2464:2814" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="2532:2584" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="2961:3220" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="3004:3056" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="3103:3210" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="3286:3570" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="3632:3934" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="3732:3784" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="3842:3924" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="3997:4318" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="4190:4242" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="4386:4664" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="4448:4500" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="4565:4654" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="4727:4973" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="4880:4963" ph="{...}" />
+                <marker date="1503660678000" expanded="true" signature="4975:5980" ph="/* private void AssignEvents(ProductViewControl productViewControl) ... */" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/FavouriteProductList/FavouriteProductListControl.xaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/ViewModel/ViewModelLocator.cs" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/ViewModel/ShoppingsViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/View/EditShoppingListView.xaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/ViewModel/EditShoppingListViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/App.xaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/EditProductListView.xaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Model/Product.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/VM/ShoppingListVm.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/ContextMenu/ContextMenuLayout.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Renderers/ExtendedScrollView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/ProductViewControl.xaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/ProductViewControl.xaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/EditProductListControl.xaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/ProductTypePanelControl.xaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/ProductTypePanelControl.xaml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/EditProductListControl.xaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/AutoResizeStackLayout.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/View/FavouriteProductsView.xaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile.iOS/Renderers/CustomViewCellRenderer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile.iOS/Main.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/VM/ShoppingListVm.cs" />
+        <option value="$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/ViewModel/ShoppingsViewModel.cs" />
+        <option value="$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/ViewModel/ViewModelLocator.cs" />
+        <option value="$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/App.xaml.cs" />
+        <option value="$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/EditProductListControl.xaml.cs" />
+        <option value="$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/EditProductListView.xaml" />
+        <option value="$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/AutoResizeContentView.cs" />
+        <option value="$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile.iOS/Renderers/CustomViewCellRenderer.cs" />
+        <option value="$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/AutoResizeStackLayout.cs" />
+        <option value="$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/ContextMenu/ContextMenuLayout.cs" />
+        <option value="$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/ProductViewControl.xaml" />
+        <option value="$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/ProductTypePanelControl.xaml.cs" />
+        <option value="$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/FavouriteProductList/FavouriteProductListControl.xaml.cs" />
+        <option value="$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/View/EditShoppingListView.xaml" />
+        <option value="$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/ProductViewControl.xaml.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-1920" />
+    <option name="y" value="-158" />
+    <option name="width" value="1920" />
+    <option name="height" value="1058" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile (3 projects)" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile.iOS" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile (3 projects)" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile.iOS" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Renderers" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile (3 projects)" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile (3 projects)" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile (3 projects)" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VM" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile (3 projects)" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ViewModel" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile (3 projects)" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="View" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile (3 projects)" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mvvm" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile (3 projects)" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mvvm" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controls" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile (3 projects)" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mvvm" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controls" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EditProductList" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProductViewControl.xaml" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile (3 projects)" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mvvm" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controls" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EditProductList" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProductTypePanelControl.xaml" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile (3 projects)" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HappyCoupleMobile" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mvvm" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controls" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EditProductList" />
+              <option name="myItemType" value="com.jetbrains.rider.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <option name="show-file-system" value="false" />
+        <option name="show-all-items" value="false" />
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Xamarin.iOS.iOS Default">
+    <configuration default="true" type="DotNetProject" factoryName=".NET Project">
+      <option name="PROJECT_PATH" value="" />
+      <option name="PROJECT_KIND" value="None" />
+      <option name="PROJECT_TFM" value="" />
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="USE_MONO" value="0" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="XamarinAndroidProject" factoryName="Xamarin.Android">
+      <option name="PROJECT_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="DEPLOY_BEHAVIOUR_NAME" value="Default" />
+      <option name="DEPLOY_TARGET_BEHAVIOUR_NAME" value="Ask" />
+      <option name="DEFAULT_DEVICE_TO_RUN" value="" />
+      <option name="DEFAULT_EMULATOR_TO_RUN" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="XamarinIOSProject" factoryName="Xamarin.iOS">
+      <option name="PROJECT_PATH" value="" />
+      <option name="DEFAULT_IPHONE_DEVICE" value="" />
+      <option name="DEFAULT_IPHONE_SIMULATOR" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+    <configuration default="false" name="Default" type="DotNetProject" factoryName=".NET Project">
+      <option name="PROJECT_PATH" value="" />
+      <option name="PROJECT_KIND" value="None" />
+      <option name="PROJECT_TFM" value="" />
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="USE_MONO" value="0" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Android Default" type="XamarinAndroidProject" factoryName="Xamarin.Android">
+      <option name="PROJECT_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="DEPLOY_BEHAVIOUR_NAME" value="Default" />
+      <option name="DEPLOY_TARGET_BEHAVIOUR_NAME" value="Ask" />
+      <option name="DEFAULT_DEVICE_TO_RUN" value="" />
+      <option name="DEFAULT_EMULATOR_TO_RUN" value="" />
+      <method />
+    </configuration>
+    <configuration default="false" name="iOS Default" type="XamarinIOSProject" factoryName="Xamarin.iOS">
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile.iOS/HappyCoupleMobile.iOS.csproj" />
+      <option name="DEFAULT_IPHONE_DEVICE" value="" />
+      <option name="DEFAULT_IPHONE_SIMULATOR" value="iPhone 7 iOS 10.3" />
+      <method />
+    </configuration>
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue=".NET Project.Default" />
+      <item index="1" class="java.lang.String" itemvalue="Xamarin.Android.Android Default" />
+      <item index="2" class="java.lang.String" itemvalue="Xamarin.iOS.iOS Default" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7658b654-cda0-4628-aa5f-2269b180334e" name="Default" comment="" />
+      <created>1503582868818</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1503582868818</updated>
+      <workItem from="1503582869989" duration="2343000" />
+      <workItem from="1503644258821" duration="8582000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="10925000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-1920" y="-158" width="1920" height="1058" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Errors In Solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Unit Tests" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25052083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962587" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25075835" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962587" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="8" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/View/EditShoppingListView.xaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="817">
+          <caret line="43" column="90" lean-forward="false" selection-start-line="43" selection-start-column="90" selection-end-line="43" selection-end-column="90" />
+          <folding>
+            <marker date="1503660801000" expanded="true" signature="40:4923" ph="&lt;&lt;StackLayout Spacing=&quot;0&quot; BackgroundColor=&quot;{StaticResource SecondColor}&quot;&gt;&#10;        &lt;controls:TopPanelControl LeftIconSource=&quot;{StaticResource Back}&quot; LeftIconTapCommand=&quot;{Binding GoBackCommand}&quot; PanelHeader=&quot;Edycja listy zakupów&quot;&#10;                    RightIconSource=&quot;{StaticResource AddProduct}&quot; RightIconTapCommand=&quot;{Binding AddProductCommand}&quot;/&gt;&#10;        &lt;Grid Padding=&quot;10,15,10,10&quot;&gt;&#10;            &lt;Grid.RowDefinitions&gt;&#10;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;/Grid.RowDefinitions&gt;&#10;            &lt;Grid.ColumnDefinitions&gt;&#10;                &lt;ColumnDefinition Width=&quot;0.2*&quot; /&gt;&#10;                &lt;ColumnDefinition Width=&quot;0.8*&quot; /&gt;&#10;            &lt;/Grid.ColumnDefinitions&gt;&#10;            &lt;StackLayout Grid.Column=&quot;0&quot; Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot; HorizontalOptions=&quot;Center&quot; VerticalOptions=&quot;Center&quot;&gt;&#10;                &lt;renderers:CircularProgress WidthRequest=&quot;50&quot; HeightRequest=&quot;50&quot; Percent=&quot;{Binding ShoppingList.ProgressPercent}&quot;/&gt;&#10;            &lt;/StackLayout&gt;&#10;            &lt;StackLayout Grid.Column=&quot;1&quot; Grid.Row=&quot;0&quot;&gt;&#10;                &lt;Label Text=&quot;{Binding ShoppingList.Name}&quot; TextColor=&quot;White&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;            &lt;/StackLayout&gt;&#10;            &lt;StackLayout Grid.Column=&quot;1&quot; Grid.Row=&quot;1&quot;&gt;&#10;                &lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;&#10;                    &lt;Label x:Name=&quot;BuyedProductsLabel&quot; Text=&quot;{Binding ShoppingList.BoughtProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FifthColor}&quot;/&gt;&#10;                    &lt;Label Text=&quot;/&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;                    &lt;Label x:Name=&quot;CountProductsLabel&quot; Text=&quot;{Binding ShoppingList.LeftProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FourthColor}&quot;/&gt;&#10;                &lt;/StackLayout&gt;&#10;            &lt;/StackLayout&gt;&#10;        &lt;/Grid&gt;&#10;&lt;!--        &lt;editProductList:EditProductListControl x:Name=&quot;EditProductListControl&quot;  Products=&quot;{Binding ShoppingList.Products}&quot; --&gt;&#10;&lt;!--                                            IsVisible=&quot;{Binding ShoppingList.ShowPlaceholder, Converter={StaticResource InverseBooleanConverter}}&quot;--&gt;&#10;&lt;!--                                            ButtonDeleteCommand=&quot;{Binding DeleteProductCommand}&quot; --&gt;&#10;&lt;!--                                            ButtonEditCommand=&quot;{Binding EditProductCommand}&quot;--&gt;&#10;&lt;!--                                            ProductCheckedCommand=&quot;{Binding ProductCheckedCommand}&quot;--&gt;&#10;&lt;!--                                            UnSubscribeAllEventsCommand=&quot;{Binding UnSubscribeAllEventsFromViewCommand, Mode=OneWayToSource}&quot;/&gt;--&gt;&#10;&#10;&#9;    &lt;ListView BackgroundColor=&quot;{StaticResource SecondColor}&quot; SeparatorVisibility=&quot;None&quot; HasUnevenRows=&quot;True&quot; ItemsSource=&quot;{Binding ShoppingList.Products}&quot;&gt;&#10;&#9;&#9;    &lt;ListView.ItemTemplate&gt;&#10;&#9;&#9;&#9;    &lt;DataTemplate&gt;&#10;&#9;&#9;&#9;&#9;    &lt;ViewCell&gt;&#10;&#9;&#9;&#9;&#9;&#9;    &lt;editProductList:ProductViewControl Product=&quot;{Binding .}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        DeleteCommand=&quot;{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        EditCommand=&quot;{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        CheckedCommand=&quot;{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}&quot; /&gt;&#10;&#9;&#9;&#9;&#9;    &lt;/ViewCell&gt;&#10;&#9;&#9;&#9;    &lt;/DataTemplate&gt;&#10;&#9;&#9;    &lt;/ListView.ItemTemplate&gt;&gt;&#10;&#9;    &lt;/ListView&gt;&#10;&#10;        &lt;StackLayout VerticalOptions=&quot;StartAndExpand&quot; IsVisible=&quot;{Binding ShoppingList.ShowPlaceholder}&quot;&#10;                   Spacing=&quot;10&quot; Margin=&quot;0,40,0,0&quot;&gt;&#10;            &lt;Image Source=&quot;{StaticResource EmptyProducts}&quot;/&gt;&#10;            &lt;Label Text=&quot;Nie masz żadnych&quot; Style=&quot;{StaticResource MediumWhite20Font}&quot;&#10;                   HorizontalTextAlignment=&quot;Center&quot;/&gt;&#10;            &lt;Label Text=&quot;produktów&quot; Style=&quot;{StaticResource MediumWhite20Font}&quot;&#10;                 HorizontalTextAlignment=&quot;Center&quot;/&gt;&#10;        &lt;/StackLayout&gt;&#10;    &lt;/StackLayout&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="950:4894" ph="&lt;&lt;controls:TopPanelControl LeftIconSource=&quot;{StaticResource Back}&quot; LeftIconTapCommand=&quot;{Binding GoBackCommand}&quot; PanelHeader=&quot;Edycja listy zakupów&quot;&#10;                    RightIconSource=&quot;{StaticResource AddProduct}&quot; RightIconTapCommand=&quot;{Binding AddProductCommand}&quot;/&gt; &lt;Grid Padding=&quot;10,15,10,10&quot;&gt;&#10;            &lt;Grid.RowDefinitions&gt;&#10;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;/Grid.RowDefinitions&gt;&#10;            &lt;Grid.ColumnDefinitions&gt;&#10;                &lt;ColumnDefinition Width=&quot;0.2*&quot; /&gt;&#10;                &lt;ColumnDefinition Width=&quot;0.8*&quot; /&gt;&#10;            &lt;/Grid.ColumnDefinitions&gt;&#10;            &lt;StackLayout Grid.Column=&quot;0&quot; Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot; HorizontalOptions=&quot;Center&quot; VerticalOptions=&quot;Center&quot;&gt;&#10;                &lt;renderers:CircularProgress WidthRequest=&quot;50&quot; HeightRequest=&quot;50&quot; Percent=&quot;{Binding ShoppingList.ProgressPercent}&quot;/&gt;&#10;            &lt;/StackLayout&gt;&#10;            &lt;StackLayout Grid.Column=&quot;1&quot; Grid.Row=&quot;0&quot;&gt;&#10;                &lt;Label Text=&quot;{Binding ShoppingList.Name}&quot; TextColor=&quot;White&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;            &lt;/StackLayout&gt;&#10;            &lt;StackLayout Grid.Column=&quot;1&quot; Grid.Row=&quot;1&quot;&gt;&#10;                &lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;&#10;                    &lt;Label x:Name=&quot;BuyedProductsLabel&quot; Text=&quot;{Binding ShoppingList.BoughtProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FifthColor}&quot;/&gt;&#10;                    &lt;Label Text=&quot;/&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;                    &lt;Label x:Name=&quot;CountProductsLabel&quot; Text=&quot;{Binding ShoppingList.LeftProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FourthColor}&quot;/&gt;&#10;                &lt;/StackLayout&gt;&#10;            &lt;/StackLayout&gt;&#10;        &lt;/Grid&gt; &lt;ListView BackgroundColor=&quot;{StaticResource SecondColor}&quot; SeparatorVisibility=&quot;None&quot; HasUnevenRows=&quot;True&quot; ItemsSource=&quot;{Binding ShoppingList.Products}&quot;&gt;&#10;&#9;&#9;    &lt;ListView.ItemTemplate&gt;&#10;&#9;&#9;&#9;    &lt;DataTemplate&gt;&#10;&#9;&#9;&#9;&#9;    &lt;ViewCell&gt;&#10;&#9;&#9;&#9;&#9;&#9;    &lt;editProductList:ProductViewControl Product=&quot;{Binding .}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        DeleteCommand=&quot;{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        EditCommand=&quot;{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        CheckedCommand=&quot;{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}&quot; /&gt;&#10;&#9;&#9;&#9;&#9;    &lt;/ViewCell&gt;&#10;&#9;&#9;&#9;    &lt;/DataTemplate&gt;&#10;&#9;&#9;    &lt;/ListView.ItemTemplate&gt;&gt;&#10;&#9;    &lt;/ListView&gt; &lt;StackLayout VerticalOptions=&quot;StartAndExpand&quot; IsVisible=&quot;{Binding ShoppingList.ShowPlaceholder}&quot;&#10;                   Spacing=&quot;10&quot; Margin=&quot;0,40,0,0&quot;&gt;&#10;            &lt;Image Source=&quot;{StaticResource EmptyProducts}&quot;/&gt;&#10;            &lt;Label Text=&quot;Nie masz żadnych&quot; Style=&quot;{StaticResource MediumWhite20Font}&quot;&#10;                   HorizontalTextAlignment=&quot;Center&quot;/&gt;&#10;            &lt;Label Text=&quot;produktów&quot; Style=&quot;{StaticResource MediumWhite20Font}&quot;&#10;                 HorizontalTextAlignment=&quot;Center&quot;/&gt;&#10;        &lt;/StackLayout&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="1031:1293" ph="&lt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="1302:2776" ph="&lt;&lt;Grid.RowDefinitions&gt;&#10;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;/Grid.RowDefinitions&gt; &lt;Grid.ColumnDefinitions&gt;&#10;                &lt;ColumnDefinition Width=&quot;0.2*&quot; /&gt;&#10;                &lt;ColumnDefinition Width=&quot;0.8*&quot; /&gt;&#10;            &lt;/Grid.ColumnDefinitions&gt; &lt;StackLayout Grid.Column=&quot;0&quot; Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot; HorizontalOptions=&quot;Center&quot; VerticalOptions=&quot;Center&quot;&gt;&#10;                &lt;renderers:CircularProgress WidthRequest=&quot;50&quot; HeightRequest=&quot;50&quot; Percent=&quot;{Binding ShoppingList.ProgressPercent}&quot;/&gt;&#10;            &lt;/StackLayout&gt; &lt;StackLayout Grid.Column=&quot;1&quot; Grid.Row=&quot;0&quot;&gt;&#10;                &lt;Label Text=&quot;{Binding ShoppingList.Name}&quot; TextColor=&quot;White&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;            &lt;/StackLayout&gt; &lt;StackLayout Grid.Column=&quot;1&quot; Grid.Row=&quot;1&quot;&gt;&#10;                &lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;&#10;                    &lt;Label x:Name=&quot;BuyedProductsLabel&quot; Text=&quot;{Binding ShoppingList.BoughtProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FifthColor}&quot;/&gt;&#10;                    &lt;Label Text=&quot;/&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;                    &lt;Label x:Name=&quot;CountProductsLabel&quot; Text=&quot;{Binding ShoppingList.LeftProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FourthColor}&quot;/&gt;&#10;                &lt;/StackLayout&gt;&#10;            &lt;/StackLayout&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="1343:1495" ph="&lt;&lt;RowDefinition Height=&quot;Auto&quot; /&gt; &lt;RowDefinition Height=&quot;Auto&quot; /&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="1508:1670" ph="&lt;&lt;ColumnDefinition Width=&quot;0.2*&quot; /&gt; &lt;ColumnDefinition Width=&quot;0.8*&quot; /&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="1683:1953" ph="&lt;&lt;renderers:CircularProgress WidthRequest=&quot;50&quot; HeightRequest=&quot;50&quot; Percent=&quot;{Binding ShoppingList.ProgressPercent}&quot;/&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="1966:2150" ph="&lt;&lt;Label Text=&quot;{Binding ShoppingList.Name}&quot; TextColor=&quot;White&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="2163:2760" ph="&lt;&lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;&#10;                    &lt;Label x:Name=&quot;BuyedProductsLabel&quot; Text=&quot;{Binding ShoppingList.BoughtProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FifthColor}&quot;/&gt;&#10;                    &lt;Label Text=&quot;/&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;                    &lt;Label x:Name=&quot;CountProductsLabel&quot; Text=&quot;{Binding ShoppingList.LeftProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FourthColor}&quot;/&gt;&#10;                &lt;/StackLayout&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="2222:2733" ph="&lt;&lt;Label x:Name=&quot;BuyedProductsLabel&quot; Text=&quot;{Binding ShoppingList.BoughtProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FifthColor}&quot;/&gt; &lt;Label Text=&quot;/&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt; &lt;Label x:Name=&quot;CountProductsLabel&quot; Text=&quot;{Binding ShoppingList.LeftProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FourthColor}&quot;/&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="3531:4363" ph="&lt;&lt;ListView.ItemTemplate&gt;&#10;&#9;&#9;&#9;    &lt;DataTemplate&gt;&#10;&#9;&#9;&#9;&#9;    &lt;ViewCell&gt;&#10;&#9;&#9;&#9;&#9;&#9;    &lt;editProductList:ProductViewControl Product=&quot;{Binding .}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        DeleteCommand=&quot;{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        EditCommand=&quot;{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        CheckedCommand=&quot;{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}&quot; /&gt;&#10;&#9;&#9;&#9;&#9;    &lt;/ViewCell&gt;&#10;&#9;&#9;&#9;    &lt;/DataTemplate&gt;&#10;&#9;&#9;    &lt;/ListView.ItemTemplate&gt;&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="3689:4345" ph="&lt;&lt;DataTemplate&gt;&#10;&#9;&#9;&#9;&#9;    &lt;ViewCell&gt;&#10;&#9;&#9;&#9;&#9;&#9;    &lt;editProductList:ProductViewControl Product=&quot;{Binding .}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        DeleteCommand=&quot;{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        EditCommand=&quot;{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        CheckedCommand=&quot;{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}&quot; /&gt;&#10;&#9;&#9;&#9;&#9;    &lt;/ViewCell&gt;&#10;&#9;&#9;&#9;    &lt;/DataTemplate&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="3720:4314" ph="&lt;&lt;ViewCell&gt;&#10;&#9;&#9;&#9;&#9;&#9;    &lt;editProductList:ProductViewControl Product=&quot;{Binding .}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        DeleteCommand=&quot;{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        EditCommand=&quot;{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        CheckedCommand=&quot;{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}&quot; /&gt;&#10;&#9;&#9;&#9;&#9;    &lt;/ViewCell&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="3743:4291" ph="&lt;&lt;editProductList:ProductViewControl Product=&quot;{Binding .}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        DeleteCommand=&quot;{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        EditCommand=&quot;{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        CheckedCommand=&quot;{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}&quot; /&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="3763:4271" ph="&lt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="4373:4875" ph="&lt;&lt;Image Source=&quot;{StaticResource EmptyProducts}&quot;/&gt; &lt;Label Text=&quot;Nie masz żadnych&quot; Style=&quot;{StaticResource MediumWhite20Font}&quot;&#10;                   HorizontalTextAlignment=&quot;Center&quot;/&gt; &lt;Label Text=&quot;produktów&quot; Style=&quot;{StaticResource MediumWhite20Font}&quot;&#10;                 HorizontalTextAlignment=&quot;Center&quot;/&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="4594:4721" ph="&lt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="4734:4852" ph="&lt;.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/EditProductListControl.xaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="33" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+          <folding>
+            <marker date="1491773384000" expanded="true" signature="40:581" ph="&lt;&lt;renderers:ExtendedScrollView&gt;&#10;            &lt;StackLayout x:Name=&quot;ProductTypesPanelsContainer&quot;/&gt;&#10;        &lt;/renderers:ExtendedScrollView&gt;.../&gt;" />
+            <marker date="1491773384000" expanded="true" signature="432:566" ph="&lt;&lt;StackLayout x:Name=&quot;ProductTypesPanelsContainer&quot;/&gt;.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/EditProductListControl.xaml.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2204">
+          <caret line="123" column="13" lean-forward="false" selection-start-line="123" selection-start-column="13" selection-end-line="123" selection-end-column="13" />
+          <folding>
+            <marker date="1503584004000" expanded="false" signature="6:236" ph="..." />
+            <marker date="1503584004000" expanded="true" signature="295:10457" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="359:10455" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="2145:2323" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="2366:2524" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="2569:2731" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="2769:2921" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="2957:3105" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="3136:3274" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="3322:3490" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="3537:3703" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="3760:3923" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="3964:4099" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="4205:4633" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="4273:4325" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="4771:5493" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="4897:4949" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="4962:5278" ph="/* var productsTypes = products.GroupBy(x =&gt; x.ProductType).Select(x =&gt; new { Type = x.Key, Products = x }); ... */" />
+            <marker date="1503584004000" expanded="true" signature="5548:6068" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="5798:5923" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="5941:6058" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="6169:6368" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="6490:6578" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="6681:7096" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="6754:6885" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="6956:7086" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="7221:7516" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="7600:7974" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="8040:8291" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="8093:8145" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="8201:8281" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="8370:8627" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="8425:8477" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="8535:8617" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="8690:9101" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="8984:9091" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="9159:9422" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="9216:9268" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="9328:9412" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="9485:9726" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="9620:9716" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="9773:10066" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="9964:10056" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="10158:10254" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="10353:10449" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/EditProductListView.xaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="12" />
+          <folding>
+            <marker date="1503584527000" expanded="true" signature="39:321" ph="&lt;&lt;ContentView.Content&gt;&#10;&#9;&lt;/ContentView.Content&gt;.../&gt;" />
+            <marker date="1503584527000" expanded="true" signature="261:306" ph="&lt;.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/ProductTypePanelControl.xaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1491773384000" expanded="true" signature="39:815" ph="&lt;&lt;Frame BackgroundColor=&quot;{StaticResource ThirthColor}&quot; Padding=&quot;2&quot;&gt;&#10;        &lt;StackLayout x:Name=&quot;PanelHeader&quot; BackgroundColor=&quot;{StaticResource FirstColor}&quot; Orientation=&quot;Horizontal&quot; Padding=&quot;2&quot;&gt;&#10;            &lt;Image x:Name=&quot;HeaderImage&quot;/&gt;&#10;            &lt;Label x:Name=&quot;HeaderLabel&quot; TextColor=&quot;White&quot; FontFamily=&quot;{StaticResource Medium}&quot; VerticalTextAlignment=&quot;Center&quot; /&gt;&#10;        &lt;/StackLayout&gt;&#10;    &lt;/Frame&gt; &lt;StackLayout x:Name=&quot;ProductsContainer&quot;/&gt;.../&gt;" />
+            <marker date="1491773384000" expanded="true" signature="355:754" ph="&lt;&lt;StackLayout x:Name=&quot;PanelHeader&quot; BackgroundColor=&quot;{StaticResource FirstColor}&quot; Orientation=&quot;Horizontal&quot; Padding=&quot;2&quot;&gt;&#10;            &lt;Image x:Name=&quot;HeaderImage&quot;/&gt;&#10;            &lt;Label x:Name=&quot;HeaderLabel&quot; TextColor=&quot;White&quot; FontFamily=&quot;{StaticResource Medium}&quot; VerticalTextAlignment=&quot;Center&quot; /&gt;&#10;        &lt;/StackLayout&gt;.../&gt;" />
+            <marker date="1491773384000" expanded="true" signature="430:741" ph="&lt;&lt;Image x:Name=&quot;HeaderImage&quot;/&gt; &lt;Label x:Name=&quot;HeaderLabel&quot; TextColor=&quot;White&quot; FontFamily=&quot;{StaticResource Medium}&quot; VerticalTextAlignment=&quot;Center&quot; /&gt;.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/ProductViewControl.xaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="29" column="30" lean-forward="false" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+          <folding>
+            <marker date="1503660546000" expanded="true" signature="40:3403" ph="&lt;&lt;AbsoluteLayout x:Name=&quot;MainLayout&quot; VerticalOptions=&quot;FillAndExpand&quot; BindingContext=&quot;{x:Reference ProductViewControl}&quot;&gt;&#10;&#9;&#9;&lt;contextmenu:ContextMenuView x:Name=&quot;ProductContextMenu&quot;&gt;&#10;&#9;&#9;&#9;&lt;contextmenu:ContextMenuItemView x:Name=&quot;EditMenuItem&quot; ContextMenuText=&quot;Edytuj&quot;&#10;&#9;&#9;&#9;                                 BackgroundColor=&quot;{StaticResource FirstColor}&quot;&#10;&#9;&#9;&#9;                                 ContextMenuIcon=&quot;{StaticResource EditList}&quot;&#10;&#9;&#9;&#9;                                 TappedCommand=&quot;{Binding EditCommand}&quot;&#10;&#9;&#9;&#9;                                 TappedCommandParameter=&quot;{Binding Product}&quot; /&gt;&#10;&#9;&#9;&#9;&lt;contextmenu:ContextMenuItemView x:Name=&quot;SelectMenuItem&quot; ContextMenuText=&quot;Dodaj&quot;&#10;&#9;&#9;&#9;                                 BackgroundColor=&quot;{StaticResource FifthColor}&quot;&#10;&#9;&#9;&#9;                                 ContextMenuIcon=&quot;{StaticResource CloseList}&quot;&#10;&#9;&#9;&#9;                                 TappedCommand=&quot;{Binding SelectCommand}&quot;&#10;&#9;&#9;&#9;                                 TappedCommandParameter=&quot;{Binding Product}&quot; /&gt;&#10;&#9;&#9;&#9;&lt;contextmenu:ContextMenuItemView x:Name=&quot;DeleteMenuItem&quot; ContextMenuText=&quot;Usuń&quot;&#10;&#9;&#9;&#9;                                 BackgroundColor=&quot;{StaticResource FourthColor}&quot;&#10;&#9;&#9;&#9;                                 ContextMenuIcon=&quot;{StaticResource Delete}&quot;&#10;&#9;&#9;&#9;                                 TappedCommand=&quot;{Binding DeleteCommand}&quot;&#10;&#9;&#9;&#9;                                 TappedCommandParameter=&quot;{Binding Product}&quot; /&gt;&#10;&#9;&#9;&lt;/contextmenu:ContextMenuView&gt;&#10;&#9;&#9;&lt;StackLayout x:Name=&quot;ProductData&quot; BackgroundColor=&quot;{StaticResource SecondColor}&quot; Orientation=&quot;Horizontal&quot; Padding=&quot;5&quot;&#10;&#9;&#9;             AbsoluteLayout.LayoutFlags=&quot;All&quot; AbsoluteLayout.LayoutBounds=&quot;0,0,1,1&quot;&gt;&#10;&#9;&#9;&#9;&lt;BoxView Margin=&quot;5,0,5,0&quot; WidthRequest=&quot;1&quot; BackgroundColor=&quot;{StaticResource ThirthColor}&quot; /&gt;&#10;&#9;&#9;&#9;&lt;toggleImages:ListItemCheckbox x:Name=&quot;IsBoughtCheckbox&quot;&#10;&#9;&#9;&#9;                               IsToggled=&quot;{Binding Product.IsBought}&quot;&#10;&#9;&#9;&#9;                               TappedCommand=&quot;{Binding CheckedCommand}&quot; /&gt;&#10;&#9;&#9;&#9;&lt;StackLayout HorizontalOptions=&quot;FillAndExpand&quot;&gt;&#10;&#9;&#9;&#9;&#9;&lt;Label x:Name=&quot;NameLabel&quot;&#10;&#9;&#9;&#9;&#9;       TextColor=&quot;White&quot;&#10;&#9;&#9;&#9;&#9;       FontFamily=&quot;{StaticResource Medium}&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;Start&quot; FontSize=&quot;15&quot;&#10;&#9;&#9;&#9;&#9;       LineBreakMode=&quot;CharacterWrap&quot; /&gt;&#10;&#9;&#9;&#9;&#9;&lt;Label x:Name=&quot;CommentLabel&quot;&#10;&#9;&#9;&#9;&#9;       TextColor=&quot;White&quot;&#10;&#9;&#9;&#9;&#9;       FontFamily=&quot;{StaticResource Light}&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;Start&quot; FontSize=&quot;12&quot;&#10;&#9;&#9;&#9;&#9;       LineBreakMode=&quot;CharacterWrap&quot; /&gt;&#10;&#9;&#9;&#9;&#9;&lt;Label x:Name=&quot;QuantityLabel&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;End&quot; FontFamily=&quot;{StaticResource Medium}&quot; FontSize=&quot;15&quot; TextColor=&quot;White&quot; /&gt;&#10;&#9;&#9;&#9;&lt;/StackLayout&gt;&#10;&#9;&#9;&lt;/StackLayout&gt;&#10;&#9;&lt;/AbsoluteLayout&gt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="767:3370" ph="&lt;&lt;contextmenu:ContextMenuView x:Name=&quot;ProductContextMenu&quot;&gt;&#10;&#9;&#9;&#9;&lt;contextmenu:ContextMenuItemView x:Name=&quot;EditMenuItem&quot; ContextMenuText=&quot;Edytuj&quot;&#10;&#9;&#9;&#9;                                 BackgroundColor=&quot;{StaticResource FirstColor}&quot;&#10;&#9;&#9;&#9;                                 ContextMenuIcon=&quot;{StaticResource EditList}&quot;&#10;&#9;&#9;&#9;                                 TappedCommand=&quot;{Binding EditCommand}&quot;&#10;&#9;&#9;&#9;                                 TappedCommandParameter=&quot;{Binding Product}&quot; /&gt;&#10;&#9;&#9;&#9;&lt;contextmenu:ContextMenuItemView x:Name=&quot;SelectMenuItem&quot; ContextMenuText=&quot;Dodaj&quot;&#10;&#9;&#9;&#9;                                 BackgroundColor=&quot;{StaticResource FifthColor}&quot;&#10;&#9;&#9;&#9;                                 ContextMenuIcon=&quot;{StaticResource CloseList}&quot;&#10;&#9;&#9;&#9;                                 TappedCommand=&quot;{Binding SelectCommand}&quot;&#10;&#9;&#9;&#9;                                 TappedCommandParameter=&quot;{Binding Product}&quot; /&gt;&#10;&#9;&#9;&#9;&lt;contextmenu:ContextMenuItemView x:Name=&quot;DeleteMenuItem&quot; ContextMenuText=&quot;Usuń&quot;&#10;&#9;&#9;&#9;                                 BackgroundColor=&quot;{StaticResource FourthColor}&quot;&#10;&#9;&#9;&#9;                                 ContextMenuIcon=&quot;{StaticResource Delete}&quot;&#10;&#9;&#9;&#9;                                 TappedCommand=&quot;{Binding DeleteCommand}&quot;&#10;&#9;&#9;&#9;                                 TappedCommandParameter=&quot;{Binding Product}&quot; /&gt;&#10;&#9;&#9;&lt;/contextmenu:ContextMenuView&gt; &lt;StackLayout x:Name=&quot;ProductData&quot; BackgroundColor=&quot;{StaticResource SecondColor}&quot; Orientation=&quot;Horizontal&quot; Padding=&quot;5&quot;&#10;&#9;&#9;             AbsoluteLayout.LayoutFlags=&quot;All&quot; AbsoluteLayout.LayoutBounds=&quot;0,0,1,1&quot;&gt;&#10;&#9;&#9;&#9;&lt;BoxView Margin=&quot;5,0,5,0&quot; WidthRequest=&quot;1&quot; BackgroundColor=&quot;{StaticResource ThirthColor}&quot; /&gt;&#10;&#9;&#9;&#9;&lt;toggleImages:ListItemCheckbox x:Name=&quot;IsBoughtCheckbox&quot;&#10;&#9;&#9;&#9;                               IsToggled=&quot;{Binding Product.IsBought}&quot;&#10;&#9;&#9;&#9;                               TappedCommand=&quot;{Binding CheckedCommand}&quot; /&gt;&#10;&#9;&#9;&#9;&lt;StackLayout HorizontalOptions=&quot;FillAndExpand&quot;&gt;&#10;&#9;&#9;&#9;&#9;&lt;Label x:Name=&quot;NameLabel&quot;&#10;&#9;&#9;&#9;&#9;       TextColor=&quot;White&quot;&#10;&#9;&#9;&#9;&#9;       FontFamily=&quot;{StaticResource Medium}&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;Start&quot; FontSize=&quot;15&quot;&#10;&#9;&#9;&#9;&#9;       LineBreakMode=&quot;CharacterWrap&quot; /&gt;&#10;&#9;&#9;&#9;&#9;&lt;Label x:Name=&quot;CommentLabel&quot;&#10;&#9;&#9;&#9;&#9;       TextColor=&quot;White&quot;&#10;&#9;&#9;&#9;&#9;       FontFamily=&quot;{StaticResource Light}&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;Start&quot; FontSize=&quot;12&quot;&#10;&#9;&#9;&#9;&#9;       LineBreakMode=&quot;CharacterWrap&quot; /&gt;&#10;&#9;&#9;&#9;&#9;&lt;Label x:Name=&quot;QuantityLabel&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;End&quot; FontFamily=&quot;{StaticResource Medium}&quot; FontSize=&quot;15&quot; TextColor=&quot;White&quot; /&gt;&#10;&#9;&#9;&#9;&lt;/StackLayout&gt;&#10;&#9;&#9;&lt;/StackLayout&gt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="888:2186" ph="&lt;&lt;contextmenu:ContextMenuItemView x:Name=&quot;EditMenuItem&quot; ContextMenuText=&quot;Edytuj&quot;&#10;&#9;&#9;&#9;                                 BackgroundColor=&quot;{StaticResource FirstColor}&quot;&#10;&#9;&#9;&#9;                                 ContextMenuIcon=&quot;{StaticResource EditList}&quot;&#10;&#9;&#9;&#9;                                 TappedCommand=&quot;{Binding EditCommand}&quot;&#10;&#9;&#9;&#9;                                 TappedCommandParameter=&quot;{Binding Product}&quot; /&gt; &lt;contextmenu:ContextMenuItemView x:Name=&quot;SelectMenuItem&quot; ContextMenuText=&quot;Dodaj&quot;&#10;&#9;&#9;&#9;                                 BackgroundColor=&quot;{StaticResource FifthColor}&quot;&#10;&#9;&#9;&#9;                                 ContextMenuIcon=&quot;{StaticResource CloseList}&quot;&#10;&#9;&#9;&#9;                                 TappedCommand=&quot;{Binding SelectCommand}&quot;&#10;&#9;&#9;&#9;                                 TappedCommandParameter=&quot;{Binding Product}&quot; /&gt; &lt;contextmenu:ContextMenuItemView x:Name=&quot;DeleteMenuItem&quot; ContextMenuText=&quot;Usuń&quot;&#10;&#9;&#9;&#9;                                 BackgroundColor=&quot;{StaticResource FourthColor}&quot;&#10;&#9;&#9;&#9;                                 ContextMenuIcon=&quot;{StaticResource Delete}&quot;&#10;&#9;&#9;&#9;                                 TappedCommand=&quot;{Binding DeleteCommand}&quot;&#10;&#9;&#9;&#9;                                 TappedCommandParameter=&quot;{Binding Product}&quot; /&gt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="949:1346" ph="&lt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="1350:1751" ph="&lt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="1755:2153" ph="&lt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="2189:3351" ph="&lt;&lt;BoxView Margin=&quot;5,0,5,0&quot; WidthRequest=&quot;1&quot; BackgroundColor=&quot;{StaticResource ThirthColor}&quot; /&gt; &lt;toggleImages:ListItemCheckbox x:Name=&quot;IsBoughtCheckbox&quot;&#10;&#9;&#9;&#9;                               IsToggled=&quot;{Binding Product.IsBought}&quot;&#10;&#9;&#9;&#9;                               TappedCommand=&quot;{Binding CheckedCommand}&quot; /&gt; &lt;StackLayout HorizontalOptions=&quot;FillAndExpand&quot;&gt;&#10;&#9;&#9;&#9;&#9;&lt;Label x:Name=&quot;NameLabel&quot;&#10;&#9;&#9;&#9;&#9;       TextColor=&quot;White&quot;&#10;&#9;&#9;&#9;&#9;       FontFamily=&quot;{StaticResource Medium}&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;Start&quot; FontSize=&quot;15&quot;&#10;&#9;&#9;&#9;&#9;       LineBreakMode=&quot;CharacterWrap&quot; /&gt;&#10;&#9;&#9;&#9;&#9;&lt;Label x:Name=&quot;CommentLabel&quot;&#10;&#9;&#9;&#9;&#9;       TextColor=&quot;White&quot;&#10;&#9;&#9;&#9;&#9;       FontFamily=&quot;{StaticResource Light}&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;Start&quot; FontSize=&quot;12&quot;&#10;&#9;&#9;&#9;&#9;       LineBreakMode=&quot;CharacterWrap&quot; /&gt;&#10;&#9;&#9;&#9;&#9;&lt;Label x:Name=&quot;QuantityLabel&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;End&quot; FontFamily=&quot;{StaticResource Medium}&quot; FontSize=&quot;15&quot; TextColor=&quot;White&quot; /&gt;&#10;&#9;&#9;&#9;&lt;/StackLayout&gt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="2493:2700" ph="&lt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="2704:3334" ph="&lt;&lt;Label x:Name=&quot;NameLabel&quot;&#10;&#9;&#9;&#9;&#9;       TextColor=&quot;White&quot;&#10;&#9;&#9;&#9;&#9;       FontFamily=&quot;{StaticResource Medium}&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;Start&quot; FontSize=&quot;15&quot;&#10;&#9;&#9;&#9;&#9;       LineBreakMode=&quot;CharacterWrap&quot; /&gt; &lt;Label x:Name=&quot;CommentLabel&quot;&#10;&#9;&#9;&#9;&#9;       TextColor=&quot;White&quot;&#10;&#9;&#9;&#9;&#9;       FontFamily=&quot;{StaticResource Light}&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;Start&quot; FontSize=&quot;12&quot;&#10;&#9;&#9;&#9;&#9;       LineBreakMode=&quot;CharacterWrap&quot; /&gt; &lt;Label x:Name=&quot;QuantityLabel&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;End&quot; FontFamily=&quot;{StaticResource Medium}&quot; FontSize=&quot;15&quot; TextColor=&quot;White&quot; /&gt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="2756:2959" ph="&lt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="2964:3169" ph="&lt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="3174:3316" ph="&lt;.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/ViewModel/ViewModelLocator.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/App.xaml.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1615">
+          <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+          <folding>
+            <marker date="1503583836000" expanded="false" signature="6:732" ph="..." />
+            <marker date="1503583836000" expanded="true" signature="761:10157" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="806:10155" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="1030:1414" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="1271:1397" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="1463:1993" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="1875:1983" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="2043:2210" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="2253:2273" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="2317:2337" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="2368:3965" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="4008:4188" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="4235:4496" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="4545:6097" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="6144:9952" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="6910:9734" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="9990:10149" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/ProductViewControl.xaml.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="9" column="47" lean-forward="true" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
+          <folding>
+            <marker date="1503661035000" expanded="false" signature="6:141" ph="..." />
+            <marker date="1503661035000" expanded="true" signature="200:3017" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="266:3015" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="1141:1261" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="1297:1421" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="1457:1581" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="1618:1744" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="1775:1896" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="2071:2126" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="2228:2545" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="2263:2294" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="2588:2602" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="2647:2713" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="2756:2820" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="2856:2924" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="2964:3009" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/VM/ShoppingListVm.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="698">
+          <caret line="122" column="33" lean-forward="false" selection-start-line="122" selection-start-column="33" selection-end-line="122" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/ViewModel/MainViewModel.cs" />
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/ViewModel/ShoppingsViewModel.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="106" column="50" lean-forward="false" selection-start-line="106" selection-start-column="50" selection-end-line="106" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Renderers/ExtendedScrollView.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/App.xaml.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1615">
+          <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+          <folding>
+            <marker date="1503583836000" expanded="false" signature="6:732" ph="..." />
+            <marker date="1503583836000" expanded="true" signature="761:10157" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="806:10155" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="1030:1414" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="1271:1397" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="1463:1993" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="1875:1983" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="2043:2210" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="2253:2273" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="2317:2337" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="2368:3965" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="4008:4188" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="4235:4496" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="4545:6097" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="6144:9952" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="6910:9734" ph="{...}" />
+            <marker date="1503583836000" expanded="true" signature="9990:10149" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/EditProductListControl.xaml.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2204">
+          <caret line="123" column="13" lean-forward="false" selection-start-line="123" selection-start-column="13" selection-end-line="123" selection-end-column="13" />
+          <folding>
+            <marker date="1503584004000" expanded="false" signature="6:236" ph="..." />
+            <marker date="1503584004000" expanded="true" signature="295:10457" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="359:10455" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="2145:2323" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="2366:2524" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="2569:2731" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="2769:2921" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="2957:3105" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="3136:3274" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="3322:3490" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="3537:3703" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="3760:3923" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="3964:4099" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="4205:4633" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="4273:4325" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="4771:5493" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="4897:4949" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="4962:5278" ph="/* var productsTypes = products.GroupBy(x =&gt; x.ProductType).Select(x =&gt; new { Type = x.Key, Products = x }); ... */" />
+            <marker date="1503584004000" expanded="true" signature="5548:6068" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="5798:5923" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="5941:6058" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="6169:6368" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="6490:6578" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="6681:7096" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="6754:6885" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="6956:7086" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="7221:7516" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="7600:7974" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="8040:8291" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="8093:8145" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="8201:8281" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="8370:8627" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="8425:8477" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="8535:8617" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="8690:9101" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="8984:9091" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="9159:9422" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="9216:9268" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="9328:9412" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="9485:9726" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="9620:9716" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="9773:10066" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="9964:10056" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="10158:10254" ph="{...}" />
+            <marker date="1503584004000" expanded="true" signature="10353:10449" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/ProductTypePanelControl.xaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1491773384000" expanded="true" signature="39:815" ph="&lt;&lt;Frame BackgroundColor=&quot;{StaticResource ThirthColor}&quot; Padding=&quot;2&quot;&gt;&#10;        &lt;StackLayout x:Name=&quot;PanelHeader&quot; BackgroundColor=&quot;{StaticResource FirstColor}&quot; Orientation=&quot;Horizontal&quot; Padding=&quot;2&quot;&gt;&#10;            &lt;Image x:Name=&quot;HeaderImage&quot;/&gt;&#10;            &lt;Label x:Name=&quot;HeaderLabel&quot; TextColor=&quot;White&quot; FontFamily=&quot;{StaticResource Medium}&quot; VerticalTextAlignment=&quot;Center&quot; /&gt;&#10;        &lt;/StackLayout&gt;&#10;    &lt;/Frame&gt; &lt;StackLayout x:Name=&quot;ProductsContainer&quot;/&gt;.../&gt;" />
+            <marker date="1491773384000" expanded="true" signature="355:754" ph="&lt;&lt;StackLayout x:Name=&quot;PanelHeader&quot; BackgroundColor=&quot;{StaticResource FirstColor}&quot; Orientation=&quot;Horizontal&quot; Padding=&quot;2&quot;&gt;&#10;            &lt;Image x:Name=&quot;HeaderImage&quot;/&gt;&#10;            &lt;Label x:Name=&quot;HeaderLabel&quot; TextColor=&quot;White&quot; FontFamily=&quot;{StaticResource Medium}&quot; VerticalTextAlignment=&quot;Center&quot; /&gt;&#10;        &lt;/StackLayout&gt;.../&gt;" />
+            <marker date="1491773384000" expanded="true" signature="430:741" ph="&lt;&lt;Image x:Name=&quot;HeaderImage&quot;/&gt; &lt;Label x:Name=&quot;HeaderLabel&quot; TextColor=&quot;White&quot; FontFamily=&quot;{StaticResource Medium}&quot; VerticalTextAlignment=&quot;Center&quot; /&gt;.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/ViewModel/ViewModelLocator.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile.iOS/Main.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+          <folding>
+            <marker date="1491773384000" expanded="false" signature="6:98" ph="..." />
+            <marker date="1491773384000" expanded="true" signature="131:487" ph="{...}" />
+            <marker date="1491773384000" expanded="true" signature="162:485" ph="{...}" />
+            <marker date="1491773384000" expanded="true" signature="268:479" ph="{...}" />
+            <marker date="1491773384000" expanded="true" signature="291:410" ph="/* if you want to use a different Application Delegate class from &quot;AppDelegate&quot; ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/AutoResizeStackLayout.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="30" selection-end-column="9" />
+          <folding>
+            <marker date="1503659605000" expanded="true" signature="6:112" ph="..." />
+            <marker date="1503659605000" expanded="true" signature="155:2474" ph="{...}" />
+            <marker date="1503659605000" expanded="true" signature="207:2472" ph="{...}" />
+            <marker date="1503659605000" expanded="true" signature="751:863" ph="{...}" />
+            <marker date="1503659605000" expanded="true" signature="896:1001" ph="{...}" />
+            <marker date="1503659605000" expanded="true" signature="1035:1269" ph="{...}" />
+            <marker date="1503659605000" expanded="true" signature="1347:1482" ph="{...}" />
+            <marker date="1503659605000" expanded="true" signature="1426:1478" ph="{...}" />
+            <marker date="1503659605000" expanded="true" signature="1527:2047" ph="{...}" />
+            <marker date="1503659605000" expanded="true" signature="1557:1641" ph="{...}" />
+            <marker date="1503659605000" expanded="true" signature="1716:1801" ph="{...}" />
+            <marker date="1503659605000" expanded="true" signature="1887:1977" ph="{...}" />
+            <marker date="1503659605000" expanded="true" signature="2102:2200" ph="{...}" />
+            <marker date="1503659605000" expanded="true" signature="2270:2298" ph="{...}" />
+            <marker date="1503659605000" expanded="true" signature="2330:2469" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Model/Product.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+          <folding>
+            <marker date="1491773384000" expanded="false" signature="6:122" ph="..." />
+            <marker date="1491773384000" expanded="true" signature="157:1586" ph="{...}" />
+            <marker date="1491773384000" expanded="true" signature="214:1584" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile.iOS/Renderers/CustomViewCellRenderer.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <marker date="1491773384000" expanded="false" signature="6:106" ph="..." />
+            <marker date="1491773384000" expanded="true" signature="221:654" ph="{...}" />
+            <marker date="1491773384000" expanded="true" signature="282:652" ph="{...}" />
+            <marker date="1491773384000" expanded="true" signature="393:646" ph="{...}" />
+            <marker date="1491773384000" expanded="true" signature="531:609" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/View/FavouriteProductsView.xaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1493402353000" expanded="true" signature="40:2114" ph="&lt;&lt;StackLayout Spacing=&quot;0&quot; BackgroundColor=&quot;{StaticResource SecondColor}&quot;&gt;&#10;        &lt;controls:TopPanelControl LeftIconSource=&quot;{StaticResource Back}&quot; LeftIconTapCommand=&quot;{Binding GoBackCommand}&quot; PanelHeader=&quot;Zapisane produkty&quot;/&gt;&#10;        &lt;StackLayout Margin=&quot;0,10,0,0&quot;&gt;&#10;            &lt;horizontalCarousel:HorizontalCarousel ProductTypes=&quot;{Binding ProductTypes}&quot;&#10;                                                   SelectedProductType=&quot;{Binding SelectedProductType}&quot;&#10;                                                   ProductTypeSelecedCommand=&quot;{Binding ProductTypeSelectedCommand}&quot; /&gt;&#10;            &lt;favouriteProductList:FavouriteProductListControl Products=&quot;{Binding MockListForProduct}&quot;&#10;                                                              ButtonSelectProductCommand=&quot;{Binding ProductSelectedCommand}&quot;&#10;                                                              ButtonDeleteCommand=&quot;{Binding DeleteProductCommand}&quot;&#10;                                                              UnSubscribeAllEventsCommand=&quot;{Binding UnSubscribeAllEventsFromViewCommand, Mode=OneWayToSource}&quot; /&gt;&#10;        &lt;/StackLayout&gt;&#10;    &lt;/StackLayout&gt;.../&gt;" />
+            <marker date="1493402353000" expanded="true" signature="961:2081" ph="&lt;&lt;controls:TopPanelControl LeftIconSource=&quot;{StaticResource Back}&quot; LeftIconTapCommand=&quot;{Binding GoBackCommand}&quot; PanelHeader=&quot;Zapisane produkty&quot;/&gt; &lt;StackLayout Margin=&quot;0,10,0,0&quot;&gt;&#10;            &lt;horizontalCarousel:HorizontalCarousel ProductTypes=&quot;{Binding ProductTypes}&quot;&#10;                                                   SelectedProductType=&quot;{Binding SelectedProductType}&quot;&#10;                                                   ProductTypeSelecedCommand=&quot;{Binding ProductTypeSelectedCommand}&quot; /&gt;&#10;            &lt;favouriteProductList:FavouriteProductListControl Products=&quot;{Binding MockListForProduct}&quot;&#10;                                                              ButtonSelectProductCommand=&quot;{Binding ProductSelectedCommand}&quot;&#10;                                                              ButtonDeleteCommand=&quot;{Binding DeleteProductCommand}&quot;&#10;                                                              UnSubscribeAllEventsCommand=&quot;{Binding UnSubscribeAllEventsFromViewCommand, Mode=OneWayToSource}&quot; /&gt;&#10;        &lt;/StackLayout&gt;.../&gt;" />
+            <marker date="1493402353000" expanded="true" signature="1194:2062" ph="&lt;&lt;horizontalCarousel:HorizontalCarousel ProductTypes=&quot;{Binding ProductTypes}&quot;&#10;                                                   SelectedProductType=&quot;{Binding SelectedProductType}&quot;&#10;                                                   ProductTypeSelecedCommand=&quot;{Binding ProductTypeSelectedCommand}&quot; /&gt; &lt;favouriteProductList:FavouriteProductListControl Products=&quot;{Binding MockListForProduct}&quot;&#10;                                                              ButtonSelectProductCommand=&quot;{Binding ProductSelectedCommand}&quot;&#10;                                                              ButtonDeleteCommand=&quot;{Binding DeleteProductCommand}&quot;&#10;                                                              UnSubscribeAllEventsCommand=&quot;{Binding UnSubscribeAllEventsFromViewCommand, Mode=OneWayToSource}&quot; /&gt;.../&gt;" />
+            <marker date="1493402353000" expanded="true" signature="1238:1536" ph="&lt;.../&gt;" />
+            <marker date="1493402353000" expanded="true" signature="1549:2039" ph="&lt;.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/EditProductListView.xaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="12" />
+          <folding>
+            <marker date="1503584527000" expanded="true" signature="39:321" ph="&lt;&lt;ContentView.Content&gt;&#10;&#9;&lt;/ContentView.Content&gt;.../&gt;" />
+            <marker date="1503584527000" expanded="true" signature="261:306" ph="&lt;.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/EditProductListControl.xaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="33" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+          <folding>
+            <marker date="1491773384000" expanded="true" signature="40:581" ph="&lt;&lt;renderers:ExtendedScrollView&gt;&#10;            &lt;StackLayout x:Name=&quot;ProductTypesPanelsContainer&quot;/&gt;&#10;        &lt;/renderers:ExtendedScrollView&gt;.../&gt;" />
+            <marker date="1491773384000" expanded="true" signature="432:566" ph="&lt;&lt;StackLayout x:Name=&quot;ProductTypesPanelsContainer&quot;/&gt;.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/ContextMenu/ContextMenuLayout.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <marker date="1503660170000" expanded="false" signature="6:155" ph="..." />
+            <marker date="1503660170000" expanded="true" signature="210:2738" ph="{...}" />
+            <marker date="1503660170000" expanded="true" signature="277:2736" ph="{...}" />
+            <marker date="1503660170000" expanded="true" signature="873:997" ph="{...}" />
+            <marker date="1503660170000" expanded="true" signature="1033:1157" ph="{...}" />
+            <marker date="1503660170000" expanded="true" signature="1184:1211" ph="{...}" />
+            <marker date="1503660170000" expanded="true" signature="1243:1340" ph="{...}" />
+            <marker date="1503660170000" expanded="true" signature="1293:1315" ph="{...}" />
+            <marker date="1503660170000" expanded="true" signature="1378:1663" ph="{...}" />
+            <marker date="1503660170000" expanded="true" signature="1407:1429" ph="{...}" />
+            <marker date="1503660170000" expanded="true" signature="1702:1967" ph="{...}" />
+            <marker date="1503660170000" expanded="true" signature="1731:1753" ph="{...}" />
+            <marker date="1503660170000" expanded="true" signature="2007:2071" ph="{...}" />
+            <marker date="1503660170000" expanded="true" signature="2137:2240" ph="{...}" />
+            <marker date="1503660170000" expanded="true" signature="2188:2236" ph="{...}" />
+            <marker date="1503660170000" expanded="true" signature="2326:2591" ph="{...}" />
+            <marker date="1503660170000" expanded="true" signature="2377:2587" ph="{...}" />
+            <marker date="1503660170000" expanded="true" signature="2503:2530" ph="{...}" />
+            <marker date="1503660170000" expanded="true" signature="2651:2730" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/ProductViewControl.xaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="20" column="90" lean-forward="false" selection-start-line="20" selection-start-column="90" selection-end-line="20" selection-end-column="90" />
+          <folding>
+            <marker date="1503660546000" expanded="true" signature="40:3403" ph="&lt;&lt;AbsoluteLayout x:Name=&quot;MainLayout&quot; VerticalOptions=&quot;FillAndExpand&quot; BindingContext=&quot;{x:Reference ProductViewControl}&quot;&gt;&#10;&#9;&#9;&lt;contextmenu:ContextMenuView x:Name=&quot;ProductContextMenu&quot;&gt;&#10;&#9;&#9;&#9;&lt;contextmenu:ContextMenuItemView x:Name=&quot;EditMenuItem&quot; ContextMenuText=&quot;Edytuj&quot;&#10;&#9;&#9;&#9;                                 BackgroundColor=&quot;{StaticResource FirstColor}&quot;&#10;&#9;&#9;&#9;                                 ContextMenuIcon=&quot;{StaticResource EditList}&quot;&#10;&#9;&#9;&#9;                                 TappedCommand=&quot;{Binding EditCommand}&quot;&#10;&#9;&#9;&#9;                                 TappedCommandParameter=&quot;{Binding Product}&quot; /&gt;&#10;&#9;&#9;&#9;&lt;contextmenu:ContextMenuItemView x:Name=&quot;SelectMenuItem&quot; ContextMenuText=&quot;Dodaj&quot;&#10;&#9;&#9;&#9;                                 BackgroundColor=&quot;{StaticResource FifthColor}&quot;&#10;&#9;&#9;&#9;                                 ContextMenuIcon=&quot;{StaticResource CloseList}&quot;&#10;&#9;&#9;&#9;                                 TappedCommand=&quot;{Binding SelectCommand}&quot;&#10;&#9;&#9;&#9;                                 TappedCommandParameter=&quot;{Binding Product}&quot; /&gt;&#10;&#9;&#9;&#9;&lt;contextmenu:ContextMenuItemView x:Name=&quot;DeleteMenuItem&quot; ContextMenuText=&quot;Usuń&quot;&#10;&#9;&#9;&#9;                                 BackgroundColor=&quot;{StaticResource FourthColor}&quot;&#10;&#9;&#9;&#9;                                 ContextMenuIcon=&quot;{StaticResource Delete}&quot;&#10;&#9;&#9;&#9;                                 TappedCommand=&quot;{Binding DeleteCommand}&quot;&#10;&#9;&#9;&#9;                                 TappedCommandParameter=&quot;{Binding Product}&quot; /&gt;&#10;&#9;&#9;&lt;/contextmenu:ContextMenuView&gt;&#10;&#9;&#9;&lt;StackLayout x:Name=&quot;ProductData&quot; BackgroundColor=&quot;{StaticResource SecondColor}&quot; Orientation=&quot;Horizontal&quot; Padding=&quot;5&quot;&#10;&#9;&#9;             AbsoluteLayout.LayoutFlags=&quot;All&quot; AbsoluteLayout.LayoutBounds=&quot;0,0,1,1&quot;&gt;&#10;&#9;&#9;&#9;&lt;BoxView Margin=&quot;5,0,5,0&quot; WidthRequest=&quot;1&quot; BackgroundColor=&quot;{StaticResource ThirthColor}&quot; /&gt;&#10;&#9;&#9;&#9;&lt;toggleImages:ListItemCheckbox x:Name=&quot;IsBoughtCheckbox&quot;&#10;&#9;&#9;&#9;                               IsToggled=&quot;{Binding Product.IsBought}&quot;&#10;&#9;&#9;&#9;                               TappedCommand=&quot;{Binding CheckedCommand}&quot; /&gt;&#10;&#9;&#9;&#9;&lt;StackLayout HorizontalOptions=&quot;FillAndExpand&quot;&gt;&#10;&#9;&#9;&#9;&#9;&lt;Label x:Name=&quot;NameLabel&quot;&#10;&#9;&#9;&#9;&#9;       TextColor=&quot;White&quot;&#10;&#9;&#9;&#9;&#9;       FontFamily=&quot;{StaticResource Medium}&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;Start&quot; FontSize=&quot;15&quot;&#10;&#9;&#9;&#9;&#9;       LineBreakMode=&quot;CharacterWrap&quot; /&gt;&#10;&#9;&#9;&#9;&#9;&lt;Label x:Name=&quot;CommentLabel&quot;&#10;&#9;&#9;&#9;&#9;       TextColor=&quot;White&quot;&#10;&#9;&#9;&#9;&#9;       FontFamily=&quot;{StaticResource Light}&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;Start&quot; FontSize=&quot;12&quot;&#10;&#9;&#9;&#9;&#9;       LineBreakMode=&quot;CharacterWrap&quot; /&gt;&#10;&#9;&#9;&#9;&#9;&lt;Label x:Name=&quot;QuantityLabel&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;End&quot; FontFamily=&quot;{StaticResource Medium}&quot; FontSize=&quot;15&quot; TextColor=&quot;White&quot; /&gt;&#10;&#9;&#9;&#9;&lt;/StackLayout&gt;&#10;&#9;&#9;&lt;/StackLayout&gt;&#10;&#9;&lt;/AbsoluteLayout&gt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="767:3370" ph="&lt;&lt;contextmenu:ContextMenuView x:Name=&quot;ProductContextMenu&quot;&gt;&#10;&#9;&#9;&#9;&lt;contextmenu:ContextMenuItemView x:Name=&quot;EditMenuItem&quot; ContextMenuText=&quot;Edytuj&quot;&#10;&#9;&#9;&#9;                                 BackgroundColor=&quot;{StaticResource FirstColor}&quot;&#10;&#9;&#9;&#9;                                 ContextMenuIcon=&quot;{StaticResource EditList}&quot;&#10;&#9;&#9;&#9;                                 TappedCommand=&quot;{Binding EditCommand}&quot;&#10;&#9;&#9;&#9;                                 TappedCommandParameter=&quot;{Binding Product}&quot; /&gt;&#10;&#9;&#9;&#9;&lt;contextmenu:ContextMenuItemView x:Name=&quot;SelectMenuItem&quot; ContextMenuText=&quot;Dodaj&quot;&#10;&#9;&#9;&#9;                                 BackgroundColor=&quot;{StaticResource FifthColor}&quot;&#10;&#9;&#9;&#9;                                 ContextMenuIcon=&quot;{StaticResource CloseList}&quot;&#10;&#9;&#9;&#9;                                 TappedCommand=&quot;{Binding SelectCommand}&quot;&#10;&#9;&#9;&#9;                                 TappedCommandParameter=&quot;{Binding Product}&quot; /&gt;&#10;&#9;&#9;&#9;&lt;contextmenu:ContextMenuItemView x:Name=&quot;DeleteMenuItem&quot; ContextMenuText=&quot;Usuń&quot;&#10;&#9;&#9;&#9;                                 BackgroundColor=&quot;{StaticResource FourthColor}&quot;&#10;&#9;&#9;&#9;                                 ContextMenuIcon=&quot;{StaticResource Delete}&quot;&#10;&#9;&#9;&#9;                                 TappedCommand=&quot;{Binding DeleteCommand}&quot;&#10;&#9;&#9;&#9;                                 TappedCommandParameter=&quot;{Binding Product}&quot; /&gt;&#10;&#9;&#9;&lt;/contextmenu:ContextMenuView&gt; &lt;StackLayout x:Name=&quot;ProductData&quot; BackgroundColor=&quot;{StaticResource SecondColor}&quot; Orientation=&quot;Horizontal&quot; Padding=&quot;5&quot;&#10;&#9;&#9;             AbsoluteLayout.LayoutFlags=&quot;All&quot; AbsoluteLayout.LayoutBounds=&quot;0,0,1,1&quot;&gt;&#10;&#9;&#9;&#9;&lt;BoxView Margin=&quot;5,0,5,0&quot; WidthRequest=&quot;1&quot; BackgroundColor=&quot;{StaticResource ThirthColor}&quot; /&gt;&#10;&#9;&#9;&#9;&lt;toggleImages:ListItemCheckbox x:Name=&quot;IsBoughtCheckbox&quot;&#10;&#9;&#9;&#9;                               IsToggled=&quot;{Binding Product.IsBought}&quot;&#10;&#9;&#9;&#9;                               TappedCommand=&quot;{Binding CheckedCommand}&quot; /&gt;&#10;&#9;&#9;&#9;&lt;StackLayout HorizontalOptions=&quot;FillAndExpand&quot;&gt;&#10;&#9;&#9;&#9;&#9;&lt;Label x:Name=&quot;NameLabel&quot;&#10;&#9;&#9;&#9;&#9;       TextColor=&quot;White&quot;&#10;&#9;&#9;&#9;&#9;       FontFamily=&quot;{StaticResource Medium}&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;Start&quot; FontSize=&quot;15&quot;&#10;&#9;&#9;&#9;&#9;       LineBreakMode=&quot;CharacterWrap&quot; /&gt;&#10;&#9;&#9;&#9;&#9;&lt;Label x:Name=&quot;CommentLabel&quot;&#10;&#9;&#9;&#9;&#9;       TextColor=&quot;White&quot;&#10;&#9;&#9;&#9;&#9;       FontFamily=&quot;{StaticResource Light}&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;Start&quot; FontSize=&quot;12&quot;&#10;&#9;&#9;&#9;&#9;       LineBreakMode=&quot;CharacterWrap&quot; /&gt;&#10;&#9;&#9;&#9;&#9;&lt;Label x:Name=&quot;QuantityLabel&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;End&quot; FontFamily=&quot;{StaticResource Medium}&quot; FontSize=&quot;15&quot; TextColor=&quot;White&quot; /&gt;&#10;&#9;&#9;&#9;&lt;/StackLayout&gt;&#10;&#9;&#9;&lt;/StackLayout&gt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="888:2186" ph="&lt;&lt;contextmenu:ContextMenuItemView x:Name=&quot;EditMenuItem&quot; ContextMenuText=&quot;Edytuj&quot;&#10;&#9;&#9;&#9;                                 BackgroundColor=&quot;{StaticResource FirstColor}&quot;&#10;&#9;&#9;&#9;                                 ContextMenuIcon=&quot;{StaticResource EditList}&quot;&#10;&#9;&#9;&#9;                                 TappedCommand=&quot;{Binding EditCommand}&quot;&#10;&#9;&#9;&#9;                                 TappedCommandParameter=&quot;{Binding Product}&quot; /&gt; &lt;contextmenu:ContextMenuItemView x:Name=&quot;SelectMenuItem&quot; ContextMenuText=&quot;Dodaj&quot;&#10;&#9;&#9;&#9;                                 BackgroundColor=&quot;{StaticResource FifthColor}&quot;&#10;&#9;&#9;&#9;                                 ContextMenuIcon=&quot;{StaticResource CloseList}&quot;&#10;&#9;&#9;&#9;                                 TappedCommand=&quot;{Binding SelectCommand}&quot;&#10;&#9;&#9;&#9;                                 TappedCommandParameter=&quot;{Binding Product}&quot; /&gt; &lt;contextmenu:ContextMenuItemView x:Name=&quot;DeleteMenuItem&quot; ContextMenuText=&quot;Usuń&quot;&#10;&#9;&#9;&#9;                                 BackgroundColor=&quot;{StaticResource FourthColor}&quot;&#10;&#9;&#9;&#9;                                 ContextMenuIcon=&quot;{StaticResource Delete}&quot;&#10;&#9;&#9;&#9;                                 TappedCommand=&quot;{Binding DeleteCommand}&quot;&#10;&#9;&#9;&#9;                                 TappedCommandParameter=&quot;{Binding Product}&quot; /&gt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="949:1346" ph="&lt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="1350:1751" ph="&lt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="1755:2153" ph="&lt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="2189:3351" ph="&lt;&lt;BoxView Margin=&quot;5,0,5,0&quot; WidthRequest=&quot;1&quot; BackgroundColor=&quot;{StaticResource ThirthColor}&quot; /&gt; &lt;toggleImages:ListItemCheckbox x:Name=&quot;IsBoughtCheckbox&quot;&#10;&#9;&#9;&#9;                               IsToggled=&quot;{Binding Product.IsBought}&quot;&#10;&#9;&#9;&#9;                               TappedCommand=&quot;{Binding CheckedCommand}&quot; /&gt; &lt;StackLayout HorizontalOptions=&quot;FillAndExpand&quot;&gt;&#10;&#9;&#9;&#9;&#9;&lt;Label x:Name=&quot;NameLabel&quot;&#10;&#9;&#9;&#9;&#9;       TextColor=&quot;White&quot;&#10;&#9;&#9;&#9;&#9;       FontFamily=&quot;{StaticResource Medium}&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;Start&quot; FontSize=&quot;15&quot;&#10;&#9;&#9;&#9;&#9;       LineBreakMode=&quot;CharacterWrap&quot; /&gt;&#10;&#9;&#9;&#9;&#9;&lt;Label x:Name=&quot;CommentLabel&quot;&#10;&#9;&#9;&#9;&#9;       TextColor=&quot;White&quot;&#10;&#9;&#9;&#9;&#9;       FontFamily=&quot;{StaticResource Light}&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;Start&quot; FontSize=&quot;12&quot;&#10;&#9;&#9;&#9;&#9;       LineBreakMode=&quot;CharacterWrap&quot; /&gt;&#10;&#9;&#9;&#9;&#9;&lt;Label x:Name=&quot;QuantityLabel&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;End&quot; FontFamily=&quot;{StaticResource Medium}&quot; FontSize=&quot;15&quot; TextColor=&quot;White&quot; /&gt;&#10;&#9;&#9;&#9;&lt;/StackLayout&gt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="2493:2700" ph="&lt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="2704:3334" ph="&lt;&lt;Label x:Name=&quot;NameLabel&quot;&#10;&#9;&#9;&#9;&#9;       TextColor=&quot;White&quot;&#10;&#9;&#9;&#9;&#9;       FontFamily=&quot;{StaticResource Medium}&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;Start&quot; FontSize=&quot;15&quot;&#10;&#9;&#9;&#9;&#9;       LineBreakMode=&quot;CharacterWrap&quot; /&gt; &lt;Label x:Name=&quot;CommentLabel&quot;&#10;&#9;&#9;&#9;&#9;       TextColor=&quot;White&quot;&#10;&#9;&#9;&#9;&#9;       FontFamily=&quot;{StaticResource Light}&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;Start&quot; FontSize=&quot;12&quot;&#10;&#9;&#9;&#9;&#9;       LineBreakMode=&quot;CharacterWrap&quot; /&gt; &lt;Label x:Name=&quot;QuantityLabel&quot;&#10;&#9;&#9;&#9;&#9;       HorizontalTextAlignment=&quot;End&quot; FontFamily=&quot;{StaticResource Medium}&quot; FontSize=&quot;15&quot; TextColor=&quot;White&quot; /&gt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="2756:2959" ph="&lt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="2964:3169" ph="&lt;.../&gt;" />
+            <marker date="1503660546000" expanded="true" signature="3174:3316" ph="&lt;.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/FavouriteProductList/FavouriteProductListControl.xaml.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding>
+            <marker date="1503660678000" expanded="false" signature="6:285" ph="..." />
+            <marker date="1503660678000" expanded="true" signature="349:5988" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="418:5986" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="1342:1520" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="1577:1740" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="1785:1947" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="1999:2175" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="2221:2358" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="2464:2814" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="2532:2584" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="2961:3220" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="3004:3056" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="3103:3210" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="3286:3570" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="3632:3934" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="3732:3784" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="3842:3924" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="3997:4318" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="4190:4242" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="4386:4664" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="4448:4500" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="4565:4654" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="4727:4973" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="4880:4963" ph="{...}" />
+            <marker date="1503660678000" expanded="true" signature="4975:5980" ph="/* private void AssignEvents(ProductViewControl productViewControl) ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/ViewModel/EditShoppingListViewModel.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="57" column="9" lean-forward="false" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
+          <folding>
+            <marker date="1503657257000" expanded="false" signature="6:319" ph="..." />
+            <marker date="1503657257000" expanded="true" signature="358:2866" ph="{...}" />
+            <marker date="1503657257000" expanded="true" signature="424:2864" ph="{...}" />
+            <marker date="1503657257000" expanded="true" signature="580:693" ph="{...}" />
+            <marker date="1503657257000" expanded="true" signature="1169:1269" ph="{...}" />
+            <marker date="1503657257000" expanded="true" signature="1309:1714" ph="{...}" />
+            <marker date="1503657257000" expanded="true" signature="1788:1899" ph="{...}" />
+            <marker date="1503657257000" expanded="true" signature="1942:2095" ph="{...}" />
+            <marker date="1503657257000" expanded="true" signature="2179:2344" ph="{...}" />
+            <marker date="1503657257000" expanded="true" signature="2408:2522" ph="{...}" />
+            <marker date="1503657257000" expanded="true" signature="2579:2648" ph="{...}" />
+            <marker date="1503657257000" expanded="true" signature="2703:2723" ph="{...}" />
+            <marker date="1503657257000" expanded="true" signature="2773:2858" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/View/EditShoppingListView.xaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="32" column="74" lean-forward="false" selection-start-line="32" selection-start-column="74" selection-end-line="32" selection-end-column="74" />
+          <folding>
+            <marker date="1503660801000" expanded="true" signature="40:4923" ph="&lt;&lt;StackLayout Spacing=&quot;0&quot; BackgroundColor=&quot;{StaticResource SecondColor}&quot;&gt;&#10;        &lt;controls:TopPanelControl LeftIconSource=&quot;{StaticResource Back}&quot; LeftIconTapCommand=&quot;{Binding GoBackCommand}&quot; PanelHeader=&quot;Edycja listy zakupów&quot;&#10;                    RightIconSource=&quot;{StaticResource AddProduct}&quot; RightIconTapCommand=&quot;{Binding AddProductCommand}&quot;/&gt;&#10;        &lt;Grid Padding=&quot;10,15,10,10&quot;&gt;&#10;            &lt;Grid.RowDefinitions&gt;&#10;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;/Grid.RowDefinitions&gt;&#10;            &lt;Grid.ColumnDefinitions&gt;&#10;                &lt;ColumnDefinition Width=&quot;0.2*&quot; /&gt;&#10;                &lt;ColumnDefinition Width=&quot;0.8*&quot; /&gt;&#10;            &lt;/Grid.ColumnDefinitions&gt;&#10;            &lt;StackLayout Grid.Column=&quot;0&quot; Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot; HorizontalOptions=&quot;Center&quot; VerticalOptions=&quot;Center&quot;&gt;&#10;                &lt;renderers:CircularProgress WidthRequest=&quot;50&quot; HeightRequest=&quot;50&quot; Percent=&quot;{Binding ShoppingList.ProgressPercent}&quot;/&gt;&#10;            &lt;/StackLayout&gt;&#10;            &lt;StackLayout Grid.Column=&quot;1&quot; Grid.Row=&quot;0&quot;&gt;&#10;                &lt;Label Text=&quot;{Binding ShoppingList.Name}&quot; TextColor=&quot;White&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;            &lt;/StackLayout&gt;&#10;            &lt;StackLayout Grid.Column=&quot;1&quot; Grid.Row=&quot;1&quot;&gt;&#10;                &lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;&#10;                    &lt;Label x:Name=&quot;BuyedProductsLabel&quot; Text=&quot;{Binding ShoppingList.BoughtProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FifthColor}&quot;/&gt;&#10;                    &lt;Label Text=&quot;/&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;                    &lt;Label x:Name=&quot;CountProductsLabel&quot; Text=&quot;{Binding ShoppingList.LeftProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FourthColor}&quot;/&gt;&#10;                &lt;/StackLayout&gt;&#10;            &lt;/StackLayout&gt;&#10;        &lt;/Grid&gt;&#10;&lt;!--        &lt;editProductList:EditProductListControl x:Name=&quot;EditProductListControl&quot;  Products=&quot;{Binding ShoppingList.Products}&quot; --&gt;&#10;&lt;!--                                            IsVisible=&quot;{Binding ShoppingList.ShowPlaceholder, Converter={StaticResource InverseBooleanConverter}}&quot;--&gt;&#10;&lt;!--                                            ButtonDeleteCommand=&quot;{Binding DeleteProductCommand}&quot; --&gt;&#10;&lt;!--                                            ButtonEditCommand=&quot;{Binding EditProductCommand}&quot;--&gt;&#10;&lt;!--                                            ProductCheckedCommand=&quot;{Binding ProductCheckedCommand}&quot;--&gt;&#10;&lt;!--                                            UnSubscribeAllEventsCommand=&quot;{Binding UnSubscribeAllEventsFromViewCommand, Mode=OneWayToSource}&quot;/&gt;--&gt;&#10;&#10;&#9;    &lt;ListView BackgroundColor=&quot;{StaticResource SecondColor}&quot; SeparatorVisibility=&quot;None&quot; HasUnevenRows=&quot;True&quot; ItemsSource=&quot;{Binding ShoppingList.Products}&quot;&gt;&#10;&#9;&#9;    &lt;ListView.ItemTemplate&gt;&#10;&#9;&#9;&#9;    &lt;DataTemplate&gt;&#10;&#9;&#9;&#9;&#9;    &lt;ViewCell&gt;&#10;&#9;&#9;&#9;&#9;&#9;    &lt;editProductList:ProductViewControl Product=&quot;{Binding .}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        DeleteCommand=&quot;{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        EditCommand=&quot;{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        CheckedCommand=&quot;{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}&quot; /&gt;&#10;&#9;&#9;&#9;&#9;    &lt;/ViewCell&gt;&#10;&#9;&#9;&#9;    &lt;/DataTemplate&gt;&#10;&#9;&#9;    &lt;/ListView.ItemTemplate&gt;&gt;&#10;&#9;    &lt;/ListView&gt;&#10;&#10;        &lt;StackLayout VerticalOptions=&quot;StartAndExpand&quot; IsVisible=&quot;{Binding ShoppingList.ShowPlaceholder}&quot;&#10;                   Spacing=&quot;10&quot; Margin=&quot;0,40,0,0&quot;&gt;&#10;            &lt;Image Source=&quot;{StaticResource EmptyProducts}&quot;/&gt;&#10;            &lt;Label Text=&quot;Nie masz żadnych&quot; Style=&quot;{StaticResource MediumWhite20Font}&quot;&#10;                   HorizontalTextAlignment=&quot;Center&quot;/&gt;&#10;            &lt;Label Text=&quot;produktów&quot; Style=&quot;{StaticResource MediumWhite20Font}&quot;&#10;                 HorizontalTextAlignment=&quot;Center&quot;/&gt;&#10;        &lt;/StackLayout&gt;&#10;    &lt;/StackLayout&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="950:4894" ph="&lt;&lt;controls:TopPanelControl LeftIconSource=&quot;{StaticResource Back}&quot; LeftIconTapCommand=&quot;{Binding GoBackCommand}&quot; PanelHeader=&quot;Edycja listy zakupów&quot;&#10;                    RightIconSource=&quot;{StaticResource AddProduct}&quot; RightIconTapCommand=&quot;{Binding AddProductCommand}&quot;/&gt; &lt;Grid Padding=&quot;10,15,10,10&quot;&gt;&#10;            &lt;Grid.RowDefinitions&gt;&#10;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;/Grid.RowDefinitions&gt;&#10;            &lt;Grid.ColumnDefinitions&gt;&#10;                &lt;ColumnDefinition Width=&quot;0.2*&quot; /&gt;&#10;                &lt;ColumnDefinition Width=&quot;0.8*&quot; /&gt;&#10;            &lt;/Grid.ColumnDefinitions&gt;&#10;            &lt;StackLayout Grid.Column=&quot;0&quot; Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot; HorizontalOptions=&quot;Center&quot; VerticalOptions=&quot;Center&quot;&gt;&#10;                &lt;renderers:CircularProgress WidthRequest=&quot;50&quot; HeightRequest=&quot;50&quot; Percent=&quot;{Binding ShoppingList.ProgressPercent}&quot;/&gt;&#10;            &lt;/StackLayout&gt;&#10;            &lt;StackLayout Grid.Column=&quot;1&quot; Grid.Row=&quot;0&quot;&gt;&#10;                &lt;Label Text=&quot;{Binding ShoppingList.Name}&quot; TextColor=&quot;White&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;            &lt;/StackLayout&gt;&#10;            &lt;StackLayout Grid.Column=&quot;1&quot; Grid.Row=&quot;1&quot;&gt;&#10;                &lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;&#10;                    &lt;Label x:Name=&quot;BuyedProductsLabel&quot; Text=&quot;{Binding ShoppingList.BoughtProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FifthColor}&quot;/&gt;&#10;                    &lt;Label Text=&quot;/&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;                    &lt;Label x:Name=&quot;CountProductsLabel&quot; Text=&quot;{Binding ShoppingList.LeftProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FourthColor}&quot;/&gt;&#10;                &lt;/StackLayout&gt;&#10;            &lt;/StackLayout&gt;&#10;        &lt;/Grid&gt; &lt;ListView BackgroundColor=&quot;{StaticResource SecondColor}&quot; SeparatorVisibility=&quot;None&quot; HasUnevenRows=&quot;True&quot; ItemsSource=&quot;{Binding ShoppingList.Products}&quot;&gt;&#10;&#9;&#9;    &lt;ListView.ItemTemplate&gt;&#10;&#9;&#9;&#9;    &lt;DataTemplate&gt;&#10;&#9;&#9;&#9;&#9;    &lt;ViewCell&gt;&#10;&#9;&#9;&#9;&#9;&#9;    &lt;editProductList:ProductViewControl Product=&quot;{Binding .}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        DeleteCommand=&quot;{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        EditCommand=&quot;{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        CheckedCommand=&quot;{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}&quot; /&gt;&#10;&#9;&#9;&#9;&#9;    &lt;/ViewCell&gt;&#10;&#9;&#9;&#9;    &lt;/DataTemplate&gt;&#10;&#9;&#9;    &lt;/ListView.ItemTemplate&gt;&gt;&#10;&#9;    &lt;/ListView&gt; &lt;StackLayout VerticalOptions=&quot;StartAndExpand&quot; IsVisible=&quot;{Binding ShoppingList.ShowPlaceholder}&quot;&#10;                   Spacing=&quot;10&quot; Margin=&quot;0,40,0,0&quot;&gt;&#10;            &lt;Image Source=&quot;{StaticResource EmptyProducts}&quot;/&gt;&#10;            &lt;Label Text=&quot;Nie masz żadnych&quot; Style=&quot;{StaticResource MediumWhite20Font}&quot;&#10;                   HorizontalTextAlignment=&quot;Center&quot;/&gt;&#10;            &lt;Label Text=&quot;produktów&quot; Style=&quot;{StaticResource MediumWhite20Font}&quot;&#10;                 HorizontalTextAlignment=&quot;Center&quot;/&gt;&#10;        &lt;/StackLayout&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="1031:1293" ph="&lt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="1302:2776" ph="&lt;&lt;Grid.RowDefinitions&gt;&#10;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;                &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;/Grid.RowDefinitions&gt; &lt;Grid.ColumnDefinitions&gt;&#10;                &lt;ColumnDefinition Width=&quot;0.2*&quot; /&gt;&#10;                &lt;ColumnDefinition Width=&quot;0.8*&quot; /&gt;&#10;            &lt;/Grid.ColumnDefinitions&gt; &lt;StackLayout Grid.Column=&quot;0&quot; Grid.Row=&quot;0&quot; Grid.RowSpan=&quot;2&quot; HorizontalOptions=&quot;Center&quot; VerticalOptions=&quot;Center&quot;&gt;&#10;                &lt;renderers:CircularProgress WidthRequest=&quot;50&quot; HeightRequest=&quot;50&quot; Percent=&quot;{Binding ShoppingList.ProgressPercent}&quot;/&gt;&#10;            &lt;/StackLayout&gt; &lt;StackLayout Grid.Column=&quot;1&quot; Grid.Row=&quot;0&quot;&gt;&#10;                &lt;Label Text=&quot;{Binding ShoppingList.Name}&quot; TextColor=&quot;White&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;            &lt;/StackLayout&gt; &lt;StackLayout Grid.Column=&quot;1&quot; Grid.Row=&quot;1&quot;&gt;&#10;                &lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;&#10;                    &lt;Label x:Name=&quot;BuyedProductsLabel&quot; Text=&quot;{Binding ShoppingList.BoughtProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FifthColor}&quot;/&gt;&#10;                    &lt;Label Text=&quot;/&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;                    &lt;Label x:Name=&quot;CountProductsLabel&quot; Text=&quot;{Binding ShoppingList.LeftProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FourthColor}&quot;/&gt;&#10;                &lt;/StackLayout&gt;&#10;            &lt;/StackLayout&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="1343:1495" ph="&lt;&lt;RowDefinition Height=&quot;Auto&quot; /&gt; &lt;RowDefinition Height=&quot;Auto&quot; /&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="1508:1670" ph="&lt;&lt;ColumnDefinition Width=&quot;0.2*&quot; /&gt; &lt;ColumnDefinition Width=&quot;0.8*&quot; /&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="1683:1953" ph="&lt;&lt;renderers:CircularProgress WidthRequest=&quot;50&quot; HeightRequest=&quot;50&quot; Percent=&quot;{Binding ShoppingList.ProgressPercent}&quot;/&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="1966:2150" ph="&lt;&lt;Label Text=&quot;{Binding ShoppingList.Name}&quot; TextColor=&quot;White&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="2163:2760" ph="&lt;&lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;&#10;                    &lt;Label x:Name=&quot;BuyedProductsLabel&quot; Text=&quot;{Binding ShoppingList.BoughtProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FifthColor}&quot;/&gt;&#10;                    &lt;Label Text=&quot;/&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt;&#10;                    &lt;Label x:Name=&quot;CountProductsLabel&quot; Text=&quot;{Binding ShoppingList.LeftProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FourthColor}&quot;/&gt;&#10;                &lt;/StackLayout&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="2222:2733" ph="&lt;&lt;Label x:Name=&quot;BuyedProductsLabel&quot; Text=&quot;{Binding ShoppingList.BoughtProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FifthColor}&quot;/&gt; &lt;Label Text=&quot;/&quot; FontFamily=&quot;{StaticResource Medium}&quot;/&gt; &lt;Label x:Name=&quot;CountProductsLabel&quot; Text=&quot;{Binding ShoppingList.LeftProductsCount}&quot; FontFamily=&quot;{StaticResource Medium}&quot; TextColor=&quot;{StaticResource FourthColor}&quot;/&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="3531:4363" ph="&lt;&lt;ListView.ItemTemplate&gt;&#10;&#9;&#9;&#9;    &lt;DataTemplate&gt;&#10;&#9;&#9;&#9;&#9;    &lt;ViewCell&gt;&#10;&#9;&#9;&#9;&#9;&#9;    &lt;editProductList:ProductViewControl Product=&quot;{Binding .}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        DeleteCommand=&quot;{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        EditCommand=&quot;{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        CheckedCommand=&quot;{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}&quot; /&gt;&#10;&#9;&#9;&#9;&#9;    &lt;/ViewCell&gt;&#10;&#9;&#9;&#9;    &lt;/DataTemplate&gt;&#10;&#9;&#9;    &lt;/ListView.ItemTemplate&gt;&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="3689:4345" ph="&lt;&lt;DataTemplate&gt;&#10;&#9;&#9;&#9;&#9;    &lt;ViewCell&gt;&#10;&#9;&#9;&#9;&#9;&#9;    &lt;editProductList:ProductViewControl Product=&quot;{Binding .}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        DeleteCommand=&quot;{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        EditCommand=&quot;{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        CheckedCommand=&quot;{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}&quot; /&gt;&#10;&#9;&#9;&#9;&#9;    &lt;/ViewCell&gt;&#10;&#9;&#9;&#9;    &lt;/DataTemplate&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="3720:4314" ph="&lt;&lt;ViewCell&gt;&#10;&#9;&#9;&#9;&#9;&#9;    &lt;editProductList:ProductViewControl Product=&quot;{Binding .}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        DeleteCommand=&quot;{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        EditCommand=&quot;{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        CheckedCommand=&quot;{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}&quot; /&gt;&#10;&#9;&#9;&#9;&#9;    &lt;/ViewCell&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="3743:4291" ph="&lt;&lt;editProductList:ProductViewControl Product=&quot;{Binding .}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        DeleteCommand=&quot;{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        EditCommand=&quot;{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}&quot;&#10;&#9;&#9;&#9;&#9;&#9;                                        CheckedCommand=&quot;{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}&quot; /&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="3763:4271" ph="&lt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="4373:4875" ph="&lt;&lt;Image Source=&quot;{StaticResource EmptyProducts}&quot;/&gt; &lt;Label Text=&quot;Nie masz żadnych&quot; Style=&quot;{StaticResource MediumWhite20Font}&quot;&#10;                   HorizontalTextAlignment=&quot;Center&quot;/&gt; &lt;Label Text=&quot;produktów&quot; Style=&quot;{StaticResource MediumWhite20Font}&quot;&#10;                 HorizontalTextAlignment=&quot;Center&quot;/&gt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="4594:4721" ph="&lt;.../&gt;" />
+            <marker date="1503660801000" expanded="true" signature="4734:4852" ph="&lt;.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/ProductTypePanelControl.xaml.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="70" column="18" lean-forward="false" selection-start-line="70" selection-start-column="18" selection-end-line="70" selection-end-column="18" />
+          <folding>
+            <marker date="1503660665000" expanded="false" signature="6:195" ph="..." />
+            <marker date="1503660665000" expanded="true" signature="254:4137" ph="{...}" />
+            <marker date="1503660665000" expanded="true" signature="319:4135" ph="{...}" />
+            <marker date="1503660665000" expanded="true" signature="725:827" ph="{...}" />
+            <marker date="1503660665000" expanded="true" signature="890:1148" ph="{...}" />
+            <marker date="1503660665000" expanded="true" signature="1219:1409" ph="{...}" />
+            <marker date="1503660665000" expanded="true" signature="1317:1399" ph="{...}" />
+            <marker date="1503660665000" expanded="true" signature="1471:1582" ph="{...}" />
+            <marker date="1503660665000" expanded="true" signature="1651:1902" ph="{...}" />
+            <marker date="1503660665000" expanded="true" signature="1946:2177" ph="{...}" />
+            <marker date="1503660665000" expanded="true" signature="2060:2167" ph="{...}" />
+            <marker date="1503660665000" expanded="true" signature="2235:2481" ph="{...}" />
+            <marker date="1503660665000" expanded="true" signature="2388:2471" ph="{...}" />
+            <marker date="1503660665000" expanded="true" signature="2543:2795" ph="{...}" />
+            <marker date="1503660665000" expanded="true" signature="2858:2935" ph="{...}" />
+            <marker date="1503660665000" expanded="true" signature="2996:3071" ph="{...}" />
+            <marker date="1503660665000" expanded="true" signature="3130:3203" ph="{...}" />
+            <marker date="1503660665000" expanded="true" signature="3261:3326" ph="{...}" />
+            <marker date="1503660665000" expanded="true" signature="3328:4129" ph="/* private void AssignEvents(ProductViewControl productViewControl) ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Controls/EditProductList/ProductViewControl.xaml.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1425">
+          <caret line="79" column="43" lean-forward="true" selection-start-line="79" selection-start-column="43" selection-end-line="79" selection-end-column="43" />
+          <folding>
+            <marker date="1503661035000" expanded="false" signature="6:141" ph="..." />
+            <marker date="1503661035000" expanded="true" signature="200:3017" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="266:3015" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="1141:1261" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="1297:1421" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="1457:1581" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="1618:1744" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="1775:1896" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="2071:2126" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="2228:2545" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="2263:2294" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="2588:2602" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="2647:2713" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="2756:2820" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="2856:2924" ph="{...}" />
+            <marker date="1503661035000" expanded="true" signature="2964:3009" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -81,6 +81,7 @@
     <Compile Include="Mvvm\Controls\AddProductForm.xaml.cs">
       <DependentUpon>AddProductForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Mvvm\Controls\AutoResizeStackLayout.cs" />
     <Compile Include="Mvvm\Controls\Buttons\AddProductButton.xaml.cs">
       <DependentUpon>AddProductButton.xaml</DependentUpon>
     </Compile>
@@ -179,7 +180,6 @@
     <Compile Include="ViewModel\AddProductViewModel.cs" />
     <Compile Include="ViewModel\EditShoppingListViewModel.cs" />
     <Compile Include="ViewModel\FavouriteProductsViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ShoppingsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\Abstract\BaseHappyContentPage.xaml.cs">
@@ -223,6 +223,9 @@
     <Compile Include="Mvvm\Controls\ContextMenu\ContextMenuItemView.xaml.cs">
       <DependentUpon>ContextMenuItemView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Mvvm\Controls\EditProductList\EditProductListView.xaml.cs">
+      <DependentUpon>EditProductListView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -242,6 +245,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Mvvm\Controls\ContextMenu\ContextMenuItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mvvm\Controls\EditProductList\EditProductListView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

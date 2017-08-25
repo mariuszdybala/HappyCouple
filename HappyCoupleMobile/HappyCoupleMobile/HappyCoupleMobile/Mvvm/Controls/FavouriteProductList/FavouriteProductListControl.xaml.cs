@@ -53,7 +53,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.FavouriteProductList
         {
             InitializeComponent();
 
-            UnSubscribeAllEventsCommand = new Command(OnUnSubscribeAllEvents);
+            //UnSubscribeAllEventsCommand = new Command(OnUnSubscribeAllEvents);
         }
 
         private static void OnProductsChanged(BindableObject bindable, object oldvalue, object newvalue)
@@ -89,7 +89,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.FavouriteProductList
             productView.HideEditControlItem();
             productView.HideCheckbox();
 
-            AssignEvents(productView);
+            //AssignEvents(productView);
 
             ProductsContainer.Children.Add(productView);
         }
@@ -143,26 +143,26 @@ namespace HappyCoupleMobile.Mvvm.Controls.FavouriteProductList
             }
         }
 
-        private void AssignEvents(ProductViewControl productViewControl)
-        {
-            productViewControl.ControlPanelInvoked += OnControlPanelInvoked;
-            productViewControl.SelectProductButtonClick += OnSelectProductButtonClick;
-            productViewControl.DeleteButtonClick += OnDeleteButtonClick;
-        }
-
-        private void OnUnSubscribeAllEvents()
-        {
-            foreach (var productViewControl in ProductsContainer.Children.OfType<ProductViewControl>())
-            {
-                UnSubscribeEventsFromProductViewControl(productViewControl);
-            }
-        }
-
-        private void UnSubscribeEventsFromProductViewControl(ProductViewControl productViewControl)
-        {
-            productViewControl.ControlPanelInvoked -= OnControlPanelInvoked;
-            productViewControl.SelectProductButtonClick -= OnSelectProductButtonClick;
-            productViewControl.DeleteButtonClick -= OnDeleteButtonClick;
-        }
+//        private void AssignEvents(ProductViewControl productViewControl)
+//        {
+//            productViewControl.ControlPanelInvoked += OnControlPanelInvoked;
+//            productViewControl.SelectProductButtonClick += OnSelectProductButtonClick;
+//            productViewControl.DeleteButtonClick += OnDeleteButtonClick;
+//        }
+//
+//        private void OnUnSubscribeAllEvents()
+//        {
+//            foreach (var productViewControl in ProductsContainer.Children.OfType<ProductViewControl>())
+//            {
+//                UnSubscribeEventsFromProductViewControl(productViewControl);
+//            }
+//        }
+//
+//        private void UnSubscribeEventsFromProductViewControl(ProductViewControl productViewControl)
+//        {
+//            productViewControl.ControlPanelInvoked -= OnControlPanelInvoked;
+//            productViewControl.SelectProductButtonClick -= OnSelectProductButtonClick;
+//            productViewControl.DeleteButtonClick -= OnDeleteButtonClick;
+//        }
     }
 }

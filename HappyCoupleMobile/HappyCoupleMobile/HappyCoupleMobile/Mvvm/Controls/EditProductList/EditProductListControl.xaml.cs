@@ -122,12 +122,14 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
             {
                 return;
             }
-            var productsTypes = products.GroupBy(x => x.ProductType).Select(x => new { Type = x.Key, Products = x });
+            //var productsTypes = products.GroupBy(x => x.ProductType).Select(x => new { Type = x.Key, Products = x });
 
-            foreach (var productType in productsTypes)
-            {
-                editProductsListControl.InsertNewProductsToNewType(productType.Type, productType.Products.ToList());
-            }
+//            foreach (var productType in productsTypes)
+//            {
+//                editProductsListControl.InsertNewProductsToNewType(productType.Type, productType.Products.ToList());
+//            }
+	        editProductsListControl.InsertNewProductsToNewType(products.FirstOrDefault().ProductType, products.ToList());
+	        
 
             //editProductsListControl.AssingEventsToProductList(products);
         }

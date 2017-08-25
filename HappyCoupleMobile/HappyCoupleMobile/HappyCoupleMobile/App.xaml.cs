@@ -105,8 +105,6 @@ namespace HappyCoupleMobile
             SimpleIoc.Default.Register<IProductDao, ProductDao>();
             SimpleIoc.Default.Register<IUserDao, UserDao>();
 
-
-            SimpleIoc.Default.Register<MainViewModel>(true);
             SimpleIoc.Default.Register<ShoppingsViewModel>(true);
             SimpleIoc.Default.Register<AddProductViewModel>(true);
             SimpleIoc.Default.Register<EditShoppingListViewModel>(true);

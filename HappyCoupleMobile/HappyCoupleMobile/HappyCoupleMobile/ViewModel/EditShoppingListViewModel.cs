@@ -82,7 +82,7 @@ namespace HappyCoupleMobile.ViewModel
 
         protected override void CleanResources()
         {
-            UnSubscribeAllEventsFromViewCommand.Execute(null);
+            //UnSubscribeAllEventsFromViewCommand.Execute(null);
         }
     }
 }
