@@ -8,9 +8,8 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 {
     public partial class ProductViewControl : ContextMenuLayout
     {
-        public static BindableProperty ProductProperty = BindableProperty
-        .Create(nameof(Product), typeof(ProductVm), typeof(ProductViewControl), null, propertyChanged: OnProductChanged);
-
+        public static BindableProperty ProductProperty =
+	        BindableProperty.Create(nameof(Product), typeof(ProductVm), typeof(ProductViewControl), null, propertyChanged: OnProductChanged);
 	    public static BindableProperty EditCommandProperty =
 		    BindableProperty.Create(nameof(EditCommand), typeof(ICommand), typeof(ProductViewControl));
 	    public static BindableProperty DeleteCommandProperty =
@@ -50,6 +49,11 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 		    set => SetValue(ProductProperty, value);
 	    }
 
+	    public bool ShowEditButton {set => EditMenuItem.IsVisible = value;}
+	    public bool ShowSelectButton {set => SelectMenuItem.IsVisible = value;}
+	    public bool ShowDeleteButton {set => DeleteMenuItem.IsVisible = value;}
+	    public bool ShowCheckboxButton {set => IsBoughtCheckbox.IsVisible = value;}
+
 		public override ContextMenuView ContextMenu => ProductContextMenu;
         public override Xamarin.Forms.View DataContent => ProductData;
 
@@ -76,21 +80,6 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 	    public override void OnTapInternal()
 	    {
 	    }
-
-        public void HideSelectControlItem()
-        {
-            SelectMenuItem.IsVisible = false;
-        }
-
-        public void HideEditControlItem()
-        {
-            EditMenuItem.IsVisible = false;
-        }
-
-        public void HideCheckbox()
-        {
-            IsBoughtCheckbox.IsVisible = false;
-        }
 
         public void HideControlPanel()
         {

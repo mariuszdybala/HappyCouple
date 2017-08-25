@@ -47,6 +47,7 @@
 			    <DataTemplate>
 				    <ViewCell>
 					    <editProductList:ProductViewControl Product="{Binding .}"
+					                                        ShowSelectButton="False" ShowEditButton="False"
 					                                        DeleteCommand="{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}"
 					                                        EditCommand="{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}"
 					                                        CheckedCommand="{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}" />

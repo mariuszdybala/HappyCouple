@@ -57,7 +57,6 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
         {
             var productView = new ProductViewControl { Product = product };
 
-            productView.HideSelectControlItem();
 
             //AssignEvents(productView);
 

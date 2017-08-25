@@ -7,7 +7,7 @@
                                xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
                                x:Class="HappyCoupleMobile.Mvvm.Controls.EditProductList.ProductViewControl"
                                x:Name="ProductViewControl">
-	<AbsoluteLayout x:Name="MainLayout" VerticalOptions="FillAndExpand" BindingContext="{x:Reference ProductViewControl}">
+	<AbsoluteLayout x:Name="MainLayout" VerticalOptions="FillAndExpand" BindingContext="{x:Reference ProductViewControl}" Padding="0,0,10,10">
 		<contextmenu:ContextMenuView x:Name="ProductContextMenu">
 			<contextmenu:ContextMenuItemView x:Name="EditMenuItem" ContextMenuText="Edytuj"
 			                                 BackgroundColor="{StaticResource FirstColor}"
@@ -37,11 +37,13 @@
 				       FontFamily="{StaticResource Medium}"
 				       HorizontalTextAlignment="Start" FontSize="15"
 				       LineBreakMode="CharacterWrap" />
-				<Label x:Name="CommentLabel"
-				       TextColor="White"
-				       FontFamily="{StaticResource Light}"
-				       HorizontalTextAlignment="Start" FontSize="12"
-				       LineBreakMode="CharacterWrap" />
+				<controls:AutoResizeStackLayout Spacing="0">
+					<Label x:Name="CommentLabel"
+					       TextColor="White"
+					       FontFamily="{StaticResource Light}"
+					       HorizontalTextAlignment="Start" FontSize="12"
+					       LineBreakMode="CharacterWrap" />
+				</controls:AutoResizeStackLayout>
 				<Label x:Name="QuantityLabel"
 				       HorizontalTextAlignment="End" FontFamily="{StaticResource Medium}" FontSize="15" TextColor="White" />
 			</StackLayout>

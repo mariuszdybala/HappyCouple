@@ -86,8 +86,6 @@ namespace HappyCoupleMobile.Mvvm.Controls.FavouriteProductList
         {
             var productView = new ProductViewControl { Product = product };
 
-            productView.HideEditControlItem();
-            productView.HideCheckbox();
 
             //AssignEvents(productView);
 
