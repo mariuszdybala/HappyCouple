@@ -3,16 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
              xmlns:attached="clr-namespace:HappyCoupleMobile.Mvvm.AttachedProperties;assembly=HappyCoupleMobile"
-             xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              xmlns:toggleImages="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ToggleImages;assembly=HappyCoupleMobile"
-             xmlns:buttons="clr-namespace:HappyCoupleMobile.Mvvm.Controls.Buttons;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.Mvvm.Controls.AddProductForm" 
              Spacing="0"
              x:Name="AddProductForm">
     <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}" VerticalOptions="FillAndExpand" BindingContext="{x:Reference AddProductForm}">
+	    <StackLayout Margin="10" Orientation="Horizontal">
+		    <Image Source="{Binding SelectedProductType.IconName, Converter={StaticResource IconNameToImageSourceConverter}}" VerticalOptions="Center"/>
+		    <Label Margin="5,0,0,0" Text="{Binding SelectedProductType.Type}" FontFamily="{StaticResource Medium}" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+	    </StackLayout>
         <StackLayout Padding="5" VerticalOptions="StartAndExpand">
             <StackLayout>
-                <Label Text="Twoja nazwa" TextColor="White"/>
+                <Label Text="Twoja nazwa" TextColor="White" FontFamily="{StaticResource Medium}"/>
                 <StackLayout Orientation="Horizontal">
                     <Entry x:Name="NewNameEntry" Text="{Binding ProductName}" HorizontalOptions="FillAndExpand"
                            Placeholder="Podaj swoją nazwę produktu" TextChanged="OnNewNameEntryTextChanged"/>
@@ -22,7 +24,7 @@
                 </StackLayout>
             </StackLayout>
             <StackLayout>
-                <Label Text="Ilość" TextColor="White"/>
+                <Label Text="Ilość" TextColor="White" FontFamily="{StaticResource Medium}"/>
                 <StackLayout Orientation="Horizontal">
                     <Entry x:Name="QuantityEntry" Text="{Binding ProductQuantity}" HorizontalOptions="FillAndExpand" Placeholder="Podaj ilość" 
                            Keyboard="Numeric" TextChanged="OnQuantityEntryTextChanged"/>
@@ -32,7 +34,7 @@
                 </StackLayout>
             </StackLayout>
             <StackLayout>
-                <Label Text="Komentarz" TextColor="White"/>
+                <Label Text="Komentarz" TextColor="White" FontFamily="{StaticResource Medium}"/>
                 <StackLayout Orientation="Horizontal">
                     <Entry x:Name="DescriptionEntry" Text="{Binding ProductComment}" Placeholder="Tu możesz coś dopisać"  
                            HorizontalOptions="FillAndExpand" TextChanged="OnDescriptionEntryTextChanged"/>
@@ -43,7 +45,7 @@
             </StackLayout>
             <StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Label VerticalTextAlignment="Center" Text="Dodaj do ulubionych" TextColor="White"/>
+                    <Label VerticalTextAlignment="Center" Text="Dodaj do ulubionych" TextColor="White" FontFamily="{StaticResource Medium}"/>
                     <toggleImages:FavouriteButton VerticalOptions="Start" HorizontalOptions="EndAndExpand" Toggled="OnProductAddedToFavourite"/>
                 </StackLayout>
             </StackLayout>

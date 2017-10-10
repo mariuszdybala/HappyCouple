@@ -18,7 +18,15 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 		    BindableProperty.Create(nameof(SelectCommand), typeof(ICommand), typeof(ProductViewControl));
 	    public static BindableProperty CheckedCommandProperty =
 		    BindableProperty.Create(nameof(CheckedCommand), typeof(ICommand), typeof(ProductViewControl));
+	    public static BindableProperty TapCommandProperty =
+		    BindableProperty.Create(nameof(TapCommand), typeof(ICommand), typeof(ProductViewControl));
 
+	    public ICommand TapCommand
+	    {
+		    get => (ICommand) GetValue(TapCommandProperty);
+		    set => SetValue(TapCommandProperty, value);
+	    }
+	    
 	    public ICommand EditCommand
 	    {
 		    get => (ICommand) GetValue(EditCommandProperty);
@@ -80,6 +88,10 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 
 	    public override void OnTapInternal()
 	    {
+		    if (TapCommand != null && TapCommand.CanExecute(Product))
+		    {
+			    TapCommand.Execute(Product);
+		    }
 	    }
 
         public void HideControlPanel()

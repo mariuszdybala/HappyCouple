@@ -39,7 +39,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.HorizontalCarousel
             InitializeComponent();
         }
 
-        private void OnProductTypeSelected()
+        public void OnProductTypeSelected()
         {
             IsSelected = true;
             BackgroundColor = (Color)Application.Current.Resources["ThirthColor"];

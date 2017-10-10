@@ -4,7 +4,7 @@
              x:Class="HappyCoupleMobile.Mvvm.Controls.Buttons.ImageButton"
              VerticalOptions="CenterAndExpand" 
              HorizontalOptions="Center"
-             OutlineColor="{StaticResource FifthColor}"
+             OutlineColor="{Binding ButtonFrameColor}"
              BackgroundColor="{StaticResource SecondColor}" 
              Padding="5"
              x:Name="ImageButton">

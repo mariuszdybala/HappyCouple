@@ -8,45 +8,14 @@ namespace HappyCoupleMobile.Mvvm.Controls
 {
 	public class AutoResizeStackLayout : StackLayout
 	{
-		private TapGestureRecognizer _gestureRecognizer;
 		private VisualElement _contentElement;
 
 		private VisualElement ContentElement => _contentElement ?? GetContentElement();
-
-		public static readonly BindableProperty TappedCommandProperty =
-			BindableProperty.Create(nameof(TappedCommand), typeof(ICommand), typeof(AutoResizeStackLayout));
-		public static readonly BindableProperty TappedParameterProperty =
-			BindableProperty.Create(nameof(TappedCommand), typeof(object), typeof(AutoResizeStackLayout));
-
-		public ICommand TappedCommand
-		{
-			get => (ICommand) GetValue(TappedCommandProperty);
-			set => SetValue(TappedCommandProperty, value);
-		}
-
-		public object TappedParameter
-		{
-			get => GetValue(TappedParameterProperty);
-			set => SetValue(TappedParameterProperty, value);
-		}
 
 		public AutoResizeStackLayout()
 		{
 			VerticalOptions = LayoutOptions.FillAndExpand;
 			Spacing = 0;
-
-			_gestureRecognizer = new TapGestureRecognizer();
-			GestureRecognizers.Add(_gestureRecognizer);
-
-			_gestureRecognizer.Tapped += GestureRecognizerOnTapped;
-		}
-
-		private void GestureRecognizerOnTapped(object sender, EventArgs eventArgs)
-		{
-			if (TappedCommand != null && TappedCommand.CanExecute(TappedParameter))
-			{
-				TappedCommand.Execute(TappedCommand);
-			}
 		}
 
 		private VisualElement GetContentElement()

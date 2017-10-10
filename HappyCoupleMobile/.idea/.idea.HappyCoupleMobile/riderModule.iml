@@ -13,6 +13,15 @@
       <excludeFolder url="file://$MODULE_DIR$/../../HappyCoupleMobile/HappyCoupleMobile/obj" />
       <excludeFolder url="file://$MODULE_DIR$/../../packages" />
     </content>
+    <content url="file://$MODULE_DIR$/../../../Resources/iOS/add_to_list_white.png">
+      <sourceFolder url="file://$MODULE_DIR$/../../../Resources/iOS/add_to_list_white.png" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../Resources/iOS/add_to_list_white@2x.png">
+      <sourceFolder url="file://$MODULE_DIR$/../../../Resources/iOS/add_to_list_white@2x.png" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../Resources/iOS/add_to_list_white@3x.png">
+      <sourceFolder url="file://$MODULE_DIR$/../../../Resources/iOS/add_to_list_white@3x.png" isTestSource="false" />
+    </content>
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

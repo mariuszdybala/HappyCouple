@@ -18,19 +18,11 @@ namespace HappyCoupleMobile.Mvvm.Controls.ContextMenu
 
 		public static BindableProperty EnableSwipeMenuProperty =
 					  BindableProperty.Create(nameof(EnableSwipeMenu), typeof(bool), typeof(ContextMenuLayout), defaultValue: true);
-		public static BindableProperty TappedCommandProperty =
-					  BindableProperty.Create(nameof(TappedCommand), typeof(ICommand), typeof(ContextMenuLayout));
 
 	    public bool EnableSwipeMenu
 	    {
 		    get => (bool) GetValue(EnableSwipeMenuProperty);
 		    set => SetValue(EnableSwipeMenuProperty, value);
-	    }
-
-	    public ICommand TappedCommand
-	    {
-		    get => (ICommand) GetValue(TappedCommandProperty);
-		    set => SetValue(TappedCommandProperty, value);
 	    }
 
 		public void CloseMenu()

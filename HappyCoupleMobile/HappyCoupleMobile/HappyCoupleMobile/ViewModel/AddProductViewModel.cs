@@ -48,14 +48,12 @@ namespace HappyCoupleMobile.ViewModel
             set { Set(ref _productType, value); }
         }
 
-        public ObservableCollection<ProductType> ProductTypes { get; set; }
         public ICommand GoToFavouriteProductsCommand { get; set; }
         public ICommand SaveProductCommand { get; set; }
 
         public AddProductViewModel(ISimpleAuthService simpleAuthService, IProductServices productService) : base(simpleAuthService)
         {
             _productService = productService;
-            ProductTypes = new ObservableCollection<ProductType>();
             RegisterCommandAndMessages();
         }
 
@@ -69,7 +67,7 @@ namespace HappyCoupleMobile.ViewModel
 
         protected override async Task OnNavigateTo(IMessageData message)
         {
-            await LoadProductTypes();
+	        ProductType = (ProductType)message.GetValue(MessagesKeys.ProductTypeKey);
         }
 
         private async Task OnGoToFavouriteProducts()
@@ -94,20 +92,6 @@ namespace HappyCoupleMobile.ViewModel
 
         private async Task OnNavigateTo(IBaseMessage<AddProductViewModel> message)
         {
-        }
-
-        private async Task LoadProductTypes()
-        {
-            if (ProductTypes.Any())
-            {
-                return;
-            }
-
-            var productTypes = await _productService.GetAllProductTypesAync();
-
-            ProductTypes = new ObservableCollection<ProductType>(productTypes);
-
-            RaisePropertyChanged(nameof(ProductTypes));
         }
 
         protected override void CleanResources()

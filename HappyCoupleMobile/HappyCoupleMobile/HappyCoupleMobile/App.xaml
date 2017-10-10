@@ -31,6 +31,7 @@
             <FileImageSource x:Key="Back">back.png</FileImageSource>
             <FileImageSource x:Key="AddList">add_list.png</FileImageSource>
             <FileImageSource x:Key="AddToList">add_to_list.png</FileImageSource>
+            <FileImageSource x:Key="AddToListWhite">add_to_list_white.png</FileImageSource>
             <FileImageSource x:Key="ToDo">todo.png</FileImageSource>
             <FileImageSource x:Key="Settings">fix.png</FileImageSource>
             <FileImageSource x:Key="CloseList">set_closed_list.png</FileImageSource>

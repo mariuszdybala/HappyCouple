@@ -702,6 +702,17 @@
   <ItemGroup>
     <BundleResource Include="Resources\empty_products.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\Resources\iOS\add_to_list_white.png">
+      <Link>Resources/add_to_list_white.png</Link>
+    </Content>
+    <Content Include="..\..\..\Resources\iOS\add_to_list_white@2x.png">
+      <Link>Resources/add_to_list_white@2x.png</Link>
+    </Content>
+    <Content Include="..\..\..\Resources\iOS\add_to_list_white@3x.png">
+      <Link>Resources/add_to_list_white@3x.png</Link>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

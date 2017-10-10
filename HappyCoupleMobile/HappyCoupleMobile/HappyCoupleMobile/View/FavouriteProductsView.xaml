@@ -7,21 +7,24 @@
              xmlns:favouriteProductList="clr-namespace:HappyCoupleMobile.Mvvm.Controls.FavouriteProductList;assembly=HappyCoupleMobile"
              xmlns:horizontalCarousel="clr-namespace:HappyCoupleMobile.Mvvm.Controls.HorizontalCarousel;assembly=HappyCoupleMobile"
              xmlns:editProductList="clr-namespace:HappyCoupleMobile.Mvvm.Controls.EditProductList;assembly=HappyCoupleMobile"
+             xmlns:buttons="clr-namespace:HappyCoupleMobile.Mvvm.Controls.Buttons;assembly=HappyCoupleMobile"
              BindingContext="{Binding FavouriteProductsViewModel, Source={StaticResource ViewModelLocator}}"
              x:Class="HappyCoupleMobile.View.FavouriteProductsView"
 		     x:Name="FavouriteProductsView">
     <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
-        <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Zapisane produkty"/>
+        <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Zapisane produkty"
+                                  RightIconSource="{StaticResource AddToListWhite}" RightIconTapCommand="{Binding GoToAddProductToFavoriteCommand}"/>
+	    <horizontalCarousel:HorizontalCarousel ProductTypes="{Binding ProductTypes}"
+	                                           SelectedProductType="{Binding SelectedProductType}" Margin="0,10,0,0"
+	                                           ProductTypeSelecedCommand="{Binding ProductTypeSelectedCommand}" />
         <StackLayout Margin="0,10,0,0">
-            <horizontalCarousel:HorizontalCarousel ProductTypes="{Binding ProductTypes}"
-                                                   SelectedProductType="{Binding SelectedProductType}"
-                                                   ProductTypeSelecedCommand="{Binding ProductTypeSelectedCommand}" />
 	        <ListView Margin="0,10,0,0" BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding MockListForProduct}">
 		        <ListView.ItemTemplate>
 			        <DataTemplate>
 				        <ViewCell>
 					        <editProductList:ProductViewControl Product="{Binding .}"
-					                                            ShowCheckboxButton="False" ShowQuantityButton="False"
+					                                            ShowCheckboxButton="False" ShowQuantityButton="False" ShowSelectButton="False"
+					                                            TapCommand="{Binding TapProductInternalCommand, Source={x:Reference FavouriteProductsView}}"
 					                                            DeleteCommand="{Binding BindingContext.DeleteProductCommand, Source={x:Reference FavouriteProductsView}}"
 					                                            EditCommand="{Binding BindingContext.EditProductCommand, Source={x:Reference FavouriteProductsView}}"
 					                                            SelectCommand="{Binding BindingContext.ProductSelectedCommand, Source={x:Reference FavouriteProductsView}}" />
@@ -30,5 +33,12 @@
 		        </ListView.ItemTemplate>>
 	        </ListView>
         </StackLayout>
+	    <StackLayout Margin="10" IsVisible="False" x:Name="QuantityPanel">
+		    <Entry Text="" Keyboard="Numeric" WidthRequest="100"/>
+		    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+			    <buttons:ImageButton x:Name="OkPanelButton" ButtonImage="{StaticResource Checked}" ButtonText="OK" HorizontalOptions="FillAndExpand"/>
+			    <buttons:ImageButton x:Name="CancelPanelButton" ButtonImage="{StaticResource CloseWindow}" ButtonText="Cancel" HorizontalOptions="FillAndExpand"/>
+		    </StackLayout>
+	    </StackLayout>
     </StackLayout>
 </abstract:BaseHappyContentPage>

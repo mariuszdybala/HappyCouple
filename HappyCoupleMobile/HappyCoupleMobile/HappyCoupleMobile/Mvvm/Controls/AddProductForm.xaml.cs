@@ -27,7 +27,7 @@ namespace HappyCoupleMobile.Mvvm.Controls
             (nameof(AddToFavoriteCommandProperty).GetBindableName(), typeof(ICommand), typeof(AddProductForm));
 
         public static BindableProperty SelectedProductTypeProperty = BindableProperty.Create
-            (nameof(SelectedProductType), typeof(ProductType), typeof(AddProductForm), defaultBindingMode: BindingMode.TwoWay);
+            (nameof(SelectedProductType), typeof(ProductType), typeof(AddProductForm));
 
         public ProductType SelectedProductType
         {

@@ -20,6 +20,9 @@ namespace HappyCoupleMobile.Mvvm.Controls.HorizontalCarousel
         public static BindableProperty SelectedProductTypeProperty = BindableProperty.Create
         (nameof(SelectedProductType), typeof(ProductType), typeof(HorizontalCarousel), defaultBindingMode: BindingMode.TwoWay);
 
+	    public static BindableProperty StartSelectedTypeIndexProperty = BindableProperty.Create
+		    (nameof(StartSelectedTypeIndex), typeof(int), typeof(HorizontalCarousel), defaultValue:0);
+
         public static BindableProperty ProductTypeSelecedCommandProperty = BindableProperty.Create
          (nameof(ProductTypeSelecedCommand), typeof(ICommand), typeof(HorizontalCarousel));
 
@@ -41,12 +44,25 @@ namespace HappyCoupleMobile.Mvvm.Controls.HorizontalCarousel
             set { SetValue(ProductTypeSelecedCommandProperty, value); }
         }
 
+	    public int StartSelectedTypeIndex
+	    {
+		    get { return (int)GetValue(StartSelectedTypeIndexProperty); }
+		    set { SetValue(StartSelectedTypeIndexProperty, value); }
+	    }
+
         public HorizontalCarousel()
         {
             InitializeComponent();
+	        ToggleLoadingIndicator(true);
+
+	        this.Scrolled += OnScrolled;
         }
 
-        private static void OnProductTypesChanged(BindableObject bindable, object oldvalue, object newvalue)
+	    private void OnScrolled(object sender, ScrolledEventArgs scrolledEventArgs)
+	    {
+	    }
+
+	    private static void OnProductTypesChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
             if (newvalue == null || newvalue == oldvalue)
             {
@@ -60,6 +76,8 @@ namespace HappyCoupleMobile.Mvvm.Controls.HorizontalCarousel
             {
                 AddProductTypesToProductTypesContainer(productTypes, horizontalCarousel);
             }
+
+	        horizontalCarousel.ToggleLoadingIndicator(false);
         }
 
         private static void AddProductTypesToProductTypesContainer(IList<ProductType> productTypes, HorizontalCarousel horizontalCarousel)
@@ -71,6 +89,8 @@ namespace HappyCoupleMobile.Mvvm.Controls.HorizontalCarousel
                 var productTypeCarouselItem = horizontalCarousel.CreateProductTypeCarouselItem(type);
                 horizontalCarousel.CarouselItemsContainer.Children.Add(productTypeCarouselItem);
             }
+
+	        horizontalCarousel.SelectProductType();
         }
 
         private ProductTypeCarouselItem CreateProductTypeCarouselItem(ProductType productType)
@@ -80,6 +100,13 @@ namespace HappyCoupleMobile.Mvvm.Controls.HorizontalCarousel
 
             return productTypeCarouselItem;
         }
+
+	    private void SelectProductType()
+	    {
+		    var selectedProductItem = CarouselItemsContainer.Children[StartSelectedTypeIndex] as ProductTypeCarouselItem;
+
+		    selectedProductItem?.OnProductTypeSelected();
+	    }
 
         private void OnProductTypeSelected(ProductType productType)
         {
@@ -100,5 +127,13 @@ namespace HappyCoupleMobile.Mvvm.Controls.HorizontalCarousel
                 currentProductType.IsSelected = false;
             }
         }
+
+	    private void ToggleLoadingIndicator(bool isVisibile)
+	    {
+		    LoadingIndicator.IsVisible = isVisibile;
+		    LoadingIndicator.IsRunning = isVisibile;
+
+		    CarouselItemsContainer.HeightRequest = isVisibile ? 0 : 50d;
+	    }
     }
 }

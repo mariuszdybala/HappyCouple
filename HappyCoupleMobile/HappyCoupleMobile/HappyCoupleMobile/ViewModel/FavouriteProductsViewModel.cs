@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Command;
+using HappyCoupleMobile.Mvvm.Messages;
+using HappyCoupleMobile.View;
 using HappyCoupleMobile.VM;
 using Xamarin.Forms;
 
@@ -27,11 +30,13 @@ namespace HappyCoupleMobile.ViewModel
         public ObservableCollection<ProductType> ProductTypes { get; set; }
         public ObservableCollection<ProductVm> MockListForProduct { get; set; }
 
-        public Command<ProductVm> DeleteProductCommand { get; set; }
-        public Command<ProductVm> ProductSelectedCommand { get; set; }
+        public RelayCommand<ProductVm> DeleteProductCommand { get; set; }
+        public RelayCommand<ProductVm> ProductSelectedCommand { get; set; }
+	    public RelayCommand<ProductVm> EditProductCommand => new RelayCommand<ProductVm>(async (product) => await OnEditProduct(product));
+	    public RelayCommand<ProductVm> GoToAddProductToFavoriteCommand => new RelayCommand<ProductVm>(async async  => await OnGoToAddProductToFavorite());
 
-        public Command UnSubscribeAllEventsFromViewCommand { get; set; }
-        public Command<ProductType> ProductTypeSelectedCommand { get; set; }
+	    public RelayCommand UnSubscribeAllEventsFromViewCommand { get; set; }
+        public RelayCommand<ProductType> ProductTypeSelectedCommand { get; set; }
 
         public FavouriteProductsViewModel(ISimpleAuthService simpleAuthService, IProductServices productService) : base(simpleAuthService)
         {
@@ -46,10 +51,10 @@ namespace HappyCoupleMobile.ViewModel
         {
             RegisterNavigateToMessage(this);
 
-            ProductSelectedCommand = new Command<ProductVm>(async(product) => await OnProductSelected(product));
-            DeleteProductCommand = new Command<ProductVm>(OnDeleteProduct);
+            ProductSelectedCommand = new RelayCommand<ProductVm>(async(product) => await OnProductSelected(product));
+            DeleteProductCommand = new RelayCommand<ProductVm>(OnDeleteProduct);
 
-            ProductTypeSelectedCommand = new Command<ProductType>(async(product) => await OnProductTypeSelected(product));
+            ProductTypeSelectedCommand = new RelayCommand<ProductType>(async(product) => await OnProductTypeSelected(product));
 
             MessengerInstance.Register<IBaseMessage<FavouriteProductsViewModel>>(this, async (message) => await OnNavigateTo(message));
         }
@@ -60,9 +65,19 @@ namespace HappyCoupleMobile.ViewModel
             await LoadFavouriteProducts();
         }
 
+	    private async Task OnGoToAddProductToFavorite()
+	    {
+		    await NavigateToWithMessage<AddProductView, AddProductViewModel>(new BaseMessage<AddProductViewModel>(MessagesKeys.ProductTypeKey, SelectedProductType));
+	    }
+
         private void OnDeleteProduct(ProductVm product)
         {
         }
+
+	    private async Task OnEditProduct(ProductVm product)
+	    {
+		    await Task.Yield();
+	    }
 
         private async Task OnProductTypeSelected(ProductType productType)
         {
@@ -96,9 +111,13 @@ namespace HappyCoupleMobile.ViewModel
                         Quantity = 4
                     },
                     new Product {Id = 1, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-                    new Product {Id = 2, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 2, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
                     new Product {Id = 3, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
-                    new Product {Id = 4, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10}
+                    new Product {Id = 4, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 5, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 6, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+                    new Product {Id = 8, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10}
                 };
 
             MockListForProduct = new ObservableCollection<ProductVm>(mockListForProduct.Select(x=> new ProductVm(x)));

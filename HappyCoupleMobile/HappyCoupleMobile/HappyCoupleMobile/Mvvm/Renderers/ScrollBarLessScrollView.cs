@@ -2,8 +2,8 @@
 
 namespace HappyCoupleMobile.Mvvm.Renderers
 {
-    public class ScrollBarLessScrollView : ScrollView
+    public class ScrollBarLessScrollView : ExtendedScrollView
     {
-        
+
     }
 }

@@ -11,6 +11,8 @@ namespace HappyCoupleMobile.Mvvm.Controls.Buttons
 {
     public partial class ImageButton : Frame
     {
+	    public Action<string> Clicked;
+	    
         public static BindableProperty ImageButtonClickedCommandProperty = BindableProperty.Create
             (nameof(ImageButtonClickedCommand), typeof(ICommand), typeof(ImageButton), null);
 
@@ -22,6 +24,9 @@ namespace HappyCoupleMobile.Mvvm.Controls.Buttons
 
         public static BindableProperty ButtonTextProperty = BindableProperty.Create
             (nameof(ButtonText), typeof(string), typeof(ImageButton));
+	    
+	    public static BindableProperty ButtonFrameColorProperty = BindableProperty.Create
+		    (nameof(ButtonFrameColor), typeof(Color), typeof(ImageButton), defaultValue: Color.White);
 
         public ICommand ImageButtonClickedIntenalCommand { get; set; }
 
@@ -48,6 +53,12 @@ namespace HappyCoupleMobile.Mvvm.Controls.Buttons
             get { return (string)GetValue(ButtonTextProperty); }
             set { SetValue(ButtonTextProperty, value); }
         }
+	    
+	    public Color ButtonFrameColor
+	    {
+		    get { return (Color)GetValue(ButtonFrameColorProperty); }
+		    set { SetValue(ButtonFrameColorProperty, value); }
+	    }
 
         public ImageButton()
         {
@@ -61,6 +72,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.Buttons
             await this.SetAnimation(0.95, 120);
 
             ImageButtonClickedCommand?.Execute(ImageButtonCommandParameter);
+	        Clicked?.Invoke(ButtonText);
         }
     }
 }

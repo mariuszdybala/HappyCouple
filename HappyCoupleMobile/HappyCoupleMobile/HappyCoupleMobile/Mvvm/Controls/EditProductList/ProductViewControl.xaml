@@ -37,7 +37,7 @@
 				       FontFamily="{StaticResource Medium}"
 				       HorizontalTextAlignment="Start" FontSize="15"
 				       LineBreakMode="CharacterWrap" />
-				<controls:AutoResizeStackLayout Spacing="0">
+				<controls:AutoResizeStackLayout Spacing="0" InputTransparent="True">
 					<Label x:Name="CommentLabel"
 					       TextColor="White"
 					       FontFamily="{StaticResource Light}"
