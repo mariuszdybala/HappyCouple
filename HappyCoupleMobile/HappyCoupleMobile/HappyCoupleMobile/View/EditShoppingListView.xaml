@@ -35,8 +35,8 @@
                 </StackLayout>
             </StackLayout>
         </Grid>
-	    <ListView Margin="0,10,0,0" IsGroupingEnabled="True" BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding ShoppingList.GroupedProducts}">
-		    <ListView.ItemTemplate>
+	    <controls:ExtendedListView Margin="0,10,0,0" IsGroupingEnabled="True" BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding ShoppingList.GroupedProducts}">
+		    <controls:ExtendedListView.ItemTemplate>
 			    <DataTemplate>
 				    <ViewCell>
 					    <editProductList:ProductViewControl Product="{Binding .}"
@@ -46,7 +46,7 @@
 					                                        CheckedCommand="{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}" />
 				    </ViewCell>
 			    </DataTemplate>
-		    </ListView.ItemTemplate>
+		    </controls:ExtendedListView.ItemTemplate>
 		    <ListView.GroupHeaderTemplate>
 			    <DataTemplate>
 				    <ViewCell>
@@ -59,7 +59,7 @@
 				    </ViewCell>
 			    </DataTemplate>
 		    </ListView.GroupHeaderTemplate>
-	    </ListView>
+	    </controls:ExtendedListView>
         <StackLayout VerticalOptions="StartAndExpand" IsVisible="{Binding ShoppingList.ShowPlaceholder}"
                    Spacing="10" Margin="0,40,0,0">
             <Image Source="{StaticResource EmptyProducts}"/>

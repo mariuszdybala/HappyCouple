@@ -14,8 +14,7 @@ namespace HappyCoupleMobile.iOS.Renderers
 
             cell.SelectedBackgroundView = new UIView
             {
-                BackgroundColor = UIColor.FromRGB(89, 88, 88)
-
+                BackgroundColor = null
             };
 
             return cell;

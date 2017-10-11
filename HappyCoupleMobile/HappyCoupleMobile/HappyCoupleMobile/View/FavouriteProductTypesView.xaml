@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<abstract:BaseHappyContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                               xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
+                               xmlns:abstract="clr-namespace:HappyCoupleMobile.View.Abstract;assembly=HappyCoupleMobile"
+                               x:Class="HappyCoupleMobile.View.FavouriteProductTypesView"
+                               BindingContext="{Binding FavouriteProductTypeViewModel,Source={StaticResource ViewModelLocator}}">
+	<StackLayout Spacing="0">
+		<controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}"
+		                          PanelHeader="Wybierz typ produktu" />
+		<controls:ExtendedListView x:Name="ProductTypeListView" ItemsSource="{Binding ProductTypes}" BackgroundColor="{StaticResource SecondColor}" ItemTappedCommand="{Binding ProductTypeTappedCommand}"
+		          SeparatorVisibility="None" HasUnevenRows="True" RowHeight="50">
+			<controls:ExtendedListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<Frame BackgroundColor="{StaticResource ThirthColor}" Padding="2" Margin="5">
+							<StackLayout x:Name="PanelHeader" BackgroundColor="{StaticResource FirstColor}" Orientation="Horizontal"
+							             Padding="2">
+								<Image x:Name="HeaderImage"
+								       Source="{Binding IconName, Converter={StaticResource IconNameToImageSourceConverter}}" />
+								<Label x:Name="HeaderLabel" TextColor="White" Text="{Binding IconName}" FontFamily="{StaticResource Medium}"
+								       VerticalTextAlignment="Center" />
+								<Image Source="{StaticResource ChevronRight}" Scale="0.8" HorizontalOptions="EndAndExpand" />
+							</StackLayout>
+						</Frame>
+					</ViewCell>
+				</DataTemplate>
+			</controls:ExtendedListView.ItemTemplate>>
+		</controls:ExtendedListView>
+	</StackLayout>
+</abstract:BaseHappyContentPage>

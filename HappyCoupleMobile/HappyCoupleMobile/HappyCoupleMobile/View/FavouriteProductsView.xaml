@@ -14,12 +14,9 @@
     <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
         <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Zapisane produkty"
                                   RightIconSource="{StaticResource AddToListWhite}" RightIconTapCommand="{Binding GoToAddProductToFavoriteCommand}"/>
-	    <horizontalCarousel:HorizontalCarousel ProductTypes="{Binding ProductTypes}"
-	                                           SelectedProductType="{Binding SelectedProductType}" Margin="0,10,0,0"
-	                                           ProductTypeSelecedCommand="{Binding ProductTypeSelectedCommand}" />
         <StackLayout Margin="0,10,0,0">
-	        <ListView Margin="0,10,0,0" BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding MockListForProduct}">
-		        <ListView.ItemTemplate>
+	        <controls:ExtendedListView Margin="0,10,0,0" BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding MockListForProduct}">
+		        <controls:ExtendedListView.ItemTemplate>
 			        <DataTemplate>
 				        <ViewCell>
 					        <editProductList:ProductViewControl Product="{Binding .}"
@@ -30,8 +27,8 @@
 					                                            SelectCommand="{Binding BindingContext.ProductSelectedCommand, Source={x:Reference FavouriteProductsView}}" />
 				        </ViewCell>
 			        </DataTemplate>
-		        </ListView.ItemTemplate>>
-	        </ListView>
+		        </controls:ExtendedListView.ItemTemplate>>
+	        </controls:ExtendedListView>
         </StackLayout>
 	    <StackLayout Margin="10" IsVisible="False" x:Name="QuantityPanel">
 		    <Entry Text="" Keyboard="Numeric" WidthRequest="100"/>
