@@ -17,6 +17,8 @@ namespace HappyCoupleMobile.iOS.Renderers
                 BackgroundColor = null
             };
 
+
+
             return cell;
         }
     }
