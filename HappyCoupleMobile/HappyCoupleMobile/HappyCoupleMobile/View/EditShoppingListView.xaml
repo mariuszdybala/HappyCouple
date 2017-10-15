@@ -6,6 +6,7 @@
              xmlns:attached="clr-namespace:HappyCoupleMobile.Mvvm.AttachedProperties;assembly=HappyCoupleMobile"
              xmlns:editProductList="clr-namespace:HappyCoupleMobile.Mvvm.Controls.EditProductList;assembly=HappyCoupleMobile"
              xmlns:renderers="clr-namespace:HappyCoupleMobile.Mvvm.Renderers;assembly=HappyCoupleMobile"
+             xmlns:happyCoupleMobile="clr-namespace:HappyCoupleMobile;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.View.EditShoppingListView"
              BindingContext="{Binding EditShoppingListViewModel, Source={StaticResource ViewModelLocator}}"
              x:Name="EditShoppingListView">
@@ -35,16 +36,10 @@
                 </StackLayout>
             </StackLayout>
         </Grid>
-	    <controls:ExtendedListView Margin="0,10,0,0" IsGroupingEnabled="True" BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding ShoppingList.GroupedProducts}">
+	    <controls:ExtendedListView Margin="0,10,0,0" IsGroupingEnabled="True" BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None" ItemsSource="{Binding ShoppingList.GroupedProducts}">
 		    <controls:ExtendedListView.ItemTemplate>
 			    <DataTemplate>
-				    <ViewCell>
-					    <editProductList:ProductViewControl Product="{Binding .}"
-					                                        ShowSelectButton="False" ShowEditButton="False"
-					                                        DeleteCommand="{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}"
-					                                        EditCommand="{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}"
-					                                        CheckedCommand="{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}" />
-				    </ViewCell>
+				    <renderers:SwipableViewCell Comment="{Binding Comment}" ProductName="{Binding Name}" Quentity="{Binding Quentity}"/>
 			    </DataTemplate>
 		    </controls:ExtendedListView.ItemTemplate>
 		    <ListView.GroupHeaderTemplate>

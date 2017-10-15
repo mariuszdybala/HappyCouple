@@ -19,6 +19,9 @@
 		        <controls:ExtendedListView.ItemTemplate>
 			        <DataTemplate>
 				        <ViewCell>
+					        <ViewCell.ContextActions>
+						        <MenuItem Text="test"/>
+					        </ViewCell.ContextActions>
 					        <editProductList:ProductViewControl Product="{Binding .}"
 					                                            ShowCheckboxButton="False" ShowQuantityButton="False" ShowSelectButton="False"
 					                                            TapCommand="{Binding TapProductInternalCommand, Source={x:Reference FavouriteProductsView}}"
