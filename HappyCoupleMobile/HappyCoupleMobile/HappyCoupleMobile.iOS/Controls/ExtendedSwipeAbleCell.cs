@@ -32,7 +32,6 @@ namespace HappyCoupleMobile.iOS.Controls
 
         public void SetVisualProperties()
         {
-            CheckboxView.Hidden = true;
             BackgroundColor = Color.FromHex("#424242").ToUIColor();
             SelectedBackgroundView = new UIView { BackgroundColor = Color.FromHex("FEE94E").ToUIColor() };
 
@@ -41,13 +40,22 @@ namespace HappyCoupleMobile.iOS.Controls
             Name.Font = UIFont.FromName("Quicksand-Medium", 20);
             Comment.Font = UIFont.FromName("Quicksand-Light", 15f);
             Quantity.Font = UIFont.FromName("Quicksand-Medium", 20f);
+
+            HideChecbox();
         }
 
         //public nfloat GetContentHeight() 
         //{
         //    return ContentView.
         //}
+
     
+
+        public void HideChecbox()
+        {
+            CheckboxView.Hidden = true;
+            LeadingNameContraint.Constant = LeadingCommentContraint.Constant = 10;
+        }
 
 
     }
