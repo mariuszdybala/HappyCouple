@@ -32,6 +32,7 @@ namespace HappyCoupleMobile.iOS.Controls
 
         public void SetVisualProperties()
         {
+            CheckboxView.Hidden = true;
             BackgroundColor = Color.FromHex("#424242").ToUIColor();
             SelectedBackgroundView = new UIView { BackgroundColor = Color.FromHex("FEE94E").ToUIColor() };
 

@@ -24,19 +24,19 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ube-m0-ceV">
-                        <rect key="frame" x="45" y="10" width="40" height="24"/>
+                        <rect key="frame" x="50" y="10" width="40" height="24"/>
                         <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="pqe-Bn-r12">
-                        <rect key="frame" x="45" y="39" width="319" height="24"/>
+                        <rect key="frame" x="50" y="39" width="314" height="24"/>
                         <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unchecked.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xto-mk-zSi">
-                        <rect key="frame" x="8" y="34" width="30" height="30"/>
+                        <rect key="frame" x="10" y="34" width="30" height="30"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SrQ-zO-6HV">
                         <rect key="frame" x="315" y="68" width="49" height="24"/>
@@ -44,17 +44,26 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1QG-aZ-JHI">
+                        <rect key="frame" x="0.0" y="5" width="2" height="86.5"/>
+                        <color key="backgroundColor" red="0.99607843137254903" green="0.9137254901960784" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="SrQ-zO-6HV" secondAttribute="bottom" constant="5" id="5gg-TE-Rfd"/>
-                    <constraint firstItem="Xto-mk-zSi" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="8" id="Esh-fu-tmj"/>
+                    <constraint firstItem="1QG-aZ-JHI" firstAttribute="centerY" secondItem="YTl-1W-gDM" secondAttribute="centerY" id="Doh-bl-jBg"/>
+                    <constraint firstItem="Xto-mk-zSi" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="10" id="Esh-fu-tmj"/>
+                    <constraint firstItem="1QG-aZ-JHI" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="5" id="G6E-BG-jbG"/>
+                    <constraint firstItem="Xto-mk-zSi" firstAttribute="leading" secondItem="1QG-aZ-JHI" secondAttribute="trailing" constant="8" id="LOS-iD-yJe"/>
                     <constraint firstAttribute="trailing" secondItem="pqe-Bn-r12" secondAttribute="trailing" constant="10" id="Odf-FE-TYm"/>
                     <constraint firstAttribute="trailing" secondItem="SrQ-zO-6HV" secondAttribute="trailing" constant="10" id="OfS-lz-uhp"/>
+                    <constraint firstItem="1QG-aZ-JHI" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" id="Xln-Nn-Xan"/>
+                    <constraint firstAttribute="bottom" secondItem="1QG-aZ-JHI" secondAttribute="bottom" constant="5" id="ZWe-U6-v8h"/>
                     <constraint firstItem="pqe-Bn-r12" firstAttribute="top" secondItem="ube-m0-ceV" secondAttribute="bottom" constant="5" id="aoG-Vn-e94"/>
                     <constraint firstItem="SrQ-zO-6HV" firstAttribute="top" secondItem="pqe-Bn-r12" secondAttribute="bottom" constant="5" id="fDq-u6-EU3"/>
                     <constraint firstItem="ube-m0-ceV" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="10" id="oBl-wP-Vte"/>
-                    <constraint firstItem="pqe-Bn-r12" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="45" id="t7L-ng-mfv"/>
-                    <constraint firstItem="ube-m0-ceV" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="45" id="wFu-lp-OFh"/>
+                    <constraint firstItem="pqe-Bn-r12" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="50" id="t7L-ng-mfv"/>
+                    <constraint firstItem="ube-m0-ceV" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="50" id="wFu-lp-OFh"/>
                     <constraint firstItem="Xto-mk-zSi" firstAttribute="centerY" secondItem="YTl-1W-gDM" secondAttribute="centerY" id="zeA-RW-2mR"/>
                 </constraints>
             </tableViewCellContentView>
@@ -64,7 +73,7 @@
                 <outlet property="Name" destination="ube-m0-ceV" id="name-outlet-ube-m0-ceV"/>
                 <outlet property="Quantity" destination="SrQ-zO-6HV" id="name-outlet-SrQ-zO-6HV"/>
             </connections>
-            <point key="canvasLocation" x="-35" y="-235"/>
+            <point key="canvasLocation" x="-35" y="-235.5"/>
         </tableViewCell>
     </objects>
     <resources>
