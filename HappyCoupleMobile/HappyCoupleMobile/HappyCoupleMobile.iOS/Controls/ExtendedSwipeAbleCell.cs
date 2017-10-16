@@ -44,19 +44,15 @@ namespace HappyCoupleMobile.iOS.Controls
             HideChecbox();
         }
 
-        //public nfloat GetContentHeight() 
-        //{
-        //    return ContentView.
-        //}
-
-    
-
         public void HideChecbox()
         {
             CheckboxView.Hidden = true;
             LeadingNameContraint.Constant = LeadingCommentContraint.Constant = 10;
         }
 
-
+        public void HideQuantityLabel()
+        {
+            Quantity.Hidden = true;
+        }
     }
 }
