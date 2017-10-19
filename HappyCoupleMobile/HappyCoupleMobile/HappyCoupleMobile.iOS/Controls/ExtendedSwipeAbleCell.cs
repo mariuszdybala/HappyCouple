@@ -45,8 +45,8 @@ namespace HappyCoupleMobile.iOS.Controls
 
         public void HideChecbox()
         {
-            CheckboxView.Hidden = true;
-            LeadingNameContraint.Constant = LeadingCommentContraint.Constant = 10;
+            //CheckboxView.Hidden = true;
+            //LeadingNameContraint.Constant = LeadingCommentContraint.Constant = 10;
         }
 
         public void HideQuantityLabel()
