@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="444" height="173"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxk-wN-pdQ" id="YTl-1W-gDM">
-                <rect key="frame" x="0.0" y="0.0" width="444" height="172.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="444" height="172"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="OPm-ds-72v">
@@ -83,11 +83,67 @@
                 <outlet property="Comment" destination="pqe-Bn-r12" id="name-outlet-pqe-Bn-r12"/>
                 <outlet property="Name" destination="ube-m0-ceV" id="name-outlet-ube-m0-ceV"/>
                 <outlet property="Quantity" destination="SrQ-zO-6HV" id="name-outlet-SrQ-zO-6HV"/>
+                <outlet property="ProductDetailsStack" destination="OPm-ds-72v" id="name-outlet-OPm-ds-72v"/>
             </connections>
             <point key="canvasLocation" x="2" y="-197.5"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="unchecked.png" width="30" height="30"/>
+        <image name="home_screen.png" width="560" height="440"/>
+        <image name="home_background.png" width="560" height="440"/>
+        <image name="home_welcome.png" width="350" height="80"/>
+        <image name="home_sign.png" width="80" height="45"/>
+        <image name="settings.png" width="30" height="30"/>
+        <image name="chevron_right.png" width="30" height="30"/>
+        <image name="Icon-60.png" width="60" height="60"/>
+        <image name="Icon-76.png" width="76" height="76"/>
+        <image name="Icon-Small-40.png" width="40" height="40"/>
+        <image name="Icon-Small.png" width="29" height="29"/>
+        <image name="fix.png" width="50" height="50"/>
+        <image name="clothes.png" width="50" height="50"/>
+        <image name="fun.png" width="50" height="50"/>
+        <image name="gift.png" width="50" height="50"/>
+        <image name="importance.png" width="64" height="64"/>
+        <image name="money.png" width="50" height="50"/>
+        <image name="outgoings.png" width="50" height="50"/>
+        <image name="shopping.png" width="50" height="50"/>
+        <image name="todo.png" width="50" height="50"/>
+        <image name="Icon.png" width="57" height="57"/>
+        <image name="add_list.png" width="30" height="30"/>
+        <image name="couple.png" width="30" height="30"/>
+        <image name="fruits.png" width="30" height="30"/>
+        <image name="olive.png" width="30" height="30"/>
+        <image name="drink.png" width="30" height="30"/>
+        <image name="dring.png" width="30" height="30"/>
+        <image name="alkohol.png" width="30" height="30"/>
+        <image name="vege.png" width="30" height="30"/>
+        <image name="fish.png" width="30" height="30"/>
+        <image name="bread.png" width="30" height="30"/>
+        <image name="meat.png" width="30" height="30"/>
+        <image name="spice.png" width="30" height="30"/>
+        <image name="dairy.png" width="30" height="30"/>
+        <image name="edit.png" width="30" height="30"/>
+        <image name="date.png" width="30" height="30"/>
+        <image name="food.png" width="30" height="30"/>
+        <image name="grain.png" width="30" height="30"/>
+        <image name="delete.png" width="30" height="30"/>
+        <image name="info.png" width="30" height="30"/>
+        <image name="closewindow.png" width="30" height="30"/>
+        <image name="add_to_list.png" width="30" height="30"/>
+        <image name="delete_list.png" width="30" height="30"/>
+        <image name="set_closed_list.png" width="30" height="30"/>
+        <image name="back.png" width="30" height="30"/>
+        <image name="add_favorite_filled.png" width="30" height="30"/>
+        <image name="add_favorite.png" width="30" height="30"/>
+        <image name="erase.png" width="30" height="30"/>
+        <image name="checked.png" width="30" height="30"/>
+        <image name="shopping_bar.png" width="50" height="50"/>
+        <image name="beer.png" width="30" height="30"/>
+        <image name="beer_cap.png" width="30" height="30"/>
+        <image name="add_product.png" width="30" height="30"/>
+        <image name="add_from_favourite.png" width="30" height="30"/>
+        <image name="empty_products.png" width="100" height="100"/>
+        <image name="add_to_list_white.png" width="30" height="30"/>
     </resources>
 </document>

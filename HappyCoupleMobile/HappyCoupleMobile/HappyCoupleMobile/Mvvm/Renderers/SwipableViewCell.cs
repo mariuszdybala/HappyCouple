@@ -6,8 +6,6 @@ namespace HappyCoupleMobile.Mvvm.Renderers
 {
 	public class SwipableViewCell : ViewCell
 	{
-        public Action ProductChecked;
-
         public static BindableProperty ProductProperty =
             BindableProperty.Create(nameof(Product), typeof(ProductVm), typeof(SwipableViewCell));
 
@@ -15,6 +13,11 @@ namespace HappyCoupleMobile.Mvvm.Renderers
         {
             get => (ProductVm)GetValue(ProductProperty);
             set => SetValue(ProductProperty, value);
+        }
+
+        public void OnProductChecked()
+        {
+            
         }
 	}
 }

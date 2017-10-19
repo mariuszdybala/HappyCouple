@@ -29,8 +29,24 @@ namespace HappyCoupleMobile.iOS.Renderers
 
             if(formsCell != null)
             {
-                swipeAbleNativeCell.UpdateCell(formsCell.Product, formsCell.ProductChecked);
-                swipeAbleNativeCell.RightUtilityButtons = new UIButton[] { new UIButton { BackgroundColor = UIColor.Blue }, new UIButton { BackgroundColor = UIColor.Red } };
+                swipeAbleNativeCell.UpdateCell(formsCell.Product, formsCell.OnProductChecked);
+
+                var miscButton = new UIButton { BackgroundColor = UIColor.Red };
+                miscButton.SetImage(UIImage.FromBundle("delete.png"), UIControlState.Normal);
+
+                var deleteButton = new UIButton { BackgroundColor = Color.FromHex("#F6585D").ToUIColor() };
+                deleteButton.SetImage(UIImage.FromBundle("delete.png"), UIControlState.Normal);
+                deleteButton.SetTitle("Usuń", UIControlState.Normal);
+
+                var editButton = new UIButton { BackgroundColor = Color.FromHex("#4054B2").ToUIColor() };
+                editButton.SetImage(UIImage.FromBundle("edit.png"), UIControlState.Normal);
+                editButton.SetTitle("Edytuj", UIControlState.Normal);
+
+                swipeAbleNativeCell.RightUtilityButtons = new UIButton[] 
+                { 
+                    deleteButton, 
+                    editButton
+                };
             }
 
             tv.EstimatedRowHeight = UITableView.AutomaticDimension;

@@ -22,6 +22,7 @@ namespace HappyCoupleMobile.iOS.Controls
                 Name.Text = value.Name;
                 Comment.Text = value.Comment;
                 Quantity.Text = value.Quantity.ToString();
+                _product = value;
             }
         }
 
@@ -42,21 +43,22 @@ namespace HappyCoupleMobile.iOS.Controls
             var tapGesture = new UITapGestureRecognizer();
 
             tapGesture.AddTarget(OnProductChecked);
-            //tapGesture.AddTarget(productChecked);
+            tapGesture.AddTarget(productChecked);
 
-            AddGestureRecognizer(tapGesture);
+            ProductDetailsStack.AddGestureRecognizer(tapGesture);
         }
 
         private void OnProductChecked()
         {
-            var checkedImage = NSBundle.MainBundle.PathForResource("checked", "png");
+            Product.IsBought = !Product.IsBought;
 
+            CheckboxView.Image = Product.IsBought ? UIImage.FromBundle("checked.png") : UIImage.FromBundle("unchecked.png");
         }
 
         public void SetVisualProperties()
         {
             BackgroundColor = Color.FromHex("#424242").ToUIColor();
-            SelectedBackgroundView = new UIView { BackgroundColor = Color.FromHex("FEE94E").ToUIColor() };
+            SelectedBackgroundView = new UIView { BackgroundColor = Color.FromHex("#FEE94E").ToUIColor() };
 
             Name.TextColor = Comment.TextColor = Quantity.TextColor = UIColor.White;
 
