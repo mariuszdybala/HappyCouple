@@ -1,32 +1,20 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using HappyCoupleMobile.VM;
+using Xamarin.Forms;
 
 namespace HappyCoupleMobile.Mvvm.Renderers
 {
 	public class SwipableViewCell : ViewCell
 	{
-        public static BindableProperty CommentProperty =
-            BindableProperty.Create(nameof(Comment), typeof(string), typeof(SwipableViewCell), defaultValue: null);
-        public static BindableProperty ProductNameProperty =
-            BindableProperty.Create(nameof(ProductName), typeof(string), typeof(SwipableViewCell), defaultValue: null);
-        public static BindableProperty QuentityProperty =
-            BindableProperty.Create(nameof(Quentity), typeof(int), typeof(SwipableViewCell), defaultValue:0);
+        public Action ProductChecked;
 
-        public int Quentity
-        {
-            get => (int)GetValue(QuentityProperty);
-            set => SetValue(QuentityProperty, value);
-        }
+        public static BindableProperty ProductProperty =
+            BindableProperty.Create(nameof(Product), typeof(ProductVm), typeof(SwipableViewCell));
 
-        public string ProductName
+        public ProductVm Product
         {
-            get => (string)GetValue(ProductNameProperty);
-            set => SetValue(ProductNameProperty, value);
-        }
-
-        public string Comment
-        {
-            get => (string)GetValue(CommentProperty);
-            set => SetValue(CommentProperty, value);
+            get => (ProductVm)GetValue(ProductProperty);
+            set => SetValue(ProductProperty, value);
         }
 	}
 }

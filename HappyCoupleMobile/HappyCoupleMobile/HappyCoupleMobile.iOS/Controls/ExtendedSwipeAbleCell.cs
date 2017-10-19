@@ -4,6 +4,7 @@ using UIKit;
 using SWTableViewCells;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
+using HappyCoupleMobile.VM;
 
 namespace HappyCoupleMobile.iOS.Controls
 {
@@ -11,6 +12,18 @@ namespace HappyCoupleMobile.iOS.Controls
     {
         public static readonly NSString Key = new NSString("ExtendedSwipeAbleCell");
         public static readonly UINib Nib;
+
+        private ProductVm _product;
+        public ProductVm Product
+        {
+            get { return _product; }
+            set
+            {
+                Name.Text = value.Name;
+                Comment.Text = value.Comment;
+                Quantity.Text = value.Quantity.ToString();
+            }
+        }
 
         static ExtendedSwipeAbleCell()
         {
@@ -22,11 +35,22 @@ namespace HappyCoupleMobile.iOS.Controls
             // Note: this .ctor should not contain any initialization logic.
         }
 
-        public void UpdateCell(string name, string comment, int quantity)
+        public void UpdateCell(ProductVm product, Action productChecked)
         {
-            Name.Text = name;
-            Comment.Text = comment;
-            Quantity.Text = quantity.ToString();
+            Product = product;
+
+            var tapGesture = new UITapGestureRecognizer();
+
+            tapGesture.AddTarget(OnProductChecked);
+            //tapGesture.AddTarget(productChecked);
+
+            AddGestureRecognizer(tapGesture);
+        }
+
+        private void OnProductChecked()
+        {
+            var checkedImage = NSBundle.MainBundle.PathForResource("checked", "png");
+
         }
 
         public void SetVisualProperties()

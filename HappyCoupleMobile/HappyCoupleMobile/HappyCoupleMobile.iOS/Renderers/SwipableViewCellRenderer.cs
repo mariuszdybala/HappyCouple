@@ -29,7 +29,7 @@ namespace HappyCoupleMobile.iOS.Renderers
 
             if(formsCell != null)
             {
-                swipeAbleNativeCell.UpdateCell(formsCell.ProductName, formsCell.Comment, formsCell.Quentity);
+                swipeAbleNativeCell.UpdateCell(formsCell.Product, formsCell.ProductChecked);
                 swipeAbleNativeCell.RightUtilityButtons = new UIButton[] { new UIButton { BackgroundColor = UIColor.Blue }, new UIButton { BackgroundColor = UIColor.Red } };
             }
 
