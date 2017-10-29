@@ -135,11 +135,12 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Controls\SwipeAbleiOSCell.cs" />
     <Compile Include="Custom\Helpers.cs" />
+    <Compile Include="Delegates\CustomTextFieldDelegate.cs" />
     <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Providers\AlertProvider.cs" />
     <Compile Include="Providers\SystemInfoProvider.cs" />
     <Compile Include="Renderers\CircularProgressRenderer.cs" />
     <Compile Include="Renderers\CustomViewCellRenderer.cs" />

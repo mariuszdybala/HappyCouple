@@ -2,6 +2,7 @@
 using SQLite.Net;
 using SQLite.Net.Async;
 using SQLite.Net.Interop;
+using Xamarin.Forms;
 
 namespace HappyCoupleMobile.Providers
 {

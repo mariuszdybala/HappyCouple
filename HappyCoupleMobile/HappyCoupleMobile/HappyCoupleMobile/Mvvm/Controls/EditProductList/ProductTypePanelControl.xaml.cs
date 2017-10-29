@@ -111,7 +111,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 //        {
 //            productViewControl.ControlPanelInvoked += OnControlPanelInvoked;
 //            productViewControl.DeleteButtonClick += OnDeleteButtonClick;
-//            productViewControl.Checked += OnProductChecked;
+//            productViewControl.Checked += OnProductSelected;
 //            productViewControl.EditButtonClick += OnEditButtonClick;
 //        }
 //
@@ -119,7 +119,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 //        {
 //            productViewControl.ControlPanelInvoked -= OnControlPanelInvoked;
 //            productViewControl.DeleteButtonClick -= OnDeleteButtonClick;
-//            productViewControl.Checked -= OnProductChecked;
+//            productViewControl.Checked -= OnProductSelected;
 //            productViewControl.EditButtonClick -= OnEditButtonClick;
 //        }
     }

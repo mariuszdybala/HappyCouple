@@ -82,8 +82,9 @@
                 <outlet property="CheckboxView" destination="Xto-mk-zSi" id="name-outlet-Xto-mk-zSi"/>
                 <outlet property="Comment" destination="pqe-Bn-r12" id="name-outlet-pqe-Bn-r12"/>
                 <outlet property="Name" destination="ube-m0-ceV" id="name-outlet-ube-m0-ceV"/>
-                <outlet property="Quantity" destination="SrQ-zO-6HV" id="name-outlet-SrQ-zO-6HV"/>
                 <outlet property="ProductDetailsStack" destination="OPm-ds-72v" id="name-outlet-OPm-ds-72v"/>
+                <outlet property="Quantity" destination="SrQ-zO-6HV" id="name-outlet-SrQ-zO-6HV"/>
+                <outlet property="CheckboxStackView" destination="foF-cS-B6H" id="name-outlet-foF-cS-B6H"/>
             </connections>
             <point key="canvasLocation" x="2" y="-197.5"/>
         </tableViewCell>

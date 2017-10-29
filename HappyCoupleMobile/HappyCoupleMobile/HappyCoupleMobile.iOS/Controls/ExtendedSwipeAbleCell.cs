@@ -1,5 +1,6 @@
 ﻿using System;
 using Foundation;
+using HappyCoupleMobile.iOS.Delegates;
 using UIKit;
 using SWTableViewCells;
 using Xamarin.Forms;
@@ -36,17 +37,24 @@ namespace HappyCoupleMobile.iOS.Controls
             // Note: this .ctor should not contain any initialization logic.
         }
 
-        public void UpdateCell(ProductVm product, Action productChecked)
+        public void UpdateCell(ProductVm product, Action productSelected, bool hideCheckbox = false, bool hideProductQuantity = false)
         {
             Product = product;
+            CheckboxStackView.Hidden = hideCheckbox;
+	        Quantity.Hidden = hideProductQuantity;
 
-            var tapGesture = new UITapGestureRecognizer();
-
-            tapGesture.AddTarget(OnProductChecked);
-            tapGesture.AddTarget(productChecked);
-
-            ProductDetailsStack.AddGestureRecognizer(tapGesture);
+	        AddGestureToView(productSelected);
         }
+
+	    private void AddGestureToView(Action onProductSelected)
+	    {		    
+		    var tapGesture = new UITapGestureRecognizer();
+
+		    tapGesture.AddTarget(OnProductChecked);
+		    tapGesture.AddTarget(onProductSelected);
+
+		    this.AddGestureRecognizer(tapGesture);
+	    }
 
         private void OnProductChecked()
         {
@@ -54,8 +62,8 @@ namespace HappyCoupleMobile.iOS.Controls
 
             CheckboxView.Image = Product.IsBought ? UIImage.FromBundle("checked.png") : UIImage.FromBundle("unchecked.png");
         }
-
-        public void SetVisualProperties()
+	    
+	    public void SetVisualProperties()
         {
             BackgroundColor = Color.FromHex("#424242").ToUIColor();
             SelectedBackgroundView = new UIView { BackgroundColor = Color.FromHex("#FEE94E").ToUIColor() };
@@ -66,18 +74,6 @@ namespace HappyCoupleMobile.iOS.Controls
             Comment.Font = UIFont.FromName("Quicksand-Light", 15f);
             Quantity.Font = UIFont.FromName("Quicksand-Medium", 20f);
 
-            HideChecbox();
-        }
-
-        public void HideChecbox()
-        {
-            //CheckboxView.Hidden = true;
-            //LeadingNameContraint.Constant = LeadingCommentContraint.Constant = 10;
-        }
-
-        public void HideQuantityLabel()
-        {
-            Quantity.Hidden = true;
         }
     }
 }

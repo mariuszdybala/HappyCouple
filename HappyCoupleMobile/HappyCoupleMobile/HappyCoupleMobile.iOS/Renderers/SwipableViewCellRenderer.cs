@@ -7,8 +7,9 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using HappyCoupleMobile.iOS.Controls;
+using HappyCoupleMobile.Mvvm.Renderers.ProductCell;
 
-[assembly:ExportRenderer(typeof(SwipableViewCell), typeof(SwipableViewCellRenderer))]
+[assembly:ExportRenderer(typeof(BaseSwipeableProductCell), typeof(SwipableViewCellRenderer))]
 namespace HappyCoupleMobile.iOS.Renderers
 {
 	public class SwipableViewCellRenderer : ViewCellRenderer
@@ -16,7 +17,7 @@ namespace HappyCoupleMobile.iOS.Renderers
 
 		public override UITableViewCell GetCell(Cell item, UITableViewCell reusableCell, UITableView tv)
 		{
-			var formsCell = (SwipableViewCell)item;
+			var formsCell = (BaseSwipeableProductCell)item;
 
             var swipeAbleNativeCell = reusableCell as ExtendedSwipeAbleCell;
 
@@ -29,30 +30,13 @@ namespace HappyCoupleMobile.iOS.Renderers
 
             if(formsCell != null)
             {
-                swipeAbleNativeCell.UpdateCell(formsCell.Product, formsCell.OnProductChecked);
+                swipeAbleNativeCell.UpdateCell(formsCell.Product, formsCell.OnProductSelected, !formsCell.ShowCheckbox, !formsCell.ShowProductQuantity);
 
-                var miscButton = new UIButton { BackgroundColor = UIColor.Red };
-                miscButton.SetImage(UIImage.FromBundle("delete.png"), UIControlState.Normal);
-
-                var deleteButton = new UIButton { BackgroundColor = Color.FromHex("#F6585D").ToUIColor() };
-                deleteButton.SetImage(UIImage.FromBundle("delete.png"), UIControlState.Normal);
-                deleteButton.SetTitle("Usuń", UIControlState.Normal);
-
-                var editButton = new UIButton { BackgroundColor = Color.FromHex("#4054B2").ToUIColor() };
-                editButton.SetImage(UIImage.FromBundle("edit.png"), UIControlState.Normal);
-                editButton.SetTitle("Edytuj", UIControlState.Normal);
-
-                swipeAbleNativeCell.RightUtilityButtons = new UIButton[] 
-                { 
-                    deleteButton, 
-                    editButton
-                };
+	            CreateAndAddSwipeButtons(swipeAbleNativeCell, formsCell);
             }
 
             tv.EstimatedRowHeight = UITableView.AutomaticDimension;
             tv.RowHeight = UITableView.AutomaticDimension;
-
-            //tv.RowHeight = swipeAbleNativeCell.GetContentHeight();
 
             tv.AllowsSelection = false;
 
@@ -62,7 +46,27 @@ namespace HappyCoupleMobile.iOS.Renderers
             return swipeAbleNativeCell;
 		}
 
-        private ExtendedSwipeAbleCell RegisterCellIfNeeded(UITableView tv)
+		private void CreateAndAddSwipeButtons(ExtendedSwipeAbleCell swipeableNativeCell, BaseSwipeableProductCell swipeableFormsCell)
+		{
+			var swipeableButtonsCount = swipeableFormsCell.SwipeButtons.Count;
+			var buttons = new UIButton[swipeableButtonsCount];
+
+			for (int i = 0; i < swipeableButtonsCount; i++)
+			{
+				var formsButton = swipeableFormsCell.SwipeButtons[i];
+				
+				  var uiButton = new UIButton { BackgroundColor = formsButton.Color.ToUIColor() };
+				uiButton.SetImage(UIImage.FromBundle(formsButton.ImageSource.File), UIControlState.Normal);
+				uiButton.SetTitle(formsButton.Text, UIControlState.Normal);
+
+				buttons[i] = uiButton;
+			}
+
+			swipeableNativeCell.RightUtilityButtons = buttons;
+
+		}
+
+		private ExtendedSwipeAbleCell RegisterCellIfNeeded(UITableView tv)
         {
             var cell = (ExtendedSwipeAbleCell)tv.DequeueReusableCell("ExtendedSwipeAbleCellId");
 
@@ -79,11 +83,11 @@ namespace HappyCoupleMobile.iOS.Renderers
 	// ReSharper disable once InconsistentNaming
 	public class SWCellViewDelegate : SWTableViewCellDelegate
 	{
-		private readonly SwipableViewCell _swipableViewCell;
+		private readonly BaseSwipeableProductCell _baseSwipeableProductCell;
 
-		public SWCellViewDelegate(SwipableViewCell swipableViewCell)
+		public SWCellViewDelegate(BaseSwipeableProductCell baseSwipeableProductCell)
 		{
-			_swipableViewCell = swipableViewCell;
+			_baseSwipeableProductCell = baseSwipeableProductCell;
 		}
 
 		public override void DidTriggerLeftUtilityButton(SWTableViewCell cell, nint index)
@@ -92,6 +96,7 @@ namespace HappyCoupleMobile.iOS.Renderers
 
 		public override void DidTriggerRightUtilityButton(SWTableViewCell cell, nint index)
 		{
+			_baseSwipeableProductCell.SwipeButtons[(int)index].Clicked.Invoke();
 		}
 	}
 }
