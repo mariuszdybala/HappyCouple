@@ -19,6 +19,7 @@ namespace HappyCoupleMobile.ViewModel
 {
 	public class FavouriteProductsViewModel : BaseHappyViewModel
 	{
+		private IList<ProductVm> _addedProducts;
 		private readonly IProductServices _productService;
 		private readonly IAlertsAndNotificationsProvider _alertsAndNotificationsProvider;
 		private ProductType _selectedProductType;
@@ -58,6 +59,8 @@ namespace HappyCoupleMobile.ViewModel
 			_alertsAndNotificationsProvider = alertsAndNotificationsProvider;
 			MockListForProduct = new ObservableCollection<ProductVm>();
 			RegisterCommandAndMessages();
+			
+			_addedProducts = new List<ProductVm>();
 		}
 
 		public void RegisterCommandAndMessages()
@@ -137,17 +140,27 @@ namespace HappyCoupleMobile.ViewModel
 
 			if (int.TryParse(quantity, out quantityValue))
 			{
-				await SendFeedbackAboutAddedProduct(product, quantityValue);
+				AddToProductBuffor(product, quantityValue);
 				_alertsAndNotificationsProvider.ShowSuccessToast("Produkt dodany");
 				return;
 			}
 			_alertsAndNotificationsProvider.ShowFailedToast("Ilość błędna");
 		}
 
-		private async Task SendFeedbackAboutAddedProduct(ProductVm product, int quantity)
+		private void AddToProductBuffor(ProductVm product, int quantity)
 		{
 			var newProduct = _productService.CreateProductVmFromFavouriteProduct(product, SelectedProductType, quantity, Admin);
-			var feedBackMessage = new FeedbackMessage(MessagesKeys.ProductKey, newProduct);
+			_addedProducts.Add(newProduct);
+		}
+
+		private async Task SendFeedbackAboutAddedProduct()
+		{
+			if (!_addedProducts.Any())
+			{
+				return;
+			}
+			
+			var feedBackMessage = new FeedbackMessage(MessagesKeys.ProductsRange, _addedProducts);
 			await SendFeedbackMessage<EditShoppingListViewModel>(feedBackMessage);
 		}
 
@@ -198,8 +211,15 @@ namespace HappyCoupleMobile.ViewModel
 			RaisePropertyChanged(nameof(MockListForProduct));
 		}
 
+		protected override async Task OnGoBackCommand()
+		{
+			await SendFeedbackAboutAddedProduct();
+		    await base.OnGoBackCommand();
+		}
+
 		protected override void CleanResources()
 		{
+			_addedProducts = new List<ProductVm>();
 		}
 	}
 }

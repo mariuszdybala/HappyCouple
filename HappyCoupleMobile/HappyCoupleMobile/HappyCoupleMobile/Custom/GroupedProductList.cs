@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using HappyCoupleMobile.Model;
 using HappyCoupleMobile.VM;
@@ -9,14 +11,20 @@ namespace HappyCoupleMobile.Custom
 	{
 		public ProductType ProductType { get; }
 
-		public GroupedProductList(ProductType productType)
-		{
-			ProductType = productType;
-		}
-
 		public GroupedProductList(IGrouping<ProductType, ProductVm> group) : base(group)
 		{
 			ProductType = group.Key;
 		}
+	}
+	
+	public class MyGrouping : List<ProductVm>, IGrouping<ProductType, ProductVm>
+	{
+		public ProductType Key { get; set; }
+
+		public MyGrouping(ProductType productTypeKey)
+		{
+			Key = productTypeKey;
+		}
+
 	}
 }

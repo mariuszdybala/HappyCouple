@@ -98,7 +98,7 @@ namespace HappyCoupleMobile.VM
             }
         }
 
-	    public IList<ProductVm> Products => GroupedProducts.SelectMany(x=>x).ToList();
+	    public List<ProductVm> Products { get; set; }
 
         public ObservableCollection<ProductType> ProductTypes
         {
@@ -109,6 +109,7 @@ namespace HappyCoupleMobile.VM
         public ShoppingListVm(ShoppingList shoppingList)
         {
             ShoppingList = shoppingList;
+	        Products = ShoppingList.Products.Select(x=>new ProductVm(x)).ToList();
             Name = ShoppingList.Name;
             AddDate = ShoppingList.AddDate;
             Status = ShoppingList.Status;
@@ -119,9 +120,7 @@ namespace HappyCoupleMobile.VM
 
         private void InitializeProducts()
         {
-            var productVms = ShoppingList.Products.Select(x => new ProductVm(x));
-
-	        var groupedData = productVms.OrderBy(x => x.ProductType.IconName)
+	        var groupedData = Products.OrderBy(x => x.ProductType.Type)
 		        .GroupBy(x => x.ProductType)
 		        .Select(x => new GroupedProductList(x))
 		        .ToList();
@@ -159,19 +158,23 @@ namespace HappyCoupleMobile.VM
 
         public void AddProduct(ProductVm product)
         {
-	        if (GroupedProducts.All(x => x.ProductType.Id != product.ProductType.Id))
-	        {
-		        GroupedProducts.Add(new GroupedProductList(product.ProductType));
-	        }
-
-	        GroupedProducts.FirstOrDefault(x=>x.ProductType.Id == product.ProductType.Id).Add(product);
-
-            UpdateAdditionalData();
+	        ShoppingList.Products.Add(product.ProductModel);
+	        
+	        InitializeProducts();
+	        UpdateAdditionalData();
         }
+	    
+	    public void AddProductsRange(IList<ProductVm> products)
+	    {
+		    Products.AddRange(products);
+	        
+	        InitializeProducts();
+	        UpdateAdditionalData();
+	    }
 
         public void DeleteProduct(ProductVm product)
         {
-	        var productGroup = GroupedProducts.FirstOrDefault(x => x.ProductType == product.ProductType);
+	        var productGroup = GroupedProducts.FirstOrDefault(x => x.ProductType.Id == product.ProductType.Id);
 
 	        if (productGroup == null)
 	        {
@@ -184,6 +187,8 @@ namespace HappyCoupleMobile.VM
 	        {
 		        GroupedProducts.Remove(productGroup);
 	        }
+
+	        Products.Remove(product);
 
             UpdateAdditionalData();
         }

@@ -42,7 +42,8 @@
 			    <DataTemplate>
 				    <productCell:SwipeableProductCell ShowCheckbox="True" ShowProductQuantity="True" Product="{Binding .}"
 				                                      SelectCommand="{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}"
-				                                      EditCommand="{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}"/>
+				                                      EditCommand="{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}"
+				                                      DeleteCommand="{Binding BindingContext.DeleteProductCommand, Source={x:Reference EditShoppingListView}}"/>
 			    </DataTemplate>
 		    </ListView.ItemTemplate>
 		    <ListView.GroupHeaderTemplate>
@@ -51,7 +52,7 @@
 					    <Frame BackgroundColor="{StaticResource ThirthColor}" Padding="2">
 						    <StackLayout x:Name="PanelHeader" BackgroundColor="{StaticResource FirstColor}" Orientation="Horizontal" Padding="2">
 							    <Image x:Name="HeaderImage" Source="{Binding ProductType.IconName, Converter={StaticResource IconNameToImageSourceConverter}}"/>
-							    <Label x:Name="HeaderLabel" TextColor="White" Text="{Binding ProductType.IconName}" FontFamily="{StaticResource Medium}" VerticalTextAlignment="Center" />
+							    <Label x:Name="HeaderLabel" TextColor="White" Text="{Binding ProductType.Type}" FontFamily="{StaticResource Medium}" VerticalTextAlignment="Center" />
 						    </StackLayout>
 					    </Frame>
 				    </ViewCell>

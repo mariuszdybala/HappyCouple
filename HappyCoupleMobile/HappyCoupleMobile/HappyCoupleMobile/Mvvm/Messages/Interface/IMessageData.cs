@@ -1,4 +1,5 @@
-﻿using HappyCoupleMobile.VM;
+﻿using System.Collections.Generic;
+using HappyCoupleMobile.VM;
 
 namespace HappyCoupleMobile.Mvvm.Messages.Interface
 {
@@ -8,5 +9,6 @@ namespace HappyCoupleMobile.Mvvm.Messages.Interface
         object GetValue(string key);
         TValue GetValue<TValue>() where TValue : new();
 	    ProductVm GetFirstOrDefaultProduct();
+	    IList<ProductVm> GetFirstOrDefaultProductsRange();
     }
 }

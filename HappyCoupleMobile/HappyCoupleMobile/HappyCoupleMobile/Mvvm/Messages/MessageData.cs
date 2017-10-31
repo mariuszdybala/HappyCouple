@@ -56,7 +56,14 @@ namespace HappyCoupleMobile.Mvvm.Messages
 
 	    public ProductVm GetFirstOrDefaultProduct()
 	    {
-		    return Data.Values.OfType<ProductVm>().FirstOrDefault();
+		    return GetValue(MessagesKeys.ProductKey) as ProductVm;
+	    }
+	    
+	    public IList<ProductVm> GetFirstOrDefaultProductsRange()
+	    {
+		    var products = GetValue(MessagesKeys.ProductsRange);
+
+		    return products as IList<ProductVm>;
 	    }
     }
 }

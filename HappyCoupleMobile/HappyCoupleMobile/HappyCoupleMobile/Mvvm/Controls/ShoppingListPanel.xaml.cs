@@ -18,8 +18,6 @@ namespace HappyCoupleMobile.Mvvm.Controls
         public static readonly BindableProperty ShoppingListProperty = BindableProperty.Create(
         nameof(ShoppingList), typeof(ShoppingListVm), typeof(ShoppingListPanel));
 
-       
-
         public static readonly BindableProperty AddCommandProperty = BindableProperty.Create(
         nameof(AddCommand), typeof(ICommand), typeof(ShoppingListPanel), defaultBindingMode: BindingMode.OneWay);
 
@@ -37,8 +35,6 @@ namespace HappyCoupleMobile.Mvvm.Controls
             get { return (ShoppingListVm)GetValue(ShoppingListProperty); }
             set { SetValue(ShoppingListProperty, value); }
         }
-
-
 
         public ICommand AddCommand
         {

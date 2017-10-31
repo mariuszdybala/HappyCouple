@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using HappyCoupleMobile.Mvvm.Messages;
 using HappyCoupleMobile.Mvvm.Messages.Interface;
 using HappyCoupleMobile.Providers.Interfaces;
@@ -34,7 +35,7 @@ namespace HappyCoupleMobile.ViewModel
             _productServices = productServices;
 	        _alertsAndNotificationsProvider = alertsAndNotificationsProvider;
 
-	        RegisterCommand();
+	        RegisterCommand();        
         }
 
         private void RegisterCommand()
@@ -49,14 +50,8 @@ namespace HappyCoupleMobile.ViewModel
 
         protected override async Task OnNavigateTo(IMessageData message)
         {
-	        CreateGroupedProductList();
             ShoppingList = (ShoppingListVm)message.GetValue(MessagesKeys.ShoppingListKey);
         }
-
-	    private void CreateGroupedProductList()
-	    {
-
-	    }
 
 	    private async Task OnAddProduct()
         {
@@ -65,9 +60,9 @@ namespace HappyCoupleMobile.ViewModel
 
         protected override async Task OnFeedback(IFeedbackMessage feedbackMessage)
         {
-	        var newProductVm = feedbackMessage.GetFirstOrDefaultProduct();
+	        var newProductVm = feedbackMessage.GetFirstOrDefaultProductsRange();
 
-            ShoppingList.AddProduct(newProductVm);
+            ShoppingList.AddProductsRange(newProductVm);
         }
 
         private async Task OnProductChecked(ProductVm product)
@@ -103,7 +98,6 @@ namespace HappyCoupleMobile.ViewModel
 
         protected override void CleanResources()
         {
-            //UnSubscribeAllEventsFromViewCommand.Execute(null);
         }
     }
 }
