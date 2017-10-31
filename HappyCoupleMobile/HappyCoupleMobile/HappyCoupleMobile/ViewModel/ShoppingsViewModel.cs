@@ -121,14 +121,11 @@ namespace HappyCoupleMobile.ViewModel
 
         private void OnAddNewListCommand()
         {
-	        _alertsAndNotificationsProvider.ShowAlertWithTextField("Wpisz swoją nazwę listy", "Nowa lista zakupów", Keyboard.Default);
-	        _alertsAndNotificationsProvider.AlertConfirmed += AlertsAndNotificationsProviderOnAlertConfirmed;
+	        _alertsAndNotificationsProvider.ShowAlertWithTextField("Wpisz swoją nazwę listy", "Nowa lista zakupów", Keyboard.Default, AlertsAndNotificationsProviderOnAlertConfirmed);
         }
 
 	    private void AlertsAndNotificationsProviderOnAlertConfirmed(string listName)
 	    {
-		    _alertsAndNotificationsProvider.AlertConfirmed -= AlertsAndNotificationsProviderOnAlertConfirmed;
-
 		    ActiveShoppingLists.Add(new ShoppingListVm(
 			    new ShoppingList
 			    {

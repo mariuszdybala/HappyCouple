@@ -159,12 +159,12 @@ namespace HappyCoupleMobile.VM
 
         public void AddProduct(ProductVm product)
         {
-	        if (GroupedProducts.All(x => x.ProductType != product.ProductType))
+	        if (GroupedProducts.All(x => x.ProductType.Id != product.ProductType.Id))
 	        {
 		        GroupedProducts.Add(new GroupedProductList(product.ProductType));
 	        }
 
-	        GroupedProducts.FirstOrDefault(x=>x.ProductType == product.ProductType).Add(product);
+	        GroupedProducts.FirstOrDefault(x=>x.ProductType.Id == product.ProductType.Id).Add(product);
 
             UpdateAdditionalData();
         }

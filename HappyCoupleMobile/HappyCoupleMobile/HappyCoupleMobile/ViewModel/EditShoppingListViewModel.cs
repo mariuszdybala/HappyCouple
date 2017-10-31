@@ -28,7 +28,6 @@ namespace HappyCoupleMobile.ViewModel
         public Command<ProductVm> ProductCheckedCommand { get; set; }
         public Command<ProductVm> DeleteProductCommand { get; set; }
         public Command<ProductVm> EditProductCommand { get; set; }
-        public Command UnSubscribeAllEventsFromViewCommand { get; set; }
 
         public EditShoppingListViewModel(ISimpleAuthService simpleAuthService, IProductServices productServices, IAlertsAndNotificationsProvider alertsAndNotificationsProvider) : base(simpleAuthService)
         {
@@ -66,7 +65,7 @@ namespace HappyCoupleMobile.ViewModel
 
         protected override async Task OnFeedback(IFeedbackMessage feedbackMessage)
         {
-            var newProductVm = (ProductVm)feedbackMessage.GetValue(MessagesKeys.ProductKey);
+	        var newProductVm = feedbackMessage.GetFirstOrDefaultProduct();
 
             ShoppingList.AddProduct(newProductVm);
         }
@@ -85,28 +84,22 @@ namespace HappyCoupleMobile.ViewModel
 
         private async Task OnEditProduct(ProductVm product)
         {
-	        _alertsAndNotificationsProvider.ShowAlertWithTextField("ilość produktu", "Wpisz nową", Keyboard.Numeric);
-	        _alertsAndNotificationsProvider.AlertConfirmed += (quantity) =>
-	        {
-		        int newquantityValue;
-
-		        if (int.TryParse(quantity, out newquantityValue))
+	        _alertsAndNotificationsProvider.ShowAlertWithTextField("ilość produktu", "Wpisz nową", Keyboard.Numeric,
+		        (quantity) =>
 		        {
-			        product.Quantity = newquantityValue;
-			        _alertsAndNotificationsProvider.ShowSuccessToast("Ilość zmieniona");
-			        return;
-		        }
-		        
-		        _alertsAndNotificationsProvider.ShowFailedToast("Ilość błędna");
-	        };
+			        int newquantityValue;
+			        if (int.TryParse(quantity, out newquantityValue))
+			        {
+				        product.Quantity = newquantityValue;
+				        _alertsAndNotificationsProvider.ShowSuccessToast("Ilość zmieniona");
+				        return;
+			        }
+
+			        _alertsAndNotificationsProvider.ShowFailedToast("Ilość błędna");
+		        });
 	        
 	        await Task.Yield(); 
         }
-
-	    private void AlertsAndNotificationsProviderOnAlertConfirmed(string productQuantity, object paramter)
-	    {
-
-	    }
 
         protected override void CleanResources()
         {

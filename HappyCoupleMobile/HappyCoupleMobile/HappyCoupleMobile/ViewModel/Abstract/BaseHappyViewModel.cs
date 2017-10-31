@@ -121,8 +121,20 @@ namespace HappyCoupleMobile.ViewModel.Abstract
 
         public async Task SendFeedbackMessage(IFeedbackMessage feedbackMessage)
         {
-	        await NavigationService.GetLastViewModel().OnFeedback(feedbackMessage);
+	        await NavigationService.GetLastViewModelFromStack().OnFeedback(feedbackMessage);
         }
+	    
+	    public async Task SendFeedbackMessage<TOwner>(IFeedbackMessage feedbackMessage) where TOwner : BaseHappyViewModel
+	    {
+		    var viewModel =  NavigationService.GetFirstOrDefaultViewModelFromStack<TOwner>();
+
+		    if (viewModel == null)
+		    {
+			    return;
+		    }
+
+		    await viewModel.OnFeedback(feedbackMessage);
+	    }
 
         public async Task NavigateBack()
         {

@@ -9,6 +9,7 @@ namespace HappyCoupleMobile.Services.Interfaces
         Task PushAsync<T>() where T : ContentPage, new();
         Task PopAsync();
         Task GoToRoot();
-	    BaseHappyViewModel GetLastViewModel();
+	    BaseHappyViewModel GetLastViewModelFromStack();
+	    TOwner GetFirstOrDefaultViewModelFromStack<TOwner>() where TOwner : BaseHappyViewModel;
     }
 }

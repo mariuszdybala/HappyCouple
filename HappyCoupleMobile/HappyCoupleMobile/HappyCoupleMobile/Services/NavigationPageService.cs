@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Ioc;
 using HappyCoupleMobile.Services.Interfaces;
 using HappyCoupleMobile.ViewModel.Abstract;
 using Xamarin.Forms;
@@ -39,11 +40,18 @@ namespace HappyCoupleMobile.Services
             await _navigation.PopToRootAsync();
         }
 
-	    public BaseHappyViewModel GetLastViewModel()
+	    public BaseHappyViewModel GetLastViewModelFromStack()
 	    {
 		    var previousContentPage = GetPreviousContentPage();
 
 		    return previousContentPage?.BindingContext as BaseHappyViewModel;
+	    }
+
+	    public TOwner GetFirstOrDefaultViewModelFromStack<TOwner>() where TOwner : BaseHappyViewModel
+	    {
+		    var viewModel = SimpleIoc.Default.GetInstance<TOwner>();
+
+		    return viewModel;
 	    }
 
 	    private ContentPage GetPreviousContentPage()

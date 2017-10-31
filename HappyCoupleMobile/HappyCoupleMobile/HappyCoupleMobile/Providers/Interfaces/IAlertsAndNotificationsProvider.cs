@@ -7,8 +7,6 @@ namespace HappyCoupleMobile.Providers.Interfaces
 	{
 		void ShowFailedToast(string failedText = "Coś poszło nie tak ;/");
 		void ShowSuccessToast(string successText = "Gotowe!");
-		void ShowAlertWithTextField(string message, string title, Keyboard keyboardType, object parameter = null);
-		event Action<string> AlertConfirmed;
-	    event Action<string, object> AlertConfirmedWithParameter;
+		void ShowAlertWithTextField(string message, string title, Keyboard keyboardType, Action<string> confirmed);
 	}
 }
