@@ -51,6 +51,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Custom\GroupedProductList.cs" />
+    <Compile Include="Custom\ProductTypeEqualityComparer.cs" />
     <Compile Include="Custom\SwipeButton.cs" />
     <Compile Include="Data\BaseDao.cs" />
     <Compile Include="Data\DatabaseInitializer.cs" />

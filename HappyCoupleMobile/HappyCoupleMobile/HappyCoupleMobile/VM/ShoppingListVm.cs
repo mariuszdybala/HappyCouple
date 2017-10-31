@@ -121,7 +121,7 @@ namespace HappyCoupleMobile.VM
         private void InitializeProducts()
         {
 	        var groupedData = Products.OrderBy(x => x.ProductType.Type)
-		        .GroupBy(x => x.ProductType)
+		        .GroupBy(x => x.ProductType, new ProductTypeEqualityComparer())
 		        .Select(x => new GroupedProductList(x))
 		        .ToList();
 
