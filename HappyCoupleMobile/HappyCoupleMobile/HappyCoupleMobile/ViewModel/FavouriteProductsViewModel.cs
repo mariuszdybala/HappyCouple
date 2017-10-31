@@ -8,7 +8,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Command;
+using HappyCoupleMobile.Enums;
 using HappyCoupleMobile.Mvvm.Messages;
+using HappyCoupleMobile.Providers.Interfaces;
 using HappyCoupleMobile.View;
 using HappyCoupleMobile.VM;
 using Xamarin.Forms;
@@ -18,29 +20,35 @@ namespace HappyCoupleMobile.ViewModel
     public class FavouriteProductsViewModel : BaseHappyViewModel
     {
         private readonly IProductServices _productService;
-        private ProductType _selectedProductType;
+	    private readonly IAlertsAndNotificationsProvider _alertsAndNotificationsProvider;
+	    private ProductType _selectedProductType;
 
         public ProductType SelectedProductType
         {
             get { return _selectedProductType; }
             set { Set(ref _selectedProductType, value); }
         }
+	    
+	    private ObservableCollection<ProductVm>  _mockListForProduct;
 
-        public ObservableCollection<ProductType> ProductTypes { get; set; }
-        public ObservableCollection<ProductVm> MockListForProduct { get; set; }
+	    public ObservableCollection<ProductVm>  MockListForProduct
+	    {
+		    get { return _mockListForProduct; }
+		    set { Set(ref _mockListForProduct, value); }
+	    }
 
-        public RelayCommand<ProductVm> DeleteProductCommand { get; set; }
-        public RelayCommand<ProductVm> ProductSelectedCommand { get; set; }
+
+        public RelayCommand<ProductVm> DeleteProductCommand => new RelayCommand<ProductVm>(OnDeleteProduct);
+        public RelayCommand<ProductVm> ProductSelectedCommand => new RelayCommand<ProductVm>(async(product) => await OnProductSelected(product));
 	    public RelayCommand<ProductVm> EditProductCommand => new RelayCommand<ProductVm>(async (product) => await OnEditProduct(product));
 	    public RelayCommand<ProductVm> GoToAddProductToFavoriteCommand => new RelayCommand<ProductVm>(async async  => await OnGoToAddProductToFavorite());
 
-	    public RelayCommand UnSubscribeAllEventsFromViewCommand { get; set; }
         public RelayCommand<ProductType> ProductTypeSelectedCommand { get; set; }
 
-        public FavouriteProductsViewModel(ISimpleAuthService simpleAuthService, IProductServices productService) : base(simpleAuthService)
+        public FavouriteProductsViewModel(ISimpleAuthService simpleAuthService, IProductServices productService, IAlertsAndNotificationsProvider alertsAndNotificationsProvider) : base(simpleAuthService)
         {
             _productService = productService;
-            ProductTypes = new ObservableCollection<ProductType>();
+	        _alertsAndNotificationsProvider = alertsAndNotificationsProvider;
             MockListForProduct = new ObservableCollection<ProductVm>();
             RegisterCommandAndMessages();
         }
@@ -49,18 +57,16 @@ namespace HappyCoupleMobile.ViewModel
         {
             RegisterNavigateToMessage(this);
 
-            ProductSelectedCommand = new RelayCommand<ProductVm>(async(product) => await OnProductSelected(product));
-            DeleteProductCommand = new RelayCommand<ProductVm>(OnDeleteProduct);
-
-            ProductTypeSelectedCommand = new RelayCommand<ProductType>(async(product) => await OnProductTypeSelected(product));
+            //ProductTypeSelectedCommand = new RelayCommand<ProductType>(async(product) => await OnProductTypeSelected(product));
         }
 
         protected override async Task OnNavigateTo(IMessageData message)
         {
+	        SelectedProductType = (ProductType)message.GetValue(MessagesKeys.ProductTypeKey);
+	        
             LoadProductTypes();
 
 	        await Task.Yield();
-
         }
 
 	    private async Task OnGoToAddProductToFavorite()
@@ -68,13 +74,45 @@ namespace HappyCoupleMobile.ViewModel
 		    await NavigateToWithMessage<AddProductView, AddProductViewModel>(new BaseMessage<AddProductViewModel>(MessagesKeys.ProductTypeKey, SelectedProductType));
 	    }
 
-        private void OnDeleteProduct(ProductVm product)
+	    protected override async Task OnFeedback(IFeedbackMessage feedbackMessage)
+	    {
+		    if (feedbackMessage.OperationMode != OperationMode.New)
+		    {
+			    MockListForProduct = new ObservableCollection<ProductVm>(MockListForProduct);
+			    return;
+		    }
+		    
+		    var product = feedbackMessage.GetFirstOrDefaultProduct();
+
+		    if (product == null)
+		    {
+			    return;
+		    }
+			    
+		    MockListForProduct.Insert(0,product);
+		    
+		    await Task.Yield();
+	    }
+
+	    private void OnDeleteProduct(ProductVm product)
         {
+	        if (MockListForProduct.Remove(product))
+	        {
+		        _alertsAndNotificationsProvider.ShowSuccessToast("Usunięto");
+	        }
+	        else
+	        {
+		        _alertsAndNotificationsProvider.ShowFailedToast();
+	        }
         }
 
 	    private async Task OnEditProduct(ProductVm product)
 	    {
-		    await Task.Yield();
+		    var message = new BaseMessage<AddProductViewModel>();
+		    message.AddData(MessagesKeys.ProductTypeKey, SelectedProductType);
+		    message.AddData(MessagesKeys.ProductKey, product);
+
+		    await NavigateToWithMessage<AddProductView, AddProductViewModel>(message);
 	    }
 
         private async Task OnProductTypeSelected(ProductType productType)
@@ -84,11 +122,27 @@ namespace HappyCoupleMobile.ViewModel
 
         private async Task OnProductSelected(ProductVm product)
         {
+	        _alertsAndNotificationsProvider.ShowAlertWithTextField("ilość produktu", "Wpisz", Keyboard.Numeric);
+	        _alertsAndNotificationsProvider.AlertConfirmed += AlertsAndNotificationsProviderOnAlertConfirmed;
             await Task.Yield();
         }
 
-        private void LoadProductTypes()
+	    private void AlertsAndNotificationsProviderOnAlertConfirmed(string productQuantity)
+	    {
+		    int quantity;
+
+		    if (int.TryParse(productQuantity, out quantity))
+		    {
+			    _alertsAndNotificationsProvider.ShowSuccessToast("Produkt dodany");
+			    return;
+		    }
+		    _alertsAndNotificationsProvider.ShowFailedToast("Ilość błędna");
+	    }
+
+	    private void LoadProductTypes()
         {
+	        
+	        
             var mockListForProduct =
                 new List<Product>
                 {
@@ -99,52 +153,58 @@ namespace HappyCoupleMobile.ViewModel
                         Comment = "To jest pyszna marcheweczka trzeba ją kupić",
                         Quantity = 4
                     },
-                    new Product {Id = 1, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+	                new Product {Id = 1, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+	                new Product {Id = 1, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+	                new Product {Id = 1, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+	                new Product {Id = 1, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+	                new Product {Id = 1, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+	                new Product {Id = 1, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+	                new Product {Id = 1, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+	                new Product {Id = 1, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+	                new Product {Id = 1, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+	                new Product {Id = 1, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+	                new Product {Id = 2, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+	                new Product {Id = 2, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+	                new Product {Id = 2, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+	                new Product {Id = 2, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+	                new Product {Id = 2, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
                     new Product {Id = 2, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+                    new Product {Id = 2, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+                    new Product {Id = 2, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+                    new Product {Id = 2, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+                    new Product {Id = 2, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+                    new Product {Id = 2, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+                    new Product {Id = 2, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+                    new Product {Id = 2, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
+                    new Product {Id = 3, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 3, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 3, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 3, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 3, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 3, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
                     new Product {Id = 3, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
                     new Product {Id = 4, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
                     new Product {Id = 5, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 5, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 5, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 5, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 5, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 5, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 5, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 5, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 5, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 5, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 5, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 5, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 5, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 5, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
                     new Product {Id = 6, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10},
-	                new Product {Id = 8, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10}
+                    new Product {Id = 6, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 6, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 6, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 6, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+                    new Product {Id = 6, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
+	                new Product {Id = 7, Name = "Piweczko", Comment = "MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ", Quantity = 10}
 	            };
 
             MockListForProduct = new ObservableCollection<ProductVm>(mockListForProduct.Select(x=> new ProductVm(x)));

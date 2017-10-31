@@ -17,38 +17,69 @@ using Xamarin.Forms;
 namespace HappyCoupleMobile.ViewModel
 {
     public class AddProductViewModel : BaseHappyViewModel
-    {
+    {	    
         private readonly IProductServices _productService;
         private string _productName;
         private string _productQuantity;
         private string _productComment;
         private ProductType _productType;
+	    private ProductVm _originProduct;
+	    private ProductVm _product;
+	    private string _saveButtonText;
+	    private bool _editing;
+
+	    public string SaveButtonText
+	    {
+		    get => _saveButtonText;
+		    set => Set(ref _saveButtonText, value);
+	    }
+	    
+	    public ProductVm Product
+	    {
+		    get => _product;
+		    set => Set(ref _product, value);
+	    }
+	    
+	    public ProductVm OriginProduct
+	    {
+		    get => _originProduct;
+		    set => Set(ref _originProduct, value);
+	    }
 
         public string ProductName
         {
-            get { return _productName; }
-            set { Set(ref _productName, value); }
+            get => _productName;
+	        set => Set(ref _productName, value);
         }
 
         public string ProductQuantity
         {
-            get { return _productQuantity; }
-            set { Set(ref _productQuantity, value); }
+            get => _productQuantity;
+	        set => Set(ref _productQuantity, value);
         }
 
         public string ProductComment
         {
-            get { return _productComment; }
-            set { Set(ref _productComment, value); }
+            get => _productComment;
+	        set => Set(ref _productComment, value);
         }
 
         public ProductType ProductType
         {
-            get { return _productType; }
-            set { Set(ref _productType, value); }
+            get => _productType;
+	        set => Set(ref _productType, value);
         }
 
-        public ICommand GoToFavouriteProductsCommand { get; set; }
+	    public bool Editing
+	    {
+		    get => _editing;
+		    set
+		    {
+			    _editing = value;
+			    SaveButtonText = _editing ? "Edit product" : "Add product";
+		    }
+	    }
+
         public ICommand SaveProductCommand { get; set; }
 
         public AddProductViewModel(ISimpleAuthService simpleAuthService, IProductServices productService) : base(simpleAuthService)
@@ -61,43 +92,58 @@ namespace HappyCoupleMobile.ViewModel
         {
             RegisterNavigateToMessage(this);
 
-            GoToFavouriteProductsCommand = new Command(async () => await OnGoToFavouriteProducts());
             SaveProductCommand = new Command(async () => await OnSaveProduct());
         }
 
         protected override async Task OnNavigateTo(IMessageData message)
         {
 	        ProductType = (ProductType)message.GetValue(MessagesKeys.ProductTypeKey);
+
+	        var product = (ProductVm) message.GetValue(MessagesKeys.ProductKey);
+	        
+	        Product =  product ?? _productService.CreateProductVm(null, null, 0, ProductType, Admin);
+
+	        Editing = product != null;
+	        SaveOriginProductInEditingMode();
         }
 
-        private async Task OnGoToFavouriteProducts()
+	    private void SaveOriginProductInEditingMode()
+	    {
+		    if (!Editing)
+		    {
+			    return;
+		    }
+		    
+		    OriginProduct = _productService.CreateProductVm(Product.Name, Product.Comment);
+	    }
+
+	    private async Task OnSaveProduct()
         {
-            await NavigateTo<FavouriteProductsView, FavouriteProductsViewModel>();
-        }
-
-        private async Task OnSaveProduct()
-        {
-            if (ProductType == null)
-            {
-                ShowAlertMessage(AlertType.Information, Messages.ProductTypeIsMandatory);
-                return;
-            }
-
-            var newProduct = _productService.CreateProductVm(ProductName, ProductComment, ProductQuantity, ProductType, Admin);
-
-            SendFeedbackMessage(new FeedbackMessage(MessagesKeys.ProductKey, newProduct));
+            await SendFeedbackMessage(new FeedbackMessage(MessagesKeys.ProductKey, Editing, Editing ? OperationMode.Edit : OperationMode.New));
 
             await NavigateBack();
         }
 
-        private async Task OnNavigateTo(IBaseMessage<AddProductViewModel> message)
-        {
-        }
+	    protected override Task OnGoBackCommand()
+	    {
+		    if (!Editing)
+		    {
+			    return base.OnGoBackCommand();
+		    }
+		    
+		    Product.Comment = OriginProduct.Comment;
+		    Product.Name = OriginProduct.Name;
 
-        protected override void CleanResources()
+		    return base.OnGoBackCommand();
+	    }
+
+	    protected override void CleanResources()
         {
             ProductType = null;
-            ProductComment = ProductQuantity = ProductName = null;
+            ProductComment = ProductQuantity = ProductName  = null;
+	        Product = null;
+	        OriginProduct = null;
+	        Editing = false;
         }
     }
 }

@@ -6,7 +6,7 @@
                                x:Class="HappyCoupleMobile.View.FavouriteProductTypesView"
                                BindingContext="{Binding FavouriteProductTypeViewModel,Source={StaticResource ViewModelLocator}}">
 	<StackLayout Spacing="0">
-		<controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}"
+		<controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftItemTapCommand="{Binding GoBackCommand}"
 		                          PanelHeader="Wybierz typ produktu" />
 		<controls:ExtendedListView x:Name="ProductTypeListView" ItemsSource="{Binding ProductTypes}" BackgroundColor="{StaticResource SecondColor}" ItemTappedCommand="{Binding ProductTypeTappedCommand}"
 		          SeparatorVisibility="None" HasUnevenRows="True" RowHeight="50">

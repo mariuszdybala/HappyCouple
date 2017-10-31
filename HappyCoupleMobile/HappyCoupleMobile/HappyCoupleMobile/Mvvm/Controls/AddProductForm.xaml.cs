@@ -20,12 +20,6 @@ namespace HappyCoupleMobile.Mvvm.Controls
         public static BindableProperty ProductCommentProperty = BindableProperty.Create
         (nameof(ProductComment).GetBindableName(), typeof(string), typeof(AddProductForm), defaultBindingMode: BindingMode.TwoWay);
 
-        public static BindableProperty ProductQuantityProperty = BindableProperty.Create
-        (nameof(ProductQuantity), typeof(string), typeof(AddProductForm), defaultBindingMode: BindingMode.TwoWay);
-
-        public static BindableProperty AddToFavoriteCommandProperty = BindableProperty.Create
-            (nameof(AddToFavoriteCommandProperty).GetBindableName(), typeof(ICommand), typeof(AddProductForm));
-
         public static BindableProperty SelectedProductTypeProperty = BindableProperty.Create
             (nameof(SelectedProductType), typeof(ProductType), typeof(AddProductForm));
 
@@ -41,26 +35,14 @@ namespace HappyCoupleMobile.Mvvm.Controls
             set { SetValue(ProductNameProperty, value); }
         }
 
-        public string ProductQuantity
-        {
-            get { return (string)GetValue(ProductQuantityProperty); }
-            set { SetValue(ProductQuantityProperty, value); }
-        }
-
         public string ProductComment
         {
             get { return (string)GetValue(ProductCommentProperty); }
             set { SetValue(ProductCommentProperty, value); }
         }
 
-        public ICommand AddToFavoriteCommand
-        {
-            get { return (ICommand)GetValue(AddToFavoriteCommandProperty); }
-            set { SetValue(AddToFavoriteCommandProperty, value); }
-        }
-
         public ICommand EraseEntryCommand => new Command<Entry>(OnEraseEntry);
-
+        public ICommand EraseEditorCommand => new Command<Editor>(OnEraseEditor);
 
         public AddProductForm()
         {
@@ -71,11 +53,11 @@ namespace HappyCoupleMobile.Mvvm.Controls
         {
             entry.Text = string.Empty;
         }
-
-        private void OnProductAddedToFavourite(bool isToggled)
-        {
-            AddToFavoriteCommand?.Execute(isToggled);
-        }
+	    
+	    private void OnEraseEditor(Editor editor)
+	    {
+		    editor.Text = string.Empty;
+	    }
 
         private void OnNewNameEntryTextChanged(object sender, TextChangedEventArgs e)
         {
@@ -85,16 +67,6 @@ namespace HappyCoupleMobile.Mvvm.Controls
             }
 
             NewNameEraseImage.IsVisible = !string.IsNullOrWhiteSpace(e.NewTextValue);
-        }
-
-        private void OnQuantityEntryTextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (QuantitytEraseImage == null)
-            {
-                return;
-            }
-
-            QuantitytEraseImage.IsVisible = !string.IsNullOrWhiteSpace(e.NewTextValue);
         }
 
         private void OnDescriptionEntryTextChanged(object sender, TextChangedEventArgs e)

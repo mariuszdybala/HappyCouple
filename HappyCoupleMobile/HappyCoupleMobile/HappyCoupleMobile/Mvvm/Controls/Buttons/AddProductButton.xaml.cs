@@ -13,12 +13,21 @@ namespace HappyCoupleMobile.Mvvm.Controls.Buttons
     {
         public static BindableProperty AddProductButtonClickedCommandProperty = BindableProperty.Create
              (nameof(AddProductButtonClickedCommand), typeof(ICommand), typeof(AddProductButton), null);
+	    
+	    public static BindableProperty ButtonTextProperty = BindableProperty.Create
+		    (nameof(ButtonText), typeof(string),typeof(AddProductButton), defaultValue:"Add product");
 
-        public ICommand AddProductButtonClickedCommand
-        {
-            get { return (ICommand)GetValue(AddProductButtonClickedCommandProperty); }
-            set { SetValue(AddProductButtonClickedCommandProperty, value); }
-        }
+	    public ICommand AddProductButtonClickedCommand
+	    {
+		    get => (ICommand) GetValue(AddProductButtonClickedCommandProperty);
+		    set => SetValue(AddProductButtonClickedCommandProperty, value);
+	    }
+
+	    public string ButtonText
+	    {
+		    get => (string) GetValue(ButtonTextProperty);
+		    set => SetValue(ButtonTextProperty, value);
+	    }
 
         public ICommand AddProductButtonClickedIntenalCommand { get; set; }
 

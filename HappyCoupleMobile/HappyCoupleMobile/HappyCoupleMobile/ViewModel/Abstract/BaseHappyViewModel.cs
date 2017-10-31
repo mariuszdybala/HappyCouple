@@ -7,6 +7,7 @@ using HappyCoupleMobile.Model;
 using HappyCoupleMobile.Mvvm.Messages;
 using HappyCoupleMobile.Mvvm.Messages.Interface;
 using HappyCoupleMobile.Services;
+using HappyCoupleMobile.Services.Interfaces;
 using HappyCoupleMobile.View;
 using HappyCoupleMobile.VM;
 using Xamarin.Forms;
@@ -68,37 +69,6 @@ namespace HappyCoupleMobile.ViewModel.Abstract
 
         }
 
-        public void RegisterFeedBackMessage<TVm>(TVm viewModel, bool unRegister = false)
-        {
-            if (unRegister)
-            {
-                MessengerInstance.Register<IFeedbackMessage>(viewModel, async (message) => await OnRecievedFeedbackMessageWithUnregistration(message));
-            }
-            else
-            {
-                MessengerInstance.Register<IFeedbackMessage>(viewModel, async (message) => await OnRecievedFeedbackMessageWithoutUnregistration(message));
-            }
-        }
-
-        private async Task OnRecievedFeedbackMessageWithUnregistration(IFeedbackMessage feedbackMessage)
-        {
-            await OnFeedbackMessage(feedbackMessage, true);
-        }
-
-        private async Task OnRecievedFeedbackMessageWithoutUnregistration(IFeedbackMessage feedbackMessage)
-        {
-            await OnFeedbackMessage(feedbackMessage, false);
-        }
-
-        private async Task OnFeedbackMessage(IFeedbackMessage messasge, bool unRegister)
-        {
-            if (unRegister)
-            {
-                MessengerInstance.Unregister<IFeedbackMessage>(this);
-            }
-            await OnFeedback(messasge);
-        }
-
         protected virtual async Task OnFeedback(IFeedbackMessage feedbackMessage)
         {
             await Task.Yield();
@@ -149,9 +119,9 @@ namespace HappyCoupleMobile.ViewModel.Abstract
             MessengerInstance.Send(message);
         }
 
-        public void SendFeedbackMessage(IFeedbackMessage feedbackMessage)
+        public async Task SendFeedbackMessage(IFeedbackMessage feedbackMessage)
         {
-            MessengerInstance.Send(feedbackMessage);
+	        await NavigationService.GetLastViewModel().OnFeedback(feedbackMessage);
         }
 
         public async Task NavigateBack()
@@ -168,7 +138,7 @@ namespace HappyCoupleMobile.ViewModel.Abstract
             }
         }
 
-        private async Task OnGoBackCommand()
+        protected virtual async Task OnGoBackCommand()
         {
             CleanResources();
             await NavigateBack();

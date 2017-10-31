@@ -42,10 +42,18 @@ namespace HappyCoupleMobile.Mvvm.Renderers.ProductCell
 
 		private void DeleteButtonOnClicked()
 		{
+			if (DeleteCommand != null && DeleteCommand.CanExecute(Product))
+			{
+				DeleteCommand.Execute(Product);
+			}
 		}
 
 		private void EditButtonOnClicked()
 		{
+			if (EditCommand != null && EditCommand.CanExecute(Product))
+			{
+				EditCommand.Execute(Product);
+			}
 		}
 	}
 }

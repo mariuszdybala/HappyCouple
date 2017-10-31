@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
@@ -7,11 +7,12 @@
              x:Class="HappyCoupleMobile.Mvvm.Controls.AddProductForm" 
              Spacing="0"
              x:Name="AddProductForm">
-    <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}" VerticalOptions="FillAndExpand" BindingContext="{x:Reference AddProductForm}">
-	    <StackLayout Margin="10" Orientation="Horizontal">
+    <StackLayout Spacing="0" Margin="0,10,0,0" BackgroundColor="{StaticResource SecondColor}" VerticalOptions="FillAndExpand" BindingContext="{x:Reference AddProductForm}">
+	    <StackLayout Margin="3" Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
 		    <Image Source="{Binding SelectedProductType.IconName, Converter={StaticResource IconNameToImageSourceConverter}}" VerticalOptions="Center"/>
-		    <Label Margin="5,0,0,0" Text="{Binding SelectedProductType.Type}" FontFamily="{StaticResource Medium}" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+		    <Label Text="{Binding SelectedProductType.Type}" FontFamily="{StaticResource Medium}" TextColor="White" VerticalOptions="Center"/>
 	    </StackLayout>
+	    <BoxView HeightRequest="1" Margin="0,10,0,0" BackgroundColor="{StaticResource ThirthColor}"/>
         <StackLayout Padding="5" VerticalOptions="StartAndExpand">
             <StackLayout>
                 <Label Text="Twoja nazwa" TextColor="White" FontFamily="{StaticResource Medium}"/>
@@ -24,34 +25,15 @@
                 </StackLayout>
             </StackLayout>
             <StackLayout>
-                <Label Text="Ilość" TextColor="White" FontFamily="{StaticResource Medium}"/>
-                <StackLayout Orientation="Horizontal">
-                    <Entry x:Name="QuantityEntry" Text="{Binding ProductQuantity}" HorizontalOptions="FillAndExpand" Placeholder="Podaj ilość" 
-                           Keyboard="Numeric" TextChanged="OnQuantityEntryTextChanged"/>
-                    <Image x:Name="QuantitytEraseImage" Style="{StaticResource EraseImageStyle}" IsVisible="False"
-                                                attached:ClickEventAttached.ClickCommand="{Binding EraseEntryCommand}"
-                                                attached:ClickEventAttached.ClickParameter="{Binding Source={x:Reference QuantityEntry}}"/>
-                </StackLayout>
-            </StackLayout>
-            <StackLayout>
                 <Label Text="Komentarz" TextColor="White" FontFamily="{StaticResource Medium}"/>
-                <StackLayout Orientation="Horizontal">
-                    <Entry x:Name="DescriptionEntry" Text="{Binding ProductComment}" Placeholder="Tu możesz coś dopisać"  
+                <StackLayout Orientation="Vertical">
+                    <Editor x:Name="Descriptionditor" Text="{Binding ProductComment}" HeightRequest="100" 
                            HorizontalOptions="FillAndExpand" TextChanged="OnDescriptionEntryTextChanged"/>
-                    <Image x:Name="DescriptionEraseImage" Style="{StaticResource EraseImageStyle}" IsVisible="False"
-                                                attached:ClickEventAttached.ClickCommand="{Binding EraseEntryCommand}"
-                                                attached:ClickEventAttached.ClickParameter="{Binding Source={x:Reference DescriptionEntry}}"/>
+                    <Image x:Name="DescriptionEraseImage" Style="{StaticResource EraseImageStyle}" IsVisible="False" HorizontalOptions="End"
+                                                attached:ClickEventAttached.ClickCommand="{Binding EraseEditorCommand}"
+                                                attached:ClickEventAttached.ClickParameter="{Binding Source={x:Reference Descriptionditor}}"/>
                 </StackLayout>
             </StackLayout>
-            <StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label VerticalTextAlignment="Center" Text="Dodaj do ulubionych" TextColor="White" FontFamily="{StaticResource Medium}"/>
-                    <toggleImages:FavouriteButton VerticalOptions="Start" HorizontalOptions="EndAndExpand" Toggled="OnProductAddedToFavourite"/>
-                </StackLayout>
-            </StackLayout>
-        </StackLayout>
-        <StackLayout Padding="5">
-            <StackLayout Orientation="Vertical" x:Name="ProductTypesContainer"/>
         </StackLayout>
     </StackLayout>
 </StackLayout>

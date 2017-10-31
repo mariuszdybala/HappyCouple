@@ -136,11 +136,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Custom\Helpers.cs" />
+    <Compile Include="Delegates\AlertTextFieldDelegate.cs" />
     <Compile Include="Delegates\CustomTextFieldDelegate.cs" />
     <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Providers\AlertProvider.cs" />
+    <Compile Include="Providers\AlertsAndNotificationsesAndNotificationsProvider.cs" />
     <Compile Include="Providers\SystemInfoProvider.cs" />
     <Compile Include="Renderers\CircularProgressRenderer.cs" />
     <Compile Include="Renderers\CustomViewCellRenderer.cs" />
@@ -321,6 +322,9 @@
       <HintPath>..\..\packages\Xamarin.Forms.2.3.4.224\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="BTProgressHUD">
+      <HintPath>..\..\packages\BTProgressHUD.1.2.0.6\lib\Xamarin.iOS10\BTProgressHUD.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HappyCoupleMobile\HappyCoupleMobile.csproj">

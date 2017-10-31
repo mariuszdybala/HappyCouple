@@ -21,8 +21,6 @@ namespace HappyCoupleMobile.Mvvm.Renderers.ProductCell
 			BindableProperty.Create(nameof(DeleteCommand), typeof(ICommand), typeof(BaseSwipeableProductCell));
 		public static BindableProperty SelectCommandProperty =
 			BindableProperty.Create(nameof(SelectCommand), typeof(ICommand), typeof(BaseSwipeableProductCell));
-		public static BindableProperty CheckedCommandProperty =
-			BindableProperty.Create(nameof(CheckedCommand), typeof(ICommand), typeof(BaseSwipeableProductCell));
 	    
 		public ICommand EditCommand
 		{
@@ -42,12 +40,6 @@ namespace HappyCoupleMobile.Mvvm.Renderers.ProductCell
 			set => SetValue(SelectCommandProperty, value);
 		}
 
-		public ICommand CheckedCommand
-		{
-			get => (ICommand) GetValue(CheckedCommandProperty);
-			set => SetValue(CheckedCommandProperty, value);
-		}
-
         public ProductVm Product
         {
             get => (ProductVm)GetValue(ProductProperty);
@@ -56,7 +48,10 @@ namespace HappyCoupleMobile.Mvvm.Renderers.ProductCell
 
         public void OnProductSelected()
         {
-            
+	        if (SelectCommand != null && SelectCommand.CanExecute(Product))
+	        {
+		        SelectCommand.Execute(Product);
+	        }
         }
 	}
 }

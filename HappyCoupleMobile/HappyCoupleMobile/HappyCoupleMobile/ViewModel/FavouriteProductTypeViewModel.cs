@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Command;
 using HappyCoupleMobile.Model;
+using HappyCoupleMobile.Mvvm.Messages;
 using HappyCoupleMobile.Mvvm.Messages.Interface;
 using HappyCoupleMobile.Services;
 using HappyCoupleMobile.Services.Interfaces;
@@ -34,9 +35,10 @@ namespace HappyCoupleMobile.ViewModel
 		
 		private async Task OnProductTypeTapped(ProductType productType)
 		{
-			await NavigateTo<FavouriteProductsView, FavouriteProductsViewModel>();
+			await NavigateToWithMessage<FavouriteProductsView, FavouriteProductsViewModel>(new BaseMessage<FavouriteProductsViewModel>(MessagesKeys.ProductTypeKey, productType));
+			
 		}
-
+		
 		private async Task LoadProductTypes()
 		{
 			var productTypes = await _productService.GetAllProductTypesAync();

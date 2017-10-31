@@ -40,21 +40,28 @@ namespace HappyCoupleMobile.Services
             return productTypesDictionary;
         }
 
-        public ProductVm CreateProductVm(string name, string comment, string quantity, ProductType productType, User user)
+        public ProductVm CreateProductVm(string name, string comment, int quantity, ProductType productType, User user)
         {
             var product = new Product();
 
             product.Name = name;
             product.Comment = comment;
-            product.Quantity = int.Parse(quantity);
+            product.Quantity = quantity;
             product.AddDate = DateTime.UtcNow;
             product.AddedById = user.Id;
             product.ProductType = productType;
             product.ProductTypeId = productType.Id;
 
             return new ProductVm(product);
-
         }
+	    
+	    public ProductVm CreateProductVm(string name, string comment)
+	    {
+		    var product = new Product();
+		    product.Name = name;
+		    product.Comment = comment;
+		    return new ProductVm(product);
+	    }
     }
 
 }

@@ -7,13 +7,12 @@
              HorizontalOptions="Center"
              HeightRequest="25"
              WidthRequest="200"
-             OutlineColor="{StaticResource FifthColor}"
              BackgroundColor="{StaticResource SecondColor}" 
              Padding="5">
     <StackLayout Orientation="Horizontal">
         <Image Source="{StaticResource AddProduct}"
                    HorizontalOptions="CenterAndExpand"/>
-        <Label Text="Add Product" TextColor="White" 
+        <Label Text="{Binding ButtonText, Source={x:Reference AddProductButton}}" TextColor="White" 
                    FontFamily="{StaticResource Medium}" 
                    VerticalTextAlignment="Center"
                    HorizontalOptions="StartAndExpand"/>

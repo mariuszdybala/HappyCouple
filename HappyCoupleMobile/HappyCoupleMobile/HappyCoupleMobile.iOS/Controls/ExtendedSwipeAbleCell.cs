@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Foundation;
 using HappyCoupleMobile.iOS.Delegates;
 using UIKit;
@@ -17,14 +18,12 @@ namespace HappyCoupleMobile.iOS.Controls
         private ProductVm _product;
         public ProductVm Product
         {
-            get { return _product; }
-            set
-            {
-                Name.Text = value.Name;
-                Comment.Text = value.Comment;
-                Quantity.Text = value.Quantity.ToString();
-                _product = value;
-            }
+            get => _product;
+	        set
+	        {
+		        _product = value;
+		        UpdateProduct();
+	        }
         }
 
         static ExtendedSwipeAbleCell()
@@ -36,6 +35,13 @@ namespace HappyCoupleMobile.iOS.Controls
         {
             // Note: this .ctor should not contain any initialization logic.
         }
+
+	    private void UpdateProduct()
+	    {
+		    Name.Text = Product.Name;
+		    Comment.Text = Product.Comment;
+		    Quantity.Text = Product.Quantity.ToString();
+	    }
 
         public void UpdateCell(ProductVm product, Action productSelected, bool hideCheckbox = false, bool hideProductQuantity = false)
         {
@@ -49,11 +55,12 @@ namespace HappyCoupleMobile.iOS.Controls
 	    private void AddGestureToView(Action onProductSelected)
 	    {		    
 		    var tapGesture = new UITapGestureRecognizer();
+		    tapGesture.DelaysTouchesBegan = true;
 
 		    tapGesture.AddTarget(OnProductChecked);
 		    tapGesture.AddTarget(onProductSelected);
 
-		    this.AddGestureRecognizer(tapGesture);
+		    ProductDetailsStack.AddGestureRecognizer(tapGesture);
 	    }
 
         private void OnProductChecked()

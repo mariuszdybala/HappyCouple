@@ -43,8 +43,8 @@ namespace HappyCoupleMobile.iOS
 
         private void RegisterIoC()
         {
-
             SimpleIoc.Default.Register<ISystemInfoProvider, SystemInfoProvider>();
+	        SimpleIoc.Default.Register<IAlertsAndNotificationsProvider,AlertsAndNotificationsesAndNotificationsProvider>();
         }
     }
 }

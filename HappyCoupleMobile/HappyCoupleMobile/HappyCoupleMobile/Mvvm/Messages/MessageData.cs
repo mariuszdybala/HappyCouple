@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using HappyCoupleMobile.Mvvm.Messages.Interface;
+using HappyCoupleMobile.VM;
 
 namespace HappyCoupleMobile.Mvvm.Messages
 {
@@ -52,5 +53,10 @@ namespace HappyCoupleMobile.Mvvm.Messages
 
             return new TValue();
         }
+
+	    public ProductVm GetFirstOrDefaultProduct()
+	    {
+		    return Data.Values.OfType<ProductVm>().FirstOrDefault();
+	    }
     }
 }

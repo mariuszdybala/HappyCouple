@@ -1,5 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using HappyCoupleMobile.Services.Interfaces;
+using HappyCoupleMobile.ViewModel.Abstract;
 using Xamarin.Forms;
 
 namespace HappyCoupleMobile.Services
@@ -37,5 +39,25 @@ namespace HappyCoupleMobile.Services
             await _navigation.PopToRootAsync();
         }
 
+	    public BaseHappyViewModel GetLastViewModel()
+	    {
+		    var previousContentPage = GetPreviousContentPage();
+
+		    return previousContentPage?.BindingContext as BaseHappyViewModel;
+	    }
+
+	    private ContentPage GetPreviousContentPage()
+	    {
+		    if (_navigation.NavigationStack.Count > 1)
+		    {
+			    var index = _navigation.NavigationStack.Count - 2;
+			    
+			    var lastPage = _navigation.NavigationStack[index] as ContentPage;
+
+			    return lastPage;
+		    }
+
+		    return null;
+	    }
     }
 }

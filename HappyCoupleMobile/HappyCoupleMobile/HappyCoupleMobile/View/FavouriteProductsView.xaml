@@ -3,33 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:abstract="clr-namespace:HappyCoupleMobile.View.Abstract;assembly=HappyCoupleMobile"
              xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
-             xmlns:toggleImages="clr-namespace:HappyCoupleMobile.Mvvm.Controls.ToggleImages;assembly=HappyCoupleMobile"
-             xmlns:favouriteProductList="clr-namespace:HappyCoupleMobile.Mvvm.Controls.FavouriteProductList;assembly=HappyCoupleMobile"
-             xmlns:horizontalCarousel="clr-namespace:HappyCoupleMobile.Mvvm.Controls.HorizontalCarousel;assembly=HappyCoupleMobile"
-             xmlns:editProductList="clr-namespace:HappyCoupleMobile.Mvvm.Controls.EditProductList;assembly=HappyCoupleMobile"
-             xmlns:buttons="clr-namespace:HappyCoupleMobile.Mvvm.Controls.Buttons;assembly=HappyCoupleMobile"
              xmlns:productCell="clr-namespace:HappyCoupleMobile.Mvvm.Renderers.ProductCell;assembly=HappyCoupleMobile"
              BindingContext="{Binding FavouriteProductsViewModel, Source={StaticResource ViewModelLocator}}"
              x:Class="HappyCoupleMobile.View.FavouriteProductsView"
 		     x:Name="FavouriteProductsView">
     <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
-        <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Zapisane produkty"
+        <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftItemTapCommand="{Binding GoBackCommand}" PanelHeader="Zapisane produkty"
                                   RightIconSource="{StaticResource AddToListWhite}" RightIconTapCommand="{Binding GoToAddProductToFavoriteCommand}"/>
-        <StackLayout Margin="0,10,0,0">
-	        <controls:ExtendedListView Margin="0,10,0,0" BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding MockListForProduct}">
-		        <controls:ExtendedListView.ItemTemplate>
+        <StackLayout Margin="0,10,0,0" Spacing="0">
+	        <StackLayout Margin="3" Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">
+		        <Image Source="{Binding SelectedProductType.IconName, Converter={StaticResource IconNameToImageSourceConverter}}" VerticalOptions="Center"/>
+		        <Label Text="{Binding SelectedProductType.Type}" FontFamily="{StaticResource Medium}" TextColor="White" VerticalOptions="Center"/>
+	        </StackLayout>
+	        <BoxView HeightRequest="1" Margin="0,10,0,0" BackgroundColor="{StaticResource ThirthColor}"/>
+	        <ListView BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding MockListForProduct}">
+		        <ListView.ItemTemplate>
 			        <DataTemplate>
-					        <productCell:SwipeableProductCell ShowCheckbox="False" ShowProductQuantity="False" Product="{Binding .}"/>
+					        <productCell:SwipeableProductCell ShowCheckbox="False" ShowProductQuantity="False" 
+					                                          Product="{Binding .}"
+					                                          DeleteCommand="{Binding BindingContext.DeleteProductCommand, Source={x:Reference FavouriteProductsView}}"
+					                                          EditCommand="{Binding BindingContext.EditProductCommand, Source={x:Reference FavouriteProductsView}}"
+					                                          SelectCommand="{Binding BindingContext.ProductSelectedCommand, Source={x:Reference FavouriteProductsView}}"/>
 			        </DataTemplate>
-		        </controls:ExtendedListView.ItemTemplate>>
-	        </controls:ExtendedListView>
+		        </ListView.ItemTemplate>>
+	        </ListView>
         </StackLayout>
-	    <StackLayout Margin="10" IsVisible="False" x:Name="QuantityPanel">
-		    <Entry Text="" Keyboard="Numeric" WidthRequest="100"/>
-		    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-			    <buttons:ImageButton x:Name="OkPanelButton" ButtonImage="{StaticResource Checked}" ButtonText="OK" HorizontalOptions="FillAndExpand"/>
-			    <buttons:ImageButton x:Name="CancelPanelButton" ButtonImage="{StaticResource CloseWindow}" ButtonText="Cancel" HorizontalOptions="FillAndExpand"/>
-		    </StackLayout>
-	    </StackLayout>
     </StackLayout>
 </abstract:BaseHappyContentPage>

@@ -8,6 +8,7 @@ using HappyCoupleMobile.Model;
 using HappyCoupleMobile.Mvvm.Messages;
 using HappyCoupleMobile.Mvvm.Messages.Interface;
 using HappyCoupleMobile.Notification.Interfaces;
+using HappyCoupleMobile.Providers.Interfaces;
 using HappyCoupleMobile.Repositories.Interfaces;
 using HappyCoupleMobile.Services;
 using HappyCoupleMobile.Services.Interfaces;
@@ -23,17 +24,10 @@ namespace HappyCoupleMobile.ViewModel
         private readonly IShoppingListService _shoppingListService;
         private readonly IShoppingListRepository _shoppingListRepository;
         private readonly INotificationManager _notificationManager;
+	    private readonly IAlertsAndNotificationsProvider _alertsAndNotificationsProvider;
 
-        private ObservableCollection<ShoppingListVm> _closedShoppingLists;
+	    private ObservableCollection<ShoppingListVm> _closedShoppingLists;
         private ObservableCollection<ShoppingListVm> _activeShoppingLists;
-
-        private bool _showAddNewListPopUp;
-
-        public bool ShowAddNewListPopUp
-        {
-            get { return _showAddNewListPopUp; }
-            set { Set(ref _showAddNewListPopUp, value); }
-        }
 
         public Command AddNewListCommand { get; set; }
         public Command<string> CreateNewListCommand { get; set; }
@@ -41,7 +35,6 @@ namespace HappyCoupleMobile.ViewModel
         public Command<ShoppingListVm> AddProductToListCommand { get; set; }
         public Command<ShoppingListVm> CloseListCommand { get; set; }
         public Command<ShoppingListVm> EditListCommand { get; set; }
-        public Command CloseAddNewListPopUpCommand { get; set; }
 
         public ObservableCollection<ShoppingListVm> ActiveShoppingLists
         {
@@ -62,12 +55,13 @@ namespace HappyCoupleMobile.ViewModel
         }
 
         public ShoppingsViewModel(ISimpleAuthService simpleAuthService, IShoppingListService shoppingListService, IShoppingListRepository shoppingListRepository,
-                                    INotificationManager notificationManager) : base(simpleAuthService)
+                                    INotificationManager notificationManager,  IAlertsAndNotificationsProvider alertsAndNotificationsProvider) : base(simpleAuthService)
         {
             _shoppingListService = shoppingListService;
             _shoppingListRepository = shoppingListRepository;
             _notificationManager = notificationManager;
-            RegisterCommand();
+	        _alertsAndNotificationsProvider = alertsAndNotificationsProvider;
+	        RegisterCommand();
 
             ActiveShoppingLists = new ObservableCollection<ShoppingListVm>();
         }
@@ -75,12 +69,10 @@ namespace HappyCoupleMobile.ViewModel
         private void RegisterCommand()
         {
             AddNewListCommand = new Command(OnAddNewListCommand);
-            CreateNewListCommand = new Command<string>(async (newListName) => await OnCreateNewListCommand(newListName));
             DeleteListCommand = new Command<ShoppingListVm>(OnDeleteList);
             AddProductToListCommand = new Command<ShoppingListVm>(OnAddProductToList);
             CloseListCommand = new Command<ShoppingListVm>(OnCloseList);
             EditListCommand = new Command<ShoppingListVm>(async(shoppingList) => await OnEditList(shoppingList));
-            CloseAddNewListPopUpCommand = new Command(OnCloseAddNewListPopUpCommand);
         }
 
         protected override async Task OnNavigateTo(IMessageData message)
@@ -127,35 +119,27 @@ namespace HappyCoupleMobile.ViewModel
             }
         }
 
-        private void OnCloseAddNewListPopUpCommand()
-        {
-            ShowAddNewListPopUp = false;
-        }
-
-        private async Task OnCreateNewListCommand(string newListName)
-        {
-            //var newShowppingList = await _shoppingListService.AddShoppingList(ActiveShoppingLists, newListName);
-
-            //await NavigateToWithMessage<EditShoppingListView, EditShoppingListViewModel>(new BaseMessage<EditShoppingListViewModel>("ShoppingList", newShowppingList));
-
-
-            ActiveShoppingLists.Add(new ShoppingListVm(
-                new ShoppingList
-                {
-                    Id = ActiveShoppingLists.Any()? ActiveShoppingLists.Max(x=>x.Id) + 1 : 0,
-                    Name = newListName,
-                    AddDate = DateTime.UtcNow
-                }));
-
-            OnCloseAddNewListPopUpCommand();
-        }
-
         private void OnAddNewListCommand()
         {
-            ShowAddNewListPopUp = true;
+	        _alertsAndNotificationsProvider.ShowAlertWithTextField("Wpisz swoją nazwę listy", "Nowa lista zakupów", Keyboard.Default);
+	        _alertsAndNotificationsProvider.AlertConfirmed += AlertsAndNotificationsProviderOnAlertConfirmed;
         }
 
-        public void Upadte(Product data)
+	    private void AlertsAndNotificationsProviderOnAlertConfirmed(string listName)
+	    {
+		    _alertsAndNotificationsProvider.AlertConfirmed -= AlertsAndNotificationsProviderOnAlertConfirmed;
+
+		    ActiveShoppingLists.Add(new ShoppingListVm(
+			    new ShoppingList
+			    {
+				    Id = ActiveShoppingLists.Any()? ActiveShoppingLists.Max(x=>x.Id) + 1 : 0,
+				    Name = listName,
+				    AddDate = DateTime.UtcNow
+			    }));
+		    _alertsAndNotificationsProvider.ShowSuccessToast();
+	    }
+
+	    public void Upadte(Product data)
         {
         }
 

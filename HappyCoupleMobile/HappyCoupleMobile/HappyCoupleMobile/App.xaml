@@ -10,6 +10,7 @@
             <converters:BoolToValueConverter x:TypeArguments="Color" x:Key="BoolToColorConverter" TrueValue="Green" FalseValue="Red"/>
             <converters:IconNameToImageSourceConverter x:Key="IconNameToImageSourceConverter"/>
             <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+            <converters:ObjectInstanceValueToBooleanConverter x:Key="ObjectInstanceValueToBooleanConverter"/>
             
             <vm:ViewModelLocator x:Key="ViewModelLocator"/>
 

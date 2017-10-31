@@ -9,6 +9,7 @@ namespace HappyCoupleMobile.Services.Interfaces
     {
         Task<IList<ProductType>> GetAllProductTypesAync();
         Task<Dictionary<string, IList<Product>>> GetFavouriteTaskProductTypesWithProductsAsync();
-        ProductVm CreateProductVm(string name, string comment, string quantity, ProductType productType, User user);
+        ProductVm CreateProductVm(string name, string comment, int quantity, ProductType productType, User user);
+	    ProductVm CreateProductVm(string name, string comment);
     }
 }

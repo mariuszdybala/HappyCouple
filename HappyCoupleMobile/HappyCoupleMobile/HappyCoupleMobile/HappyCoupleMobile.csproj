@@ -66,6 +66,7 @@
     <Compile Include="Data\ShoppingListDoa.cs" />
     <Compile Include="Data\UserDao.cs" />
     <Compile Include="Enums\AlertType.cs" />
+    <Compile Include="Enums\OperationMode.cs" />
     <Compile Include="Enums\ShoppingListStatus.cs" />
     <Compile Include="Enums\ShoppingListTabType.cs" />
     <Compile Include="Enums\SwipeButtonType.cs" />
@@ -168,7 +169,7 @@
     <Compile Include="Notification\ShoppingListNotificator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\BaseSystemInfoProvider.cs" />
-    <Compile Include="Providers\Interfaces\IAlertProvider.cs" />
+    <Compile Include="Providers\Interfaces\IAlertsAndNotificationsProvider.cs" />
     <Compile Include="Providers\Interfaces\ISqliteConnectionProvider.cs" />
     <Compile Include="Providers\Interfaces\ISystemInfoProvider.cs" />
     <Compile Include="Providers\SqliteConnectionProvider.cs" />

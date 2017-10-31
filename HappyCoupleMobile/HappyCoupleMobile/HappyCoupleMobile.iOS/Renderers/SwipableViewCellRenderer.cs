@@ -14,7 +14,6 @@ namespace HappyCoupleMobile.iOS.Renderers
 {
 	public class SwipableViewCellRenderer : ViewCellRenderer
 	{
-
 		public override UITableViewCell GetCell(Cell item, UITableViewCell reusableCell, UITableView tv)
 		{
 			var formsCell = (BaseSwipeableProductCell)item;
@@ -97,6 +96,7 @@ namespace HappyCoupleMobile.iOS.Renderers
 		public override void DidTriggerRightUtilityButton(SWTableViewCell cell, nint index)
 		{
 			_baseSwipeableProductCell.SwipeButtons[(int)index].Clicked.Invoke();
+			cell.HideUtilityButtons(true);
 		}
 	}
 }

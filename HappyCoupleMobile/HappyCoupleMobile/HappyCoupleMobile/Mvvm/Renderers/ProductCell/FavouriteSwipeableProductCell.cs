@@ -19,7 +19,7 @@ namespace HappyCoupleMobile.Mvvm.Renderers.ProductCell
 			var editButton = new SwipeButton
 			{
 				ButtonType = SwipeButtonType.Edit,
-				Text = "Zmień",
+				Text = "Edytuj",
 				Color = Color.FromHex("#4054B2"),
 				ImageSource = (FileImageSource) Application.Current.Resources["EditList"]
 			};
@@ -31,8 +31,27 @@ namespace HappyCoupleMobile.Mvvm.Renderers.ProductCell
 				Color = Color.FromHex("#F6585D"),
 				ImageSource = (FileImageSource) Application.Current.Resources["Delete"]
 			};
+			
+			deleteButton.Clicked += DeleteButtonOnClicked;
+			editButton.Clicked += EditButtonOnClicked;
 
 			SwipeButtons = new List<SwipeButton> {editButton, deleteButton};
+		}
+		
+		private void DeleteButtonOnClicked()
+		{
+			if (DeleteCommand != null && DeleteCommand.CanExecute(Product))
+			{
+				DeleteCommand.Execute(Product);
+			}
+		}
+
+		private void EditButtonOnClicked()
+		{
+			if (EditCommand != null && EditCommand.CanExecute(Product))
+			{
+				EditCommand.Execute(Product);
+			}
 		}
 	}
 }

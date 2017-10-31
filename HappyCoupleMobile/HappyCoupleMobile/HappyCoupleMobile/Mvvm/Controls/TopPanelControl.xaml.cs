@@ -14,7 +14,10 @@ namespace HappyCoupleMobile.Mvvm.Controls
     public partial class TopPanelControl : StackLayout
     {
         public static readonly BindableProperty LeftIconSourceProperty = BindableProperty.Create(
-        nameof(LeftIconSource), typeof(FileImageSource), typeof(TopPanelControl), (FileImageSource)Application.Current.Resources["Couple"]);
+        nameof(LeftIconSource), typeof(FileImageSource), typeof(TopPanelControl), null);
+	    
+	    public static readonly BindableProperty LeftLabelTextProperty = BindableProperty.Create(
+		    nameof(LeftLabelText), typeof(string), typeof(TopPanelControl));
 
         public static readonly BindableProperty RightIconSourceProperty = BindableProperty.Create(
         nameof(RightIconSource), typeof(FileImageSource), typeof(TopPanelControl), null);
@@ -25,14 +28,20 @@ namespace HappyCoupleMobile.Mvvm.Controls
         public static readonly BindableProperty RightIconTapCommandProperty = BindableProperty.Create(
         nameof(RightIconTapCommand), typeof(ICommand), typeof(TopPanelControl), defaultBindingMode: BindingMode.OneWay);
 
-        public static readonly BindableProperty LeftIconTapCommandProperty = BindableProperty.Create(
-        nameof(LeftIconTapCommand), typeof(ICommand), typeof(TopPanelControl), defaultBindingMode: BindingMode.OneWay);
+        public static readonly BindableProperty LeftItemTapCommandProperty = BindableProperty.Create(
+        nameof(LeftItemTapCommand), typeof(ICommand), typeof(TopPanelControl), defaultBindingMode: BindingMode.OneWay);
 
         public FileImageSource LeftIconSource
         {
             get { return (FileImageSource)GetValue(LeftIconSourceProperty); }
             set { SetValue(LeftIconSourceProperty, value); }
         }
+	    
+	    public string LeftLabelText
+	    {
+		    get { return (string)GetValue(LeftLabelTextProperty); }
+		    set { SetValue(LeftLabelTextProperty, value); }
+	    }
 
         public FileImageSource RightIconSource
         {
@@ -52,10 +61,10 @@ namespace HappyCoupleMobile.Mvvm.Controls
             set { SetValue(RightIconTapCommandProperty, value); }
         }
 
-        public ICommand LeftIconTapCommand
+        public ICommand LeftItemTapCommand
         {
-            get { return (ICommand)GetValue(LeftIconTapCommandProperty); }
-            set { SetValue(LeftIconTapCommandProperty, value); }
+            get { return (ICommand)GetValue(LeftItemTapCommandProperty); }
+            set { SetValue(LeftItemTapCommandProperty, value); }
         }
 
         public TopPanelControl()
@@ -63,14 +72,14 @@ namespace HappyCoupleMobile.Mvvm.Controls
             InitializeComponent();
         }
 
-        private void OnLeftIconImageTapped(object sender, EventArgs e)
+        private void OnLeftItemTapped(object sender, EventArgs e)
         {
-            Image leftIconImage = (Image) sender;
-            leftIconImage.SetAnimation();
+	        Xamarin.Forms.View leftView = (Xamarin.Forms.View) sender;
+	        leftView.SetAnimation();
 
-            if (LeftIconTapCommand != null && LeftIconTapCommand.CanExecute(null))
+            if (LeftItemTapCommand != null && LeftItemTapCommand.CanExecute(null))
             {
-                LeftIconTapCommand.Execute(null);
+                LeftItemTapCommand.Execute(null);
             }
         }
 

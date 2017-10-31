@@ -8,15 +8,13 @@
              x:Class="HappyCoupleMobile.View.AddProductView"
              BindingContext="{Binding AddProductViewModel, Source={StaticResource ViewModelLocator}}">
     <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
-        <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftIconTapCommand="{Binding GoBackCommand}" PanelHeader="Dodaj produkt"
-                                  RightIconSource="{StaticResource AddFromFavourites}" RightIconTapCommand="{Binding GoToFavouriteProductsCommand}"/>
+        <controls:TopPanelControl LeftLabelText="Cancel" LeftItemTapCommand="{Binding GoBackCommand}" PanelHeader="Dodaj/edytuj"/>
         <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
             <controls:AddProductForm 
-                                     ProductComment="{Binding ProductComment}"
-                                     ProductName="{Binding ProductName}"
-                                     ProductQuantity="{Binding ProductQuantity}"
+                                     ProductComment="{Binding Product.Comment}"
+                                     ProductName="{Binding Product.Name}"
                                      SelectedProductType="{Binding ProductType}"/>
         </StackLayout>
-        <buttons:AddProductButton VerticalOptions="EndAndExpand" Margin="0,0,0,10" AddProductButtonClickedCommand="{Binding SaveProductCommand}"/>
+        <buttons:AddProductButton ButtonText="{Binding SaveButtonText}" VerticalOptions="EndAndExpand" Margin="0,0,0,10" AddProductButtonClickedCommand="{Binding SaveProductCommand}"/>
     </StackLayout>
 </views:BaseHappyContentPage>

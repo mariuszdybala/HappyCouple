@@ -5,11 +5,17 @@
              x:Name="TopPanelControl">
     <StackLayout Spacing="0" BackgroundColor="{StaticResource FirstColor}" BindingContext="{x:Reference TopPanelControl}">
         <StackLayout Orientation="Horizontal" Margin="0,20,0,0" Padding="10,10" BackgroundColor="{StaticResource FirstColor}">
-            <Image x:Name="LeftIconImage" Source="{Binding LeftIconSource}">
+            <Image x:Name="LeftIconImage" Source="{Binding LeftIconSource}" IsVisible="{Binding LeftIconSource, Converter={StaticResource ObjectInstanceValueToBooleanConverter}}">
                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnLeftIconImageTapped"/>
+                    <TapGestureRecognizer Tapped="OnLeftItemTapped"/>
                 </Image.GestureRecognizers>
             </Image>
+	        <Label x:Name="LeftLabel" TextColor="White" Text="{Binding LeftLabelText}" FontFamily="{StaticResource Medium}" VerticalOptions="Center"
+	               FontSize="15" IsVisible="{Binding LeftLabelText, Converter={StaticResource ObjectInstanceValueToBooleanConverter}}">
+		        <Label.GestureRecognizers>
+			        <TapGestureRecognizer Tapped="OnLeftItemTapped"/>
+		        </Label.GestureRecognizers>
+	        </Label>
             <Label Text="{Binding PanelHeader}" FontFamily="{StaticResource Medium}" FontSize="20" TextColor="White"
                        HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
             <Image x:Name="RightIconImage" Source="{Binding RightIconSource}">
