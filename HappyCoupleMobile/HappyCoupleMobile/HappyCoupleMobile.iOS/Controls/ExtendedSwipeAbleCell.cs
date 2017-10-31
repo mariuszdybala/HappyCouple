@@ -41,16 +41,28 @@ namespace HappyCoupleMobile.iOS.Controls
 		    Name.Text = Product.Name;
 		    Comment.Text = Product.Comment;
 		    Quantity.Text = Product.Quantity.ToString();
+		    ToggleBoughtCheckbox(Product.IsBought);
 	    }
 
         public void UpdateCell(ProductVm product, Action productSelected, bool hideCheckbox = false, bool hideProductQuantity = false)
         {
             Product = product;
+	        Product.PropertyChanged -= OnQuantityChanged;
+	        
             CheckboxStackView.Hidden = hideCheckbox;
 	        Quantity.Hidden = hideProductQuantity;
 
+	        Product.PropertyChanged += OnQuantityChanged;
 	        AddGestureToView(productSelected);
         }
+
+	    private void OnQuantityChanged(object sender, PropertyChangedEventArgs e)
+	    {
+		    if (e.PropertyName == nameof(Product.Quantity))
+		    {
+			    Quantity.Text = Product.Quantity.ToString();
+		    }
+	    }
 
 	    private void AddGestureToView(Action onProductSelected)
 	    {		    
@@ -67,7 +79,7 @@ namespace HappyCoupleMobile.iOS.Controls
         {
             Product.IsBought = !Product.IsBought;
 
-            CheckboxView.Image = Product.IsBought ? UIImage.FromBundle("checked.png") : UIImage.FromBundle("unchecked.png");
+            ToggleBoughtCheckbox(Product.IsBought);
         }
 	    
 	    public void SetVisualProperties()
@@ -82,5 +94,10 @@ namespace HappyCoupleMobile.iOS.Controls
             Quantity.Font = UIFont.FromName("Quicksand-Medium", 20f);
 
         }
+
+	    private void ToggleBoughtCheckbox(bool isBought)
+	    {
+		    CheckboxView.Image = isBought ? UIImage.FromBundle("checked.png") : UIImage.FromBundle("unchecked.png");
+	    }
     }
 }

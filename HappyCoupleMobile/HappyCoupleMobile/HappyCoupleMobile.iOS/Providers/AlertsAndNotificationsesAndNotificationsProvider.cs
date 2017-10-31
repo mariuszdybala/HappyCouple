@@ -30,7 +30,7 @@ namespace HappyCoupleMobile.iOS.Providers
 			BTProgressHUD.ShowImage(UIImage.FromFile("checked.png"), successText);
 		}
 
-		public void ShowAlertWithTextField(string message, string title, Keyboard keyboardType)
+		public void ShowAlertWithTextField(string message, string title, Keyboard keyboardType, object parameter = null)
 		{
 			var alertContoller = UIAlertController.Create(title, message, UIAlertControllerStyle.Alert);
 
@@ -47,7 +47,15 @@ namespace HappyCoupleMobile.iOS.Providers
 			_addAction = UIAlertAction.Create("Dodaj", UIAlertActionStyle.Destructive, (action) =>
 			{
 				var nameTextField = alertContoller.TextFields.First();
-				AlertConfirmed?.Invoke(nameTextField.Text);
+
+				if (parameter == null)
+				{
+					AlertConfirmed?.Invoke(nameTextField.Text);
+				}
+				else
+				{
+					AlertConfirmedWithParameter?.Invoke(nameTextField.Text, parameter);
+				}
 			});
 
 			_addAction.Enabled = false;
@@ -69,5 +77,6 @@ namespace HappyCoupleMobile.iOS.Providers
 		}
 
 		public event Action<string> AlertConfirmed;
+		public event Action<string, object> AlertConfirmedWithParameter;
 	}
 }

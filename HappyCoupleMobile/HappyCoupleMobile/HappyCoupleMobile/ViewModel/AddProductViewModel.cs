@@ -19,9 +19,6 @@ namespace HappyCoupleMobile.ViewModel
     public class AddProductViewModel : BaseHappyViewModel
     {	    
         private readonly IProductServices _productService;
-        private string _productName;
-        private string _productQuantity;
-        private string _productComment;
         private ProductType _productType;
 	    private ProductVm _originProduct;
 	    private ProductVm _product;
@@ -45,24 +42,6 @@ namespace HappyCoupleMobile.ViewModel
 		    get => _originProduct;
 		    set => Set(ref _originProduct, value);
 	    }
-
-        public string ProductName
-        {
-            get => _productName;
-	        set => Set(ref _productName, value);
-        }
-
-        public string ProductQuantity
-        {
-            get => _productQuantity;
-	        set => Set(ref _productQuantity, value);
-        }
-
-        public string ProductComment
-        {
-            get => _productComment;
-	        set => Set(ref _productComment, value);
-        }
 
         public ProductType ProductType
         {
@@ -140,7 +119,6 @@ namespace HappyCoupleMobile.ViewModel
 	    protected override void CleanResources()
         {
             ProductType = null;
-            ProductComment = ProductQuantity = ProductName  = null;
 	        Product = null;
 	        OriginProduct = null;
 	        Editing = false;

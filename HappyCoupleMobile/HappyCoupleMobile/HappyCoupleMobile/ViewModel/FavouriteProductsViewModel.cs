@@ -56,8 +56,6 @@ namespace HappyCoupleMobile.ViewModel
         public void RegisterCommandAndMessages()
         {
             RegisterNavigateToMessage(this);
-
-            //ProductTypeSelectedCommand = new RelayCommand<ProductType>(async(product) => await OnProductTypeSelected(product));
         }
 
         protected override async Task OnNavigateTo(IMessageData message)

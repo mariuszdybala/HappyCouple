@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using HappyCoupleMobile.Mvvm.Messages;
 using HappyCoupleMobile.Mvvm.Messages.Interface;
+using HappyCoupleMobile.Providers.Interfaces;
 using HappyCoupleMobile.Services;
 using HappyCoupleMobile.Services.Interfaces;
 using HappyCoupleMobile.View;
@@ -13,7 +14,8 @@ namespace HappyCoupleMobile.ViewModel
     public class EditShoppingListViewModel : BaseHappyViewModel
     {
         private readonly IProductServices _productServices;
-        private ShoppingListVm _shoppingList;
+	    private readonly IAlertsAndNotificationsProvider _alertsAndNotificationsProvider;
+	    private ShoppingListVm _shoppingList;
 
         public ShoppingListVm ShoppingList
         {
@@ -28,11 +30,12 @@ namespace HappyCoupleMobile.ViewModel
         public Command<ProductVm> EditProductCommand { get; set; }
         public Command UnSubscribeAllEventsFromViewCommand { get; set; }
 
-        public EditShoppingListViewModel(ISimpleAuthService simpleAuthService, IProductServices productServices) : base(simpleAuthService)
+        public EditShoppingListViewModel(ISimpleAuthService simpleAuthService, IProductServices productServices, IAlertsAndNotificationsProvider alertsAndNotificationsProvider) : base(simpleAuthService)
         {
             _productServices = productServices;
+	        _alertsAndNotificationsProvider = alertsAndNotificationsProvider;
 
-            RegisterCommand();
+	        RegisterCommand();
         }
 
         private void RegisterCommand()
@@ -40,7 +43,7 @@ namespace HappyCoupleMobile.ViewModel
             RegisterNavigateToMessage(this);
 
             DeleteProductCommand = new Command<ProductVm>(OnDeleteProduct);
-            EditProductCommand = new Command<ProductVm>(OnEditProduct);
+            EditProductCommand = new Command<ProductVm>(async(product) => await OnEditProduct(product));
             AddProductCommand = new Command(async () => await OnAddProduct());
             ProductCheckedCommand = new Command<ProductVm>(async (product) => await OnProductChecked(product));
         }
@@ -80,9 +83,30 @@ namespace HappyCoupleMobile.ViewModel
             ShoppingList.DeleteProduct(product);
         }
 
-        private void OnEditProduct(ProductVm product)
+        private async Task OnEditProduct(ProductVm product)
         {
+	        _alertsAndNotificationsProvider.ShowAlertWithTextField("ilość produktu", "Wpisz nową", Keyboard.Numeric);
+	        _alertsAndNotificationsProvider.AlertConfirmed += (quantity) =>
+	        {
+		        int newquantityValue;
+
+		        if (int.TryParse(quantity, out newquantityValue))
+		        {
+			        product.Quantity = newquantityValue;
+			        _alertsAndNotificationsProvider.ShowSuccessToast("Ilość zmieniona");
+			        return;
+		        }
+		        
+		        _alertsAndNotificationsProvider.ShowFailedToast("Ilość błędna");
+	        };
+	        
+	        await Task.Yield(); 
         }
+
+	    private void AlertsAndNotificationsProviderOnAlertConfirmed(string productQuantity, object paramter)
+	    {
+
+	    }
 
         protected override void CleanResources()
         {

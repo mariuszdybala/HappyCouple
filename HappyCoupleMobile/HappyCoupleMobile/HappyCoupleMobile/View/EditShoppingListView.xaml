@@ -41,7 +41,8 @@
 		    <ListView.ItemTemplate>
 			    <DataTemplate>
 				    <productCell:SwipeableProductCell ShowCheckbox="True" ShowProductQuantity="True" Product="{Binding .}"
-				                                      SelectCommand="{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}"/>
+				                                      SelectCommand="{Binding BindingContext.ProductCheckedCommand, Source={x:Reference EditShoppingListView}}"
+				                                      EditCommand="{Binding BindingContext.EditProductCommand, Source={x:Reference EditShoppingListView}}"/>
 			    </DataTemplate>
 		    </ListView.ItemTemplate>
 		    <ListView.GroupHeaderTemplate>
