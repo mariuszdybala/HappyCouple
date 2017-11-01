@@ -40,7 +40,7 @@ namespace HappyCoupleMobile.Services
             return productTypesDictionary;
         }
 
-        public ProductVm CreateProductVm(string name, string comment, int quantity, ProductType productType, User user, bool isFavourite = true)
+        public ProductVm CreateProductVm(string name, string comment, int quantity, ProductType productType, User user, int? favouriteProductId = null, bool isFavourite = true)
         {
             var product = new Product();
 
@@ -52,6 +52,7 @@ namespace HappyCoupleMobile.Services
             product.ProductType = productType;
             product.ProductTypeId = productType.Id;
 	        product.IsFavourite = isFavourite;
+	        product.FavouriteProductId = favouriteProductId;
 
             return new ProductVm(product);
         }
@@ -66,7 +67,7 @@ namespace HappyCoupleMobile.Services
 
 	    public ProductVm CreateProductVmFromFavouriteProduct(ProductVm favouriteProduct, ProductType productType, int quantity, User user)
 	    {
-		    return CreateProductVm(favouriteProduct.Name, favouriteProduct.Comment, quantity, productType, user, false);
+		    return CreateProductVm(favouriteProduct.Name, favouriteProduct.Comment, quantity, productType, user,favouriteProduct.Id, false);
 	    }
     }
 

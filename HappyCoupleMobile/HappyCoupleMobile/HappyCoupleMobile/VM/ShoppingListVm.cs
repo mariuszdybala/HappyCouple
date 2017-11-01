@@ -11,9 +11,7 @@ namespace HappyCoupleMobile.VM
 {
     public class ShoppingListVm : ViewModelBase
     {
-        private ObservableCollection<GroupedProductList> _groupedProducts;
         private ObservableCollection<ProductType> _productTypes;
-
         private string _name;
         private DateTime _addDate;
         private ShoppingListStatus _status;
@@ -24,6 +22,8 @@ namespace HappyCoupleMobile.VM
         private bool _showPlaceholder;
         private int _productsCount;
 
+	    public event Action<OperationMode> ProductChanged;
+	    
         public ShoppingList ShoppingList { get; set; }
 
         public int Id => ShoppingList.Id;
@@ -88,16 +88,6 @@ namespace HappyCoupleMobile.VM
 	        set => Set(ref _productsCount, value);
         }
 
-        public ObservableCollection<GroupedProductList> GroupedProducts
-        {
-            get => _groupedProducts;
-	        set
-            {
-                Set(ref _groupedProducts, value);
-                UpdateAdditionalData();
-            }
-        }
-
 	    public List<ProductVm> Products { get; set; }
 
         public ObservableCollection<ProductType> ProductTypes
@@ -114,18 +104,7 @@ namespace HappyCoupleMobile.VM
             AddDate = ShoppingList.AddDate;
             Status = ShoppingList.Status;
 
-            InitializeProducts();
-            CalculateCurrentShoppingProgress();
-        }
-
-        private void InitializeProducts()
-        {
-	        var groupedData = Products.OrderBy(x => x.ProductType.Type)
-		        .GroupBy(x => x.ProductType, new ProductTypeEqualityComparer())
-		        .Select(x => new GroupedProductList(x))
-		        .ToList();
-
-	        GroupedProducts = new ObservableCollection<GroupedProductList>(groupedData);
+	        UpdateAdditionalData();
         }
 
 	    public void CalculateCurrentShoppingProgress()
@@ -152,44 +131,51 @@ namespace HappyCoupleMobile.VM
 
         private void UpdateProductTypeList()
         {
-            ProductTypes = new ObservableCollection<ProductType>(GroupedProducts.Select(x=>x.ProductType));
-            RaisePropertyChanged(() => ProductTypes);
-        }
-
-        public void AddProduct(ProductVm product)
-        {
-	        ShoppingList.Products.Add(product.ProductModel);
-	        
-	        InitializeProducts();
-	        UpdateAdditionalData();
+            ProductTypes = new ObservableCollection<ProductType>(Products.Select(x=>x.ProductType).Distinct(new ProductTypeEqualityComparer()));
+            //RaisePropertyChanged(() => ProductTypes);
         }
 	    
-	    public void AddProductsRange(IList<ProductVm> products)
+	    public void UpdateProducts(IList<ProductVm> products, bool withNotification = true)
+	    {
+		    foreach (var editedProduct in products)
+		    {
+			    foreach (var product in Products)
+			    {
+				    if (product.FavouriteProductId != editedProduct.Id)
+				    {
+					    continue;
+				    }
+				    
+				    product.Comment = editedProduct.Comment;
+				    product.Name = editedProduct.Name;
+			    }
+		    }
+
+		    if (withNotification)
+		    {
+			    InvokeProductChanged(OperationMode.Edit);
+		    }
+	    }
+
+	    public void InvokeProductChanged(OperationMode operationMode)
+	    {
+		    ProductChanged?.Invoke(operationMode);
+	    }
+	    
+	    public void AddProducts(IList<ProductVm> products, bool withNotification = true)
 	    {
 		    Products.AddRange(products);
-	        
-	        InitializeProducts();
-	        UpdateAdditionalData();
+		    UpdateAdditionalData();
+		    
+		    if (withNotification)
+		    {
+			    InvokeProductChanged(OperationMode.New);
+		    }
 	    }
 
         public void DeleteProduct(ProductVm product)
         {
-	        var productGroup = GroupedProducts.FirstOrDefault(x => x.ProductType.Id == product.ProductType.Id);
-
-	        if (productGroup == null)
-	        {
-		        return;
-	        }
-
-	        productGroup.Remove(product);
-
-	        if (!productGroup.Any())
-	        {
-		        GroupedProducts.Remove(productGroup);
-	        }
-
 	        Products.Remove(product);
-
             UpdateAdditionalData();
         }
     }

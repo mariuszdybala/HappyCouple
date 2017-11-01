@@ -15,6 +15,7 @@ namespace HappyCoupleMobile.ViewModel
 {
 	public class FavouriteProductTypeViewModel : BaseHappyViewModel
 	{
+		private int? _shoppingListId;
 		private readonly IProductServices _productService;
 		public ObservableCollection<ProductType> ProductTypes { get; set; }
 		
@@ -30,12 +31,15 @@ namespace HappyCoupleMobile.ViewModel
 
 		protected override async Task OnNavigateTo(IMessageData message)
 		{
+			_shoppingListId = message.GetInt(MessagesKeys.ShoppingListIdKey);
 			await LoadProductTypes();
 		}
 		
 		private async Task OnProductTypeTapped(ProductType productType)
 		{
-			await NavigateToWithMessage<FavouriteProductsView, FavouriteProductsViewModel>(new BaseMessage<FavouriteProductsViewModel>(MessagesKeys.ProductTypeKey, productType));
+			var message = new BaseMessage<FavouriteProductsViewModel>(MessagesKeys.ProductTypeKey, productType);
+			message.AddData(MessagesKeys.ShoppingListIdKey, _shoppingListId);
+			await NavigateToWithMessage<FavouriteProductsView, FavouriteProductsViewModel>(message);
 			
 		}
 		
@@ -49,6 +53,7 @@ namespace HappyCoupleMobile.ViewModel
 		
 		private void RegisterCommand()
 		{
+			_shoppingListId = null;
 			RegisterNavigateToMessage(this);
 		}
 	}

@@ -98,7 +98,7 @@ namespace HappyCoupleMobile.ViewModel
 
 	    private async Task OnSaveProduct()
         {
-            await SendFeedbackMessage(new FeedbackMessage(MessagesKeys.ProductKey, Editing, Editing ? OperationMode.Edit : OperationMode.New));
+            await SendFeedbackMessage(new FeedbackMessage(MessagesKeys.ProductKey, Product, Editing ? OperationMode.Edit : OperationMode.New));
 
             await NavigateBack();
         }

@@ -10,6 +10,15 @@ namespace HappyCoupleMobile.VM
         public int Id => ProductModel.Id;
         public ProductType ProductType => ProductModel.ProductType;
 
+	    private int? _favouriteProductId;
+	    public int? FavouriteProductId
+	    {
+		    get { return _favouriteProductId; }
+		    set { Set(ref _favouriteProductId, value);
+			    ProductModel.FavouriteProductId = value;
+		    }
+	    }
+	    
         private string _name;
         public string Name
         {
@@ -61,6 +70,7 @@ namespace HappyCoupleMobile.VM
             Comment = ProductModel.Comment;
             Quantity = ProductModel.Quantity;
             IsBought = ProductModel.IsBought;
+	        FavouriteProductId = ProductModel.FavouriteProductId;
         }
     }
 }

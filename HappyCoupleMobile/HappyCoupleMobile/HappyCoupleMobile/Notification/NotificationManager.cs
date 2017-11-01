@@ -54,14 +54,14 @@ namespace HappyCoupleMobile.Notification
         private void RegisterProductObservers()
         {
 #if !GORILLA
-            _productNotificator.Attach(ViewModelLocator.GetViewModel<ShoppingsViewModel>());
+            //_productNotificator.Attach(ViewModelLocator.GetViewModel<ShoppingsViewModel>());
 #endif
         }
 
         private void RegisterShoppingListObservers()
         {
 #if !GORILLA
-            _shoppingListNotificator.Attach(ViewModelLocator.GetViewModel<ShoppingsViewModel>());
+            //_shoppingListNotificator.Attach(ViewModelLocator.GetViewModel<ShoppingsViewModel>());
 #endif
         }
     }

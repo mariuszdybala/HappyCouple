@@ -56,5 +56,8 @@ namespace HappyCoupleMobile.Model
 
         [Column("shopping_list_fk"), ForeignKey(typeof(ShoppingList))]
         public int? ShoppingListId { get; set; }
+	    
+	    [Column("favourite_product_id")]
+	    public int? FavouriteProductId { get; set; }
     }
 }

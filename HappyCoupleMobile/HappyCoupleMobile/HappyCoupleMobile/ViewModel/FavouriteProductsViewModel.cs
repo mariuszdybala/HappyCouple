@@ -20,6 +20,8 @@ namespace HappyCoupleMobile.ViewModel
 	public class FavouriteProductsViewModel : BaseHappyViewModel
 	{
 		private IList<ProductVm> _addedProducts;
+		private IList<ProductVm> _editedProducts;
+		
 		private readonly IProductServices _productService;
 		private readonly IAlertsAndNotificationsProvider _alertsAndNotificationsProvider;
 		private ProductType _selectedProductType;
@@ -31,6 +33,7 @@ namespace HappyCoupleMobile.ViewModel
 		}
 
 		private ObservableCollection<ProductVm> _mockListForProduct;
+		private int? _shoppingListId;
 
 		public ObservableCollection<ProductVm> MockListForProduct
 		{
@@ -61,6 +64,7 @@ namespace HappyCoupleMobile.ViewModel
 			RegisterCommandAndMessages();
 			
 			_addedProducts = new List<ProductVm>();
+			_editedProducts = new List<ProductVm>();
 		}
 
 		public void RegisterCommandAndMessages()
@@ -70,6 +74,7 @@ namespace HappyCoupleMobile.ViewModel
 
 		protected override async Task OnNavigateTo(IMessageData message)
 		{
+			_shoppingListId = message.GetInt(MessagesKeys.ShoppingListIdKey);
 			SelectedProductType = (ProductType) message.GetValue(MessagesKeys.ProductTypeKey);
 
 			LoadProductTypes();
@@ -85,16 +90,17 @@ namespace HappyCoupleMobile.ViewModel
 
 		protected override async Task OnFeedback(IFeedbackMessage feedbackMessage)
 		{
-			if (feedbackMessage.OperationMode != OperationMode.New)
-			{
-				MockListForProduct = new ObservableCollection<ProductVm>(MockListForProduct);
-				return;
-			}
-
 			var product = feedbackMessage.GetFirstOrDefaultProduct();
 
 			if (product == null)
 			{
+				return;
+			}
+			
+			if (feedbackMessage.OperationMode != OperationMode.New)
+			{
+				MockListForProduct = new ObservableCollection<ProductVm>(MockListForProduct);
+				_editedProducts.Add(product);
 				return;
 			}
 
@@ -131,6 +137,11 @@ namespace HappyCoupleMobile.ViewModel
 
 		private async Task OnProductSelected(ProductVm product)
 		{
+			if (!_shoppingListId.HasValue)
+			{
+				return;
+			}
+			
 			_alertsAndNotificationsProvider.ShowAlertWithTextField("ilość produktu", "Wpisz", Keyboard.Numeric, async (quantity) => await OnProductAdded(product, quantity));
 		}
 
@@ -155,13 +166,27 @@ namespace HappyCoupleMobile.ViewModel
 
 		private async Task SendFeedbackAboutAddedProduct()
 		{
-			if (!_addedProducts.Any())
+			if (!_addedProducts.Any() || !_shoppingListId.HasValue)
 			{
 				return;
 			}
 			
-			var feedBackMessage = new FeedbackMessage(MessagesKeys.ProductsRange, _addedProducts);
-			await SendFeedbackMessage<EditShoppingListViewModel>(feedBackMessage);
+			var feedBackMessage = new FeedbackMessage(MessagesKeys.ProductsKey, _addedProducts);
+			feedBackMessage.OperationMode = OperationMode.New;
+			feedBackMessage.AddData(MessagesKeys.ShoppingListIdKey, _shoppingListId);
+			await SendFeedbackMessage<ShoppingsViewModel>(feedBackMessage);
+		}
+		
+		private async Task SendFeedbackAboutChangedProduct()
+		{
+			if (!_editedProducts.Any())
+			{
+				return;
+			}
+			
+			var feedBackMessage = new FeedbackMessage(MessagesKeys.ProductsKey, _editedProducts);
+			feedBackMessage.OperationMode = OperationMode.Edit;
+			await SendFeedbackMessage<ShoppingsViewModel>(feedBackMessage);
 		}
 
 		private void LoadProductTypes()
@@ -214,12 +239,15 @@ namespace HappyCoupleMobile.ViewModel
 		protected override async Task OnGoBackCommand()
 		{
 			await SendFeedbackAboutAddedProduct();
+			await SendFeedbackAboutChangedProduct();
 		    await base.OnGoBackCommand();
 		}
 
 		protected override void CleanResources()
 		{
-			_addedProducts = new List<ProductVm>();
+			_shoppingListId = null;
+			_addedProducts.Clear();
+			_editedProducts.Clear();
 		}
 	}
 }

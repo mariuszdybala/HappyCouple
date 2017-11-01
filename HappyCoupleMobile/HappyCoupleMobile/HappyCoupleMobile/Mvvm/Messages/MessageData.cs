@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using HappyCoupleMobile.Mvvm.Messages.Interface;
 using HappyCoupleMobile.VM;
@@ -40,6 +41,13 @@ namespace HappyCoupleMobile.Mvvm.Messages
 
             return value;
         }
+	    
+	    public int? GetInt(string key)
+	    {
+		    var intData = GetValue(key) as int?;
+
+		    return intData;
+	    }
 
         public TValue GetValue<TValue>() where TValue: new()
         {
@@ -61,7 +69,7 @@ namespace HappyCoupleMobile.Mvvm.Messages
 	    
 	    public IList<ProductVm> GetFirstOrDefaultProductsRange()
 	    {
-		    var products = GetValue(MessagesKeys.ProductsRange);
+		    var products = GetValue(MessagesKeys.ProductsKey);
 
 		    return products as IList<ProductVm>;
 	    }

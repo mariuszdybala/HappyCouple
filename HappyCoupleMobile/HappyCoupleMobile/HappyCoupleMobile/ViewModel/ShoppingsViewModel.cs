@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ using Xamarin.Forms;
 
 namespace HappyCoupleMobile.ViewModel
 {
-    public class ShoppingsViewModel : BaseHappyViewModel, IProductObserver, IShoppingListObserver
+    public class ShoppingsViewModel : BaseHappyViewModel
     {
         private readonly IShoppingListService _shoppingListService;
         private readonly IShoppingListRepository _shoppingListRepository;
@@ -136,29 +137,43 @@ namespace HappyCoupleMobile.ViewModel
 		    _alertsAndNotificationsProvider.ShowSuccessToast();
 	    }
 
-	    public void Upadte(Product data)
-        {
-        }
+	    protected override async Task OnFeedback(IFeedbackMessage feedbackMessage)
+	    {
+		    var products = feedbackMessage.GetFirstOrDefaultProductsRange();
+		    
+		    if (products == null || !products.Any())
+		    {
+			    return;
+		    }
+		    
+		    if (feedbackMessage.OperationMode == OperationMode.New)
+		    {
+			    var shoppingListId = feedbackMessage.GetInt(MessagesKeys.ShoppingListIdKey);
+			    AddProducts(products, shoppingListId);
+		    }
+		    else if (feedbackMessage.OperationMode == OperationMode.Edit)
+		    {
+			    EditProducts(products);
+		    }
+	    }
 
-        public void Remove(Product data)
-        {
-        }
+	    private void AddProducts(IList<ProductVm> products, int? shoppingListId)
+	    {
+		    if (!shoppingListId.HasValue)
+		    {
+			    return;
+		    }
 
-        public void Add(Product data)
-        {
-        }
-
-        public void Upadte(ShoppingList data)
-        {
-        }
-
-        public void Remove(ShoppingList data)
-        {
-        }
-
-        public void Add(ShoppingList data)
-        {
-            
-        }
+		    var shoppingList = ActiveShoppingLists.FirstOrDefault(x => x.Id == shoppingListId);
+		    shoppingList.AddProducts(products);
+	    }
+	    
+	    private void EditProducts(IList<ProductVm> products)
+	    {
+		    foreach (var list in ActiveShoppingLists)
+		    {
+			    list.UpdateProducts(products);
+		    }
+	    }
     }
 }

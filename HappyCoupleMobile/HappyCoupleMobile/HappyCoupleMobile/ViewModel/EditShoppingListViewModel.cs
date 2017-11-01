@@ -1,5 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
+using HappyCoupleMobile.Custom;
+using HappyCoupleMobile.Enums;
+using HappyCoupleMobile.Model;
 using HappyCoupleMobile.Mvvm.Messages;
 using HappyCoupleMobile.Mvvm.Messages.Interface;
 using HappyCoupleMobile.Providers.Interfaces;
@@ -16,13 +22,21 @@ namespace HappyCoupleMobile.ViewModel
     {
         private readonly IProductServices _productServices;
 	    private readonly IAlertsAndNotificationsProvider _alertsAndNotificationsProvider;
+	    
 	    private ShoppingListVm _shoppingList;
-
-        public ShoppingListVm ShoppingList
-        {
-            get { return _shoppingList; }
-            set { Set(ref _shoppingList, value); }
-        }
+	    private ObservableCollection<GroupedProductList> _groupedProducts;
+	    
+	    public ShoppingListVm ShoppingList
+	    {
+		    get => _shoppingList;
+		    set => Set(ref _shoppingList, value);
+	    }
+	    
+	    public ObservableCollection<GroupedProductList> GroupedProducts
+	    {
+		    get => _groupedProducts;
+		    set => Set(ref _groupedProducts, value);
+	    }
 
         public Command AddProductCommand { get; set; }
 
@@ -50,31 +64,36 @@ namespace HappyCoupleMobile.ViewModel
 
         protected override async Task OnNavigateTo(IMessageData message)
         {
-            ShoppingList = (ShoppingListVm)message.GetValue(MessagesKeys.ShoppingListKey);
+	        ShoppingList = (ShoppingListVm)message.GetValue(MessagesKeys.ShoppingListKey);
+	        if (ShoppingList == null)
+	        {
+		        return;
+	        }
+	        
+	        ReloadProductsGroups();
+	        ShoppingList.ProductChanged += ShoppingListOnProductChanged;
         }
+
+	    private void ShoppingListOnProductChanged(OperationMode operationMode)
+	    {
+		    ReloadProductsGroups();
+	    }
 
 	    private async Task OnAddProduct()
         {
-	        await NavigateTo<FavouriteProductTypesView, FavouriteProductTypeViewModel>();
-        }
-
-        protected override async Task OnFeedback(IFeedbackMessage feedbackMessage)
-        {
-	        var newProductVm = feedbackMessage.GetFirstOrDefaultProductsRange();
-
-            ShoppingList.AddProductsRange(newProductVm);
+	        await NavigateToWithMessage<FavouriteProductTypesView, FavouriteProductTypeViewModel>(new BaseMessage<FavouriteProductTypeViewModel>(MessagesKeys.ShoppingListIdKey, _shoppingList.Id));
         }
 
         private async Task OnProductChecked(ProductVm product)
         {
-            ShoppingList.CalculateCurrentShoppingProgress();
+	        ShoppingList.CalculateCurrentShoppingProgress();
 
             await Task.Yield();
         }
 
         private void OnDeleteProduct(ProductVm product)
         {
-            ShoppingList.DeleteProduct(product);
+            DeleteProduct(product);
         }
 
         private async Task OnEditProduct(ProductVm product)
@@ -95,9 +114,41 @@ namespace HappyCoupleMobile.ViewModel
 	        
 	        await Task.Yield(); 
         }
+	    
+	    private void ReloadProductsGroups()
+	    {
+		    var groupedData = ShoppingList.Products.OrderBy(x => x.ProductType.Type)
+			    .GroupBy(x => x.ProductType, new ProductTypeEqualityComparer())
+			    .Select(x => new GroupedProductList(x))
+			    .ToList();
+
+		    GroupedProducts = new ObservableCollection<GroupedProductList>(groupedData);
+	    }
+	    
+	    public void DeleteProduct(ProductVm product)
+	    {
+		    var productGroup = GroupedProducts.FirstOrDefault(x => x.ProductType.Id == product.ProductType.Id);
+
+		    if (productGroup == null)
+		    {
+			    return;
+		    }
+
+		    productGroup.Remove(product);
+
+		    if (!productGroup.Any())
+		    {
+			    GroupedProducts.Remove(productGroup);
+		    }
+		    
+		    ShoppingList.DeleteProduct(product);
+	    }
 
         protected override void CleanResources()
         {
+	        ShoppingList.ProductChanged -= ShoppingListOnProductChanged;
+
+	        ShoppingList = null;
         }
     }
 }
