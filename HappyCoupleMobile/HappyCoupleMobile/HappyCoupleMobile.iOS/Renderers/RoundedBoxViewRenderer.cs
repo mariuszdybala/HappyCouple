@@ -7,9 +7,9 @@ using Xamarin.Forms.Platform.iOS;
 [assembly:ExportRenderer(typeof(RoundedBoxView), typeof(RoundedBoxViewRenderer))]
 namespace HappyCoupleMobile.iOS.Renderers
 {
-    public class RoundedBoxViewRenderer : BoxRenderer
+    public class RoundedBoxViewRenderer : ViewRenderer
     {
-        protected override void OnElementChanged(ElementChangedEventArgs<BoxView> e)
+	    protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.View> e)
         {
             base.OnElementChanged(e);
             if (Element != null)
@@ -32,6 +32,15 @@ namespace HappyCoupleMobile.iOS.Renderers
         void UpdateCornerRadius(RoundedBoxView box)
         {
             Layer.CornerRadius = (float)box.CornerRadius;
+
+	        var stackLayout = Element as StackLayout;
+
+	        if (stackLayout == null)
+	        {
+		        return;
+	        }
+	        
+	        Layer.BackgroundColor = stackLayout.BackgroundColor.ToCGColor();
         }
     }
 }

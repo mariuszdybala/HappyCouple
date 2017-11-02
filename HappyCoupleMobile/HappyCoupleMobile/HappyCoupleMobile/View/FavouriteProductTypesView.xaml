@@ -18,7 +18,7 @@
 							             Padding="2">
 								<Image x:Name="HeaderImage"
 								       Source="{Binding IconName, Converter={StaticResource IconNameToImageSourceConverter}}" />
-								<Label x:Name="HeaderLabel" TextColor="White" Text="{Binding IconName}" FontFamily="{StaticResource Medium}"
+								<Label x:Name="HeaderLabel" TextColor="White" Text="{Binding Type}" FontFamily="{StaticResource Medium}"
 								       VerticalTextAlignment="Center" />
 								<Image Source="{StaticResource ChevronRight}" Scale="0.8" HorizontalOptions="EndAndExpand" />
 							</StackLayout>

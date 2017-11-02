@@ -40,7 +40,6 @@ namespace HappyCoupleMobile.ViewModel
 			var message = new BaseMessage<FavouriteProductsViewModel>(MessagesKeys.ProductTypeKey, productType);
 			message.AddData(MessagesKeys.ShoppingListIdKey, _shoppingListId);
 			await NavigateToWithMessage<FavouriteProductsView, FavouriteProductsViewModel>(message);
-			
 		}
 		
 		private async Task LoadProductTypes()

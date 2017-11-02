@@ -98,11 +98,12 @@ namespace HappyCoupleMobile.Mvvm.Controls
 
         private async Task AnimateInnerImageAsync()
         {
-            TappableImage tappableImage = Children.OfType<TappableImage>().FirstOrDefault(x => x.IsVisible);
-            if (tappableImage != null)
-            {
-                await tappableImage.AnimateImage();
-            }
+	       await this.SetAnimationWithScaleOffset(0.1, 120);
+//            TappableImage tappableImage = Children.OfType<TappableImage>().FirstOrDefault(x => x.IsVisible);
+//            if (tappableImage != null)
+//            {
+//                await tappableImage.AnimateImage();
+//            }
         }
     }
 }

@@ -151,6 +151,7 @@
       <DependentUpon>ProductTypesContainer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Mvvm\Renderers\CircularProgress.cs" />
+    <Compile Include="Mvvm\Renderers\CircularView.cs" />
     <Compile Include="Mvvm\Renderers\ExtendedScrollView.cs" />
     <Compile Include="Mvvm\Renderers\ProductCell\BaseSwipeableProductCell.cs" />
     <Compile Include="Mvvm\Renderers\ProductCell\FavouriteSwipeableProductCell.cs" />

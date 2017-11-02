@@ -12,12 +12,12 @@
              BindingContext="{Binding EditShoppingListViewModel, Source={StaticResource ViewModelLocator}}"
              x:Name="EditShoppingListView">
     <StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
-        <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftItemTapCommand="{Binding GoBackCommand}" PanelHeader="Edycja listy zakupów"
-                    RightIconSource="{StaticResource AddProduct}" RightIconTapCommand="{Binding AddProductCommand}"/>
-        <Grid Padding="10,15,10,10">
+        <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftItemTapCommand="{Binding GoBackCommand}" PanelHeader="Edycja listy zakupów"/>
+        <Grid Padding="10,10,10,5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
+	            <RowDefinition Height="Auto" />
+	            <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.2*" />
@@ -29,15 +29,24 @@
             <StackLayout Grid.Column="1" Grid.Row="0">
                 <Label Text="{Binding ShoppingList.Name}" TextColor="White" FontFamily="{StaticResource Medium}"/>
             </StackLayout>
-            <StackLayout Grid.Column="1" Grid.Row="1">
-                <StackLayout Orientation="Horizontal">
-                    <Label x:Name="BuyedProductsLabel" Text="{Binding ShoppingList.BoughtProductsCount}" FontFamily="{StaticResource Medium}" TextColor="{StaticResource FifthColor}"/>
-                    <Label Text="/" FontFamily="{StaticResource Medium}"/>
-                    <Label x:Name="CountProductsLabel" Text="{Binding ShoppingList.LeftProductsCount}" FontFamily="{StaticResource Medium}" TextColor="{StaticResource FourthColor}"/>
-                </StackLayout>
-            </StackLayout>
+			<StackLayout Grid.Column="1" Grid.RowSpan="2" Grid.Row="1" Spacing="10" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+				<renderers:RoundedBoxView AnimateInnerImageOnTap="True" CornerRadius="20" HeightRequest="40" WidthRequest="40" BackgroundColor="{StaticResource ProductListButtonsColor}" Scale="0.8">
+					<Image x:Name="CloseListImage" Scale="0.9" HeightRequest="20" WidthRequest="20" Source="{StaticResource CloseList}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+				</renderers:RoundedBoxView>
+				<renderers:RoundedBoxView AnimateInnerImageOnTap="True" TappedCommand="{Binding AddProductCommand}" CornerRadius="20" HeightRequest="40" WidthRequest="40" BackgroundColor="WhiteSmoke">
+					<Image x:Name="AddToListImage" Scale="0.9" Source="{StaticResource AddProduct}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+				</renderers:RoundedBoxView>
+				<renderers:RoundedBoxView AnimateInnerImageOnTap="True" CornerRadius="20" HeightRequest="40" WidthRequest="40" BackgroundColor="{StaticResource FourthColor}" Scale="0.8">
+					<Image x:Name="DeleteImage" Scale="0.9" Source="{StaticResource Delete}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+				</renderers:RoundedBoxView>
+			</StackLayout>
+	        <StackLayout Grid.Column="0" Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center">
+			        <Label x:Name="BuyedProductsLabel" Text="{Binding ShoppingList.BoughtProductsCount}" FontFamily="{StaticResource Medium}" TextColor="{StaticResource FifthColor}"/>
+			        <Label Text="/" FontFamily="{StaticResource Medium}"/>
+			        <Label x:Name="CountProductsLabel" Text="{Binding ShoppingList.LeftProductsCount}" FontFamily="{StaticResource Medium}" TextColor="{StaticResource FourthColor}"/>
+	        </StackLayout>
         </Grid>
-	    <ListView Margin="0,10,0,0" IsGroupingEnabled="True" BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None" 
+	    <ListView Margin="0,5,0,0" IsGroupingEnabled="True" BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None" 
 	              ItemsSource="{Binding GroupedProducts}" IsVisible="{Binding ShoppingList.ShowPlaceholder, Converter={StaticResource InverseBooleanConverter}}">
 		    <ListView.ItemTemplate>
 			    <DataTemplate>

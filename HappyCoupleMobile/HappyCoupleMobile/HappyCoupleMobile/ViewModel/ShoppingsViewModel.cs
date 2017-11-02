@@ -71,7 +71,7 @@ namespace HappyCoupleMobile.ViewModel
         {
             AddNewListCommand = new Command(OnAddNewListCommand);
             DeleteListCommand = new Command<ShoppingListVm>(OnDeleteList);
-            AddProductToListCommand = new Command<ShoppingListVm>(OnAddProductToList);
+            AddProductToListCommand = new Command<ShoppingListVm>(async (shoppingList) => await OnAddProductToList(shoppingList));
             CloseListCommand = new Command<ShoppingListVm>(OnCloseList);
             EditListCommand = new Command<ShoppingListVm>(async(shoppingList) => await OnEditList(shoppingList));
         }
@@ -99,25 +99,59 @@ namespace HappyCoupleMobile.ViewModel
         {
             await NavigateToWithMessage<EditShoppingListView, EditShoppingListViewModel>(new BaseMessage<EditShoppingListViewModel>(MessagesKeys.ShoppingListKey, shoppingList));
         }
+	    
+	    private void OnDeleteList(ShoppingListVm shoppingList)
+	    {
+		    _alertsAndNotificationsProvider.ShowAlertWithConfirmation("na pewno tego chcesz?", "Lista zostanie bezpowrotnie usunięta",
+			    async (confirmed) => await DeleteListConfiramtion(confirmed, shoppingList));
+	    }
 
-        private void OnCloseList(ShoppingListVm shoppingList)
+	    private async Task DeleteListConfiramtion(bool confirmed, ShoppingListVm shoppingList)
+	    {
+		    if (!confirmed)
+		    {
+			    return;
+		    }
+		    
+		    if (shoppingList.Status == ShoppingListStatus.Active)
+		    {
+			    ActiveShoppingLists.Remove(shoppingList);
+		    }
+		    else
+		    {
+			    ClosedShoppingLists.Remove(shoppingList);
+		    }
+	    }
+
+	    private void OnCloseList(ShoppingListVm shoppingList)
         {
+	        _alertsAndNotificationsProvider.ShowAlertWithConfirmation("mimo, że nie wszystkie produkty zostały zakupione.", "Lista zostanie zakmknięta",
+		        async (confirmed) => await CloseListConfiramtion(confirmed, shoppingList));
         }
 
-        private void OnAddProductToList(ShoppingListVm shoppingList)
-        {
-        }
+	    private async Task CloseListConfiramtion(bool confirmed, ShoppingListVm shoppingList)
+	    {
+		    if (confirmed)
+		    {
+			    await CloseList(shoppingList);
+			    _alertsAndNotificationsProvider.ShowSuccessToast("Lista zamknięta");
+		    }
+	    }
+	    
+	    private async Task CloseList(ShoppingListVm shoppingList)
+	    {
+		    shoppingList.Status = ShoppingListStatus.Closed;
+		    // DOTO service with implementation logic which closing list
+		    //temporary fix
 
-        private void OnDeleteList(ShoppingListVm shoppingList)
+		    ActiveShoppingLists.Remove(shoppingList);
+		    ClosedShoppingLists.Add(shoppingList);
+	    }
+
+	    private async Task OnAddProductToList(ShoppingListVm shoppingList)
         {
-            if (shoppingList.Status == ShoppingListStatus.Active)
-            {
-                ActiveShoppingLists.Remove(shoppingList);
-            }
-            else
-            {
-                ClosedShoppingLists.Remove(shoppingList);
-            }
+	        var message = new BaseMessage<FavouriteProductTypeViewModel>(MessagesKeys.ShoppingListIdKey, shoppingList.Id);
+	        await NavigateToWithMessage<FavouriteProductTypesView, FavouriteProductTypeViewModel>(message);
         }
 
         private void OnAddNewListCommand()

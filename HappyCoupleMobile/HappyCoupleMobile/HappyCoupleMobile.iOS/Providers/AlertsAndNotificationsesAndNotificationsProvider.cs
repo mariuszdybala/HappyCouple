@@ -30,6 +30,24 @@ namespace HappyCoupleMobile.iOS.Providers
 			BTProgressHUD.ShowImage(UIImage.FromFile("checked.png"), successText);
 		}
 
+		public void ShowAlertWithConfirmation(string message, string title, Action<bool> confirmed)
+		{
+			var alertContoller = UIAlertController.Create(title, message, UIAlertControllerStyle.Alert);
+
+			var cancelAction = UIAlertAction.Create("Anuluj", UIAlertActionStyle.Cancel,
+				(action) => { confirmed?.Invoke(false); });
+
+			_addAction = UIAlertAction.Create("OK", UIAlertActionStyle.Destructive, (action) =>
+			{
+				confirmed?.Invoke(true);
+			});
+
+			alertContoller.AddAction(cancelAction);
+			alertContoller.AddAction(_addAction);
+
+			UIApplication.SharedApplication.KeyWindow.RootViewController.PresentModalViewController(alertContoller, true);
+		}
+
 		public void ShowAlertWithTextField(string message, string title, Keyboard keyboardType, Action<string> confirmed)
 		{
 			var alertContoller = UIAlertController.Create(title, message, UIAlertControllerStyle.Alert);

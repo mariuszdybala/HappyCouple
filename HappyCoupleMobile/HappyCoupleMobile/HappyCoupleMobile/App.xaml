@@ -18,7 +18,8 @@
             <Color x:Key="SecondColor">#424242</Color>
             <Color x:Key="ThirthColor">#FEE94E</Color>
             <Color x:Key="FourthColor">#F6585D</Color>
-            <Color x:Key="FifthColor">#30AD63</Color>
+	        <Color x:Key="FifthColor">#30AD63</Color>
+	        <Color x:Key="ProductListButtonsColor">#50AE55</Color>
 
             <Color x:Key="BackgroundMainColor">#dddddd</Color>
 
