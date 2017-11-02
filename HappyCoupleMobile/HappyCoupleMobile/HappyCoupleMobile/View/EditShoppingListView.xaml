@@ -26,18 +26,28 @@
             <StackLayout Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" HorizontalOptions="Center" VerticalOptions="Center">
                 <renderers:CircularProgress WidthRequest="50" HeightRequest="50" Percent="{Binding ShoppingList.ProgressPercent}"/>
             </StackLayout>
-            <StackLayout Grid.Column="1" Grid.Row="0">
-                <Label Text="{Binding ShoppingList.Name}" TextColor="White" FontFamily="{StaticResource Medium}"/>
+            <StackLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="CenterAndExpand">
+                <Label Text="{Binding ShoppingList.Name}" TextColor="White" FontFamily="{StaticResource Medium}" HorizontalTextAlignment="Center"/>
             </StackLayout>
 			<StackLayout Grid.Column="1" Grid.RowSpan="2" Grid.Row="1" Spacing="10" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-				<renderers:RoundedBoxView AnimateInnerImageOnTap="True" CornerRadius="20" HeightRequest="40" WidthRequest="40" BackgroundColor="{StaticResource ProductListButtonsColor}" Scale="0.8">
-					<Image x:Name="CloseListImage" Scale="0.9" HeightRequest="20" WidthRequest="20" Source="{StaticResource CloseList}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+				<renderers:RoundedBoxView AnimateInnerImageOnTap="True" CornerRadius="20" HeightRequest="40" WidthRequest="40" BackgroundColor="{StaticResource FourthColor}" Scale="0.8">
+					<Image x:Name="CloseListImage" HeightRequest="20" WidthRequest="20" Source="{StaticResource CloseListWhite}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+					<renderers:RoundedBoxView.Triggers>
+						<DataTrigger TargetType="renderers:RoundedBoxView" Binding="{Binding ShoppingList.IsListCompleted }" Value="True">
+							<Setter Property="BackgroundColor" Value="{StaticResource GreenVividColor}"/>
+							<Setter Property="Scale" Value="1"/>
+						</DataTrigger>
+						<DataTrigger TargetType="renderers:RoundedBoxView" Binding="{Binding ShoppingList.IsListCompleted }" Value="False">
+							<Setter Property="Scale" Value="0.8"/>
+							<Setter Property="BackgroundColor" Value="{StaticResource FourthColor}"/>
+						</DataTrigger>
+					</renderers:RoundedBoxView.Triggers>
 				</renderers:RoundedBoxView>
 				<renderers:RoundedBoxView AnimateInnerImageOnTap="True" TappedCommand="{Binding AddProductCommand}" CornerRadius="20" HeightRequest="40" WidthRequest="40" BackgroundColor="WhiteSmoke">
-					<Image x:Name="AddToListImage" Scale="0.9" Source="{StaticResource AddProduct}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+					<Image x:Name="AddToListImage" Source="{StaticResource AddProduct}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
 				</renderers:RoundedBoxView>
 				<renderers:RoundedBoxView AnimateInnerImageOnTap="True" CornerRadius="20" HeightRequest="40" WidthRequest="40" BackgroundColor="{StaticResource FourthColor}" Scale="0.8">
-					<Image x:Name="DeleteImage" Scale="0.9" Source="{StaticResource Delete}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+					<Image x:Name="DeleteImage" Source="{StaticResource DeleteWhite}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
 				</renderers:RoundedBoxView>
 			</StackLayout>
 	        <StackLayout Grid.Column="0" Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center">

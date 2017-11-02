@@ -19,7 +19,7 @@
             <Color x:Key="ThirthColor">#FEE94E</Color>
             <Color x:Key="FourthColor">#F6585D</Color>
 	        <Color x:Key="FifthColor">#30AD63</Color>
-	        <Color x:Key="ProductListButtonsColor">#50AE55</Color>
+	        <Color x:Key="GreenVividColor">#50AE55</Color>
 
             <Color x:Key="BackgroundMainColor">#dddddd</Color>
 
@@ -37,8 +37,10 @@
             <FileImageSource x:Key="ToDo">todo.png</FileImageSource>
             <FileImageSource x:Key="Settings">fix.png</FileImageSource>
             <FileImageSource x:Key="CloseList">set_closed_list.png</FileImageSource>
+            <FileImageSource x:Key="CloseListWhite">set_closed_list_white.png</FileImageSource>
             <FileImageSource x:Key="DeleteList">delete_list.png</FileImageSource>
             <FileImageSource x:Key="Delete">delete.png</FileImageSource>
+            <FileImageSource x:Key="DeleteWhite">delete_white.png</FileImageSource>
             <FileImageSource x:Key="CloseWindow">closewindow.png</FileImageSource>
             <FileImageSource x:Key="Info">info.png</FileImageSource>
             <FileImageSource x:Key="EditList">edit.png</FileImageSource>

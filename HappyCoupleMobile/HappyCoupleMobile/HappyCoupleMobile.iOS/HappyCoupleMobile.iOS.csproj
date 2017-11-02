@@ -189,6 +189,12 @@
     <Compile Include="Controls\ExtendedSwipeAbleCell.designer.cs">
       <DependentUpon>ExtendedSwipeAbleCell.cs</DependentUpon>
     </Compile>
+    <BundleResource Include="Resources\delete_white%403x.png" />
+    <BundleResource Include="Resources\delete_white%402x.png" />
+    <BundleResource Include="Resources\delete_white.png" />
+    <BundleResource Include="Resources\set_closed_list_white%403x.png" />
+    <BundleResource Include="Resources\set_closed_list_white%402x.png" />
+    <BundleResource Include="Resources\set_closed_list_white.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%402x.png" />

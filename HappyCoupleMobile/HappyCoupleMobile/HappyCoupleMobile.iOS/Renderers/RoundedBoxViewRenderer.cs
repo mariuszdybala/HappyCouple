@@ -27,20 +27,30 @@ namespace HappyCoupleMobile.iOS.Renderers
             {
                 UpdateCornerRadius(Element as RoundedBoxView);
             }
+	        
+	        if (e.PropertyName == RoundedBoxView.ScaleProperty.PropertyName)
+	        {
+		        UpdateCornerRadius(Element as RoundedBoxView);
+	        }
         }
 
         void UpdateCornerRadius(RoundedBoxView box)
         {
             Layer.CornerRadius = (float)box.CornerRadius;
 
-	        var stackLayout = Element as StackLayout;
-
-	        if (stackLayout == null)
-	        {
-		        return;
-	        }
-	        
-	        Layer.BackgroundColor = stackLayout.BackgroundColor.ToCGColor();
+	        UpdateBackgroundColor(box);
         }
+	    
+	    void UpdateBackgroundColor(RoundedBoxView box)
+	    {
+		    var stackLayout = Element as StackLayout;
+
+		    if (stackLayout == null)
+		    {
+			    return;
+		    }
+	        
+		    Layer.BackgroundColor = stackLayout.BackgroundColor.ToCGColor();
+	    }
     }
 }

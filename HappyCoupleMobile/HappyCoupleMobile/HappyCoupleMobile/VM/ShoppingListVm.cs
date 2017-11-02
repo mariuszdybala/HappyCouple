@@ -21,6 +21,7 @@ namespace HappyCoupleMobile.VM
         private string _progressPercent;
         private bool _showPlaceholder;
         private int _productsCount;
+	    private bool _isListCompleted;
 
 	    public event Action<OperationMode> ProductChanged;
 	    
@@ -75,6 +76,15 @@ namespace HappyCoupleMobile.VM
             get => _progressPercent;
 	        set => Set(ref _progressPercent, value);
         }
+	    
+	    public bool IsListCompleted
+	    {
+		    get => _isListCompleted;
+		    set
+		    {
+			    Set(ref _isListCompleted, value);
+		    }
+	    }
 
         public bool ShowPlaceholder
         {
@@ -117,6 +127,7 @@ namespace HappyCoupleMobile.VM
             LeftProductsCount = leftProductsCountValue.ToString();
 
             var progressPercent = leftProductsCountValue == 0 ? 100 : boughtProductsCountValue * 100 / totalProductsCountValue;
+	        IsListCompleted = leftProductsCountValue == 0;
 
             ProgressPercent = progressPercent.ToString();
         }
