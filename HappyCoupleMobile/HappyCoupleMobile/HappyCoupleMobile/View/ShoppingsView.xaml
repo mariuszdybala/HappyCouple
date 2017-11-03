@@ -7,7 +7,7 @@
              xmlns:view="clr-namespace:HappyCoupleMobile.View.Abstract;assembly=HappyCoupleMobile"
              BackgroundColor="{StaticResource SecondColor}" x:Name="ShoppingsView">
         <StackLayout Spacing="0" VerticalOptions="FillAndExpand">
-            <control:TopPanelControl RightIconSource="{StaticResource AddList}" LeftIconSource="{StaticResource Options}" RightIconTapCommand="{Binding AddNewListCommand}" PanelHeader="Moje listy"/>
+            <control:TopPanelControl RightIconSource="{StaticResource AddList}" LeftItemTapCommand="{Binding SettingsTappedCommand}" LeftIconSource="{StaticResource Options}" RightIconTapCommand="{Binding AddNewListCommand}" PanelHeader="Moje listy"/>
             <StackLayout Spacing="0" Orientation="Horizontal">
                 <StackLayout x:Name="ActiveTabPanel" Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}">
                     <control:TappableLabel x:Name="ActiveTabLabel" 
@@ -18,26 +18,29 @@
                 <StackLayout x:Name="ClosedTabPanel" Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="White">
                     <control:TappableLabel x:Name="ClosedTabLabel" 
                                            TappedCommand="{Binding Source={x:Reference ShoppingsView}, Path=ClosedTabTappedCommand}" 
-                                           FontFamily="{StaticResource Medium}" HorizontalTextAlignment="Center" Text="Zrealizowane" 
+                                           FontFamily="{StaticResource Medium}" HorizontalTextAlignment="Center" Text="Zamknięte" 
                                            TextColor="{StaticResource SecondColor}" FontSize="15"/>
                 </StackLayout>
             </StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                 <control:ShoppingListView x:Name="ActiveShoppingList" ShoppingListTabType="Active"
-                                          IsVisible="{Binding Source={x:Reference ShoppingsView}, Path=ShowActive}" 
-                                          AddCommand="{Binding AddProductToListCommand}"
-                                          CloseCommand="{Binding CloseListCommand}"
-                                          DeleteCommand="{Binding DeleteListCommand}"
-                                          EditOrListTappedCommand="{Binding EditListCommand}"
-                                          ShoppingListSource="{Binding ActiveShoppingLists}"
-                                          AddShoppingListCommand="{Binding AddNewListCommand}"/>
+                                              IsVisible="{Binding Source={x:Reference ShoppingsView}, Path=ShowActive}" 
+                                              AddCommand="{Binding AddProductToListCommand}"
+                                              CloseCommand="{Binding CloseListCommand}"
+                                              DeleteCommand="{Binding DeleteListCommand}"
+                                              EditOrListTappedCommand="{Binding EditListCommand}"
+                                              ShoppingListSource="{Binding ActiveShoppingLists}"
+                                              AddShoppingListCommand="{Binding AddNewListCommand}"/>
 
-            <control:ShoppingListView x:Name="ClosedShoppingList" ShoppingListTabType="Closed"
-                                          IsVisible="{Binding Source={x:Reference ShoppingsView}, Path=ShowClosed}" 
-                                          AddCommand="{Binding AddProductToListCommand}"
-                                          CloseCommand="{Binding CloseListCommand}"
-                                          DeleteCommand="{Binding DeleteListCommand}"
-                                          EditOrListTappedCommand="{Binding EditListCommand}"
-                                          ShoppingListSource="{Binding ClosedShoppingLists}"
-                                          AddShoppingListCommand="{Binding AddNewListCommand}"/>
+                <control:ShoppingListView x:Name="ClosedShoppingList" ShoppingListTabType="Closed"
+                                              IsVisible="{Binding Source={x:Reference ShoppingsView}, Path=ShowClosed}" 
+                                              AddCommand="{Binding AddProductToListCommand}"
+                                              CloseCommand="{Binding CloseListCommand}"
+                                              DeleteCommand="{Binding DeleteListCommand}"
+                                              EditOrListTappedCommand="{Binding EditListCommand}"
+                                              ShoppingListSource="{Binding ClosedShoppingLists}"
+                                              AddShoppingListCommand="{Binding AddNewListCommand}"/>
+            </StackLayout>
+
         </StackLayout>
 </view:BaseHappyContentPage>

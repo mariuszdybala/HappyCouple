@@ -7,7 +7,7 @@
              x:Class="HappyCoupleMobile.Mvvm.Controls.ShoppingListPanel"
              Margin="5" 
              Padding="5" 
-             OutlineColor="{StaticResource ThirthColor}" 
+             OutlineColor="{StaticResource FirstColor}" 
              HasShadow="False"
              x:Name="ShoppingListPanel">
     <Frame.GestureRecognizers>
@@ -35,17 +35,23 @@
             <Label Text="{Binding ShoppingList.Name}" FontFamily="{StaticResource Medium}" />
         </StackLayout>
         <controls:ProductTypesContainer Grid.Column="1" Grid.Row="1" ProductTypes="{Binding ShoppingList.ProductTypes}" Orientation="Horizontal" Spacing="0"/>
-        <StackLayout Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
-            <Image HeightRequest="20" VerticalOptions="Center" Source="{StaticResource Date}"></Image>
-            <Label VerticalOptions="Center" TextColor="{StaticResource SecondColor}" Text="{Binding ShoppingList.AddDate, StringFormat='{0:yyyy.MM.dd}'}" FontSize="12" FontFamily="{StaticResource Medium}" />
-        </StackLayout>
+	    <StackLayout Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
+		    <StackLayout  Orientation="Horizontal">
+			    <Image HeightRequest="20" VerticalOptions="Center" Source="{StaticResource Date}"></Image>
+			    <Label VerticalOptions="Center" TextColor="{StaticResource SecondColor}" Text="{Binding ShoppingList.AddDate, StringFormat='{0:yyyy.MM.dd}'}" FontSize="12" FontFamily="{StaticResource Medium}" />
+		    </StackLayout>
+		    <StackLayout  Orientation="Horizontal" IsVisible="{Binding ShoppingList.CloseDate, Converter={StaticResource ObjectInstanceValueToBooleanConverter}}">
+			    <Image HeightRequest="20" VerticalOptions="Center" Source="{StaticResource DateEnd}"></Image>
+			    <Label VerticalOptions="Center" TextColor="{StaticResource SecondColor}" Text="{Binding ShoppingList.CloseDate, StringFormat='{0:yyyy.MM.dd}'}" FontSize="12" FontFamily="{StaticResource Medium}" />
+		    </StackLayout>
+	    </StackLayout>
         <StackLayout Grid.Column="2" Grid.Row="0" Grid.RowSpan="3">
-            <Image x:Name="AddToListImage" Source="{StaticResource AddProduct}" WidthRequest="25" HeightRequest="25">
+            <Image x:Name="AddToListImage" Source="{StaticResource AddProduct}" IsVisible="{Binding ShoppingList.Status, Converter={StaticResource IsActiveProductListConverter}}" WidthRequest="25" HeightRequest="25">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnAdd"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Image x:Name="CloseListImage" Source="{StaticResource CloseList}" WidthRequest="25" HeightRequest="25">
+            <Image x:Name="CloseListImage" Source="{StaticResource CloseList}" IsVisible="{Binding ShoppingList.Status, Converter={StaticResource IsActiveProductListConverter}}" WidthRequest="25" HeightRequest="25">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnClose"/>
                 </Image.GestureRecognizers>

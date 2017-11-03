@@ -31,7 +31,9 @@ namespace HappyCoupleMobile.ViewModel
 	    private ObservableCollection<ShoppingListVm> _closedShoppingLists;
         private ObservableCollection<ShoppingListVm> _activeShoppingLists;
 
-        public Command AddNewListCommand { get; set; }
+	    public Command SettingsTappedCommand => new Command(OnSettingsTapped);
+
+	    public Command AddNewListCommand { get; set; }
         public Command<string> CreateNewListCommand { get; set; }
         public Command<ShoppingListVm> DeleteListCommand { get; set; }
         public Command<ShoppingListVm> AddProductToListCommand { get; set; }
@@ -98,7 +100,14 @@ namespace HappyCoupleMobile.ViewModel
 
         private async Task OnEditList(ShoppingListVm shoppingList)
         {
-            await NavigateToWithMessage<EditShoppingListView, EditShoppingListViewModel>(new BaseMessage<EditShoppingListViewModel>(MessagesKeys.ShoppingListKey, shoppingList));
+	        if (shoppingList.Status == ShoppingListStatus.Active)
+	        {
+		        await NavigateToWithMessage<EditShoppingListView, EditShoppingListViewModel>(new BaseMessage<EditShoppingListViewModel>(MessagesKeys.ShoppingListKey, shoppingList));
+	        }
+	        else
+	        {
+		        await NavigateToWithMessage<ClosedShoppingListView, ClosedShoppingListViewModel>(new BaseMessage<ClosedShoppingListViewModel>(MessagesKeys.ShoppingListKey, shoppingList));
+	        }
         }
 
 	    private void OnDeleteList(ShoppingListVm shoppingList)
@@ -150,6 +159,7 @@ namespace HappyCoupleMobile.ViewModel
 	    private async Task CloseList(ShoppingListVm shoppingList)
 	    {
 		    shoppingList.Status = ShoppingListStatus.Closed;
+		    shoppingList.CloseDate = DateTime.Now;
 		    // DOTO service with implementation logic which closing list
 		    //temporary fix
 
@@ -171,6 +181,20 @@ namespace HappyCoupleMobile.ViewModel
 		        new ActionSheetItem {Action = OnAddNewListManual, ButtonText = "Na podstawie innej listy"}
 	        });
         }
+	    
+	    private void OnSettingsTapped()
+	    {
+		    _alertsAndNotificationsProvider.ShowActionSheet(string.Empty, "Ustawienia", new List<ActionSheetItem>
+		    {
+			    new ActionSheetItem {Action = async () => await EditFavouriteProductsList(), ButtonText = "Edytuj listę swoich produktów"},
+		    });
+	    }
+	    
+	    private async Task EditFavouriteProductsList()
+	    {
+		    await NavigateToWithMessage<FavouriteProductTypesView, FavouriteProductTypeViewModel>(
+			    new BaseMessage<FavouriteProductTypeViewModel>());
+	    }
 
 	    private void OnAddNewListManual()
 	    {

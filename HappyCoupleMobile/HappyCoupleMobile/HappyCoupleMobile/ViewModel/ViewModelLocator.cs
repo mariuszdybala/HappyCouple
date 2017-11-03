@@ -12,6 +12,7 @@ namespace HappyCoupleMobile.ViewModel
         public AddProductViewModel AddProductViewModel => GetViewModel<AddProductViewModel>();
         public FavouriteProductsViewModel FavouriteProductsViewModel => GetViewModel<FavouriteProductsViewModel>();
         public FavouriteProductTypeViewModel FavouriteProductTypeViewModel => GetViewModel<FavouriteProductTypeViewModel>();
+        public ClosedShoppingListViewModel ClosedShoppingListViewModel => GetViewModel<ClosedShoppingListViewModel>();
 
         public static T GetViewModel<T>()
         {

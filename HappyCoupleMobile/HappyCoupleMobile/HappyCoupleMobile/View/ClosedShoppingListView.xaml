@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view:BaseHappyContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+            x:Class="HappyCoupleMobile.View.ClosedShoppingListView"
+             xmlns:view="clr-namespace:HappyCoupleMobile.View.Abstract;assembly=HappyCoupleMobile"
+             xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
+             xmlns:attached="clr-namespace:HappyCoupleMobile.Mvvm.AttachedProperties;assembly=HappyCoupleMobile"
+             xmlns:editProductList="clr-namespace:HappyCoupleMobile.Mvvm.Controls.EditProductList;assembly=HappyCoupleMobile"
+             xmlns:renderers="clr-namespace:HappyCoupleMobile.Mvvm.Renderers;assembly=HappyCoupleMobile"
+             xmlns:happyCoupleMobile="clr-namespace:HappyCoupleMobile;assembly=HappyCoupleMobile"
+             xmlns:productCell="clr-namespace:HappyCoupleMobile.Mvvm.Renderers.ProductCell;assembly=HappyCoupleMobile"
+		   BindingContext="{Binding ClosedShoppingListViewModel, Source={StaticResource ViewModelLocator}}"
+		   x:Name="ClosedShoppingListView">
+		<StackLayout Spacing="0" BackgroundColor="{StaticResource SecondColor}">
+        <controls:TopPanelControl LeftIconSource="{StaticResource Back}" LeftItemTapCommand="{Binding GoBackCommand}" PanelHeader="Zakończona lista" 
+                                  RightIconSource="{StaticResource DeleteWhite}" RightIconTapCommand="{Binding DeleteListCommand}"/>
+			
+		<StackLayout Padding="10,10,10,5" HorizontalOptions="FillAndExpand">
+			<Label Text="{Binding ShoppingList.Name}" TextColor="White" FontFamily="{StaticResource Medium}" HorizontalTextAlignment="Center"/>
+			<StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+				<Label x:Name="BuyedProductsLabel" Text="{Binding ShoppingList.BoughtProductsCount}" FontFamily="{StaticResource Medium}" TextColor="{StaticResource FifthColor}"/>
+				<Label Text="/" FontFamily="{StaticResource Medium}"/>
+				<Label x:Name="CountProductsLabel" Text="{Binding ShoppingList.LeftProductsCount}" FontFamily="{StaticResource Medium}" TextColor="{StaticResource FourthColor}"/>
+			</StackLayout>
+		</StackLayout>
+        
+	    <ListView Margin="0,5,0,0" IsGroupingEnabled="True" BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None"
+	              ItemsSource="{Binding GroupedProducts}" IsVisible="{Binding ShoppingList.ShowPlaceholder, Converter={StaticResource InverseBooleanConverter}}">
+		    <ListView.ItemTemplate>
+			    <DataTemplate>
+				    <productCell:SwipeableProductCell IsTapable="False" ShowCheckbox="True" ShowProductQuantity="True" Product="{Binding .}"/>
+			    </DataTemplate>
+		    </ListView.ItemTemplate>
+		    <ListView.GroupHeaderTemplate>
+			    <DataTemplate>
+                    <productCell:BaseProductGroupingCell ShowChevron="false" ProductType="{Binding ProductType}"/>
+			    </DataTemplate>
+		    </ListView.GroupHeaderTemplate>
+	    </ListView>
+        <StackLayout VerticalOptions="StartAndExpand" IsVisible="{Binding ShoppingList.ShowPlaceholder}"
+                   Spacing="10" Margin="0,40,0,0">
+            <Image Source="{StaticResource EmptyProducts}"/>
+            <Label Text="Nie było żadnych" Style="{StaticResource MediumWhite20Font}"
+                   HorizontalTextAlignment="Center"/>
+            <Label Text="produktów dodanych." Style="{StaticResource MediumWhite20Font}"
+                 HorizontalTextAlignment="Center"/>
+        </StackLayout>
+    </StackLayout>
+</view:BaseHappyContentPage>

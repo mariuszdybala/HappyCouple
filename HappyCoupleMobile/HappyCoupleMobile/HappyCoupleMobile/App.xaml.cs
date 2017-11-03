@@ -110,6 +110,7 @@ namespace HappyCoupleMobile
             SimpleIoc.Default.Register<EditShoppingListViewModel>(true);
             SimpleIoc.Default.Register<FavouriteProductsViewModel>(true);
 	        SimpleIoc.Default.Register<FavouriteProductTypeViewModel>(true);
+	        SimpleIoc.Default.Register<ClosedShoppingListViewModel>(true);
         }
 
         private async Task InitDatabase()

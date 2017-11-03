@@ -200,6 +200,9 @@
       <DependentUpon>ProductGroupingCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Renderers\ProductGroupingCellRenderer.cs" />
+    <BundleResource Include="Resources\date_end%403x.png" />
+    <BundleResource Include="Resources\date_end%402x.png" />
+    <BundleResource Include="Resources\date_end.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%402x.png" />

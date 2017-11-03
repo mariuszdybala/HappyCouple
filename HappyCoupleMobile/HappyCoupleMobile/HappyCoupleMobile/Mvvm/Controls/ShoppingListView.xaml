@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:HappyCoupleMobile.Mvvm.Controls;assembly=HappyCoupleMobile"
              x:Class="HappyCoupleMobile.Mvvm.Controls.ShoppingListView"
              x:Name="ShoppingListView"
-             BackgroundColor="{StaticResource SecondColor}">
+             BackgroundColor="{StaticResource SecondColor}" Spacing="0">
     <ScrollView>
         <StackLayout x:Name="ShoppingListPanelContent" Spacing="0"/>
     </ScrollView>

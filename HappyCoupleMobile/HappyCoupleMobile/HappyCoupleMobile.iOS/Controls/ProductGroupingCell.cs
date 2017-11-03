@@ -35,7 +35,6 @@ namespace HappyCoupleMobile.iOS.Controls
 
         public void SetVisualProperties()
         {
-            ChevronImage.Layer.ContentsScale = 0.5f;
 
             SelectedBackgroundView = new UIView { BackgroundColor = Color.FromHex("#4054B2").ToUIColor() };
 

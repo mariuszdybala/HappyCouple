@@ -99,10 +99,10 @@ namespace HappyCoupleMobile.Mvvm.Controls
             }
         }
 
-        private void OnShoppingListTapped(object sender, EventArgs e)
+        private async void OnShoppingListTapped(object sender, EventArgs e)
         {
             Frame grid = (Frame)sender;
-            grid.SetAnimation(0.95, 120);
+            await  grid.SetAnimation(0.95, 80);
 
             if (EditOrListTappedCommand != null && EditOrListTappedCommand.CanExecute(ShoppingList))
             {

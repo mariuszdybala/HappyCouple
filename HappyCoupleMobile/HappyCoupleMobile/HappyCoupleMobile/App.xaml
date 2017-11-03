@@ -11,6 +11,7 @@
             <converters:IconNameToImageSourceConverter x:Key="IconNameToImageSourceConverter"/>
             <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
             <converters:ObjectInstanceValueToBooleanConverter x:Key="ObjectInstanceValueToBooleanConverter"/>
+            <converters:IsActiveProductListConverter x:Key="IsActiveProductListConverter"/>
             
             <vm:ViewModelLocator x:Key="ViewModelLocator"/>
 
@@ -45,6 +46,7 @@
             <FileImageSource x:Key="Info">info.png</FileImageSource>
             <FileImageSource x:Key="EditList">edit.png</FileImageSource>
             <FileImageSource x:Key="Date">date.png</FileImageSource>
+            <FileImageSource x:Key="DateEnd">date_end.png</FileImageSource>
             <FileImageSource x:Key="AddToFavorite">add_favorite.png</FileImageSource>
             <FileImageSource x:Key="AddToFavoriteFilled">add_favorite_filled.png</FileImageSource>
             <FileImageSource x:Key="AddFromFavourites">add_from_favourite.png</FileImageSource>

@@ -30,7 +30,6 @@ namespace HappyCoupleMobile.iOS.Renderers
             if(formsCell != null)
             {
                 swipeAbleNativeCell.UpdateCell(formsCell.Product, formsCell.OnProductSelected, formsCell.IsTapable, !formsCell.ShowCheckbox, !formsCell.ShowProductQuantity);
-
 	            CreateAndAddSwipeButtons(swipeAbleNativeCell, formsCell);
             }
 
@@ -47,6 +46,11 @@ namespace HappyCoupleMobile.iOS.Renderers
 
 		private void CreateAndAddSwipeButtons(ExtendedSwipeAbleCell swipeableNativeCell, BaseSwipeableProductCell swipeableFormsCell)
 		{
+			if(!swipeableFormsCell.IsTapable)
+			{
+				return;
+			}
+			
 			var swipeableButtonsCount = swipeableFormsCell.SwipeButtons.Count;
 			var buttons = new UIButton[swipeableButtonsCount];
 

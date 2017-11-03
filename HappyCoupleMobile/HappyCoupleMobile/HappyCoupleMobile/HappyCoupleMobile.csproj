@@ -135,6 +135,7 @@
     <Compile Include="Mvvm\Converters\BoolToValueConverter.cs" />
     <Compile Include="Mvvm\Converters\IconNameToImageSourceConverter.cs" />
     <Compile Include="Mvvm\Converters\InverseBooleanConverter.cs" />
+    <Compile Include="Mvvm\Converters\IsActiveProductListConverter.cs" />
     <Compile Include="Mvvm\Converters\ObjectInstanceValueToBooleanConverter.cs" />
     <Compile Include="Mvvm\Converters\ProductCountColorConverter.cs" />
     <Compile Include="Mvvm\Converters\StringIsNullOrEmptyToBoolConverter.cs" />
@@ -190,6 +191,7 @@
     <Compile Include="Services\SimpleAuthService.cs" />
     <Compile Include="ViewModel\Abstract\BaseHappyViewModel.cs" />
     <Compile Include="ViewModel\AddProductViewModel.cs" />
+    <Compile Include="ViewModel\ClosedShoppingListViewModel.cs" />
     <Compile Include="ViewModel\EditShoppingListViewModel.cs" />
     <Compile Include="ViewModel\FavouriteProductsViewModel.cs" />
     <Compile Include="ViewModel\FavouriteProductTypeViewModel.cs" />
@@ -243,6 +245,9 @@
       <DependentUpon>FavouriteProductTypesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Mvvm\Renderers\ProductCell\BaseProductGroupingCell.cs" />
+    <Compile Include="View\ClosedShoppingListView.xaml.cs">
+      <DependentUpon>ClosedShoppingListView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -268,6 +273,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FavouriteProductTypesView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ClosedShoppingListView.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

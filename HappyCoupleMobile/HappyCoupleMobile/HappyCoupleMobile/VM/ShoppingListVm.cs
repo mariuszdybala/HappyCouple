@@ -22,6 +22,7 @@ namespace HappyCoupleMobile.VM
         private bool _showPlaceholder;
         private int _productsCount;
 	    private bool _isListCompleted;
+	    private DateTime? _closeDate;
 
 	    public event Action<OperationMode> ProductChanged;
 
@@ -48,6 +49,16 @@ namespace HappyCoupleMobile.VM
                 ShoppingList.AddDate = value;
             }
         }
+	    
+	    public DateTime? CloseDate
+	    {
+		    get => _closeDate;
+		    set
+		    {
+			    Set(ref _closeDate, value);
+			    ShoppingList.CloseDate = value;
+		    }
+	    }
 
         public ShoppingListStatus Status
         {
@@ -112,6 +123,7 @@ namespace HappyCoupleMobile.VM
 	        Products = ShoppingList.Products.Select(x=>new ProductVm(x)).ToList();
             Name = ShoppingList.Name;
             AddDate = ShoppingList.AddDate;
+	        CloseDate = ShoppingList.CloseDate;
             Status = ShoppingList.Status;
 
 	        UpdateAdditionalData();
