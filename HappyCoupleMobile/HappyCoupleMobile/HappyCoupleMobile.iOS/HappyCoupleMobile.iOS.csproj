@@ -203,6 +203,30 @@
     <BundleResource Include="Resources\date_end%403x.png" />
     <BundleResource Include="Resources\date_end%402x.png" />
     <BundleResource Include="Resources\date_end.png" />
+    <BundleResource Include="Resources\home%402x.png" />
+    <BundleResource Include="Resources\electric.png" />
+    <BundleResource Include="Resources\clothes%402x.png" />
+    <BundleResource Include="Resources\cosmetics%402x.png" />
+    <BundleResource Include="Resources\cosmetics%403x.png" />
+    <BundleResource Include="Resources\cosmetics.png" />
+    <BundleResource Include="Resources\plant%403x.png" />
+    <BundleResource Include="Resources\plant%402x.png" />
+    <BundleResource Include="Resources\plant.png" />
+    <BundleResource Include="Resources\home%403x.png" />
+    <BundleResource Include="Resources\electric%403x.png" />
+    <BundleResource Include="Resources\electric%402x.png" />
+    <BundleResource Include="Resources\clothes.png" />
+    <BundleResource Include="Resources\clothes%403x.png" />
+    <BundleResource Include="Resources\hygiene%403x.png" />
+    <BundleResource Include="Resources\hygiene%402x.png" />
+    <BundleResource Include="Resources\hygiene.png" />
+    <BundleResource Include="Resources\cleaning%403x.png" />
+    <BundleResource Include="Resources\cleaning%402x.png" />
+    <BundleResource Include="Resources\cleaning.png" />
+    <BundleResource Include="Resources\food_general%403x.png" />
+    <BundleResource Include="Resources\food_general%402x.png" />
+    <BundleResource Include="Resources\food_general.png" />
+    <BundleResource Include="Resources\home.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%402x.png" />
@@ -356,15 +380,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\fix%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\clothes.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\clothes%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\clothes%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\fun.png" />

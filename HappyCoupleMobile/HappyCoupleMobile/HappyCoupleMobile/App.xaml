@@ -72,6 +72,14 @@
             <FileImageSource x:Key="Spice">spice.png</FileImageSource>
             <FileImageSource x:Key="Dairy">dairy.png</FileImageSource>
             <FileImageSource x:Key="Grain">grain.png</FileImageSource>
+            <FileImageSource x:Key="Cleaning">cleaning.png</FileImageSource>
+            <FileImageSource x:Key="Clothes">clothes.png</FileImageSource>
+            <FileImageSource x:Key="Cosmetics">cosmetics.png</FileImageSource>
+            <FileImageSource x:Key="Electric">electric.png</FileImageSource>
+            <FileImageSource x:Key="FoodGeneral">food_general.png</FileImageSource>
+            <FileImageSource x:Key="Home">home.png</FileImageSource>
+            <FileImageSource x:Key="Hygiene">hygiene.png</FileImageSource>
+            <FileImageSource x:Key="Plant">plant.png</FileImageSource>
             
             <!--conrols-->
             <Style TargetType="Image" x:Key="EraseImageStyle">

@@ -142,8 +142,14 @@ namespace HappyCoupleMobile
             await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Przyprawy", "Spice"));
             await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Nabiał", "Dairy"));
             await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Sypkie", "Grain"));
-            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Food", "Food"));
+            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Jedzenie", "FoodGeneral"));
             await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Alko", "Beer"));
+            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Rośliny", "Plant"));
+            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Kosmetyki", "Cosmetics"));
+            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Chemia", "Cleaning"));
+            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Higiena", "Hygiene"));
+            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Home&You", "Home"));
+            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Ciuchy", "Clothes"));
 
 
             var productTypes = await shoppingListRepository.GetAllProductTypesAsync();
