@@ -2,9 +2,8 @@
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="HappyCoupleMobile.Mvvm.Controls.TopPanelControl"
-             x:Name="TopPanelControl">
-    <StackLayout Spacing="0" BackgroundColor="{StaticResource FirstColor}" BindingContext="{x:Reference TopPanelControl}">
-        <StackLayout Orientation="Horizontal" Margin="0,20,0,0" Padding="10,10" BackgroundColor="{StaticResource FirstColor}">
+             x:Name="TopPanelControl" Spacing="0" BackgroundColor="{StaticResource FirstColor}">
+        <StackLayout Orientation="Horizontal" BindingContext="{x:Reference TopPanelControl}"  Margin="0,20,0,0" Padding="10,10" BackgroundColor="{StaticResource FirstColor}">
             <Image x:Name="LeftIconImage" Source="{Binding LeftIconSource}" IsVisible="{Binding LeftIconSource, Converter={StaticResource ObjectInstanceValueToBooleanConverter}}">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnLeftItemTapped"/>
@@ -25,5 +24,4 @@
             </Image>
         </StackLayout>
         <BoxView HeightRequest="1" BackgroundColor="{StaticResource ThirthColor}"/>
-    </StackLayout>
 </StackLayout>

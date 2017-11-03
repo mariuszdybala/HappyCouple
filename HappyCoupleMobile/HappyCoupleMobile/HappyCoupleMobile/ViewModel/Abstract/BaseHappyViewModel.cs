@@ -123,7 +123,7 @@ namespace HappyCoupleMobile.ViewModel.Abstract
         {
 	        await NavigationService.GetLastViewModelFromStack().OnFeedback(feedbackMessage);
         }
-	    
+
 	    public async Task SendFeedbackMessage<TOwner>(IFeedbackMessage feedbackMessage) where TOwner : BaseHappyViewModel
 	    {
 		    var viewModel =  NavigationService.GetFirstOrDefaultViewModelFromStack<TOwner>();
@@ -134,6 +134,30 @@ namespace HappyCoupleMobile.ViewModel.Abstract
 		    }
 
 		    await viewModel.OnFeedback(feedbackMessage);
+	    }
+
+	    public async Task SendFeedbackMessage<TOwner>(Func<TOwner, Task> action) where TOwner : BaseHappyViewModel
+	    {
+		    var viewModel =  NavigationService.GetFirstOrDefaultViewModelFromStack<TOwner>();
+
+		    if (viewModel == null)
+		    {
+			    return;
+		    }
+
+		    await action(viewModel);
+	    }
+
+	    public void SendFeedbackMessage<TOwner>(Action<TOwner> action) where TOwner : BaseHappyViewModel
+	    {
+		    var viewModel =  NavigationService.GetFirstOrDefaultViewModelFromStack<TOwner>();
+
+		    if (viewModel == null)
+		    {
+			    return;
+		    }
+
+		    action(viewModel);
 	    }
 
         public async Task NavigateBack()

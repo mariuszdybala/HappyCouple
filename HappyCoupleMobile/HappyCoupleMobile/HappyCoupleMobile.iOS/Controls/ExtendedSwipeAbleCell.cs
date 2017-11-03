@@ -38,21 +38,31 @@ namespace HappyCoupleMobile.iOS.Controls
 
 	    private void UpdateProduct()
 	    {
+		    if (Product == null)
+		    {
+			    return;
+		    }
+		    
 		    Name.Text = Product.Name;
 		    Comment.Text = Product.Comment;
 		    Quantity.Text = Product.Quantity.ToString();
 		    ToggleBoughtCheckbox(Product.IsBought);
 	    }
 
-        public void UpdateCell(ProductVm product, Action productSelected, bool hideCheckbox = false, bool hideProductQuantity = false)
+        public void UpdateCell(ProductVm product, Action productSelected,bool isTapable = true, bool hideCheckbox = false, bool hideProductQuantity = false)
         {
             Product = product;
 	        Product.PropertyChanged -= OnQuantityChanged;
-	        
+
             CheckboxStackView.Hidden = hideCheckbox;
 	        Quantity.Hidden = hideProductQuantity;
 
 	        Product.PropertyChanged += OnQuantityChanged;
+
+	        if (!isTapable)
+	        {
+		        return;
+	        }
 	        AddGestureToView(productSelected);
         }
 
@@ -65,7 +75,7 @@ namespace HappyCoupleMobile.iOS.Controls
 	    }
 
 	    private void AddGestureToView(Action onProductSelected)
-	    {		    
+	    {
 		    var tapGesture = new UITapGestureRecognizer();
 		    tapGesture.DelaysTouchesBegan = true;
 
@@ -81,7 +91,7 @@ namespace HappyCoupleMobile.iOS.Controls
 
             ToggleBoughtCheckbox(Product.IsBought);
         }
-	    
+
 	    public void SetVisualProperties()
         {
             BackgroundColor = Color.FromHex("#424242").ToUIColor();
@@ -92,7 +102,6 @@ namespace HappyCoupleMobile.iOS.Controls
             Name.Font = UIFont.FromName("Quicksand-Medium", 20);
             Comment.Font = UIFont.FromName("Quicksand-Light", 15f);
             Quantity.Font = UIFont.FromName("Quicksand-Medium", 20f);
-
         }
 
 	    private void ToggleBoughtCheckbox(bool isBought)

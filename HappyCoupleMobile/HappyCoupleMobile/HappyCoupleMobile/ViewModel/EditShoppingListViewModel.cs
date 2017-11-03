@@ -22,16 +22,16 @@ namespace HappyCoupleMobile.ViewModel
     {
         private readonly IProductServices _productServices;
 	    private readonly IAlertsAndNotificationsProvider _alertsAndNotificationsProvider;
-	    
+
 	    private ShoppingListVm _shoppingList;
 	    private ObservableCollection<GroupedProductList> _groupedProducts;
-	    
+
 	    public ShoppingListVm ShoppingList
 	    {
 		    get => _shoppingList;
 		    set => Set(ref _shoppingList, value);
 	    }
-	    
+
 	    public ObservableCollection<GroupedProductList> GroupedProducts
 	    {
 		    get => _groupedProducts;
@@ -39,8 +39,9 @@ namespace HappyCoupleMobile.ViewModel
 	    }
 
         public Command AddProductCommand { get; set; }
-
-        public Command<ProductVm> ProductCheckedCommand { get; set; }
+        public Command DeleteListCommand => new Command(OnDeleteList);
+	    public Command CloseListCommand => new Command(async () => await OnCloseList());
+	    public Command<ProductVm> ProductCheckedCommand { get; set; }
         public Command<ProductVm> DeleteProductCommand { get; set; }
         public Command<ProductVm> EditProductCommand { get; set; }
 
@@ -49,7 +50,7 @@ namespace HappyCoupleMobile.ViewModel
             _productServices = productServices;
 	        _alertsAndNotificationsProvider = alertsAndNotificationsProvider;
 
-	        RegisterCommand();        
+	        RegisterCommand();
         }
 
         private void RegisterCommand()
@@ -69,10 +70,48 @@ namespace HappyCoupleMobile.ViewModel
 	        {
 		        return;
 	        }
-	        
+
 	        ReloadProductsGroups();
 	        ShoppingList.ProductChanged += ShoppingListOnProductChanged;
         }
+
+	    private void OnDeleteList()
+	    {
+		    _alertsAndNotificationsProvider.ShowAlertWithConfirmation("na pewno tego chcesz?", "Lista zostanie bezpowrotnie usunięta",
+			    async (confirmed) => await DeleteListConfiramtion(confirmed));
+	    }
+
+	    private async Task DeleteListConfiramtion(bool confirmed)
+	    {
+		    if (!confirmed)
+		    {
+			    return;
+		    }
+
+		    await SendFeedbackMessage<ShoppingsViewModel>(async (shoppingsViewModel) => await shoppingsViewModel.DeleteListConfiramtion(true, ShoppingList));
+		    await NavigateBack();
+	    }
+
+	    private async Task OnCloseList()
+	    {
+		    if (ShoppingList.IsListCompleted)
+		    {
+			    await CloseListConfiramtion(true);
+			    return;
+		    }
+
+		    _alertsAndNotificationsProvider.ShowAlertWithConfirmation("mimo, że nie wszystkie produkty zostały zakupione.", "Lista zostanie zakmknięta",
+			    async (confirmed) => await CloseListConfiramtion(confirmed));
+	    }
+
+	    private async Task CloseListConfiramtion(bool confirmed)
+	    {
+		    if (confirmed)
+		    {
+			    await SendFeedbackMessage<ShoppingsViewModel>(async (shoppingsViewModel) => await shoppingsViewModel.CloseListConfiramtion(true, ShoppingList));
+			    await NavigateBack();
+		    }
+	    }
 
 	    private void ShoppingListOnProductChanged(OperationMode operationMode)
 	    {
@@ -111,10 +150,10 @@ namespace HappyCoupleMobile.ViewModel
 
 			        _alertsAndNotificationsProvider.ShowFailedToast("Ilość błędna");
 		        });
-	        
-	        await Task.Yield(); 
+
+	        await Task.Yield();
         }
-	    
+
 	    private void ReloadProductsGroups()
 	    {
 		    var groupedData = ShoppingList.Products.OrderBy(x => x.ProductType.Type)
@@ -124,7 +163,7 @@ namespace HappyCoupleMobile.ViewModel
 
 		    GroupedProducts = new ObservableCollection<GroupedProductList>(groupedData);
 	    }
-	    
+
 	    public void DeleteProduct(ProductVm product)
 	    {
 		    var productGroup = GroupedProducts.FirstOrDefault(x => x.ProductType.Id == product.ProductType.Id);
@@ -140,7 +179,7 @@ namespace HappyCoupleMobile.ViewModel
 		    {
 			    GroupedProducts.Remove(productGroup);
 		    }
-		    
+
 		    ShoppingList.DeleteProduct(product);
 	    }
 
@@ -148,6 +187,7 @@ namespace HappyCoupleMobile.ViewModel
         {
 	        ShoppingList.ProductChanged -= ShoppingListOnProductChanged;
 
+	        GroupedProducts = null;
 	        ShoppingList = null;
         }
     }

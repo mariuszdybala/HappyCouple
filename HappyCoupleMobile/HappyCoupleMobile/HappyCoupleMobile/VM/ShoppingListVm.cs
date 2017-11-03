@@ -24,7 +24,7 @@ namespace HappyCoupleMobile.VM
 	    private bool _isListCompleted;
 
 	    public event Action<OperationMode> ProductChanged;
-	    
+
         public ShoppingList ShoppingList { get; set; }
 
         public int Id => ShoppingList.Id;
@@ -76,7 +76,7 @@ namespace HappyCoupleMobile.VM
             get => _progressPercent;
 	        set => Set(ref _progressPercent, value);
         }
-	    
+
 	    public bool IsListCompleted
 	    {
 		    get => _isListCompleted;
@@ -127,7 +127,7 @@ namespace HappyCoupleMobile.VM
             LeftProductsCount = leftProductsCountValue.ToString();
 
             var progressPercent = leftProductsCountValue == 0 ? 100 : boughtProductsCountValue * 100 / totalProductsCountValue;
-	        IsListCompleted = leftProductsCountValue == 0;
+	        IsListCompleted = leftProductsCountValue == 0 && totalProductsCountValue > 0;
 
             ProgressPercent = progressPercent.ToString();
         }
@@ -145,7 +145,7 @@ namespace HappyCoupleMobile.VM
             ProductTypes = new ObservableCollection<ProductType>(Products.Select(x=>x.ProductType).Distinct(new ProductTypeEqualityComparer()));
             //RaisePropertyChanged(() => ProductTypes);
         }
-	    
+
 	    public void UpdateProducts(IList<ProductVm> products, bool withNotification = true)
 	    {
 		    foreach (var editedProduct in products)
@@ -156,7 +156,7 @@ namespace HappyCoupleMobile.VM
 				    {
 					    continue;
 				    }
-				    
+
 				    product.Comment = editedProduct.Comment;
 				    product.Name = editedProduct.Name;
 			    }
@@ -172,12 +172,12 @@ namespace HappyCoupleMobile.VM
 	    {
 		    ProductChanged?.Invoke(operationMode);
 	    }
-	    
+
 	    public void AddProducts(IList<ProductVm> products, bool withNotification = true)
 	    {
 		    Products.AddRange(products);
 		    UpdateAdditionalData();
-		    
+
 		    if (withNotification)
 		    {
 			    InvokeProductChanged(OperationMode.New);

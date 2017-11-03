@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BigTed;
 using Foundation;
+using HappyCoupleMobile.Custom;
 using HappyCoupleMobile.iOS.Delegates;
 using HappyCoupleMobile.Notification;
 using HappyCoupleMobile.Providers.Interfaces;
@@ -28,6 +30,28 @@ namespace HappyCoupleMobile.iOS.Providers
 		{
 			BTProgressHUD.ForceiOS6LookAndFeel = true;
 			BTProgressHUD.ShowImage(UIImage.FromFile("checked.png"), successText);
+		}
+
+		public void ShowActionSheet(string message, string title, IList<ActionSheetItem> actionSheetItems)
+		{
+			var alertContoller = UIAlertController.Create(title, message, UIAlertControllerStyle.ActionSheet);
+
+			var cancelAction = UIAlertAction.Create("Anuluj", UIAlertActionStyle.Cancel,
+				(action) => { });
+
+			foreach (var actionSheetItem in actionSheetItems)
+			{
+				var newAction = UIAlertAction.Create(actionSheetItem.ButtonText, UIAlertActionStyle.Default, (action) =>
+				{
+					actionSheetItem.Action?.Invoke();
+				});
+
+				alertContoller.AddAction(newAction);
+			}
+
+			alertContoller.AddAction(cancelAction);
+
+			UIApplication.SharedApplication.KeyWindow.RootViewController.PresentModalViewController(alertContoller, true);
 		}
 
 		public void ShowAlertWithConfirmation(string message, string title, Action<bool> confirmed)

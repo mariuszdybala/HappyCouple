@@ -29,7 +29,7 @@ namespace HappyCoupleMobile.iOS.Renderers
 
             if(formsCell != null)
             {
-                swipeAbleNativeCell.UpdateCell(formsCell.Product, formsCell.OnProductSelected, !formsCell.ShowCheckbox, !formsCell.ShowProductQuantity);
+                swipeAbleNativeCell.UpdateCell(formsCell.Product, formsCell.OnProductSelected, formsCell.IsTapable, !formsCell.ShowCheckbox, !formsCell.ShowProductQuantity);
 
 	            CreateAndAddSwipeButtons(swipeAbleNativeCell, formsCell);
             }
@@ -53,7 +53,7 @@ namespace HappyCoupleMobile.iOS.Renderers
 			for (int i = 0; i < swipeableButtonsCount; i++)
 			{
 				var formsButton = swipeableFormsCell.SwipeButtons[i];
-				
+
 				  var uiButton = new UIButton { BackgroundColor = formsButton.Color.ToUIColor() };
 				uiButton.SetImage(UIImage.FromBundle(formsButton.ImageSource.File), UIControlState.Normal);
 				uiButton.SetTitle(formsButton.Text, UIControlState.Normal);

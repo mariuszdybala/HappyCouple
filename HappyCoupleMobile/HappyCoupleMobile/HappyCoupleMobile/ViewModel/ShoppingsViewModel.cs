@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using HappyCoupleMobile.Custom;
 using HappyCoupleMobile.Data;
 using HappyCoupleMobile.Enums;
 using HappyCoupleMobile.Model;
@@ -72,7 +73,7 @@ namespace HappyCoupleMobile.ViewModel
             AddNewListCommand = new Command(OnAddNewListCommand);
             DeleteListCommand = new Command<ShoppingListVm>(OnDeleteList);
             AddProductToListCommand = new Command<ShoppingListVm>(async (shoppingList) => await OnAddProductToList(shoppingList));
-            CloseListCommand = new Command<ShoppingListVm>(OnCloseList);
+            CloseListCommand = new Command<ShoppingListVm>(async(shoppingList) => await OnCloseList(shoppingList));
             EditListCommand = new Command<ShoppingListVm>(async(shoppingList) => await OnEditList(shoppingList));
         }
 
@@ -99,20 +100,20 @@ namespace HappyCoupleMobile.ViewModel
         {
             await NavigateToWithMessage<EditShoppingListView, EditShoppingListViewModel>(new BaseMessage<EditShoppingListViewModel>(MessagesKeys.ShoppingListKey, shoppingList));
         }
-	    
+
 	    private void OnDeleteList(ShoppingListVm shoppingList)
 	    {
 		    _alertsAndNotificationsProvider.ShowAlertWithConfirmation("na pewno tego chcesz?", "Lista zostanie bezpowrotnie usunięta",
 			    async (confirmed) => await DeleteListConfiramtion(confirmed, shoppingList));
 	    }
 
-	    private async Task DeleteListConfiramtion(bool confirmed, ShoppingListVm shoppingList)
+	    public async Task DeleteListConfiramtion(bool confirmed, ShoppingListVm shoppingList)
 	    {
 		    if (!confirmed)
 		    {
 			    return;
 		    }
-		    
+
 		    if (shoppingList.Status == ShoppingListStatus.Active)
 		    {
 			    ActiveShoppingLists.Remove(shoppingList);
@@ -121,15 +122,23 @@ namespace HappyCoupleMobile.ViewModel
 		    {
 			    ClosedShoppingLists.Remove(shoppingList);
 		    }
+
+		    _alertsAndNotificationsProvider.ShowSuccessToast("Lista usunięta");
 	    }
 
-	    private void OnCloseList(ShoppingListVm shoppingList)
+	    private async Task OnCloseList(ShoppingListVm shoppingList)
         {
+	        if (shoppingList.IsListCompleted)
+	        {
+		        await CloseListConfiramtion(true, shoppingList);
+		        return;
+	        }
+
 	        _alertsAndNotificationsProvider.ShowAlertWithConfirmation("mimo, że nie wszystkie produkty zostały zakupione.", "Lista zostanie zakmknięta",
 		        async (confirmed) => await CloseListConfiramtion(confirmed, shoppingList));
         }
 
-	    private async Task CloseListConfiramtion(bool confirmed, ShoppingListVm shoppingList)
+	    public async Task CloseListConfiramtion(bool confirmed, ShoppingListVm shoppingList)
 	    {
 		    if (confirmed)
 		    {
@@ -137,7 +146,7 @@ namespace HappyCoupleMobile.ViewModel
 			    _alertsAndNotificationsProvider.ShowSuccessToast("Lista zamknięta");
 		    }
 	    }
-	    
+
 	    private async Task CloseList(ShoppingListVm shoppingList)
 	    {
 		    shoppingList.Status = ShoppingListStatus.Closed;
@@ -156,8 +165,17 @@ namespace HappyCoupleMobile.ViewModel
 
         private void OnAddNewListCommand()
         {
-	        _alertsAndNotificationsProvider.ShowAlertWithTextField("Wpisz swoją nazwę listy", "Nowa lista zakupów", Keyboard.Default, AlertsAndNotificationsProviderOnAlertConfirmed);
+	        _alertsAndNotificationsProvider.ShowActionSheet("wybierz sposób", "Utwórz nową listę", new List<ActionSheetItem>
+	        {
+		        new ActionSheetItem {Action = OnAddNewListManual, ButtonText = "Dodaj ręcznie"},
+		        new ActionSheetItem {Action = OnAddNewListManual, ButtonText = "Na podstawie innej listy"}
+	        });
         }
+
+	    private void OnAddNewListManual()
+	    {
+		    _alertsAndNotificationsProvider.ShowAlertWithTextField("Wpisz swoją nazwę listy", "Nowa lista zakupów", Keyboard.Default, AlertsAndNotificationsProviderOnAlertConfirmed);
+	    }
 
 	    private void AlertsAndNotificationsProviderOnAlertConfirmed(string listName)
 	    {
@@ -174,12 +192,12 @@ namespace HappyCoupleMobile.ViewModel
 	    protected override async Task OnFeedback(IFeedbackMessage feedbackMessage)
 	    {
 		    var products = feedbackMessage.GetFirstOrDefaultProductsRange();
-		    
+
 		    if (products == null || !products.Any())
 		    {
 			    return;
 		    }
-		    
+
 		    if (feedbackMessage.OperationMode == OperationMode.New)
 		    {
 			    var shoppingListId = feedbackMessage.GetInt(MessagesKeys.ShoppingListIdKey);
@@ -201,7 +219,7 @@ namespace HappyCoupleMobile.ViewModel
 		    var shoppingList = ActiveShoppingLists.FirstOrDefault(x => x.Id == shoppingListId);
 		    shoppingList.AddProducts(products);
 	    }
-	    
+
 	    private void EditProducts(IList<ProductVm> products)
 	    {
 		    foreach (var list in ActiveShoppingLists)

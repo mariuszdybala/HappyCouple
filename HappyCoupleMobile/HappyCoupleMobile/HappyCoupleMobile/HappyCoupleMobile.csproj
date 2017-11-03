@@ -50,6 +50,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Custom\ActionSheetItem.cs" />
     <Compile Include="Custom\GroupedProductList.cs" />
     <Compile Include="Custom\ProductTypeEqualityComparer.cs" />
     <Compile Include="Custom\SwipeButton.cs" />
@@ -241,6 +242,7 @@
     <Compile Include="View\FavouriteProductTypesView.xaml.cs">
       <DependentUpon>FavouriteProductTypesView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Mvvm\Renderers\ProductCell\BaseProductGroupingCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">

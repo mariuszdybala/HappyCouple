@@ -10,9 +10,10 @@ namespace HappyCoupleMobile.Mvvm.Renderers.ProductCell
 	{
 		public bool ShowCheckbox { get; set; }
 		public bool ShowProductQuantity { get; set; }
-		
+		public bool IsTapable { get; set; } = true;
+
 		public abstract IList<SwipeButton> SwipeButtons { get; set;}
-		
+
         public static BindableProperty ProductProperty =
             BindableProperty.Create(nameof(Product), typeof(ProductVm), typeof(BaseSwipeableProductCell));
 		public static BindableProperty EditCommandProperty =
@@ -21,7 +22,7 @@ namespace HappyCoupleMobile.Mvvm.Renderers.ProductCell
 			BindableProperty.Create(nameof(DeleteCommand), typeof(ICommand), typeof(BaseSwipeableProductCell));
 		public static BindableProperty SelectCommandProperty =
 			BindableProperty.Create(nameof(SelectCommand), typeof(ICommand), typeof(BaseSwipeableProductCell));
-	    
+
 		public ICommand EditCommand
 		{
 			get => (ICommand) GetValue(EditCommandProperty);

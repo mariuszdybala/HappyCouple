@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
+using HappyCoupleMobile.Enums;
 using HappyCoupleMobile.View.Abstract;
 using Xamarin.Forms;
 
@@ -58,16 +59,26 @@ namespace HappyCoupleMobile.View
 
         private void OnClosedTabTappedCommand()
         {
-            SwitchTabs();
+            SwitchTabs(ShoppingListStatus.Closed);
         }
 
         private void OnActiveTabTappedCommand()
         {
-            SwitchTabs();
+            SwitchTabs(ShoppingListStatus.Active);
         }
 
-        private void SwitchTabs()
+        private void SwitchTabs(ShoppingListStatus status)
         {
+	        if (status == ShoppingListStatus.Active && ShowActive)
+	        {
+		        return;
+	        }
+
+	        if (status == ShoppingListStatus.Closed && ShowClosed)
+	        {
+		        return;
+	        }
+
             ShowActive = !ShowActive;
             ShowClosed = !ShowClosed;
 

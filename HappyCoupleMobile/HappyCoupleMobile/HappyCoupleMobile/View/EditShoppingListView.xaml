@@ -30,7 +30,7 @@
                 <Label Text="{Binding ShoppingList.Name}" TextColor="White" FontFamily="{StaticResource Medium}" HorizontalTextAlignment="Center"/>
             </StackLayout>
 			<StackLayout Grid.Column="1" Grid.RowSpan="2" Grid.Row="1" Spacing="10" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-				<renderers:RoundedBoxView AnimateInnerImageOnTap="True" CornerRadius="20" HeightRequest="40" WidthRequest="40" BackgroundColor="{StaticResource FourthColor}" Scale="0.8">
+				<renderers:RoundedBoxView AnimateInnerImageOnTap="  True" TappedCommand="{Binding CloseListCommand}" CornerRadius="20" HeightRequest="40" WidthRequest="40" BackgroundColor="{StaticResource FourthColor}" Scale="0.8">
 					<Image x:Name="CloseListImage" HeightRequest="20" WidthRequest="20" Source="{StaticResource CloseListWhite}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
 					<renderers:RoundedBoxView.Triggers>
 						<DataTrigger TargetType="renderers:RoundedBoxView" Binding="{Binding ShoppingList.IsListCompleted }" Value="True">
@@ -46,7 +46,7 @@
 				<renderers:RoundedBoxView AnimateInnerImageOnTap="True" TappedCommand="{Binding AddProductCommand}" CornerRadius="20" HeightRequest="40" WidthRequest="40" BackgroundColor="WhiteSmoke">
 					<Image x:Name="AddToListImage" Source="{StaticResource AddProduct}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
 				</renderers:RoundedBoxView>
-				<renderers:RoundedBoxView AnimateInnerImageOnTap="True" CornerRadius="20" HeightRequest="40" WidthRequest="40" BackgroundColor="{StaticResource FourthColor}" Scale="0.8">
+				<renderers:RoundedBoxView AnimateInnerImageOnTap="True" TappedCommand="{Binding DeleteListCommand}" CornerRadius="20" HeightRequest="40" WidthRequest="40" BackgroundColor="{StaticResource FourthColor}" Scale="0.8">
 					<Image x:Name="DeleteImage" Source="{StaticResource DeleteWhite}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
 				</renderers:RoundedBoxView>
 			</StackLayout>
@@ -56,7 +56,7 @@
 			        <Label x:Name="CountProductsLabel" Text="{Binding ShoppingList.LeftProductsCount}" FontFamily="{StaticResource Medium}" TextColor="{StaticResource FourthColor}"/>
 	        </StackLayout>
         </Grid>
-	    <ListView Margin="0,5,0,0" IsGroupingEnabled="True" BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None" 
+	    <ListView Margin="0,5,0,0" IsGroupingEnabled="True" BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None"
 	              ItemsSource="{Binding GroupedProducts}" IsVisible="{Binding ShoppingList.ShowPlaceholder, Converter={StaticResource InverseBooleanConverter}}">
 		    <ListView.ItemTemplate>
 			    <DataTemplate>
@@ -68,14 +68,7 @@
 		    </ListView.ItemTemplate>
 		    <ListView.GroupHeaderTemplate>
 			    <DataTemplate>
-				    <ViewCell>
-					    <Frame BackgroundColor="{StaticResource ThirthColor}" Padding="2">
-						    <StackLayout x:Name="PanelHeader" BackgroundColor="{StaticResource FirstColor}" Orientation="Horizontal" Padding="2">
-							    <Image x:Name="HeaderImage" Source="{Binding ProductType.IconName, Converter={StaticResource IconNameToImageSourceConverter}}"/>
-							    <Label x:Name="HeaderLabel" TextColor="White" Text="{Binding ProductType.Type}" FontFamily="{StaticResource Medium}" VerticalTextAlignment="Center" />
-						    </StackLayout>
-					    </Frame>
-				    </ViewCell>
+                    <productCell:BaseProductGroupingCell ShowChevron="false" ProductType="{Binding ProductType}"/>
 			    </DataTemplate>
 		    </ListView.GroupHeaderTemplate>
 	    </ListView>
