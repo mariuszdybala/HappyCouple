@@ -203,6 +203,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Providers\AssemblyInfoProvider.cs" />
     <Compile Include="Providers\SystemInfoProvider.cs" />
     <Compile Include="Renderers\RoundedBoxViewRenderer.cs" />
     <Compile Include="Renderers\ScrollBarLessScrollViewRenderer.cs" />

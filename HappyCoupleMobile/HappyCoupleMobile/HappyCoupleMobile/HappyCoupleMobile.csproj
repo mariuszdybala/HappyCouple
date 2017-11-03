@@ -52,11 +52,14 @@
     </Compile>
     <Compile Include="Custom\ActionSheetItem.cs" />
     <Compile Include="Custom\GroupedProductList.cs" />
+    <Compile Include="Custom\MigrationAttribute.cs" />
     <Compile Include="Custom\ProductTypeEqualityComparer.cs" />
     <Compile Include="Custom\SwipeButton.cs" />
     <Compile Include="Data\BaseDao.cs" />
+    <Compile Include="Data\ConfigurationDao.cs" />
     <Compile Include="Data\DatabaseInitializer.cs" />
     <Compile Include="Data\Interfaces\IBaseDao.cs" />
+    <Compile Include="Data\Interfaces\IConfigurationDao.cs" />
     <Compile Include="Data\Interfaces\IDatabaseInitializer.cs" />
     <Compile Include="Data\Interfaces\IProductDao.cs" />
     <Compile Include="Data\Interfaces\IProductTypeDao.cs" />
@@ -74,6 +77,12 @@
     <Compile Include="Enums\SwipeButtonType.cs" />
     <Compile Include="Helpers\Animation.cs" />
     <Compile Include="Helpers\StringHelper.cs" />
+    <Compile Include="Migrations\001_InsertBasicTypesMigration.cs" />
+    <Compile Include="Migrations\BaseMigration.cs" />
+    <Compile Include="Migrations\IMigration.cs" />
+    <Compile Include="Migrations\IMigrator.cs" />
+    <Compile Include="Migrations\Migrator.cs" />
+    <Compile Include="Model\Configuration.cs" />
     <Compile Include="Model\Interfaces\IModel.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\ProductType.cs" />
@@ -174,6 +183,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\BaseSystemInfoProvider.cs" />
     <Compile Include="Providers\Interfaces\IAlertsAndNotificationsProvider.cs" />
+    <Compile Include="Providers\Interfaces\IAssemblyInfoProvider.cs" />
     <Compile Include="Providers\Interfaces\ISqliteConnectionProvider.cs" />
     <Compile Include="Providers\Interfaces\ISystemInfoProvider.cs" />
     <Compile Include="Providers\SqliteConnectionProvider.cs" />
@@ -181,14 +191,17 @@
     <Compile Include="Repositories\Interfaces\IUserRepository.cs" />
     <Compile Include="Repositories\ShoppingListRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Resources\ConfigurationKeys.cs" />
     <Compile Include="Services\Interfaces\INavigationService.cs" />
     <Compile Include="Services\Interfaces\IProductService.cs" />
     <Compile Include="Services\Interfaces\IShoppingListService.cs" />
     <Compile Include="Services\Interfaces\ISimpleAuthService.cs" />
+    <Compile Include="Services\Interfaces\IStartApplicationService.cs" />
     <Compile Include="Services\NavigationPageService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\ShoppingListService.cs" />
     <Compile Include="Services\SimpleAuthService.cs" />
+    <Compile Include="Services\StartApplicationService.cs" />
     <Compile Include="ViewModel\Abstract\BaseHappyViewModel.cs" />
     <Compile Include="ViewModel\AddProductViewModel.cs" />
     <Compile Include="ViewModel\ClosedShoppingListViewModel.cs" />
@@ -460,7 +473,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Utils\Interfaces\" />
     <Folder Include="Mvvm\Controls\ContextMenu\" />
   </ItemGroup>
   <ItemGroup>

@@ -108,11 +108,6 @@ namespace HappyCoupleMobile.Mvvm.Controls
         {
             shoppingListView.UnSubscribeEventsToProductList(shoppingLists);
 
-            if (!shoppingLists.Any())
-            {
-                return;
-            }
-
             if (shoppingListView.ShoppingListPanelContent.Children.Any())
             {
                 shoppingListView.ShoppingListPanelContent.Children.Clear();
@@ -166,7 +161,7 @@ namespace HappyCoupleMobile.Mvvm.Controls
             EmptyListPlaceholderStack.IsVisible = !ShoppingListPanelContent.Children.OfType<ShoppingListPanel>().Any();
 
             AddListLabelPlaceholder.IsVisible = AddListImagePlaceholder.IsVisible =
-                EmptyListPlaceholderStack.IsVisible 
+                EmptyListPlaceholderStack.IsVisible
                 && ShoppingListTabType == ShoppingListTabType.Active;
         }
     }

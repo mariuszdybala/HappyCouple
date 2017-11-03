@@ -42,20 +42,14 @@ namespace HappyCoupleMobile.ViewModel
 
         public ObservableCollection<ShoppingListVm> ActiveShoppingLists
         {
-            get { return _activeShoppingLists; }
-            set
-            {
-                Set(ref _activeShoppingLists, value);
-            }
+            get => _activeShoppingLists;
+	        set => Set(ref _activeShoppingLists, value);
         }
 
         public ObservableCollection<ShoppingListVm> ClosedShoppingLists
         {
-            get { return _closedShoppingLists; }
-            set
-            {
-                Set(ref _closedShoppingLists, value);
-            }
+            get => _closedShoppingLists;
+	        set => Set(ref _closedShoppingLists, value);
         }
 
         public ShoppingsViewModel(ISimpleAuthService simpleAuthService, IShoppingListService shoppingListService, IShoppingListRepository shoppingListRepository,
@@ -90,9 +84,7 @@ namespace HappyCoupleMobile.ViewModel
 
             ActiveShoppingLists = new ObservableCollection<ShoppingListVm>(shoppingLists.Select(x=>new ShoppingListVm(x)));
 
-            var closedList = MockedData.GetShoppingList(5, "Imprezka na weekend - nieaktywana już", 1, ShoppingListStatus.Closed);
-
-            ClosedShoppingLists = new ObservableCollection<ShoppingListVm> { new ShoppingListVm(closedList) };
+            //ClosedShoppingLists = new ObservableCollection<ShoppingListVm> { new ShoppingListVm(closedList) };
 
             RaisePropertyChanged(nameof(ActiveShoppingLists));
             RaisePropertyChanged(nameof(ClosedShoppingLists));
@@ -181,7 +173,7 @@ namespace HappyCoupleMobile.ViewModel
 		        new ActionSheetItem {Action = OnAddNewListManual, ButtonText = "Na podstawie innej listy"}
 	        });
         }
-	    
+
 	    private void OnSettingsTapped()
 	    {
 		    _alertsAndNotificationsProvider.ShowActionSheet(string.Empty, "Ustawienia", new List<ActionSheetItem>
@@ -189,7 +181,7 @@ namespace HappyCoupleMobile.ViewModel
 			    new ActionSheetItem {Action = async () => await EditFavouriteProductsList(), ButtonText = "Edytuj listę swoich produktów"},
 		    });
 	    }
-	    
+
 	    private async Task EditFavouriteProductsList()
 	    {
 		    await NavigateToWithMessage<FavouriteProductTypesView, FavouriteProductTypeViewModel>(
@@ -211,7 +203,7 @@ namespace HappyCoupleMobile.ViewModel
 				    AddDate = DateTime.UtcNow,
 				    Status = ShoppingListStatus.Active
 			    }));
-		    
+
 		    _alertsAndNotificationsProvider.ShowSuccessToast();
 	    }
 

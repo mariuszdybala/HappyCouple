@@ -21,26 +21,31 @@ namespace HappyCoupleMobile.ViewModel
 	{
 		private IList<ProductVm> _addedProducts;
 		private IList<ProductVm> _editedProducts;
-		
+
 		private readonly IProductServices _productService;
 		private readonly IAlertsAndNotificationsProvider _alertsAndNotificationsProvider;
 		private ProductType _selectedProductType;
+		private ObservableCollection<ProductVm> _favouriteProducts;
+		private int? _shoppingListId;
+		private bool _emptyListPlaceholder;
+
+		public bool EmptyListPlaceholder
+		{
+			get => _emptyListPlaceholder;
+			set => Set(ref _emptyListPlaceholder, value);
+		}
 
 		public ProductType SelectedProductType
 		{
-			get { return _selectedProductType; }
-			set { Set(ref _selectedProductType, value); }
+			get => _selectedProductType;
+			set => Set(ref _selectedProductType, value);
 		}
 
-		private ObservableCollection<ProductVm> _mockListForProduct;
-		private int? _shoppingListId;
-
-		public ObservableCollection<ProductVm> MockListForProduct
+		public ObservableCollection<ProductVm> FavouriteProducts
 		{
-			get { return _mockListForProduct; }
-			set { Set(ref _mockListForProduct, value); }
+			get => _favouriteProducts;
+			set => Set(ref _favouriteProducts, value);
 		}
-
 
 		public RelayCommand<ProductVm> DeleteProductCommand => new RelayCommand<ProductVm>(OnDeleteProduct);
 
@@ -60,9 +65,9 @@ namespace HappyCoupleMobile.ViewModel
 		{
 			_productService = productService;
 			_alertsAndNotificationsProvider = alertsAndNotificationsProvider;
-			MockListForProduct = new ObservableCollection<ProductVm>();
+			FavouriteProducts = new ObservableCollection<ProductVm>();
 			RegisterCommandAndMessages();
-			
+
 			_addedProducts = new List<ProductVm>();
 			_editedProducts = new List<ProductVm>();
 		}
@@ -77,9 +82,20 @@ namespace HappyCoupleMobile.ViewModel
 			_shoppingListId = message.GetInt(MessagesKeys.ShoppingListIdKey);
 			SelectedProductType = (ProductType) message.GetValue(MessagesKeys.ProductTypeKey);
 
-			LoadProductTypes();
+			LoadFavouriteProducts();
 
 			await Task.Yield();
+		}
+
+		private void LoadFavouriteProducts()
+		{
+			AddEmptyListPlaceholderIfNeeded();
+			RaisePropertyChanged(nameof(FavouriteProducts));
+		}
+
+		private void AddEmptyListPlaceholderIfNeeded()
+		{
+			EmptyListPlaceholder = !FavouriteProducts.Any();
 		}
 
 		private async Task OnGoToAddProductToFavorite()
@@ -96,22 +112,22 @@ namespace HappyCoupleMobile.ViewModel
 			{
 				return;
 			}
-			
+
 			if (feedbackMessage.OperationMode != OperationMode.New)
 			{
-				MockListForProduct = new ObservableCollection<ProductVm>(MockListForProduct);
 				_editedProducts.Add(product);
 				return;
 			}
 
-			MockListForProduct.Insert(0, product);
+			FavouriteProducts.Insert(0, product);
+			AddEmptyListPlaceholderIfNeeded();
 
 			await Task.Yield();
 		}
 
 		private void OnDeleteProduct(ProductVm product)
 		{
-			if (MockListForProduct.Remove(product))
+			if (FavouriteProducts.Remove(product))
 			{
 				_alertsAndNotificationsProvider.ShowSuccessToast("Usunięto");
 			}
@@ -141,7 +157,7 @@ namespace HappyCoupleMobile.ViewModel
 			{
 				return;
 			}
-			
+
 			_alertsAndNotificationsProvider.ShowAlertWithTextField("ilość produktu", "Wpisz", Keyboard.Numeric, async (quantity) => await OnProductAdded(product, quantity));
 		}
 
@@ -170,70 +186,23 @@ namespace HappyCoupleMobile.ViewModel
 			{
 				return;
 			}
-			
+
 			var feedBackMessage = new FeedbackMessage(MessagesKeys.ProductsKey, _addedProducts);
 			feedBackMessage.OperationMode = OperationMode.New;
 			feedBackMessage.AddData(MessagesKeys.ShoppingListIdKey, _shoppingListId);
 			await SendFeedbackMessage<ShoppingsViewModel>(feedBackMessage);
 		}
-		
+
 		private async Task SendFeedbackAboutChangedProduct()
 		{
 			if (!_editedProducts.Any())
 			{
 				return;
 			}
-			
+
 			var feedBackMessage = new FeedbackMessage(MessagesKeys.ProductsKey, _editedProducts);
 			feedBackMessage.OperationMode = OperationMode.Edit;
 			await SendFeedbackMessage<ShoppingsViewModel>(feedBackMessage);
-		}
-
-		private void LoadProductTypes()
-		{
-			var mockListForProduct =
-				new List<Product>
-				{
-					new Product
-					{
-						Id = 0,
-						Name = "Marcheweczka",
-						Comment = "To jest pyszna marcheweczka trzeba ją kupić",
-						Quantity = 4
-					},
-					new Product
-					{
-						Id = 1,
-						Name = "Piweczko",
-						Comment =
-							"MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ",
-						Quantity = 10
-					},
-					new Product
-					{
-						Id = 2,
-						Name = "Piweczko",
-						Comment =
-							"MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ",
-						Quantity = 10
-					},
-					new Product {Id = 3, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
-					new Product {Id = 4, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
-					new Product {Id = 5, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
-					new Product {Id = 6, Name = "Tuńczyk", Comment = "Steki w Biedronce", Quantity = 1},
-					new Product
-					{
-						Id = 7,
-						Name = "Piweczko",
-						Comment =
-							"MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) MMM pyszne piweczko :) ",
-						Quantity = 10
-					}
-				};
-
-			MockListForProduct = new ObservableCollection<ProductVm>(mockListForProduct.Select(x => new ProductVm(x)));
-
-			RaisePropertyChanged(nameof(MockListForProduct));
 		}
 
 		protected override async Task OnGoBackCommand()
@@ -248,6 +217,10 @@ namespace HappyCoupleMobile.ViewModel
 			_shoppingListId = null;
 			_addedProducts.Clear();
 			_editedProducts.Clear();
+
+			EmptyListPlaceholder = false;
+			SelectedProductType = null;
+			FavouriteProducts.Clear();
 		}
 	}
 }

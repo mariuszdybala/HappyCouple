@@ -142,6 +142,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Providers\AlertsAndNotificationsesAndNotificationsProvider.cs" />
+    <Compile Include="Providers\AssemblyInfoProvider.cs" />
     <Compile Include="Providers\SystemInfoProvider.cs" />
     <Compile Include="Renderers\CircularProgressRenderer.cs" />
     <Compile Include="Renderers\CircularViewRenderer.cs" />

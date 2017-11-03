@@ -34,6 +34,7 @@ namespace HappyCoupleMobile.Droid
         private void RegisterIoC()
         {
             SimpleIoc.Default.Register<ISystemInfoProvider,SystemInfoProvider>();
+	        SimpleIoc.Default.Register<IAssemblyInfoProvider, AssemblyInfoProvider>();
         }
     }
 }

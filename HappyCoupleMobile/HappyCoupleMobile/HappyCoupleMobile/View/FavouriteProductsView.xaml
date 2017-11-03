@@ -16,10 +16,10 @@
 		        <Label Text="{Binding SelectedProductType.Type}" FontFamily="{StaticResource Medium}" TextColor="White" VerticalOptions="Center"/>
 	        </StackLayout>
 	        <BoxView HeightRequest="1" Margin="0,10,0,0" BackgroundColor="{StaticResource ThirthColor}"/>
-	        <ListView BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding MockListForProduct}">
+	        <ListView IsVisible="{Binding EmptyListPlaceholder, Converter={StaticResource InverseBooleanConverter}}" BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding FavouriteProducts}">
 		        <ListView.ItemTemplate>
 			        <DataTemplate>
-					        <productCell:SwipeableProductCell ShowCheckbox="False" ShowProductQuantity="False" 
+					        <productCell:SwipeableProductCell ShowCheckbox="False" ShowProductQuantity="False"
 					                                          Product="{Binding .}"
 					                                          DeleteCommand="{Binding BindingContext.DeleteProductCommand, Source={x:Reference FavouriteProductsView}}"
 					                                          EditCommand="{Binding BindingContext.EditProductCommand, Source={x:Reference FavouriteProductsView}}"
@@ -27,6 +27,18 @@
 			        </DataTemplate>
 		        </ListView.ItemTemplate>>
 	        </ListView>
+	        <StackLayout x:Name="EmptyListPlaceholderStack" VerticalOptions="StartAndExpand" IsVisible="{Binding EmptyListPlaceholder}"
+	                     Spacing="10" Margin="0,40,0,0">
+		        <Image Source="{StaticResource EmptyProducts}"/>
+		        <Label Text="Nie masz żadnych produktów" Style="{StaticResource MediumWhite20Font}"
+		               HorizontalTextAlignment="Center"/>
+		        <Label Text="dla tego typu." Style="{StaticResource MediumWhite20Font}"
+		               HorizontalTextAlignment="Center"/>
+		        <Label x:Name="AddListLabelPlaceholder" Text="Dodaj nowe produkty" Style="{StaticResource MediumWhite20Font}"
+		               HorizontalTextAlignment="Center"/>
+		        <controls:TappableImage x:Name="AddListImagePlaceholder" Source="{StaticResource AddToListWhite}"
+		                                TappedCommand="{Binding GoToAddProductToFavoriteCommand}" />
+	        </StackLayout>
         </StackLayout>
     </StackLayout>
 </abstract:BaseHappyContentPage>
