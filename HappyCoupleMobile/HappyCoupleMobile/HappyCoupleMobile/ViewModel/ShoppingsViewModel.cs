@@ -208,8 +208,10 @@ namespace HappyCoupleMobile.ViewModel
 			    {
 				    Id = ActiveShoppingLists.Any()? ActiveShoppingLists.Max(x=>x.Id) + 1 : 0,
 				    Name = listName,
-				    AddDate = DateTime.UtcNow
+				    AddDate = DateTime.UtcNow,
+				    Status = ShoppingListStatus.Active
 			    }));
+		    
 		    _alertsAndNotificationsProvider.ShowSuccessToast();
 	    }
 

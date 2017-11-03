@@ -150,7 +150,7 @@ namespace HappyCoupleMobile
             await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Higiena", "Hygiene"));
             await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Home&You", "Home"));
             await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Ciuchy", "Clothes"));
-
+            await shoppingListRepository.InsertProductTypeAsync(MockedData.GetProductType("Leki", "Medicine"));
 
             var productTypes = await shoppingListRepository.GetAllProductTypesAsync();
         }

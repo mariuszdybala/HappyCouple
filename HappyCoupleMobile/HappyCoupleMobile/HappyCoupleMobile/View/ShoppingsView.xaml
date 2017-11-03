@@ -9,18 +9,19 @@
         <StackLayout Spacing="0" VerticalOptions="FillAndExpand">
             <control:TopPanelControl RightIconSource="{StaticResource AddList}" LeftItemTapCommand="{Binding SettingsTappedCommand}" LeftIconSource="{StaticResource Options}" RightIconTapCommand="{Binding AddNewListCommand}" PanelHeader="Moje listy"/>
             <StackLayout Spacing="0" Orientation="Horizontal">
-                <StackLayout x:Name="ActiveTabPanel" Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource SecondColor}">
-                    <control:TappableLabel x:Name="ActiveTabLabel" 
-                                           TappedCommand="{Binding Source={x:Reference ShoppingsView}, Path=ActiveTabTappedCommand}" 
+                <control:TappableStackLayout x:Name="ActiveTabPanel" Padding="5" HorizontalOptions="FillAndExpand" 
+                                             BackgroundColor="{StaticResource SecondColor}" 
+                                             TappedCommand="{Binding Source={x:Reference ShoppingsView}, Path=ActiveTabTappedCommand}">
+                    <Label x:Name="ActiveTabLabel" 
                                            FontFamily="{StaticResource Medium}" HorizontalTextAlignment="Center" Text="Aktywne" 
                                            TextColor="White" FontSize="15"/>
-                </StackLayout>
-                <StackLayout x:Name="ClosedTabPanel" Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="White">
-                    <control:TappableLabel x:Name="ClosedTabLabel" 
-                                           TappedCommand="{Binding Source={x:Reference ShoppingsView}, Path=ClosedTabTappedCommand}" 
+                </control:TappableStackLayout>
+                <control:TappableStackLayout x:Name="ClosedTabPanel" Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="White"
+                                             TappedCommand="{Binding Source={x:Reference ShoppingsView}, Path=ClosedTabTappedCommand}">
+                    <Label x:Name="ClosedTabLabel" 
                                            FontFamily="{StaticResource Medium}" HorizontalTextAlignment="Center" Text="Zamknięte" 
                                            TextColor="{StaticResource SecondColor}" FontSize="15"/>
-                </StackLayout>
+                </control:TappableStackLayout>
             </StackLayout>
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                 <control:ShoppingListView x:Name="ActiveShoppingList" ShoppingListTabType="Active"

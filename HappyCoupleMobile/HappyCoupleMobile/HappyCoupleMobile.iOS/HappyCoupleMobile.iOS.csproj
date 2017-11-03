@@ -227,6 +227,9 @@
     <BundleResource Include="Resources\food_general%402x.png" />
     <BundleResource Include="Resources\food_general.png" />
     <BundleResource Include="Resources\home.png" />
+    <BundleResource Include="Resources\medicine.png" />
+    <BundleResource Include="Resources\medicine%402x.png" />
+    <BundleResource Include="Resources\medicine%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%402x.png" />

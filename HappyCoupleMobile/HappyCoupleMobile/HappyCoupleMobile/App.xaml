@@ -80,6 +80,7 @@
             <FileImageSource x:Key="Home">home.png</FileImageSource>
             <FileImageSource x:Key="Hygiene">hygiene.png</FileImageSource>
             <FileImageSource x:Key="Plant">plant.png</FileImageSource>
+            <FileImageSource x:Key="Medicine">medicine.png</FileImageSource>
             
             <!--conrols-->
             <Style TargetType="Image" x:Key="EraseImageStyle">
