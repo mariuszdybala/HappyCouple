@@ -22,9 +22,6 @@ namespace HappyCoupleMobile.Model
         [Column("edited_by_id")]
         public int? EditedById { get; set; }
 
-        [Column("deleted_by_id")]
-        public int? DeletedById { get; set; }
-
         [Column("closed_by_id")]
         public int? ClosedById { get; set; }
 
@@ -33,9 +30,6 @@ namespace HappyCoupleMobile.Model
 
         [Column("add_date")]
         public DateTime AddDate{ get; set; }
-
-        [Column("delete_date")]
-        public DateTime? DeleteDate { get; set; }
 
         [Column("edit_date")]
         public DateTime? EditDate { get; set; }
@@ -46,7 +40,7 @@ namespace HappyCoupleMobile.Model
         [Column("shopping_list_status")]
         public ShoppingListStatus Status { get; set; }
 
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        [OneToMany(CascadeOperations = CascadeOperation.CascadeRead)]
         public List<Product> Products { get; set; }
 
         public ShoppingList()

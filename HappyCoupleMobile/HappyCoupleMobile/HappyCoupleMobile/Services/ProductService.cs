@@ -28,7 +28,7 @@ namespace HappyCoupleMobile.Services
 
             var allProductTypes = await _shoppingListRepository.GetAllProductTypesAsync();
 
-            var allFavouriteProducts = await _shoppingListRepository.GetAllFavouriteProductsWithChildrenAsync();
+            var allFavouriteProducts = await _shoppingListRepository.GetAllFavouriteProductsWithChildrenAsync(TODO);
 
             //TODO Change to Linq.GroupBy
             foreach (var productType in allProductTypes)
