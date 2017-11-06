@@ -24,8 +24,8 @@ namespace HappyCoupleMobile.ViewModel
     public class ShoppingsViewModel : BaseHappyViewModel
     {
         private readonly IShoppingListService _shoppingListService;
-        private readonly IShoppingListRepository _shoppingListRepository;
-        private readonly INotificationManager _notificationManager;
+	    private readonly ISimpleAuthService _authService;
+	    private readonly INotificationManager _notificationManager;
 	    private readonly IAlertsAndNotificationsProvider _alertsAndNotificationsProvider;
 
 	    private ObservableCollection<ShoppingListVm> _closedShoppingLists;
@@ -52,12 +52,12 @@ namespace HappyCoupleMobile.ViewModel
 	        set => Set(ref _closedShoppingLists, value);
         }
 
-        public ShoppingsViewModel(ISimpleAuthService simpleAuthService, IShoppingListService shoppingListService, IShoppingListRepository shoppingListRepository,
+        public ShoppingsViewModel(ISimpleAuthService simpleAuthService, IShoppingListService shoppingListService, ISimpleAuthService authService,
                                     INotificationManager notificationManager,  IAlertsAndNotificationsProvider alertsAndNotificationsProvider) : base(simpleAuthService)
         {
             _shoppingListService = shoppingListService;
-            _shoppingListRepository = shoppingListRepository;
-            _notificationManager = notificationManager;
+	        _authService = authService;
+	        _notificationManager = notificationManager;
 	        _alertsAndNotificationsProvider = alertsAndNotificationsProvider;
 	        RegisterCommand();
 
@@ -80,11 +80,11 @@ namespace HappyCoupleMobile.ViewModel
 
         public async Task GetAllShoppingListsAndInitView()
         {
-            var shoppingLists = await _shoppingListRepository.GetAllShoppingListWithProductsAsync();
+	        var activeShoppingList = await _shoppingListService.GetAllShoppingListWithProductsAsync(ShoppingListStatus.Active);
+	        var closedShoppingList = await _shoppingListService.GetAllShoppingListWithProductsAsync(ShoppingListStatus.Closed);
 
-            ActiveShoppingLists = new ObservableCollection<ShoppingListVm>(shoppingLists.Select(x=>new ShoppingListVm(x)));
-
-            //ClosedShoppingLists = new ObservableCollection<ShoppingListVm> { new ShoppingListVm(closedList) };
+            ActiveShoppingLists = new ObservableCollection<ShoppingListVm>(activeShoppingList);
+            ClosedShoppingLists = new ObservableCollection<ShoppingListVm>(closedShoppingList);
 
             RaisePropertyChanged(nameof(ActiveShoppingLists));
             RaisePropertyChanged(nameof(ClosedShoppingLists));
@@ -124,6 +124,8 @@ namespace HappyCoupleMobile.ViewModel
 			    ClosedShoppingLists.Remove(shoppingList);
 		    }
 
+		    await _shoppingListService.DeleteShoppingListAsync(shoppingList);
+
 		    _alertsAndNotificationsProvider.ShowSuccessToast("Lista usunięta");
 	    }
 
@@ -152,8 +154,8 @@ namespace HappyCoupleMobile.ViewModel
 	    {
 		    shoppingList.Status = ShoppingListStatus.Closed;
 		    shoppingList.CloseDate = DateTime.Now;
-		    // DOTO service with implementation logic which closing list
-		    //temporary fix
+
+		    await _shoppingListService.UpdateShoppingListAsync(shoppingList);
 
 		    ActiveShoppingLists.Remove(shoppingList);
 		    ClosedShoppingLists.Add(shoppingList);
@@ -190,21 +192,20 @@ namespace HappyCoupleMobile.ViewModel
 
 	    private void OnAddNewListManual()
 	    {
-		    _alertsAndNotificationsProvider.ShowAlertWithTextField("Wpisz swoją nazwę listy", "Nowa lista zakupów", Keyboard.Default, AlertsAndNotificationsProviderOnAlertConfirmed);
+		    _alertsAndNotificationsProvider.ShowAlertWithTextField("Wpisz swoją nazwę listy", "Nowa lista zakupów", Keyboard.Default, async(listName) => await AlertsAndNotificationsProviderOnAlertConfirmed(listName));
 	    }
 
-	    private void AlertsAndNotificationsProviderOnAlertConfirmed(string listName)
+	    private async Task AlertsAndNotificationsProviderOnAlertConfirmed(string listName)
 	    {
-		    ActiveShoppingLists.Add(new ShoppingListVm(
-			    new ShoppingList
-			    {
-				    Id = ActiveShoppingLists.Any()? ActiveShoppingLists.Max(x=>x.Id) + 1 : 0,
-				    Name = listName,
-				    AddDate = DateTime.UtcNow,
-				    Status = ShoppingListStatus.Active
-			    }));
-
+		    var newList = ShoppingListVm.CreateNewShoppingList(listName, _authService.Admin.Id);
+		    await AddShoppingList(newList);
 		    _alertsAndNotificationsProvider.ShowSuccessToast();
+	    }
+
+	    private async Task AddShoppingList(ShoppingListVm shoppingListVm)
+	    {
+		    ActiveShoppingLists.Add(shoppingListVm);
+		    await _shoppingListService.InsertShoppingListAsync(shoppingListVm);
 	    }
 
 	    protected override async Task OnFeedback(IFeedbackMessage feedbackMessage)
@@ -216,26 +217,34 @@ namespace HappyCoupleMobile.ViewModel
 			    return;
 		    }
 
-		    if (feedbackMessage.OperationMode == OperationMode.New)
+		    if (feedbackMessage.OperationMode == OperationMode.InsertNew)
 		    {
 			    var shoppingListId = feedbackMessage.GetInt(MessagesKeys.ShoppingListIdKey);
-			    AddProducts(products, shoppingListId);
+			    await AddProducts(products, shoppingListId);
 		    }
-		    else if (feedbackMessage.OperationMode == OperationMode.Edit)
+		    else if (feedbackMessage.OperationMode == OperationMode.Update)
 		    {
 			    EditProducts(products);
 		    }
 	    }
 
-	    private void AddProducts(IList<ProductVm> products, int? shoppingListId)
+	    private async Task AddProducts(IList<ProductVm> products, int? shoppingListId)
 	    {
 		    if (!shoppingListId.HasValue)
 		    {
-			    return;
+			    throw new ArgumentException("Added product hasn't got shopping list ID");
 		    }
 
 		    var shoppingList = ActiveShoppingLists.FirstOrDefault(x => x.Id == shoppingListId);
 		    shoppingList.AddProducts(products);
+		    await _shoppingListService.InsertProductsAsync(products);
+		    await ShoppingListChanged(shoppingList);
+	    }
+
+	    private async Task ShoppingListChanged(ShoppingListVm shoppingList)
+	    {
+		    shoppingList.EditDate = DateTime.Now;
+		    await _shoppingListService.UpdateShoppingListAsync(shoppingList);
 	    }
 
 	    private void EditProducts(IList<ProductVm> products)
@@ -244,6 +253,8 @@ namespace HappyCoupleMobile.ViewModel
 		    {
 			    list.UpdateProducts(products);
 		    }
+		    
+		    _shoppingListService.UpdateProductsAsync(products);
 	    }
     }
 }

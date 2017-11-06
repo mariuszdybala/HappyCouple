@@ -23,6 +23,7 @@ namespace HappyCoupleMobile.VM
         private int _productsCount;
 	    private bool _isListCompleted;
 	    private DateTime? _closeDate;
+	    private DateTime? _editDate;
 
 	    public event Action<OperationMode> ProductChanged;
 
@@ -57,6 +58,16 @@ namespace HappyCoupleMobile.VM
 		    {
 			    Set(ref _closeDate, value);
 			    ShoppingList.CloseDate = value;
+		    }
+	    }
+	    
+	    public DateTime? EditDate
+	    {
+		    get => _editDate;
+		    set
+		    {
+			    Set(ref _editDate, value);
+			    ShoppingList.EditDate = value;
 		    }
 	    }
 
@@ -125,6 +136,7 @@ namespace HappyCoupleMobile.VM
             AddDate = ShoppingList.AddDate;
 	        CloseDate = ShoppingList.CloseDate;
             Status = ShoppingList.Status;
+	        EditDate = shoppingList.EditDate;
 
 	        UpdateAdditionalData();
         }
@@ -160,6 +172,11 @@ namespace HappyCoupleMobile.VM
 
 	    public void UpdateProducts(IList<ProductVm> products, bool withNotification = true)
 	    {
+		    if (!products.Any())
+		    {
+			    return;
+		    }
+		   		    
 		    foreach (var editedProduct in products)
 		    {
 			    foreach (var product in Products)
@@ -176,7 +193,7 @@ namespace HappyCoupleMobile.VM
 
 		    if (withNotification)
 		    {
-			    InvokeProductChanged(OperationMode.Edit);
+			    InvokeProductChanged(OperationMode.Update);
 		    }
 	    }
 
@@ -192,7 +209,7 @@ namespace HappyCoupleMobile.VM
 
 		    if (withNotification)
 		    {
-			    InvokeProductChanged(OperationMode.New);
+			    InvokeProductChanged(OperationMode.InsertNew);
 		    }
 	    }
 
@@ -201,5 +218,18 @@ namespace HappyCoupleMobile.VM
 	        Products.Remove(product);
             UpdateAdditionalData();
         }
+	    
+	    public static ShoppingListVm CreateNewShoppingList(string newShoppingListName, int userId)
+	    {
+		    var shoppingList = new ShoppingList
+		    {
+			    AddDate = DateTime.UtcNow,
+			    AddedById = userId,
+			    Name = newShoppingListName,
+			    Status = ShoppingListStatus.Active
+		    };
+		    
+		    return new ShoppingListVm(shoppingList);
+	    }
     }
 }

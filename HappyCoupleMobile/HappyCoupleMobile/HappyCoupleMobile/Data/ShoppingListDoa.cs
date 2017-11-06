@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using HappyCoupleMobile.Data.Interfaces;
 using HappyCoupleMobile.Enums;
 using HappyCoupleMobile.Model;
 using HappyCoupleMobile.Providers.Interfaces;
 using SQLite.Net.Async;
+using SQLiteNetExtensionsAsync.Extensions;
 
 namespace HappyCoupleMobile.Data
 {
@@ -14,19 +16,19 @@ namespace HappyCoupleMobile.Data
         {
         }
 
-	    public async Task<IList<ShoppingList>> GetActiveShoppingList()
+	    public async Task<IList<ShoppingList>> GetActiveShoppingListAsync()
 	    {
 		    SQLiteAsyncConnection connection =  GetConnection();
 
-		    var result = await connection.Table<ShoppingList>().Where(x => x.Status == ShoppingListStatus.Active).ToListAsync().ConfigureAwait(false);
+		    var result = await connection.GetAllWithChildrenAsync<ShoppingList>(x => x.Status == ShoppingListStatus.Active, true).ConfigureAwait(false);
 		    return result;
 	    }
 	    
-	    public async Task<IList<ShoppingList>> GetClosedShoppingList()
+	    public async Task<IList<ShoppingList>> GetClosedShoppingListAsync()
 	    {
 		    SQLiteAsyncConnection connection =  GetConnection();
 		    
-		    var result = await connection.Table<ShoppingList>().Where(x => x.Status == ShoppingListStatus.Closed).ToListAsync().ConfigureAwait(false);
+		    var result = await connection.GetAllWithChildrenAsync<ShoppingList>(x => x.Status == ShoppingListStatus.Closed, true).ConfigureAwait(false);
 		    return result;
 	    }
     }

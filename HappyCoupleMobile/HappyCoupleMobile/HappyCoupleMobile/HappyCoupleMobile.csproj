@@ -193,12 +193,10 @@
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Resources\ConfigurationKeys.cs" />
     <Compile Include="Services\Interfaces\INavigationService.cs" />
-    <Compile Include="Services\Interfaces\IProductService.cs" />
     <Compile Include="Services\Interfaces\IShoppingListService.cs" />
     <Compile Include="Services\Interfaces\ISimpleAuthService.cs" />
     <Compile Include="Services\Interfaces\IStartApplicationService.cs" />
     <Compile Include="Services\NavigationPageService.cs" />
-    <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\ShoppingListService.cs" />
     <Compile Include="Services\SimpleAuthService.cs" />
     <Compile Include="Services\StartApplicationService.cs" />

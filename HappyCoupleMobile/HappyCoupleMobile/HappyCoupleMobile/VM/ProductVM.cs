@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using System;
+using GalaSoft.MvvmLight;
 using HappyCoupleMobile.Model;
 
 namespace HappyCoupleMobile.VM
@@ -13,7 +14,7 @@ namespace HappyCoupleMobile.VM
 	    private int? _favouriteProductId;
 	    public int? FavouriteProductId
 	    {
-		    get { return _favouriteProductId; }
+		    get => _favouriteProductId;
 		    set { Set(ref _favouriteProductId, value);
 			    ProductModel.FavouriteProductId = value;
 		    }
@@ -22,8 +23,8 @@ namespace HappyCoupleMobile.VM
         private string _name;
         public string Name
         {
-            get { return _name; }
-            set { Set(ref _name, value);
+            get => _name;
+	        set { Set(ref _name, value);
                 ProductModel.Name = value;
             }
         }
@@ -31,8 +32,8 @@ namespace HappyCoupleMobile.VM
         private string _comment;
         public string Comment
         {
-            get { return _comment; }
-            set
+            get => _comment;
+	        set
             {
                 Set(ref _comment, value);
                 ProductModel.Comment = value;
@@ -42,8 +43,8 @@ namespace HappyCoupleMobile.VM
         private int _quantity;
         public int Quantity
         {
-            get { return _quantity; }
-            set
+            get => _quantity;
+	        set
             {
                 Set(ref _quantity, value);
                 ProductModel.Quantity = value;
@@ -53,13 +54,24 @@ namespace HappyCoupleMobile.VM
         private bool _isBought;
         public bool IsBought
         {
-            get { return _isBought; }
-            set
+            get => _isBought;
+	        set
             {
                 Set(ref _isBought, value);
                 ProductModel.IsBought = value;
             }
         }
+	    
+	    private int? _shoppingListId;
+	    public int? ShoppingListId
+	    {
+		    get => _shoppingListId;
+		    set
+		    {
+			    Set(ref _shoppingListId, value);
+			    ProductModel.ShoppingListId = value;
+		    }
+	    }
 
 
         public ProductVm(Product product)
@@ -71,6 +83,38 @@ namespace HappyCoupleMobile.VM
             Quantity = ProductModel.Quantity;
             IsBought = ProductModel.IsBought;
 	        FavouriteProductId = ProductModel.FavouriteProductId;
+	        ShoppingListId = ProductModel.ShoppingListId;
         }
+	    
+	    public static ProductVm CreateProductVm(string name, string comment, int quantity, ProductType productType, User user, int? favouriteProductId = null, bool isFavourite = true, int? shoppingListId =null)
+	    {
+		    var product = new Product();
+
+		    product.Name = name;
+		    product.Comment = comment;
+		    product.Quantity = quantity;
+		    product.AddDate = DateTime.UtcNow;
+		    product.AddedById = user.Id;
+		    product.ProductType = productType;
+		    product.ProductTypeId = productType.Id;
+		    product.IsFavourite = isFavourite;
+		    product.FavouriteProductId = favouriteProductId;
+		    product.ShoppingListId = shoppingListId;
+
+		    return new ProductVm(product);
+	    }
+	    
+	    public static ProductVm CreateProductVm(string name, string comment)
+	    {
+		    var product = new Product();
+		    product.Name = name;
+		    product.Comment = comment;
+		    return new ProductVm(product);
+	    }
+
+	    public static ProductVm CreateProductVmFromFavouriteProduct(ProductVm favouriteProduct, ProductType productType, int quantity, User user, int? shoppingListId)
+	    {
+		    return CreateProductVm(favouriteProduct.Name, favouriteProduct.Comment, quantity, productType, user,favouriteProduct.Id, false, shoppingListId);
+	    }
     }
 }

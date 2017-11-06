@@ -3,8 +3,8 @@
 	public enum OperationMode
 	{
 		Other,
-		Edit,
-		New,
+		Update,
+		InsertNew,
 		Delete
 	}
 }

@@ -20,9 +20,9 @@ namespace HappyCoupleMobile.ViewModel
 	public class FavouriteProductsViewModel : BaseHappyViewModel
 	{
 		private IList<ProductVm> _addedProducts;
-		private IList<ProductVm> _editedProducts;
+		private IList<ProductVm> _updatedProducts;
 
-		private readonly IProductServices _productService;
+		private readonly IShoppingListService _shoppingListService;
 		private readonly IAlertsAndNotificationsProvider _alertsAndNotificationsProvider;
 		private ProductType _selectedProductType;
 		private ObservableCollection<ProductVm> _favouriteProducts;
@@ -47,10 +47,10 @@ namespace HappyCoupleMobile.ViewModel
 			set => Set(ref _favouriteProducts, value);
 		}
 
-		public RelayCommand<ProductVm> DeleteProductCommand => new RelayCommand<ProductVm>(OnDeleteProduct);
+		public RelayCommand<ProductVm> DeleteProductCommand => new RelayCommand<ProductVm>(async (product) => await OnDeleteProduct(product));
 
 		public RelayCommand<ProductVm> ProductSelectedCommand =>
-			new RelayCommand<ProductVm>(async (product) => await OnProductSelected(product));
+			new RelayCommand<ProductVm>(OnProductSelected);
 
 		public RelayCommand<ProductVm> EditProductCommand =>
 			new RelayCommand<ProductVm>(async (product) => await OnEditProduct(product));
@@ -60,16 +60,16 @@ namespace HappyCoupleMobile.ViewModel
 
 		public RelayCommand<ProductType> ProductTypeSelectedCommand { get; set; }
 
-		public FavouriteProductsViewModel(ISimpleAuthService simpleAuthService, IProductServices productService,
+		public FavouriteProductsViewModel(ISimpleAuthService simpleAuthService, IShoppingListService shoppingListService,
 			IAlertsAndNotificationsProvider alertsAndNotificationsProvider) : base(simpleAuthService)
 		{
-			_productService = productService;
+			_shoppingListService = shoppingListService;
 			_alertsAndNotificationsProvider = alertsAndNotificationsProvider;
 			FavouriteProducts = new ObservableCollection<ProductVm>();
 			RegisterCommandAndMessages();
 
 			_addedProducts = new List<ProductVm>();
-			_editedProducts = new List<ProductVm>();
+			_updatedProducts = new List<ProductVm>();
 		}
 
 		public void RegisterCommandAndMessages()
@@ -82,14 +82,21 @@ namespace HappyCoupleMobile.ViewModel
 			_shoppingListId = message.GetInt(MessagesKeys.ShoppingListIdKey);
 			SelectedProductType = (ProductType) message.GetValue(MessagesKeys.ProductTypeKey);
 
-			LoadFavouriteProducts();
-
-			await Task.Yield();
+			await LoadFavouriteProducts();
 		}
 
-		private void LoadFavouriteProducts()
+		private async Task LoadFavouriteProducts()
 		{
+			if (SelectedProductType == null)
+			{
+				return;
+			}
+
+			var favouriteProducts = await _shoppingListService.GetAllFavouriteProductsForTypeAsync(SelectedProductType.Id);
+			FavouriteProducts = new ObservableCollection<ProductVm>(favouriteProducts);
+			
 			AddEmptyListPlaceholderIfNeeded();
+			
 			RaisePropertyChanged(nameof(FavouriteProducts));
 		}
 
@@ -113,19 +120,24 @@ namespace HappyCoupleMobile.ViewModel
 				return;
 			}
 
-			if (feedbackMessage.OperationMode != OperationMode.New)
+			if (feedbackMessage.OperationMode == OperationMode.Update)
 			{
-				_editedProducts.Add(product);
+				_updatedProducts.Add(product);
 				return;
 			}
 
-			FavouriteProducts.Insert(0, product);
+			await AddFavouriteProduct(product);
+			
 			AddEmptyListPlaceholderIfNeeded();
-
-			await Task.Yield();
 		}
 
-		private void OnDeleteProduct(ProductVm product)
+		private async Task AddFavouriteProduct(ProductVm product)
+		{
+			FavouriteProducts.Insert(0, product);
+			await _shoppingListService.InsertFavouriteProductAsync(product);
+		}
+
+		private async Task OnDeleteProduct(ProductVm product)
 		{
 			if (FavouriteProducts.Remove(product))
 			{
@@ -135,6 +147,8 @@ namespace HappyCoupleMobile.ViewModel
 			{
 				_alertsAndNotificationsProvider.ShowFailedToast();
 			}
+
+			await _shoppingListService.DeleteFavouriteProductAsync(product);
 		}
 
 		private async Task OnEditProduct(ProductVm product)
@@ -146,22 +160,17 @@ namespace HappyCoupleMobile.ViewModel
 			await NavigateToWithMessage<AddProductView, AddProductViewModel>(message);
 		}
 
-		private async Task OnProductTypeSelected(ProductType productType)
-		{
-			await Task.Yield();
-		}
-
-		private async Task OnProductSelected(ProductVm product)
+		private void OnProductSelected(ProductVm product)
 		{
 			if (!_shoppingListId.HasValue)
 			{
 				return;
 			}
 
-			_alertsAndNotificationsProvider.ShowAlertWithTextField("ilość produktu", "Wpisz", Keyboard.Numeric, async (quantity) => await OnProductAdded(product, quantity));
+			_alertsAndNotificationsProvider.ShowAlertWithTextField("ilość produktu", "Wpisz", Keyboard.Numeric, (quantity) => OnProductAdded(product, quantity));
 		}
 
-		private async Task OnProductAdded(ProductVm product, string quantity)
+		private void OnProductAdded(ProductVm product, string quantity)
 		{
 			int quantityValue;
 
@@ -176,7 +185,12 @@ namespace HappyCoupleMobile.ViewModel
 
 		private void AddToProductBuffor(ProductVm product, int quantity)
 		{
-			var newProduct = _productService.CreateProductVmFromFavouriteProduct(product, SelectedProductType, quantity, Admin);
+			if (!_shoppingListId.HasValue)
+			{
+				return;
+			}
+			
+			var newProduct = ProductVm.CreateProductVmFromFavouriteProduct(product, SelectedProductType, quantity, Admin, _shoppingListId.Value);
 			_addedProducts.Add(newProduct);
 		}
 
@@ -188,20 +202,20 @@ namespace HappyCoupleMobile.ViewModel
 			}
 
 			var feedBackMessage = new FeedbackMessage(MessagesKeys.ProductsKey, _addedProducts);
-			feedBackMessage.OperationMode = OperationMode.New;
+			feedBackMessage.OperationMode = OperationMode.InsertNew;
 			feedBackMessage.AddData(MessagesKeys.ShoppingListIdKey, _shoppingListId);
 			await SendFeedbackMessage<ShoppingsViewModel>(feedBackMessage);
 		}
 
 		private async Task SendFeedbackAboutChangedProduct()
 		{
-			if (!_editedProducts.Any())
+			if (!_updatedProducts.Any())
 			{
 				return;
 			}
 
-			var feedBackMessage = new FeedbackMessage(MessagesKeys.ProductsKey, _editedProducts);
-			feedBackMessage.OperationMode = OperationMode.Edit;
+			var feedBackMessage = new FeedbackMessage(MessagesKeys.ProductsKey, _updatedProducts);
+			feedBackMessage.OperationMode = OperationMode.Update;
 			await SendFeedbackMessage<ShoppingsViewModel>(feedBackMessage);
 		}
 
@@ -216,7 +230,7 @@ namespace HappyCoupleMobile.ViewModel
 		{
 			_shoppingListId = null;
 			_addedProducts.Clear();
-			_editedProducts.Clear();
+			_updatedProducts.Clear();
 
 			EmptyListPlaceholder = false;
 			SelectedProductType = null;

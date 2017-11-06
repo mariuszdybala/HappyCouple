@@ -87,7 +87,6 @@ namespace HappyCoupleMobile
 
             SimpleIoc.Default.Register<ISimpleAuthService, SimpleAuthService>();
             SimpleIoc.Default.Register<INavigationPageService, NavigationPageService>();
-            SimpleIoc.Default.Register<IProductServices, ProductService>();
             SimpleIoc.Default.Register<IShoppingListService, ShoppingListService>();
 	        SimpleIoc.Default.Register<IStartApplicationService, StartApplicationService>();
 

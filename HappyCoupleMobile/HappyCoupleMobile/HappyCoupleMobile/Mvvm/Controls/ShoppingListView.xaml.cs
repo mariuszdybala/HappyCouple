@@ -13,7 +13,18 @@ namespace HappyCoupleMobile.Mvvm.Controls
 {
     public partial class ShoppingListView : StackLayout
     {
-        public ShoppingListTabType ShoppingListTabType { get; set; }
+	    private ShoppingListTabType _shoppingListTabType;
+        public ShoppingListTabType ShoppingListTabType
+        {
+	        get => _shoppingListTabType;
+	        set
+	        {
+		        _shoppingListTabType = value;
+		        NoListLabel.Text = value == ShoppingListTabType.Active ? "Nie masz żadnych list." : "Nie masz żadnych zamkniętych list.";
+		        AddListLabelPlaceholder.IsVisible = value == ShoppingListTabType.Active;
+		        AddListImagePlaceholder.IsVisible = value == ShoppingListTabType.Active;
+	        }
+        }
 
         public static readonly BindableProperty ShoppingListSourceProperty = BindableProperty.Create(
         nameof(ShoppingListSource), typeof(ObservableCollection<ShoppingListVm>), typeof(ShoppingListView), propertyChanged: OnShoppingListSourceChanged);
@@ -33,7 +44,8 @@ namespace HappyCoupleMobile.Mvvm.Controls
         public static readonly BindableProperty AddShoppingListCommandProperty = BindableProperty.Create(
         nameof(AddShoppingListCommand), typeof(ICommand), typeof(ShoppingListView));
 
-        public ObservableCollection<ShoppingListVm> ShoppingListSource
+
+	    public ObservableCollection<ShoppingListVm> ShoppingListSource
         {
             get { return (ObservableCollection<ShoppingListVm>)GetValue(ShoppingListSourceProperty); }
             set

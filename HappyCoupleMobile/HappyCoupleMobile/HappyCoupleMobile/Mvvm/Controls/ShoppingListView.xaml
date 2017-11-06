@@ -11,7 +11,7 @@
     <StackLayout x:Name="EmptyListPlaceholderStack" VerticalOptions="StartAndExpand"
                    Spacing="10" Margin="0,40,0,0">
         <Image Source="{StaticResource EmptyProducts}"/>
-        <Label Text="Nie masz żadnych list." Style="{StaticResource MediumWhite20Font}"
+        <Label x:Name="NoListLabel" Text="Nie masz żadnych list." Style="{StaticResource MediumWhite20Font}"
                    HorizontalTextAlignment="Center"/>
         <Label x:Name="AddListLabelPlaceholder" Text="Dodaj listę" Style="{StaticResource MediumWhite20Font}"
                  HorizontalTextAlignment="Center"/>

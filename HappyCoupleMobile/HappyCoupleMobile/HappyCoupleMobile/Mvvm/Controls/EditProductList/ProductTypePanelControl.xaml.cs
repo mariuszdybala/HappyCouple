@@ -60,7 +60,7 @@ namespace HappyCoupleMobile.Mvvm.Controls.EditProductList
 
             //AssignEvents(productView);
 
-            //ProductsContainer.Children.Insert(0,productView);
+            //ProductsContainer.Children.InsertNew(0,productView);
         }
 
         public void UnSubscribeAllEvents()

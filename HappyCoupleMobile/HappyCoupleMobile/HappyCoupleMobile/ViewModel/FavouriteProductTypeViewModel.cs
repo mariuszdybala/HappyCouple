@@ -15,15 +15,15 @@ namespace HappyCoupleMobile.ViewModel
 {
 	public class FavouriteProductTypeViewModel : BaseHappyViewModel
 	{
+		private readonly IShoppingListService _shoppingListService;
 		private int? _shoppingListId;
-		private readonly IProductServices _productService;
 		public ObservableCollection<ProductType> ProductTypes { get; set; }
 		
 		public RelayCommand<ProductType> ProductTypeTappedCommand => new RelayCommand<ProductType>(async(productType) => await OnProductTypeTapped(productType));
 
-		public FavouriteProductTypeViewModel(ISimpleAuthService simpleAuthService, IProductServices productService) : base(simpleAuthService)
+		public FavouriteProductTypeViewModel(ISimpleAuthService simpleAuthService, IShoppingListService shoppingListService) : base(simpleAuthService)
 		{
-			_productService = productService;
+			_shoppingListService = shoppingListService;
 			ProductTypes = new ObservableCollection<ProductType>();
 
 			RegisterCommand();
@@ -44,7 +44,7 @@ namespace HappyCoupleMobile.ViewModel
 		
 		private async Task LoadProductTypes()
 		{
-			var productTypes = await _productService.GetAllProductTypesAync();
+			var productTypes = await _shoppingListService.GetAllProductTypesAync();
 
 			ProductTypes = new ObservableCollection<ProductType>(productTypes);
 			RaisePropertyChanged(nameof(ProductTypes));

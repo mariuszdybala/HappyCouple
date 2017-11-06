@@ -20,7 +20,7 @@ namespace HappyCoupleMobile.ViewModel
 {
     public class EditShoppingListViewModel : BaseHappyViewModel
     {
-        private readonly IProductServices _productServices;
+	    private readonly IShoppingListService _shoppingListService;
 	    private readonly IAlertsAndNotificationsProvider _alertsAndNotificationsProvider;
 
 	    private ShoppingListVm _shoppingList;
@@ -45,9 +45,9 @@ namespace HappyCoupleMobile.ViewModel
         public Command<ProductVm> DeleteProductCommand { get; set; }
         public Command<ProductVm> EditProductCommand { get; set; }
 
-        public EditShoppingListViewModel(ISimpleAuthService simpleAuthService, IProductServices productServices, IAlertsAndNotificationsProvider alertsAndNotificationsProvider) : base(simpleAuthService)
+        public EditShoppingListViewModel(ISimpleAuthService simpleAuthService, IShoppingListService shoppingListService, IAlertsAndNotificationsProvider alertsAndNotificationsProvider) : base(simpleAuthService)
         {
-            _productServices = productServices;
+	        _shoppingListService = shoppingListService;
 	        _alertsAndNotificationsProvider = alertsAndNotificationsProvider;
 
 	        RegisterCommand();
@@ -57,8 +57,8 @@ namespace HappyCoupleMobile.ViewModel
         {
             RegisterNavigateToMessage(this);
 
-            DeleteProductCommand = new Command<ProductVm>(OnDeleteProduct);
-            EditProductCommand = new Command<ProductVm>(async(product) => await OnEditProduct(product));
+            DeleteProductCommand = new Command<ProductVm>(async(product) => await OnDeleteProduct(product));
+            EditProductCommand = new Command<ProductVm>(OnEditProduct);
             AddProductCommand = new Command(async () => await OnAddProduct());
             ProductCheckedCommand = new Command<ProductVm>(async (product) => await OnProductChecked(product));
         }
@@ -73,6 +73,8 @@ namespace HappyCoupleMobile.ViewModel
 
 	        ReloadProductsGroups();
 	        ShoppingList.ProductChanged += ShoppingListOnProductChanged;
+
+	        await Task.Yield();
         }
 
 	    private void OnDeleteList()
@@ -125,34 +127,43 @@ namespace HappyCoupleMobile.ViewModel
 
         private async Task OnProductChecked(ProductVm product)
         {
+	        await _shoppingListService.UpdateProductAsync(product);
 	        ShoppingList.CalculateCurrentShoppingProgress();
-
-            await Task.Yield();
+	        await ShoppingListChanged(ShoppingList);
         }
 
-        private void OnDeleteProduct(ProductVm product)
+        private async Task OnDeleteProduct(ProductVm product)
         {
-            DeleteProduct(product);
+	        DeleteProductFromView(product);
+	        await _shoppingListService.DeleteProductAsync(product);
+	        await ShoppingListChanged(ShoppingList);
         }
+	    
+	    private async Task ShoppingListChanged(ShoppingListVm shoppingList)
+	    {
+		    shoppingList.EditDate = DateTime.Now;
+		    await _shoppingListService.UpdateShoppingListAsync(shoppingList);
+	    }
 
-        private async Task OnEditProduct(ProductVm product)
+        private void OnEditProduct(ProductVm product)
         {
 	        _alertsAndNotificationsProvider.ShowAlertWithTextField("ilość produktu", "Wpisz nową", Keyboard.Numeric,
-		        (quantity) =>
-		        {
-			        int newquantityValue;
-			        if (int.TryParse(quantity, out newquantityValue))
-			        {
-				        product.Quantity = newquantityValue;
-				        _alertsAndNotificationsProvider.ShowSuccessToast("Ilość zmieniona");
-				        return;
-			        }
-
-			        _alertsAndNotificationsProvider.ShowFailedToast("Ilość błędna");
-		        });
-
-	        await Task.Yield();
+		        async (quantity) => await UpdateProduct(quantity, product));
         }
+
+	    private async Task UpdateProduct(string quantity, ProductVm productVm)
+	    {
+		    int newquantityValue;
+		    if (int.TryParse(quantity, out newquantityValue))
+		    {
+			    productVm.Quantity = newquantityValue;
+			    await ShoppingListChanged(ShoppingList);
+			    _alertsAndNotificationsProvider.ShowSuccessToast("Ilość zmieniona");
+			    return;
+		    }
+
+		    _alertsAndNotificationsProvider.ShowFailedToast("Ilość błędna");
+	    }
 
 	    private void ReloadProductsGroups()
 	    {
@@ -164,7 +175,7 @@ namespace HappyCoupleMobile.ViewModel
 		    GroupedProducts = new ObservableCollection<GroupedProductList>(groupedData);
 	    }
 
-	    public void DeleteProduct(ProductVm product)
+	    public void DeleteProductFromView(ProductVm product)
 	    {
 		    var productGroup = GroupedProducts.FirstOrDefault(x => x.ProductType.Id == product.ProductType.Id);
 

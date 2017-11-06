@@ -17,9 +17,9 @@ using Xamarin.Forms;
 namespace HappyCoupleMobile.ViewModel
 {
     public class AddProductViewModel : BaseHappyViewModel
-    {	    
-        private readonly IProductServices _productService;
-        private ProductType _productType;
+    {
+	    private readonly IShoppingListService _shoppingListService;
+	    private ProductType _productType;
 	    private ProductVm _originProduct;
 	    private ProductVm _product;
 	    private string _saveButtonText;
@@ -55,16 +55,16 @@ namespace HappyCoupleMobile.ViewModel
 		    set
 		    {
 			    _editing = value;
-			    SaveButtonText = _editing ? "Edit product" : "Add product";
+			    SaveButtonText = _editing ? "Update product" : "Add product";
 		    }
 	    }
 
         public ICommand SaveProductCommand { get; set; }
 
-        public AddProductViewModel(ISimpleAuthService simpleAuthService, IProductServices productService) : base(simpleAuthService)
+        public AddProductViewModel(ISimpleAuthService simpleAuthService, IShoppingListService shoppingListService) : base(simpleAuthService)
         {
-            _productService = productService;
-            RegisterCommandAndMessages();
+	        _shoppingListService = shoppingListService;
+	        RegisterCommandAndMessages();
         }
 
         private void RegisterCommandAndMessages()
@@ -80,7 +80,7 @@ namespace HappyCoupleMobile.ViewModel
 
 	        var product = (ProductVm) message.GetValue(MessagesKeys.ProductKey);
 	        
-	        Product =  product ?? _productService.CreateProductVm(null, null, 0, ProductType, Admin);
+	        Product =  product ?? ProductVm.CreateProductVm(null, null, 0, ProductType, Admin);
 
 	        Editing = product != null;
 	        SaveOriginProductInEditingMode();
@@ -93,12 +93,12 @@ namespace HappyCoupleMobile.ViewModel
 			    return;
 		    }
 		    
-		    OriginProduct = _productService.CreateProductVm(Product.Name, Product.Comment);
+		    OriginProduct = ProductVm.CreateProductVm(Product.Name, Product.Comment);
 	    }
 
 	    private async Task OnSaveProduct()
         {
-            await SendFeedbackMessage(new FeedbackMessage(MessagesKeys.ProductKey, Product, Editing ? OperationMode.Edit : OperationMode.New));
+            await SendFeedbackMessage(new FeedbackMessage(MessagesKeys.ProductKey, Product, Editing ? OperationMode.Update : OperationMode.InsertNew));
 
             await NavigateBack();
         }

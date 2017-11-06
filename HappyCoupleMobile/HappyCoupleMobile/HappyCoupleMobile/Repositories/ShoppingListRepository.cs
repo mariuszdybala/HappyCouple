@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using HappyCoupleMobile.Data;
 using HappyCoupleMobile.Data.Interfaces;
+using HappyCoupleMobile.Enums;
 using HappyCoupleMobile.Model;
 using HappyCoupleMobile.Repositories.Interfaces;
+using HappyCoupleMobile.VM;
 
 namespace HappyCoupleMobile.Repositories
 {
@@ -28,9 +31,11 @@ namespace HappyCoupleMobile.Repositories
 			return await _shoppingListDao.GetAllAsync().ConfigureAwait(false);
 		}
 
-		public async Task<IList<ShoppingList>> GetAllShoppingListWithProductsAsync()
+		public async Task<IList<ShoppingList>> GetAllShoppingListWithProductsAsync(ShoppingListStatus status)
 		{
-			return await _shoppingListDao.GetWithChildrenAsync().ConfigureAwait(false);
+			return status == ShoppingListStatus.Active
+				? await _shoppingListDao.GetActiveShoppingListAsync()
+				: await _shoppingListDao.GetClosedShoppingListAsync();
 		}
 
 		public async Task<IList<Product>> GetAllProductsAsync()
@@ -65,6 +70,15 @@ namespace HappyCoupleMobile.Repositories
 
 		public async Task InsertProductAsync(Product product)
 		{
+			CheckOperationOnNormalProductIsCorrect(product, OperationMode.InsertNew);
+			
+			await _productDao.InsertAsync(product).ConfigureAwait(false);
+		}
+		
+		public async Task InsertFavouriteProductAsync(Product product)
+		{
+			CheckOperationOnFavouriteProductIsCorrect(product, OperationMode.InsertNew);
+			
 			await _productDao.InsertAsync(product).ConfigureAwait(false);
 		}
 
@@ -80,24 +94,27 @@ namespace HappyCoupleMobile.Repositories
 
 		public async Task UpdateProductAsync(Product product)
 		{
+			CheckOperationOnNormalProductIsCorrect(product, OperationMode.Update);
+			
 			await _productDao.UpdateAsync(product).ConfigureAwait(false);
 		}
-
+		
+		public async Task UpdateFavouriteProductAsync(Product product)
+		{
+			CheckOperationOnFavouriteProductIsCorrect(product, OperationMode.Update);
+			
+			await _productDao.UpdateAsync(product).ConfigureAwait(false);
+		}
+		
 		public async Task DeleteProductAsync(Product product)
 		{
-			if (product.IsFavourite)
-			{
-				throw new InvalidOperationException("Attempt to delete product created as favourite");
-			}
+			CheckOperationOnNormalProductIsCorrect(product, OperationMode.Delete);
 			await _productDao.DeleteAsync(product).ConfigureAwait(false);
 		}
 
 		public async Task DeleteFavouriteProductAsync(Product product)
 		{
-			if (product.ShoppingListId.HasValue)
-			{
-				throw new InvalidOperationException("Attempt to delete favourite product assignet to shopping list");
-			}
+			CheckOperationOnFavouriteProductIsCorrect(product, OperationMode.Delete);
 			await _productDao.DeleteAsync(product);
 		}
 
@@ -122,6 +139,29 @@ namespace HappyCoupleMobile.Repositories
 		public async Task<ProductType> GetProductTypeByTypeNameAsync(string name)
 		{
 			return await _productTypeDao.GetProductTypeByTypeNameAsync(name);
+		}
+
+		private void CheckOperationOnFavouriteProductIsCorrect(Product product, OperationMode operationMode)
+		{
+			CheckOperationOnProductIsCorrect(true, product, operationMode);
+		}
+		
+		private void CheckOperationOnNormalProductIsCorrect(Product product, OperationMode operationMode)
+		{
+			CheckOperationOnProductIsCorrect(false, product, operationMode);
+		}
+		
+		private void CheckOperationOnProductIsCorrect(bool hasToBeFavourite, Product product, OperationMode operationMode)
+		{
+			if (hasToBeFavourite && product.ShoppingListId.HasValue)
+			{
+				throw new InvalidOperationException($"Attempt to {operationMode.ToString()} favourite product assignet to shopping list");
+			}
+			
+			if (!hasToBeFavourite && product.IsFavourite)
+			{
+				throw new InvalidOperationException($"Attempt to {operationMode.ToString()} product created as favourite");
+			}
 		}
 	}
 }
