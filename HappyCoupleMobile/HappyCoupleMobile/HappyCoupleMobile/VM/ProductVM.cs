@@ -72,6 +72,17 @@ namespace HappyCoupleMobile.VM
 			    ProductModel.ShoppingListId = value;
 		    }
 	    }
+	    
+	    private bool _isFavourite;
+	    public bool IsFavourite
+	    {
+		    get => _isFavourite;
+		    set
+		    {
+			    Set(ref _isFavourite, value);
+			    ProductModel.IsFavourite = value;
+		    }
+	    }
 
 
         public ProductVm(Product product)
@@ -84,6 +95,7 @@ namespace HappyCoupleMobile.VM
             IsBought = ProductModel.IsBought;
 	        FavouriteProductId = ProductModel.FavouriteProductId;
 	        ShoppingListId = ProductModel.ShoppingListId;
+	        IsFavourite = ProductModel.IsFavourite;
         }
 	    
 	    public static ProductVm CreateProductVm(string name, string comment, int quantity, ProductType productType, User user, int? favouriteProductId = null, bool isFavourite = true, int? shoppingListId =null)

@@ -31,7 +31,7 @@ namespace HappyCoupleMobile.ViewModel
 
 		protected override async Task OnNavigateTo(IMessageData message)
 		{
-			_shoppingListId = message.GetInt(MessagesKeys.ShoppingListIdKey);
+			_shoppingListId = message.GetIntOrDefault(MessagesKeys.ShoppingListIdKey);
 			await LoadProductTypes();
 		}
 		

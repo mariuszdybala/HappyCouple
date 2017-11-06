@@ -58,6 +58,7 @@
             <FileImageSource x:Key="EmptyProducts">empty_products.png</FileImageSource>
             <FileImageSource x:Key="ChevronRight">chevron_right.png</FileImageSource>
             <FileImageSource x:Key="Options">settings.png</FileImageSource>
+            <FileImageSource x:Key="ChangeQuantity">change_quantity.png</FileImageSource>
 
             <!--            Icons for products-->
             <FileImageSource x:Key="Beer">beer.png</FileImageSource>

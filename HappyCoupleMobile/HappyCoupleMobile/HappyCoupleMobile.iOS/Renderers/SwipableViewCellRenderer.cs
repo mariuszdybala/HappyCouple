@@ -1,5 +1,8 @@
 ﻿
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using HappyCoupleMobile.Custom;
 using HappyCoupleMobile.iOS.Renderers;
 using HappyCoupleMobile.Mvvm.Renderers;
 using SWTableViewCells;
@@ -14,6 +17,12 @@ namespace HappyCoupleMobile.iOS.Renderers
 {
 	public class SwipableViewCellRenderer : ViewCellRenderer
 	{
+		enum SwipeButtonDirection
+		{
+			Right,
+			Left
+		}
+		
 		public override UITableViewCell GetCell(Cell item, UITableViewCell reusableCell, UITableView tv)
 		{
 			var formsCell = (BaseSwipeableProductCell)item;
@@ -50,23 +59,35 @@ namespace HappyCoupleMobile.iOS.Renderers
 			{
 				return;
 			}
-			
-			var swipeableButtonsCount = swipeableFormsCell.SwipeButtons.Count;
-			var buttons = new UIButton[swipeableButtonsCount];
+
+			AddSwipeButtons(SwipeButtonDirection.Right, swipeableNativeCell, swipeableFormsCell.RightSwipeButtons);
+			AddSwipeButtons(SwipeButtonDirection.Left, swipeableNativeCell, swipeableFormsCell.LeftSwipeButtons);
+		}
+
+		private static void AddSwipeButtons(SwipeButtonDirection buttonType, ExtendedSwipeAbleCell swipeableNativeCell, IList<SwipeButton> buttons)
+		{
+			var swipeableButtonsCount = buttons.Count();
+			var swipeButtons = new UIButton[swipeableButtonsCount];
 
 			for (int i = 0; i < swipeableButtonsCount; i++)
 			{
-				var formsButton = swipeableFormsCell.SwipeButtons[i];
+				var formsButton = buttons[i];
 
-				  var uiButton = new UIButton { BackgroundColor = formsButton.Color.ToUIColor() };
+				var uiButton = new UIButton {BackgroundColor = formsButton.Color.ToUIColor()};
 				uiButton.SetImage(UIImage.FromBundle(formsButton.ImageSource.File), UIControlState.Normal);
 				uiButton.SetTitle(formsButton.Text, UIControlState.Normal);
 
-				buttons[i] = uiButton;
+				swipeButtons[i] = uiButton;
 			}
 
-			swipeableNativeCell.RightUtilityButtons = buttons;
-
+			if (buttonType == SwipeButtonDirection.Right)
+			{
+				swipeableNativeCell.RightUtilityButtons = swipeButtons;
+			}
+			else
+			{
+				swipeableNativeCell.LeftUtilityButtons = swipeButtons;
+			}
 		}
 
 		private ExtendedSwipeAbleCell RegisterCellIfNeeded(UITableView tv)
@@ -95,11 +116,13 @@ namespace HappyCoupleMobile.iOS.Renderers
 
 		public override void DidTriggerLeftUtilityButton(SWTableViewCell cell, nint index)
 		{
+			_baseSwipeableProductCell.LeftSwipeButtons[(int)index].Clicked.Invoke();
+			cell.HideUtilityButtons(true);
 		}
 
 		public override void DidTriggerRightUtilityButton(SWTableViewCell cell, nint index)
 		{
-			_baseSwipeableProductCell.SwipeButtons[(int)index].Clicked.Invoke();
+			_baseSwipeableProductCell.RightSwipeButtons[(int)index].Clicked.Invoke();
 			cell.HideUtilityButtons(true);
 		}
 	}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Input;
 using HappyCoupleMobile.Custom;
 using HappyCoupleMobile.Enums;
 using Xamarin.Forms;
@@ -8,7 +9,17 @@ namespace HappyCoupleMobile.Mvvm.Renderers.ProductCell
 {
 	public class SwipeableProductCell : BaseSwipeableProductCell
 	{
-		public override IList<SwipeButton> SwipeButtons { get; set; }
+		public override IList<SwipeButton> RightSwipeButtons { get; set; }
+		public override IList<SwipeButton> LeftSwipeButtons { get; set; }
+		
+		public static BindableProperty ChangeQuantityCommandProperty =
+			BindableProperty.Create(nameof(ChangeQuantityCommand), typeof(ICommand), typeof(SwipeableProductCell));
+
+		public ICommand ChangeQuantityCommand
+		{
+			get => (ICommand) GetValue(ChangeQuantityCommandProperty);
+			set => SetValue(ChangeQuantityCommandProperty, value);
+		}
 
 		public SwipeableProductCell()
 		{
@@ -20,7 +31,7 @@ namespace HappyCoupleMobile.Mvvm.Renderers.ProductCell
 			var editButton = new SwipeButton
 			{
 				ButtonType = SwipeButtonType.Edit,
-				Text = "Zmień",
+				Text = "Edytuj",
 				Color = Color.FromHex("#4054B2"),
 				ImageSource = (FileImageSource) Application.Current.Resources["EditList"]
 			};
@@ -35,9 +46,28 @@ namespace HappyCoupleMobile.Mvvm.Renderers.ProductCell
 			
 			deleteButton.Clicked += DeleteButtonOnClicked;
 			editButton.Clicked += EditButtonOnClicked;
-
 			
-			SwipeButtons = new List<SwipeButton> {editButton, deleteButton};
+			RightSwipeButtons = new List<SwipeButton> {editButton, deleteButton};
+			
+			var changeQuantityButton = new SwipeButton
+			{
+				ButtonType = SwipeButtonType.Edit,
+				Text = "Ilość",
+				Color = Color.FromHex("#30AD63"),
+				ImageSource = (FileImageSource) Application.Current.Resources["ChangeQuantity"]
+			};
+			
+			changeQuantityButton.Clicked += ChangeQuantityClicked;
+			
+			LeftSwipeButtons = new List<SwipeButton> {changeQuantityButton};
+		}
+		
+		private void ChangeQuantityClicked()
+		{
+			if (ChangeQuantityCommand != null && ChangeQuantityCommand.CanExecute(Product))
+			{
+				ChangeQuantityCommand.Execute(Product);
+			}
 		}
 
 		private void DeleteButtonOnClicked()

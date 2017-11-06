@@ -42,11 +42,18 @@ namespace HappyCoupleMobile.Mvvm.Messages
             return value;
         }
 	    
-	    public int? GetInt(string key)
+	    public int? GetIntOrDefault(string key)
 	    {
 		    var intData = GetValue(key) as int?;
 
 		    return intData;
+	    }
+	    
+	    public bool GetBoolOrDefault(string key)
+	    {
+		    var boolData = GetValue(key) as bool?;
+
+		    return boolData.HasValue != false && boolData.Value;
 	    }
 
         public TValue GetValue<TValue>() where TValue: new()

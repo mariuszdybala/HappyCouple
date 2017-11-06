@@ -76,6 +76,8 @@ namespace HappyCoupleMobile.ViewModel
 
         protected override async Task OnNavigateTo(IMessageData message)
         {
+	        await Task.Yield();
+	        
 	        ProductType = (ProductType)message.GetValue(MessagesKeys.ProductTypeKey);
 
 	        var product = (ProductVm) message.GetValue(MessagesKeys.ProductKey);
@@ -98,7 +100,16 @@ namespace HappyCoupleMobile.ViewModel
 
 	    private async Task OnSaveProduct()
         {
-            await SendFeedbackMessage(new FeedbackMessage(MessagesKeys.ProductKey, Product, Editing ? OperationMode.Update : OperationMode.InsertNew));
+	        if (Product.IsFavourite)
+	        {
+		        await _shoppingListService.UpdateFavouriteProductAsync(Product);
+	        }
+	        else
+	        {
+		        await _shoppingListService.UpdateProductAsync(Product);
+	        }
+	        
+			await SendFeedbackMessage(new FeedbackMessage(MessagesKeys.ProductKey, Product, Editing ? OperationMode.Update : OperationMode.InsertNew));
 
             await NavigateBack();
         }

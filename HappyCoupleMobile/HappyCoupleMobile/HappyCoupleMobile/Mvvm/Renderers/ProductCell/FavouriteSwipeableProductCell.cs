@@ -7,7 +7,8 @@ namespace HappyCoupleMobile.Mvvm.Renderers.ProductCell
 {
 	public class FavouriteSwipeableProductCell : BaseSwipeableProductCell
 	{
-		public override IList<SwipeButton> SwipeButtons { get; set; }
+		public override IList<SwipeButton> RightSwipeButtons { get; set; }
+		public override IList<SwipeButton> LeftSwipeButtons { get; set; } = new List<SwipeButton>();
 
 		public FavouriteSwipeableProductCell()
 		{
@@ -35,7 +36,7 @@ namespace HappyCoupleMobile.Mvvm.Renderers.ProductCell
 			deleteButton.Clicked += DeleteButtonOnClicked;
 			editButton.Clicked += EditButtonOnClicked;
 
-			SwipeButtons = new List<SwipeButton> {editButton, deleteButton};
+			RightSwipeButtons = new List<SwipeButton> {editButton, deleteButton};
 		}
 		
 		private void DeleteButtonOnClicked()

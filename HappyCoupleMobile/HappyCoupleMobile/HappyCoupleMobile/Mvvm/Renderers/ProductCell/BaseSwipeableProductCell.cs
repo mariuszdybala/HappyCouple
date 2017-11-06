@@ -12,7 +12,8 @@ namespace HappyCoupleMobile.Mvvm.Renderers.ProductCell
 		public bool ShowProductQuantity { get; set; }
 		public bool IsTapable { get; set; } = true;
 
-		public abstract IList<SwipeButton> SwipeButtons { get; set;}
+		public abstract IList<SwipeButton> RightSwipeButtons { get; set;}
+		public abstract IList<SwipeButton> LeftSwipeButtons { get; set;}
 
         public static BindableProperty ProductProperty =
             BindableProperty.Create(nameof(Product), typeof(ProductVm), typeof(BaseSwipeableProductCell));
@@ -47,7 +48,7 @@ namespace HappyCoupleMobile.Mvvm.Renderers.ProductCell
             set => SetValue(ProductProperty, value);
         }
 
-        public void OnProductSelected()
+		public void OnProductSelected()
         {
 	        if (SelectCommand != null && SelectCommand.CanExecute(Product))
 	        {

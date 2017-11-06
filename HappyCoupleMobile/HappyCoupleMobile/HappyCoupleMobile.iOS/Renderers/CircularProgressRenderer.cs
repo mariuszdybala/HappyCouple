@@ -42,10 +42,7 @@ namespace HappyCoupleMobile.iOS.Renderers
                 return;
             }
 
-            if (e.PropertyName == CircularProgress.PercentProperty.PropertyName)
-            {
-                progressView.SetProgress(PercentToProgressUnit(circularProgress.Percent), true);
-            }
+			progressView.SetProgress(PercentToProgressUnit(circularProgress.Percent), true);
         }
 
         private nfloat PercentToProgressUnit(int circularProgressPercent)

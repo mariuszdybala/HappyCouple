@@ -7,7 +7,8 @@ namespace HappyCoupleMobile.Mvvm.Messages.Interface
     {
         void AddData(string key, object value);
         object GetValue(string key);
-	    int? GetInt(string key);
+	    int? GetIntOrDefault(string key);
+	    bool GetBoolOrDefault(string key);
         TValue GetValue<TValue>() where TValue : new();
 	    ProductVm GetFirstOrDefaultProduct();
 	    IList<ProductVm> GetFirstOrDefaultProductsRange();

@@ -19,7 +19,7 @@
 	        <ListView IsVisible="{Binding EmptyListPlaceholder, Converter={StaticResource InverseBooleanConverter}}" BackgroundColor="{StaticResource SecondColor}" SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding FavouriteProducts}">
 		        <ListView.ItemTemplate>
 			        <DataTemplate>
-					        <productCell:SwipeableProductCell ShowCheckbox="False" ShowProductQuantity="False"
+					        <productCell:FavouriteSwipeableProductCell ShowCheckbox="False" ShowProductQuantity="False"
 					                                          Product="{Binding .}"
 					                                          DeleteCommand="{Binding BindingContext.DeleteProductCommand, Source={x:Reference FavouriteProductsView}}"
 					                                          EditCommand="{Binding BindingContext.EditProductCommand, Source={x:Reference FavouriteProductsView}}"

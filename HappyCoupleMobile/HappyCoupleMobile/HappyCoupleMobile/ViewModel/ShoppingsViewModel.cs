@@ -219,12 +219,8 @@ namespace HappyCoupleMobile.ViewModel
 
 		    if (feedbackMessage.OperationMode == OperationMode.InsertNew)
 		    {
-			    var shoppingListId = feedbackMessage.GetInt(MessagesKeys.ShoppingListIdKey);
+			    var shoppingListId = feedbackMessage.GetIntOrDefault(MessagesKeys.ShoppingListIdKey);
 			    await AddProducts(products, shoppingListId);
-		    }
-		    else if (feedbackMessage.OperationMode == OperationMode.Update)
-		    {
-			    EditProducts(products);
 		    }
 	    }
 
@@ -245,16 +241,6 @@ namespace HappyCoupleMobile.ViewModel
 	    {
 		    shoppingList.EditDate = DateTime.Now;
 		    await _shoppingListService.UpdateShoppingListAsync(shoppingList);
-	    }
-
-	    private void EditProducts(IList<ProductVm> products)
-	    {
-		    foreach (var list in ActiveShoppingLists)
-		    {
-			    list.UpdateProducts(products);
-		    }
-		    
-		    _shoppingListService.UpdateProductsAsync(products);
 	    }
     }
 }

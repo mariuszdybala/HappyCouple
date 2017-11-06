@@ -231,6 +231,9 @@
     <BundleResource Include="Resources\medicine.png" />
     <BundleResource Include="Resources\medicine%402x.png" />
     <BundleResource Include="Resources\medicine%403x.png" />
+    <BundleResource Include="Resources\change_quantity.png" />
+    <BundleResource Include="Resources\change_quantity%402x.png" />
+    <BundleResource Include="Resources\change_quantity%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%402x.png" />

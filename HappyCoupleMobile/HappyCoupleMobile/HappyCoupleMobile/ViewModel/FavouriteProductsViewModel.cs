@@ -20,7 +20,6 @@ namespace HappyCoupleMobile.ViewModel
 	public class FavouriteProductsViewModel : BaseHappyViewModel
 	{
 		private IList<ProductVm> _addedProducts;
-		private IList<ProductVm> _updatedProducts;
 
 		private readonly IShoppingListService _shoppingListService;
 		private readonly IAlertsAndNotificationsProvider _alertsAndNotificationsProvider;
@@ -69,7 +68,6 @@ namespace HappyCoupleMobile.ViewModel
 			RegisterCommandAndMessages();
 
 			_addedProducts = new List<ProductVm>();
-			_updatedProducts = new List<ProductVm>();
 		}
 
 		public void RegisterCommandAndMessages()
@@ -79,7 +77,7 @@ namespace HappyCoupleMobile.ViewModel
 
 		protected override async Task OnNavigateTo(IMessageData message)
 		{
-			_shoppingListId = message.GetInt(MessagesKeys.ShoppingListIdKey);
+			_shoppingListId = message.GetIntOrDefault(MessagesKeys.ShoppingListIdKey);
 			SelectedProductType = (ProductType) message.GetValue(MessagesKeys.ProductTypeKey);
 
 			await LoadFavouriteProducts();
@@ -122,7 +120,7 @@ namespace HappyCoupleMobile.ViewModel
 
 			if (feedbackMessage.OperationMode == OperationMode.Update)
 			{
-				_updatedProducts.Add(product);
+				FavouriteProducts = new ObservableCollection<ProductVm>(FavouriteProducts);
 				return;
 			}
 
@@ -207,22 +205,9 @@ namespace HappyCoupleMobile.ViewModel
 			await SendFeedbackMessage<ShoppingsViewModel>(feedBackMessage);
 		}
 
-		private async Task SendFeedbackAboutChangedProduct()
-		{
-			if (!_updatedProducts.Any())
-			{
-				return;
-			}
-
-			var feedBackMessage = new FeedbackMessage(MessagesKeys.ProductsKey, _updatedProducts);
-			feedBackMessage.OperationMode = OperationMode.Update;
-			await SendFeedbackMessage<ShoppingsViewModel>(feedBackMessage);
-		}
-
 		protected override async Task OnGoBackCommand()
 		{
 			await SendFeedbackAboutAddedProduct();
-			await SendFeedbackAboutChangedProduct();
 		    await base.OnGoBackCommand();
 		}
 
@@ -230,7 +215,6 @@ namespace HappyCoupleMobile.ViewModel
 		{
 			_shoppingListId = null;
 			_addedProducts.Clear();
-			_updatedProducts.Clear();
 
 			EmptyListPlaceholder = false;
 			SelectedProductType = null;

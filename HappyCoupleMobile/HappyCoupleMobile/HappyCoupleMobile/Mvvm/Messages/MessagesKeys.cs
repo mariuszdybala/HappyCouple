@@ -7,5 +7,6 @@
 	    public static readonly string ProductKey = "Product";
 	    public static readonly string ProductsKey = "ProductsKey";
 	    public static readonly string ProductTypeKey = "ProductType";
+	    public static readonly string IsNavigatedFromEditShoppingList = "IsNavigatedFromEditShoppingList";
     }
 }

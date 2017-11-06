@@ -43,7 +43,8 @@ namespace HappyCoupleMobile.ViewModel
 	    public Command CloseListCommand => new Command(async () => await OnCloseList());
 	    public Command<ProductVm> ProductCheckedCommand { get; set; }
         public Command<ProductVm> DeleteProductCommand { get; set; }
-        public Command<ProductVm> EditProductCommand { get; set; }
+        public Command<ProductVm> EditProductCommand => new Command<ProductVm>(async (product) => await OnEditProduct(product));
+	    public Command<ProductVm> ChangeQuantityCommand  => new Command<ProductVm>(OnChangeQuantity);
 
         public EditShoppingListViewModel(ISimpleAuthService simpleAuthService, IShoppingListService shoppingListService, IAlertsAndNotificationsProvider alertsAndNotificationsProvider) : base(simpleAuthService)
         {
@@ -58,23 +59,22 @@ namespace HappyCoupleMobile.ViewModel
             RegisterNavigateToMessage(this);
 
             DeleteProductCommand = new Command<ProductVm>(async(product) => await OnDeleteProduct(product));
-            EditProductCommand = new Command<ProductVm>(OnEditProduct);
             AddProductCommand = new Command(async () => await OnAddProduct());
             ProductCheckedCommand = new Command<ProductVm>(async (product) => await OnProductChecked(product));
         }
 
         protected override async Task OnNavigateTo(IMessageData message)
         {
+	        await Task.Yield();
+	        
 	        ShoppingList = (ShoppingListVm)message.GetValue(MessagesKeys.ShoppingListKey);
 	        if (ShoppingList == null)
 	        {
 		        return;
 	        }
-
+			
 	        ReloadProductsGroups();
 	        ShoppingList.ProductChanged += ShoppingListOnProductChanged;
-
-	        await Task.Yield();
         }
 
 	    private void OnDeleteList()
@@ -144,14 +144,29 @@ namespace HappyCoupleMobile.ViewModel
 		    shoppingList.EditDate = DateTime.Now;
 		    await _shoppingListService.UpdateShoppingListAsync(shoppingList);
 	    }
+	    
+	    private async Task OnEditProduct(ProductVm product)
+	    {
+		    var message = new BaseMessage<AddProductViewModel>();
+		    message.AddData(MessagesKeys.ProductTypeKey, product.ProductType);
+		    message.AddData(MessagesKeys.ProductKey, product);
+		    
+		    await NavigateToWithMessage<AddProductView, AddProductViewModel>(message);
+	    }
 
-        private void OnEditProduct(ProductVm product)
+	    protected override async Task OnFeedback(IFeedbackMessage feedbackMessage)
+	    {
+		    await Task.Yield();
+		    ReloadProductsGroups();
+	    }
+
+        private void OnChangeQuantity(ProductVm product)
         {
 	        _alertsAndNotificationsProvider.ShowAlertWithTextField("ilość produktu", "Wpisz nową", Keyboard.Numeric,
-		        async (quantity) => await UpdateProduct(quantity, product));
+		        async (quantity) => await UpdateQuantityProduct(quantity, product));
         }
 
-	    private async Task UpdateProduct(string quantity, ProductVm productVm)
+	    private async Task UpdateQuantityProduct(string quantity, ProductVm productVm)
 	    {
 		    int newquantityValue;
 		    if (int.TryParse(quantity, out newquantityValue))
