@@ -78,6 +78,7 @@
     <Compile Include="Helpers\Animation.cs" />
     <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Migrations\001_InsertBasicTypesMigration.cs" />
+    <Compile Include="Migrations\002_InsertSnacksAndSweetsTypesMigration.cs" />
     <Compile Include="Migrations\BaseMigration.cs" />
     <Compile Include="Migrations\IMigration.cs" />
     <Compile Include="Migrations\IMigrator.cs" />

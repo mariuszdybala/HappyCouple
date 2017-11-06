@@ -234,6 +234,12 @@
     <BundleResource Include="Resources\change_quantity.png" />
     <BundleResource Include="Resources\change_quantity%402x.png" />
     <BundleResource Include="Resources\change_quantity%403x.png" />
+    <BundleResource Include="Resources\snack.png" />
+    <BundleResource Include="Resources\snack%402x.png" />
+    <BundleResource Include="Resources\snack%403x.png" />
+    <BundleResource Include="Resources\sweets.png" />
+    <BundleResource Include="Resources\sweets%402x.png" />
+    <BundleResource Include="Resources\sweets%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%402x.png" />
