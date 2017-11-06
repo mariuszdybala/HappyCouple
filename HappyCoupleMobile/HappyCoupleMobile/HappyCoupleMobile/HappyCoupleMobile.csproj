@@ -72,13 +72,13 @@
     <Compile Include="Data\UserDao.cs" />
     <Compile Include="Enums\AlertType.cs" />
     <Compile Include="Enums\OperationMode.cs" />
+    <Compile Include="Enums\ProductGroup.cs" />
     <Compile Include="Enums\ShoppingListStatus.cs" />
     <Compile Include="Enums\ShoppingListTabType.cs" />
     <Compile Include="Enums\SwipeButtonType.cs" />
     <Compile Include="Helpers\Animation.cs" />
     <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Migrations\001_InsertBasicTypesMigration.cs" />
-    <Compile Include="Migrations\002_InsertSnacksAndSweetsTypesMigration.cs" />
     <Compile Include="Migrations\BaseMigration.cs" />
     <Compile Include="Migrations\IMigration.cs" />
     <Compile Include="Migrations\IMigrator.cs" />

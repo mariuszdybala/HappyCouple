@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Ioc;
 using HappyCoupleMobile.Custom;
 using HappyCoupleMobile.Data;
+using HappyCoupleMobile.Enums;
 using HappyCoupleMobile.Model;
 using HappyCoupleMobile.Repositories.Interfaces;
 using SQLite.Net.Async;
@@ -16,34 +17,37 @@ namespace HappyCoupleMobile.Migrations
 			SQLiteAsyncConnection connection = GetConnection();
 
 			IShoppingListRepository shoppingListRepository = SimpleIoc.Default.GetInstance<IShoppingListRepository>();
-
-			await shoppingListRepository.InsertProductTypeAsync(GetProductType("Owoce", "Fruits"));
-            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Oliwa", "Olive"));
-            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Napoje", "Drink"));
-            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Warzywa", "Vege"));
-            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Rybka", "Fish"));
-            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Chleb", "Bread"));
-            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Mięso", "Meat"));
-            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Przyprawy", "Spice"));
-            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Nabiał", "Dairy"));
-            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Sypkie", "Grain"));
-            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Jedzenie", "FoodGeneral"));
-            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Alko", "Beer"));
-            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Rośliny", "Plant"));
-            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Kosmetyki", "Cosmetics"));
-            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Chemia", "Cleaning"));
-            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Higiena", "Hygiene"));
-            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Home&You", "Home"));
-            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Ciuchy", "Clothes"));
-            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Leki", "Medicine"));
+			
+			await shoppingListRepository.InsertProductTypeAsync(GetProductType("Słodycze", "Sweets", ProductGroup.Food));
+			await shoppingListRepository.InsertProductTypeAsync(GetProductType("Przekąski", "Snacks", ProductGroup.Food));
+			await shoppingListRepository.InsertProductTypeAsync(GetProductType("Owoce", "Fruits", ProductGroup.Food));
+            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Oliwa", "Olive", ProductGroup.Food));
+            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Napoje", "Drink", ProductGroup.Drinks));
+            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Warzywa", "Vege", ProductGroup.Food));
+            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Rybka", "Fish", ProductGroup.Food));
+            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Chleb", "Bread", ProductGroup.Food));
+            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Mięso", "Meat", ProductGroup.Food));
+            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Przyprawy", "Spice", ProductGroup.Food));
+            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Nabiał", "Dairy", ProductGroup.Food));
+            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Sypkie", "Grain", ProductGroup.Food));
+            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Jedzenie", "FoodGeneral", ProductGroup.Food));
+            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Alko", "Beer", ProductGroup.Drinks));
+            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Rośliny", "Plant", ProductGroup.Home));
+            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Kosmetyki", "Cosmetics", ProductGroup.Cosmetics));
+            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Chemia", "Cleaning", ProductGroup.Chemistry));
+            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Higiena", "Hygiene", ProductGroup.Cosmetics));
+            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Home&You", "Home", ProductGroup.Home));
+            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Ciuchy", "Clothes", ProductGroup.Clothes));
+            await shoppingListRepository.InsertProductTypeAsync(GetProductType("Leki", "Medicine", ProductGroup.Chemistry));
 		}
 
-		private ProductType GetProductType(string name, string iconResourceName)
+		private ProductType GetProductType(string name, string iconResourceName, ProductGroup groupId)
 		{
 			return new ProductType
 			{
 				Type = name,
-				IconName = iconResourceName
+				IconName = iconResourceName,
+				Group = groupId
 			};
 		}
 	}

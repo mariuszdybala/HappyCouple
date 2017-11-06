@@ -47,7 +47,8 @@ namespace HappyCoupleMobile.Services
 
 	    public async Task<IList<ProductType>> GetAllProductTypesAync()
 	    {
-		    return await _shoppingListRepository.GetAllProductTypesAsync();
+		    var productTypes = await _shoppingListRepository.GetAllProductTypesAsync();
+		    return productTypes.OrderByDescending(x => x.Group).ThenByDescending(x => x.Type).ToList();
 	    }
 
 	    public async Task InsertProductsAsync(IList<ProductVm> products)
