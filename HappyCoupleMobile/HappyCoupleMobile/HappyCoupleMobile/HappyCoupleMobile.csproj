@@ -52,6 +52,7 @@
     </Compile>
     <Compile Include="Custom\ActionSheetItem.cs" />
     <Compile Include="Custom\GroupedProductList.cs" />
+    <Compile Include="Custom\GroupedShoppingLists.cs" />
     <Compile Include="Custom\MigrationAttribute.cs" />
     <Compile Include="Custom\ProductTypeEqualityComparer.cs" />
     <Compile Include="Custom\SwipeButton.cs" />

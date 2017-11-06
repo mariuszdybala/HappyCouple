@@ -16,15 +16,4 @@ namespace HappyCoupleMobile.Custom
 			ProductType = group.Key;
 		}
 	}
-	
-	public class MyGrouping : List<ProductVm>, IGrouping<ProductType, ProductVm>
-	{
-		public ProductType Key { get; set; }
-
-		public MyGrouping(ProductType productTypeKey)
-		{
-			Key = productTypeKey;
-		}
-
-	}
 }

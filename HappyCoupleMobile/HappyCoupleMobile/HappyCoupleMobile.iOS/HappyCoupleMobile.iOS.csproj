@@ -67,7 +67,8 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>820c162d-7b05-45ef-a090-8c9bacacdc95</CodesignProvision>
+    <CodesignProvision>HappyCouple_Distribution</CodesignProvision>
+    <BuildIpa>true</BuildIpa>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -240,6 +241,12 @@
     <BundleResource Include="Resources\sweets.png" />
     <BundleResource Include="Resources\sweets%402x.png" />
     <BundleResource Include="Resources\sweets%403x.png" />
+    <BundleResource Include="Resources\close_list.png" />
+    <BundleResource Include="Resources\close_list%402x.png" />
+    <BundleResource Include="Resources\close_list%403x.png" />
+    <BundleResource Include="Resources\open_list.png" />
+    <BundleResource Include="Resources\open_list%402x.png" />
+    <BundleResource Include="Resources\open_list%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%402x.png" />
