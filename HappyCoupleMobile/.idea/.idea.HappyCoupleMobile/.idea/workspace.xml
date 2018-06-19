@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7658b654-cda0-4628-aa5f-2269b180334e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.HappyCoupleMobile/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.HappyCoupleMobile/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HappyCoupleMobile/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HappyCoupleMobile/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HappyCoupleMobile/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.HappyCoupleMobile/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HappyCoupleMobile/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/ViewModel/FavouriteProductsViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/ViewModel/FavouriteProductsViewModel.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,12 +18,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
               <caret line="12" selection-start-line="12" selection-end-line="12" />
-              <folding>
-                <marker date="1529391689716" expanded="false" signature="6:175" ph="..." />
-                <marker date="1529391689716" expanded="true" signature="211:450" ph="{...}" />
-                <marker date="1529391689716" expanded="true" signature="280:448" ph="{...}" />
-                <marker date="1529391689716" expanded="true" signature="409:445" ph="{...}" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -37,28 +27,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1072">
               <caret line="81" selection-start-line="81" selection-end-line="81" />
-              <folding>
-                <marker date="1529391689747" expanded="false" signature="6:496" ph="..." />
-                <marker date="1529391689747" expanded="true" signature="535:3663" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="595:3661" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="877:967" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="1003:1079" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="1121:1209" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="1249:1348" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="1374:1531" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="1414:1524" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="1731:1843" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="1894:2041" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="2115:2519" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="2571:2723" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="2598:2629" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="2764:3205" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="2808:2905" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="2919:3007" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="3253:3474" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="3280:3334" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="3521:3655" ph="{...}" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -66,23 +34,7 @@
       <file leaf-file-name="ClosedShoppingListViewModel.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/ViewModel/ClosedShoppingListViewModel.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-721">
-              <folding>
-                <marker date="1529391689747" expanded="false" signature="6:379" ph="..." />
-                <marker date="1529391689747" expanded="true" signature="418:2457" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="483:2455" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="788:862" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="929:1009" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="1175:1278" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="1346:1520" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="1462:1489" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="1561:1853" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="1889:1933" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="1966:2167" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="2228:2452" ph="{...}" />
-                <marker date="1529391689747" expanded="true" signature="2251:2273" ph="{...}" />
-              </folding>
-            </state>
+            <state relative-caret-position="-721" />
           </provider>
         </entry>
       </file>
@@ -91,81 +43,61 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="639">
               <caret line="113" column="37" selection-start-line="113" selection-start-column="37" selection-end-line="113" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FavouriteProductsViewModel.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/ViewModel/FavouriteProductsViewModel.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="146">
+              <caret line="105" column="18" selection-start-line="105" selection-start-column="18" selection-end-line="105" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RoundedBoxViewRenderer.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile.Droid/Renderers/RoundedBoxViewRenderer.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="276">
+              <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
               <folding>
-                <marker date="1529391689748" expanded="false" signature="6:564" ph="..." />
-                <marker date="1529391689748" expanded="true" signature="603:7541" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="669:7539" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="984:1070" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="1140:1232" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="2021:2198" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="2238:2604" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="2678:3007" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="2850:2890" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="3041:3254" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="3318:3566" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="3347:3378" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="3605:3949" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="3652:3725" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="4012:4244" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="4040:4237" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="4321:4365" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="4405:4619" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="4683:4876" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="4939:5115" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="5194:5324" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="5387:5679" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="5760:5830" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="5888:6101" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="6186:6557" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="6277:6478" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="6599:6912" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="6971:7329" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="7117:7148" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="7217:7278" ph="{...}" />
-                <marker date="1529391689748" expanded="true" signature="7379:7533" ph="{...}" />
+                <marker date="1529391689650" expanded="false" signature="6:192" ph="..." />
+                <marker date="1529391689650" expanded="true" signature="320:1414" ph="{...}" />
+                <marker date="1529391689650" expanded="true" signature="376:1412" ph="{...}" />
+                <marker date="1529391689650" expanded="true" signature="467:588" ph="{...}" />
+                <marker date="1529391689650" expanded="true" signature="689:906" ph="{...}" />
+                <marker date="1529391689650" expanded="true" signature="838:896" ph="{...}" />
+                <marker date="1529391689650" expanded="true" signature="956:1406" ph="{...}" />
+                <marker date="1529391689650" expanded="true" signature="1099:1205" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FavouriteProductsViewModel.cs" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/ViewModel/FavouriteProductsViewModel.cs">
+      <file leaf-file-name="ExtendedSwipeAbleCell.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile.iOS/Controls/ExtendedSwipeAbleCell.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="114" column="19" lean-forward="true" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="19" />
+            <state relative-caret-position="496">
+              <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
               <folding>
-                <marker date="1529392056257" expanded="false" signature="6:552" ph="..." />
-                <marker date="1529392056257" expanded="true" signature="591:6666" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="655:6664" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="1060:1150" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="1192:1280" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="1340:1424" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="2249:2512" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="2556:2600" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="2668:2875" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="2921:3280" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="2961:2983" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="3330:3390" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="3441:3611" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="3689:4124" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="3758:3799" ph="/* TODO ... */" />
-                <marker date="1529392056257" expanded="true" signature="3820:3873" ph="/* if (product == null) ... */" />
-                <marker date="1529392056257" expanded="true" signature="3936:4038" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="4185:4302" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="4359:4627" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="4405:4481" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="4489:4554" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="4682:4950" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="5003:5221" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="5041:5063" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="5288:5579" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="5365:5507" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="5647:5887" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="5685:5707" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="5941:6323" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="6004:6026" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="6374:6460" ph="{...}" />
-                <marker date="1529392056257" expanded="true" signature="6504:6661" ph="{...}" />
+                <marker date="1529391689666" expanded="false" signature="6:219" ph="..." />
+                <marker date="1529391689666" expanded="true" signature="261:3213" ph="{...}" />
+                <marker date="1529391689666" expanded="true" signature="328:3211" ph="{...}" />
+                <marker date="1529391689666" expanded="true" signature="531:670" ph="{...}" />
+                <marker date="1529391689666" expanded="true" signature="583:660" ph="{...}" />
+                <marker date="1529391689666" expanded="true" signature="710:810" ph="{...}" />
+                <marker date="1529391689666" expanded="true" signature="881:978" ph="{...}" />
+                <marker date="1529391689666" expanded="true" signature="1013:1259" ph="{...}" />
+                <marker date="1529391689666" expanded="true" signature="1047:1078" ph="{...}" />
+                <marker date="1529391689666" expanded="true" signature="1417:1791" ph="{...}" />
+                <marker date="1529391689666" expanded="true" signature="1697:1737" ph="{...}" />
+                <marker date="1529391689666" expanded="true" signature="1871:2007" ph="{...}" />
+                <marker date="1529391689666" expanded="true" signature="1932:2000" ph="{...}" />
+                <marker date="1529391689666" expanded="true" signature="2069:2335" ph="{...}" />
+                <marker date="1529391689666" expanded="true" signature="2376:2499" ph="{...}" />
+                <marker date="1529391689666" expanded="true" signature="2539:3025" ph="{...}" />
+                <marker date="1529391689666" expanded="true" signature="3080:3205" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -181,15 +113,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
               <caret line="17" selection-start-line="17" selection-end-line="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="App.xaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/App.xaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1054">
-              <caret line="62" column="62" selection-start-line="62" selection-start-column="62" selection-end-line="62" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -236,6 +159,7 @@
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile.iOS/Delegates/CustomTextFieldDelegate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Data/Interfaces/IShoppingListDoa.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Data/Interfaces/IProductDao.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile.Droid/Renderers/RoundedBoxViewRenderer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Data/ShoppingListDoa.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile.iOS/AppDelegate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Data/MockedData.cs" root0="FORCE_HIGHLIGHTING" />
@@ -282,12 +206,12 @@
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Services/StartApplicationService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Services/SimpleAuthService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Helpers/Animation.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Custom/GroupedProductList.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Custom/GroupedShoppingLists.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Custom/GroupedProductList.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Custom/GroupedShoppingLists.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Custom/SwipeButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Custom/ProductTypeEqualityComparer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Custom/MigrationAttribute.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Custom/ActionSheetItem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Custom/ActionSheetItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Model/ShoppingList.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Model/ProductType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Model/Product.cs" root0="FORCE_HIGHLIGHTING" />
@@ -306,7 +230,7 @@
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/View/EditShoppingListView.xaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/View/PreViewPage.xaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/View/FavouriteProductsView.xaml.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/View/ShoppingsView.xaml" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/View/ShoppingsView.xaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/View/ClosedShoppingListView.xaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/AttachedProperties/ClickEventAttached.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Mvvm/Converters/InverseBooleanConverter.cs" root0="FORCE_HIGHLIGHTING" />
@@ -458,25 +382,13 @@
             <path>
               <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
               <item name="HappyCoupleMobile (3 projects)" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="HappyCoupleMobile" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="HappyCoupleMobile.iOS" type="977d5f41:SolutionExplorerNodeRider" />
             </path>
             <path>
               <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
               <item name="HappyCoupleMobile (3 projects)" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="HappyCoupleMobile" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="Services" type="977d5f41:SolutionExplorerNodeRider" />
-            </path>
-            <path>
-              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
-              <item name="HappyCoupleMobile (3 projects)" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="HappyCoupleMobile" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="ViewModel" type="977d5f41:SolutionExplorerNodeRider" />
-            </path>
-            <path>
-              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
-              <item name="HappyCoupleMobile (3 projects)" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="HappyCoupleMobile" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="VM" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="HappyCoupleMobile.iOS" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Controls" type="977d5f41:SolutionExplorerNodeRider" />
             </path>
           </expand>
           <select />
@@ -593,12 +505,12 @@
       <workItem from="1509975085347" duration="5136000" />
       <workItem from="1509981985857" duration="2251000" />
       <workItem from="1509989733514" duration="1246000" />
-      <workItem from="1529391825690" duration="297000" />
+      <workItem from="1529391825690" duration="1036000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="227776000" />
+    <option name="totallyTimeSpent" value="228515000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -610,21 +522,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="37" y="23" width="1440" height="826" extended-state="0" />
+    <frame x="37" y="23" width="1745" height="991" extended-state="0" />
     <layout>
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32997763" />
       <window_info anchor="right" id="Errors In Solution" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Unit Tests" order="12" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32893" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32997763" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="NuGet" order="10" weight="0.32893" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30758226" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2524956" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Build" order="11" visible="true" weight="0.3251029" />
+      <window_info anchor="bottom" id="Build" order="11" visible="true" weight="0.26398212" />
       <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.066734076" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.18890357" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -635,7 +548,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Change Signature" order="13" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.066734076" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -677,20 +589,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Data/ProductDao.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Data/Interfaces/IProductDao.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/Enums/ShoppingListTabType.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
@@ -961,12 +859,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <marker date="1529391689716" expanded="false" signature="6:175" ph="..." />
-            <marker date="1529391689716" expanded="true" signature="211:450" ph="{...}" />
-            <marker date="1529391689716" expanded="true" signature="280:448" ph="{...}" />
-            <marker date="1529391689716" expanded="true" signature="409:445" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -974,129 +866,67 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1072">
           <caret line="81" selection-start-line="81" selection-end-line="81" />
-          <folding>
-            <marker date="1529391689747" expanded="false" signature="6:496" ph="..." />
-            <marker date="1529391689747" expanded="true" signature="535:3663" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="595:3661" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="877:967" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="1003:1079" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="1121:1209" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="1249:1348" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="1374:1531" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="1414:1524" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="1731:1843" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="1894:2041" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="2115:2519" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="2571:2723" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="2598:2629" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="2764:3205" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="2808:2905" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="2919:3007" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="3253:3474" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="3280:3334" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="3521:3655" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/ViewModel/ClosedShoppingListViewModel.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-721">
-          <folding>
-            <marker date="1529391689747" expanded="false" signature="6:379" ph="..." />
-            <marker date="1529391689747" expanded="true" signature="418:2457" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="483:2455" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="788:862" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="929:1009" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="1175:1278" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="1346:1520" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="1462:1489" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="1561:1853" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="1889:1933" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="1966:2167" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="2228:2452" ph="{...}" />
-            <marker date="1529391689747" expanded="true" signature="2251:2273" ph="{...}" />
-          </folding>
-        </state>
+        <state relative-caret-position="-721" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/ViewModel/EditShoppingListViewModel.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="639">
           <caret line="113" column="37" selection-start-line="113" selection-start-column="37" selection-end-line="113" selection-end-column="37" />
-          <folding>
-            <marker date="1529391689748" expanded="false" signature="6:564" ph="..." />
-            <marker date="1529391689748" expanded="true" signature="603:7541" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="669:7539" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="984:1070" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="1140:1232" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="2021:2198" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="2238:2604" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="2678:3007" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="2850:2890" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="3041:3254" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="3318:3566" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="3347:3378" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="3605:3949" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="3652:3725" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="4012:4244" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="4040:4237" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="4321:4365" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="4405:4619" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="4683:4876" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="4939:5115" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="5194:5324" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="5387:5679" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="5760:5830" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="5888:6101" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="6186:6557" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="6277:6478" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="6599:6912" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="6971:7329" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="7117:7148" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="7217:7278" ph="{...}" />
-            <marker date="1529391689748" expanded="true" signature="7379:7533" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile/ViewModel/FavouriteProductsViewModel.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="114" column="19" lean-forward="true" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="19" />
+        <state relative-caret-position="146">
+          <caret line="105" column="18" selection-start-line="105" selection-start-column="18" selection-end-line="105" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile.Droid/Renderers/RoundedBoxViewRenderer.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
           <folding>
-            <marker date="1529392056257" expanded="false" signature="6:552" ph="..." />
-            <marker date="1529392056257" expanded="true" signature="591:6666" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="655:6664" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="1060:1150" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="1192:1280" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="1340:1424" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="2249:2512" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="2556:2600" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="2668:2875" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="2921:3280" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="2961:2983" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="3330:3390" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="3441:3611" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="3689:4124" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="3758:3799" ph="/* TODO ... */" />
-            <marker date="1529392056257" expanded="true" signature="3820:3873" ph="/* if (product == null) ... */" />
-            <marker date="1529392056257" expanded="true" signature="3936:4038" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="4185:4302" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="4359:4627" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="4405:4481" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="4489:4554" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="4682:4950" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="5003:5221" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="5041:5063" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="5288:5579" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="5365:5507" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="5647:5887" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="5685:5707" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="5941:6323" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="6004:6026" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="6374:6460" ph="{...}" />
-            <marker date="1529392056257" expanded="true" signature="6504:6661" ph="{...}" />
+            <marker date="1529391689650" expanded="false" signature="6:192" ph="..." />
+            <marker date="1529391689650" expanded="true" signature="320:1414" ph="{...}" />
+            <marker date="1529391689650" expanded="true" signature="376:1412" ph="{...}" />
+            <marker date="1529391689650" expanded="true" signature="467:588" ph="{...}" />
+            <marker date="1529391689650" expanded="true" signature="689:906" ph="{...}" />
+            <marker date="1529391689650" expanded="true" signature="838:896" ph="{...}" />
+            <marker date="1529391689650" expanded="true" signature="956:1406" ph="{...}" />
+            <marker date="1529391689650" expanded="true" signature="1099:1205" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HappyCoupleMobile/HappyCoupleMobile.iOS/Controls/ExtendedSwipeAbleCell.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+          <folding>
+            <marker date="1529391689666" expanded="false" signature="6:219" ph="..." />
+            <marker date="1529391689666" expanded="true" signature="261:3213" ph="{...}" />
+            <marker date="1529391689666" expanded="true" signature="328:3211" ph="{...}" />
+            <marker date="1529391689666" expanded="true" signature="531:670" ph="{...}" />
+            <marker date="1529391689666" expanded="true" signature="583:660" ph="{...}" />
+            <marker date="1529391689666" expanded="true" signature="710:810" ph="{...}" />
+            <marker date="1529391689666" expanded="true" signature="881:978" ph="{...}" />
+            <marker date="1529391689666" expanded="true" signature="1013:1259" ph="{...}" />
+            <marker date="1529391689666" expanded="true" signature="1047:1078" ph="{...}" />
+            <marker date="1529391689666" expanded="true" signature="1417:1791" ph="{...}" />
+            <marker date="1529391689666" expanded="true" signature="1697:1737" ph="{...}" />
+            <marker date="1529391689666" expanded="true" signature="1871:2007" ph="{...}" />
+            <marker date="1529391689666" expanded="true" signature="1932:2000" ph="{...}" />
+            <marker date="1529391689666" expanded="true" signature="2069:2335" ph="{...}" />
+            <marker date="1529391689666" expanded="true" signature="2376:2499" ph="{...}" />
+            <marker date="1529391689666" expanded="true" signature="2539:3025" ph="{...}" />
+            <marker date="1529391689666" expanded="true" signature="3080:3205" ph="{...}" />
           </folding>
         </state>
       </provider>

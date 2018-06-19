@@ -136,6 +136,10 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controls\ExtendedSwipeAbleCell.cs" />
+    <Compile Include="Controls\ExtendedSwipeAbleCell.designer.cs" />
+    <Compile Include="Controls\ProductGroupingCell.cs" />
+    <Compile Include="Controls\ProductGroupingCell.designer.cs" />
     <Compile Include="Custom\Helpers.cs" />
     <Compile Include="Delegates\AlertTextFieldDelegate.cs" />
     <Compile Include="Delegates\CustomTextFieldDelegate.cs" />
@@ -187,20 +191,12 @@
     <BundleResource Include="Resources\chevron_right%403x.png" />
     <BundleResource Include="Resources\chevron_right%402x.png" />
     <BundleResource Include="Resources\chevron_right.png" />
-    <Compile Include="Controls\ExtendedSwipeAbleCell.cs" />
-    <Compile Include="Controls\ExtendedSwipeAbleCell.designer.cs">
-      <DependentUpon>ExtendedSwipeAbleCell.cs</DependentUpon>
-    </Compile>
     <BundleResource Include="Resources\delete_white%403x.png" />
     <BundleResource Include="Resources\delete_white%402x.png" />
     <BundleResource Include="Resources\delete_white.png" />
     <BundleResource Include="Resources\set_closed_list_white%403x.png" />
     <BundleResource Include="Resources\set_closed_list_white%402x.png" />
     <BundleResource Include="Resources\set_closed_list_white.png" />
-    <Compile Include="Controls\ProductGroupingCell.cs" />
-    <Compile Include="Controls\ProductGroupingCell.designer.cs">
-      <DependentUpon>ProductGroupingCell.cs</DependentUpon>
-    </Compile>
     <Compile Include="Renderers\ProductGroupingCellRenderer.cs" />
     <BundleResource Include="Resources\date_end%403x.png" />
     <BundleResource Include="Resources\date_end%402x.png" />
@@ -260,8 +256,6 @@
     <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
-    <InterfaceDefinition Include="Controls\ExtendedSwipeAbleCell.xib" />
-    <InterfaceDefinition Include="Controls\ProductGroupingCell.xib" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="DACircularProgress, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -785,6 +779,8 @@
     <Content Include="..\..\..\Resources\iOS\add_to_list_white@3x.png">
       <Link>Resources/add_to_list_white@3x.png</Link>
     </Content>
+    <Content Include="Controls\ExtendedSwipeAbleCell.xib" />
+    <Content Include="Controls\ProductGroupingCell.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
