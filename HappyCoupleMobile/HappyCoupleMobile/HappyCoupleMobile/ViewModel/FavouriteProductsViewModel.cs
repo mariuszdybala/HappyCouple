@@ -112,11 +112,13 @@ namespace HappyCoupleMobile.ViewModel
 		protected override async Task OnFeedback(IFeedbackMessage feedbackMessage)
 		{
 			var product = feedbackMessage.GetFirstOrDefaultProduct();
-
-			if (product == null)
-			{
-				return;
-			}
+			//TODO 
+			//  - dodac wyrzucenie wyjatka
+			 product = null;
+//			if (product == null)
+//			{
+//				return;
+//			}
 
 			if (feedbackMessage.OperationMode == OperationMode.Update)
 			{

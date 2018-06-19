@@ -1,5 +1,668 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="HappyCoupleMobile/HappyCoupleMobile" t="IncludeRecursive">
+        <e p="app.config" t="Include" />
+        <e p="App.xaml" t="Include" />
+        <e p="App.xaml.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Custom" t="Include">
+          <e p="ActionSheetItem.cs" t="Include" />
+          <e p="GroupedProductList.cs" t="Include" />
+          <e p="GroupedShoppingLists.cs" t="Include" />
+          <e p="MigrationAttribute.cs" t="Include" />
+          <e p="ProductTypeEqualityComparer.cs" t="Include" />
+          <e p="SwipeButton.cs" t="Include" />
+        </e>
+        <e p="Data" t="Include">
+          <e p="BaseDao.cs" t="Include" />
+          <e p="ConfigurationDao.cs" t="Include" />
+          <e p="DatabaseInitializer.cs" t="Include" />
+          <e p="Interfaces" t="Include">
+            <e p="IBaseDao.cs" t="Include" />
+            <e p="IConfigurationDao.cs" t="Include" />
+            <e p="IDatabaseInitializer.cs" t="Include" />
+            <e p="IProductDao.cs" t="Include" />
+            <e p="IProductTypeDao.cs" t="Include" />
+            <e p="IShoppingListDoa.cs" t="Include" />
+            <e p="IUserDao.cs" t="Include" />
+          </e>
+          <e p="MockedData.cs" t="Include" />
+          <e p="ProductDao.cs" t="Include" />
+          <e p="ProductTypeDao.cs" t="Include" />
+          <e p="ShoppingListDoa.cs" t="Include" />
+          <e p="UserDao.cs" t="Include" />
+        </e>
+        <e p="Enums" t="Include">
+          <e p="AlertType.cs" t="Include" />
+          <e p="OperationMode.cs" t="Include" />
+          <e p="ProductGroup.cs" t="Include" />
+          <e p="ShoppingListStatus.cs" t="Include" />
+          <e p="ShoppingListTabType.cs" t="Include" />
+          <e p="SwipeButtonType.cs" t="Include" />
+          <e p="SwipeDirection.cs" t="Include" />
+        </e>
+        <e p="GettingStarted.Xamarin" t="Include" />
+        <e p="Gorilla.json" t="Include" />
+        <e p="HappyCoupleMobile.csproj" t="IncludeRecursive" />
+        <e p="Helpers" t="Include">
+          <e p="Animation.cs" t="Include" />
+          <e p="StringHelper.cs" t="Include" />
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="001_InsertBasicTypesMigration.cs" t="Include" />
+          <e p="BaseMigration.cs" t="Include" />
+          <e p="IMigration.cs" t="Include" />
+          <e p="IMigrator.cs" t="Include" />
+          <e p="Migrator.cs" t="Include" />
+        </e>
+        <e p="Model" t="Include">
+          <e p="Configuration.cs" t="Include" />
+          <e p="Interfaces" t="Include">
+            <e p="IModel.cs" t="Include" />
+          </e>
+          <e p="Product.cs" t="Include" />
+          <e p="ProductType.cs" t="Include" />
+          <e p="ShoppingList.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+        </e>
+        <e p="Mvvm" t="Include">
+          <e p="AttachedProperties" t="Include">
+            <e p="ClickEventAttached.cs" t="Include" />
+            <e p="EditorAttached.cs" t="Include" />
+          </e>
+          <e p="Controls" t="Include">
+            <e p="AddListPopUpView.xaml" t="Include" />
+            <e p="AddListPopUpView.xaml.cs" t="Include" />
+            <e p="AddProductForm.xaml" t="Include" />
+            <e p="AddProductForm.xaml.cs" t="Include" />
+            <e p="AutoResizeStackLayout.cs" t="Include" />
+            <e p="Buttons" t="Include">
+              <e p="AddProductButton.xaml" t="Include" />
+              <e p="AddProductButton.xaml.cs" t="Include" />
+              <e p="ImageButton.xaml" t="Include" />
+              <e p="ImageButton.xaml.cs" t="Include" />
+            </e>
+            <e p="ChooseProductPopUpView.xaml" t="Include" />
+            <e p="ChooseProductPopUpView.xaml.cs" t="Include" />
+            <e p="ContextMenu" t="Include">
+              <e p="ContextMenuItemView.xaml" t="Include" />
+              <e p="ContextMenuItemView.xaml.cs" t="Include" />
+              <e p="ContextMenuLayout.cs" t="Include" />
+              <e p="ContextMenuView.xaml" t="Include" />
+              <e p="ContextMenuView.xaml.cs" t="Include" />
+            </e>
+            <e p="EditProductList" t="Include">
+              <e p="EditProductListControl.xaml" t="Include" />
+              <e p="EditProductListControl.xaml.cs" t="Include" />
+              <e p="EditProductListView.xaml" t="Include" />
+              <e p="EditProductListView.xaml.cs" t="Include" />
+              <e p="ProductTypePanelControl.xaml" t="Include" />
+              <e p="ProductTypePanelControl.xaml.cs" t="Include" />
+              <e p="ProductViewControl.xaml" t="Include" />
+              <e p="ProductViewControl.xaml.cs" t="Include" />
+            </e>
+            <e p="ExtendedListView.cs" t="Include" />
+            <e p="FavouriteProductList" t="Include">
+              <e p="FavouriteProductListControl.xaml" t="Include" />
+              <e p="FavouriteProductListControl.xaml.cs" t="Include" />
+              <e p="FavouriteProductListView.xaml" t="Include" />
+              <e p="FavouriteProductListView.xaml.cs" t="Include" />
+            </e>
+            <e p="HighlineView.cs" t="Include" />
+            <e p="HorizontalCarousel" t="Include">
+              <e p="HorizontalCarousel.xaml" t="Include" />
+              <e p="HorizontalCarousel.xaml.cs" t="Include" />
+              <e p="ProductTypeCarouselItem.xaml" t="Include" />
+              <e p="ProductTypeCarouselItem.xaml.cs" t="Include" />
+            </e>
+            <e p="ProductTypesContainer.xaml" t="Include" />
+            <e p="ProductTypesContainer.xaml.cs" t="Include" />
+            <e p="ShoppingListPanel.xaml" t="Include" />
+            <e p="ShoppingListPanel.xaml.cs" t="Include" />
+            <e p="ShoppingListView.xaml" t="Include" />
+            <e p="ShoppingListView.xaml.cs" t="Include" />
+            <e p="TabPanelView.xaml" t="Include" />
+            <e p="TabPanelView.xaml.cs" t="Include" />
+            <e p="TappableImage.xaml" t="Include" />
+            <e p="TappableImage.xaml.cs" t="Include" />
+            <e p="TappableLabel.xaml" t="Include" />
+            <e p="TappableLabel.xaml.cs" t="Include" />
+            <e p="TappableStackLayout.xaml" t="Include" />
+            <e p="TappableStackLayout.xaml.cs" t="Include" />
+            <e p="ToggleImages" t="Include">
+              <e p="FavouriteButton.cs" t="Include" />
+              <e p="ListItemCheckbox.cs" t="Include" />
+              <e p="ToggleImage.cs" t="Include" />
+            </e>
+            <e p="TopPanelControl.xaml" t="Include" />
+            <e p="TopPanelControl.xaml.cs" t="Include" />
+          </e>
+          <e p="Converters" t="Include">
+            <e p="BoolToValueConverter.cs" t="Include" />
+            <e p="IconNameToImageSourceConverter.cs" t="Include" />
+            <e p="InverseBooleanConverter.cs" t="Include" />
+            <e p="IsActiveProductListConverter.cs" t="Include" />
+            <e p="ObjectInstanceValueToBooleanConverter.cs" t="Include" />
+            <e p="ProductCountColorConverter.cs" t="Include" />
+            <e p="StringIsNullOrEmptyToBoolConverter.cs" t="Include" />
+          </e>
+          <e p="Messages" t="Include">
+            <e p="AlertType.cs" t="Include" />
+            <e p="BaseMessage.cs" t="Include" />
+            <e p="FeedbackMessage.cs" t="Include" />
+            <e p="Interface" t="Include">
+              <e p="IAlertMessage.cs" t="Include" />
+              <e p="IBaseMessage.cs" t="Include" />
+              <e p="IFeedbackMessage.cs" t="Include" />
+              <e p="IMessageData.cs" t="Include" />
+            </e>
+            <e p="MessageData.cs" t="Include" />
+            <e p="Messages.cs" t="Include" />
+            <e p="MessagesKeys.cs" t="Include" />
+          </e>
+          <e p="Renderers" t="Include">
+            <e p="CircularProgress.cs" t="Include" />
+            <e p="CircularView.cs" t="Include" />
+            <e p="ExtendedScrollView.cs" t="Include" />
+            <e p="GestureStackLayout.cs" t="Include" />
+            <e p="ProductCell" t="Include">
+              <e p="BaseProductGroupingCell.cs" t="Include" />
+              <e p="BaseSwipeableProductCell.cs" t="Include" />
+              <e p="FavouriteSwipeableProductCell.cs" t="Include" />
+              <e p="SwipeableProductCell.cs" t="Include" />
+            </e>
+            <e p="RoundedBoxView.cs" t="Include" />
+            <e p="ScrollBarLessScrollView.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Notification" t="Include">
+          <e p="Interfaces" t="Include">
+            <e p="IDataObserver.cs" t="Include" />
+            <e p="INotificationManager.cs" t="Include" />
+            <e p="INotificator.cs" t="Include" />
+            <e p="IProductNotificator.cs" t="Include" />
+            <e p="IProductObserver.cs" t="Include" />
+            <e p="IShoppingListNotificator.cs" t="Include" />
+            <e p="IShoppingListObserver.cs" t="Include" />
+          </e>
+          <e p="NotificationManager.cs" t="Include" />
+          <e p="Notificator.cs" t="Include" />
+          <e p="ProductNotificator.cs" t="Include" />
+          <e p="ShoppingListNotificator.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Providers" t="Include">
+          <e p="BaseSystemInfoProvider.cs" t="Include" />
+          <e p="Interfaces" t="Include">
+            <e p="IAlertsAndNotificationsProvider.cs" t="Include" />
+            <e p="IAssemblyInfoProvider.cs" t="Include" />
+            <e p="ISqliteConnectionProvider.cs" t="Include" />
+            <e p="ISystemInfoProvider.cs" t="Include" />
+          </e>
+          <e p="SqliteConnectionProvider.cs" t="Include" />
+        </e>
+        <e p="Repositories" t="Include">
+          <e p="Interfaces" t="Include">
+            <e p="IShoppingListRepository.cs" t="Include" />
+            <e p="IUserRepository.cs" t="Include" />
+          </e>
+          <e p="ShoppingListRepository.cs" t="Include" />
+          <e p="UserRepository.cs" t="Include" />
+        </e>
+        <e p="Resources" t="Include">
+          <e p="ConfigurationKeys.cs" t="Include" />
+        </e>
+        <e p="Services" t="Include">
+          <e p="Interfaces" t="Include">
+            <e p="INavigationService.cs" t="Include" />
+            <e p="IShoppingListService.cs" t="Include" />
+            <e p="ISimpleAuthService.cs" t="Include" />
+            <e p="IStartApplicationService.cs" t="Include" />
+          </e>
+          <e p="NavigationPageService.cs" t="Include" />
+          <e p="ShoppingListService.cs" t="Include" />
+          <e p="SimpleAuthService.cs" t="Include" />
+          <e p="StartApplicationService.cs" t="Include" />
+        </e>
+        <e p="View" t="Include">
+          <e p="Abstract" t="Include">
+            <e p="BaseHappyContentPage.xaml" t="Include" />
+            <e p="BaseHappyContentPage.xaml.cs" t="Include" />
+          </e>
+          <e p="AddProductView.xaml" t="Include" />
+          <e p="AddProductView.xaml.cs" t="Include" />
+          <e p="ClosedShoppingListView.xaml" t="Include" />
+          <e p="ClosedShoppingListView.xaml.cs" t="Include" />
+          <e p="EditShoppingListView.xaml" t="Include" />
+          <e p="EditShoppingListView.xaml.cs" t="Include" />
+          <e p="FavouriteProductsView.xaml" t="Include" />
+          <e p="FavouriteProductsView.xaml.cs" t="Include" />
+          <e p="FavouriteProductTypesView.xaml" t="Include" />
+          <e p="FavouriteProductTypesView.xaml.cs" t="Include" />
+          <e p="PreViewPage.xaml" t="Include" />
+          <e p="PreViewPage.xaml.cs" t="Include" />
+          <e p="ShoppingsView.xaml" t="Include" />
+          <e p="ShoppingsView.xaml.cs" t="Include" />
+        </e>
+        <e p="ViewModel" t="Include">
+          <e p="Abstract" t="Include">
+            <e p="BaseHappyViewModel.cs" t="Include" />
+          </e>
+          <e p="AddProductViewModel.cs" t="Include" />
+          <e p="ClosedShoppingListViewModel.cs" t="Include" />
+          <e p="EditShoppingListViewModel.cs" t="Include" />
+          <e p="FavouriteProductsViewModel.cs" t="Include" />
+          <e p="FavouriteProductTypeViewModel.cs" t="Include" />
+          <e p="ShoppingsViewModel.cs" t="Include" />
+          <e p="ViewModelLocator.cs" t="Include" />
+        </e>
+        <e p="VM" t="Include">
+          <e p="ProductVm.cs" t="Include" />
+          <e p="ShoppingListVm.cs" t="Include" />
+        </e>
+      </e>
+      <e p="HappyCoupleMobile/HappyCoupleMobile.Droid" t="IncludeRecursive">
+        <e p="app.config" t="Include" />
+        <e p="Assets" t="Include">
+          <e p="AboutAssets.txt" t="Include" />
+          <e p="fonts" t="Include">
+            <e p="Quicksand-Bold.ttf" t="Include" />
+            <e p="Quicksand-Light.ttf" t="Include" />
+            <e p="Quicksand-Medium.ttf" t="Include" />
+            <e p="Quicksand-Regular.ttf" t="Include" />
+          </e>
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Custom" t="Include">
+          <e p="CustomGestureListener.cs" t="Include" />
+        </e>
+        <e p="HappyCoupleMobile.Droid.csproj" t="IncludeRecursive" />
+        <e p="MainActivity.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AndroidManifest.xml" t="Include" />
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Providers" t="Include">
+          <e p="AssemblyInfoProvider.cs" t="Include" />
+          <e p="SystemInfoProvider.cs" t="Include" />
+        </e>
+        <e p="Renderers" t="Include">
+          <e p="GestureStackLayoutRenderer.cs" t="Include" />
+          <e p="RoundedBoxViewRenderer.cs" t="Include" />
+          <e p="ScrollBarLessScrollViewRenderer.cs" t="Include" />
+        </e>
+        <e p="Resources" t="Include">
+          <e p="AboutResources.txt" t="Include" />
+          <e p="drawable" t="Include">
+            <e p="icon.png" t="Include" />
+          </e>
+          <e p="drawable-hdpi" t="Include">
+            <e p="add.png" t="Include" />
+            <e p="add_list.png" t="Include" />
+            <e p="clothes.png" t="Include" />
+            <e p="couple.png" t="Include" />
+            <e p="delete.png" t="Include" />
+            <e p="fix.png" t="Include" />
+            <e p="fun.png" t="Include" />
+            <e p="gift.png" t="Include" />
+            <e p="icon.png" t="Include" />
+            <e p="importance.png" t="Include" />
+            <e p="money.png" t="Include" />
+            <e p="outgoings.png" t="Include" />
+            <e p="remove_list.png" t="Include" />
+            <e p="shopping.png" t="Include" />
+            <e p="todo.png" t="Include" />
+          </e>
+          <e p="drawable-mdpi" t="Include">
+            <e p="add.png" t="Include" />
+            <e p="add_list.png" t="Include" />
+            <e p="clothes.png" t="Include" />
+            <e p="couple.png" t="Include" />
+            <e p="delete.png" t="Include" />
+            <e p="fix.png" t="Include" />
+            <e p="fun.png" t="Include" />
+            <e p="gift.png" t="Include" />
+            <e p="importance.png" t="Include" />
+            <e p="money.png" t="Include" />
+            <e p="outgoings.png" t="Include" />
+            <e p="remove_list.png" t="Include" />
+            <e p="shopping.png" t="Include" />
+            <e p="todo.png" t="Include" />
+          </e>
+          <e p="drawable-xhdpi" t="Include">
+            <e p="add.png" t="Include" />
+            <e p="add_list.png" t="Include" />
+            <e p="clothes.png" t="Include" />
+            <e p="couple.png" t="Include" />
+            <e p="delete.png" t="Include" />
+            <e p="fix.png" t="Include" />
+            <e p="fun.png" t="Include" />
+            <e p="gift.png" t="Include" />
+            <e p="icon.png" t="Include" />
+            <e p="importance.png" t="Include" />
+            <e p="money.png" t="Include" />
+            <e p="outgoings.png" t="Include" />
+            <e p="remove_list.png" t="Include" />
+            <e p="shopping.png" t="Include" />
+            <e p="todo.png" t="Include" />
+          </e>
+          <e p="drawable-xxhdpi" t="Include">
+            <e p="add.png" t="Include" />
+            <e p="add_list.png" t="Include" />
+            <e p="clothes.png" t="Include" />
+            <e p="couple.png" t="Include" />
+            <e p="delete.png" t="Include" />
+            <e p="fix.png" t="Include" />
+            <e p="fun.png" t="Include" />
+            <e p="gift.png" t="Include" />
+            <e p="icon.png" t="Include" />
+            <e p="importance.png" t="Include" />
+            <e p="money.png" t="Include" />
+            <e p="outgoings.png" t="Include" />
+            <e p="remove_list.png" t="Include" />
+            <e p="shopping.png" t="Include" />
+            <e p="todo.png" t="Include" />
+          </e>
+          <e p="layout" t="Include">
+            <e p="Tabbar.axml" t="Include" />
+            <e p="Toolbar.axml" t="Include" />
+          </e>
+          <e p="Resource.Designer.cs" t="Include" />
+          <e p="values" t="Include">
+            <e p="styles.xml" t="Include" />
+          </e>
+        </e>
+        <e p="ViewModel" t="Include">
+          <e p="MainViewModel.cs" t="Include" />
+          <e p="ViewModelLocator.cs" t="Include" />
+        </e>
+      </e>
+      <e p="HappyCoupleMobile/HappyCoupleMobile.iOS" t="IncludeRecursive">
+        <e p="app.config" t="Include" />
+        <e p="AppDelegate.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controls" t="Include">
+          <e p="ExtendedSwipeAbleCell.cs" t="Include" />
+          <e p="ExtendedSwipeAbleCell.designer.cs" t="Include" />
+          <e p="ExtendedSwipeAbleCell.xib" t="Include" />
+          <e p="ProductGroupingCell.cs" t="Include" />
+          <e p="ProductGroupingCell.designer.cs" t="Include" />
+          <e p="ProductGroupingCell.xib" t="Include" />
+        </e>
+        <e p="Custom" t="Include">
+          <e p="Helpers.cs" t="Include" />
+        </e>
+        <e p="Delegates" t="Include">
+          <e p="AlertTextFieldDelegate.cs" t="Include" />
+          <e p="CustomTextFieldDelegate.cs" t="Include" />
+        </e>
+        <e p="Entitlements.plist" t="Include" />
+        <e p="Gorilla.json" t="Include" />
+        <e p="HappyCoupleMobile.iOS.csproj" t="IncludeRecursive" />
+        <e p="Helpers" t="Include">
+          <e p="Helpers.cs" t="Include" />
+        </e>
+        <e p="Info.plist" t="Include" />
+        <e p="iTunesArtwork" t="Include" />
+        <e p="iTunesArtwork@2x" t="Include" />
+        <e p="Main.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Providers" t="Include">
+          <e p="AlertsAndNotificationsesAndNotificationsProvider.cs" t="Include" />
+          <e p="AssemblyInfoProvider.cs" t="Include" />
+          <e p="SystemInfoProvider.cs" t="Include" />
+        </e>
+        <e p="Renderers" t="Include">
+          <e p="CircularProgressRenderer.cs" t="Include" />
+          <e p="CircularViewRenderer.cs" t="Include" />
+          <e p="CustomViewCellRenderer.cs" t="Include" />
+          <e p="ExtendedScrollViewRenderer.cs" t="Include" />
+          <e p="GestureStackLayoutRenderer.cs" t="Include" />
+          <e p="ProductGroupingCellRenderer.cs" t="Include" />
+          <e p="RoundedBoxViewRenderer.cs" t="Include" />
+          <e p="ScrollBarLessScrollViewRenderer.cs" t="Include" />
+          <e p="SwipableViewCellRenderer.cs" t="Include" />
+        </e>
+        <e p="Resources" t="Include">
+          <e p="add_favorite.png" t="Include" />
+          <e p="add_favorite@2x.png" t="Include" />
+          <e p="add_favorite@3x.png" t="Include" />
+          <e p="add_favorite_filled.png" t="Include" />
+          <e p="add_favorite_filled@2x.png" t="Include" />
+          <e p="add_favorite_filled@3x.png" t="Include" />
+          <e p="add_from_favourite.png" t="Include" />
+          <e p="add_from_favourite@2x.png" t="Include" />
+          <e p="add_from_favourite@3x.png" t="Include" />
+          <e p="add_list.png" t="Include" />
+          <e p="add_list@2x.png" t="Include" />
+          <e p="add_list@3x.png" t="Include" />
+          <e p="add_product.png" t="Include" />
+          <e p="add_product@2x.png" t="Include" />
+          <e p="add_product@3x.png" t="Include" />
+          <e p="add_to_list.png" t="Include" />
+          <e p="add_to_list@2x.png" t="Include" />
+          <e p="add_to_list@3x.png" t="Include" />
+          <e p="alkohol.png" t="Include" />
+          <e p="alkohol@2x.png" t="Include" />
+          <e p="alkohol@3x.png" t="Include" />
+          <e p="back.png" t="Include" />
+          <e p="back@2x.png" t="Include" />
+          <e p="back@3x.png" t="Include" />
+          <e p="beer.png" t="Include" />
+          <e p="beer@2x.png" t="Include" />
+          <e p="beer@3x.png" t="Include" />
+          <e p="beer_cap.png" t="Include" />
+          <e p="beer_cap@2x.png" t="Include" />
+          <e p="beer_cap@3x.png" t="Include" />
+          <e p="bread.png" t="Include" />
+          <e p="bread@2x.png" t="Include" />
+          <e p="bread@3x.png" t="Include" />
+          <e p="change_quantity.png" t="Include" />
+          <e p="change_quantity@2x.png" t="Include" />
+          <e p="change_quantity@3x.png" t="Include" />
+          <e p="checked.png" t="Include" />
+          <e p="checked@2x.png" t="Include" />
+          <e p="checked@3x.png" t="Include" />
+          <e p="chevron_right.png" t="Include" />
+          <e p="chevron_right@2x.png" t="Include" />
+          <e p="chevron_right@3x.png" t="Include" />
+          <e p="cleaning.png" t="Include" />
+          <e p="cleaning@2x.png" t="Include" />
+          <e p="cleaning@3x.png" t="Include" />
+          <e p="close_list.png" t="Include" />
+          <e p="close_list@2x.png" t="Include" />
+          <e p="close_list@3x.png" t="Include" />
+          <e p="closewindow.png" t="Include" />
+          <e p="closewindow@2x.png" t="Include" />
+          <e p="closewindow@3x.png" t="Include" />
+          <e p="clothes.png" t="Include" />
+          <e p="clothes@2x.png" t="Include" />
+          <e p="clothes@3x.png" t="Include" />
+          <e p="cosmetics.png" t="Include" />
+          <e p="cosmetics@2x.png" t="Include" />
+          <e p="cosmetics@3x.png" t="Include" />
+          <e p="couple.png" t="Include" />
+          <e p="couple@2x.png" t="Include" />
+          <e p="couple@3x.png" t="Include" />
+          <e p="dairy.png" t="Include" />
+          <e p="dairy@2x.png" t="Include" />
+          <e p="dairy@3x.png" t="Include" />
+          <e p="date.png" t="Include" />
+          <e p="date@2x.png" t="Include" />
+          <e p="date@3x.png" t="Include" />
+          <e p="date_end.png" t="Include" />
+          <e p="date_end@2x.png" t="Include" />
+          <e p="date_end@3x.png" t="Include" />
+          <e p="delete.png" t="Include" />
+          <e p="delete@2x.png" t="Include" />
+          <e p="delete@3x.png" t="Include" />
+          <e p="delete_list.png" t="Include" />
+          <e p="delete_list@2x.png" t="Include" />
+          <e p="delete_list@3x.png" t="Include" />
+          <e p="delete_white.png" t="Include" />
+          <e p="delete_white@2x.png" t="Include" />
+          <e p="delete_white@3x.png" t="Include" />
+          <e p="dring@3x.png" t="Include" />
+          <e p="drink.png" t="Include" />
+          <e p="drink@2x.png" t="Include" />
+          <e p="edit.png" t="Include" />
+          <e p="edit@2x.png" t="Include" />
+          <e p="edit@3x.png" t="Include" />
+          <e p="electric.png" t="Include" />
+          <e p="electric@2x.png" t="Include" />
+          <e p="electric@3x.png" t="Include" />
+          <e p="empty_products.png" t="Include" />
+          <e p="empty_products@2x.png" t="Include" />
+          <e p="empty_products@3x.png" t="Include" />
+          <e p="erase.png" t="Include" />
+          <e p="erase@2x.png" t="Include" />
+          <e p="erase@3x.png" t="Include" />
+          <e p="fish.png" t="Include" />
+          <e p="fish@2x.png" t="Include" />
+          <e p="fish@3x.png" t="Include" />
+          <e p="fix.png" t="Include" />
+          <e p="fix@2x.png" t="Include" />
+          <e p="fix@3x.png" t="Include" />
+          <e p="fonts" t="Include">
+            <e p="Quicksand-Bold.ttf" t="Include" />
+            <e p="Quicksand-Light.ttf" t="Include" />
+            <e p="Quicksand-Medium.ttf" t="Include" />
+            <e p="Quicksand-Regular.ttf" t="Include" />
+          </e>
+          <e p="food.png" t="Include" />
+          <e p="food@2x.png" t="Include" />
+          <e p="food@3x.png" t="Include" />
+          <e p="food_general.png" t="Include" />
+          <e p="food_general@2x.png" t="Include" />
+          <e p="food_general@3x.png" t="Include" />
+          <e p="fruits.png" t="Include" />
+          <e p="fruits@2x.png" t="Include" />
+          <e p="fruits@3x.png" t="Include" />
+          <e p="fun.png" t="Include" />
+          <e p="fun@2x.png" t="Include" />
+          <e p="fun@3x.png" t="Include" />
+          <e p="gift.png" t="Include" />
+          <e p="gift@2x.png" t="Include" />
+          <e p="gift@3x.png" t="Include" />
+          <e p="grain.png" t="Include" />
+          <e p="grain@2x.png" t="Include" />
+          <e p="grain@3x.png" t="Include" />
+          <e p="home.png" t="Include" />
+          <e p="home@2x.png" t="Include" />
+          <e p="home@3x.png" t="Include" />
+          <e p="home_background.png" t="Include" />
+          <e p="home_background@2x.png" t="Include" />
+          <e p="home_background@3x.png" t="Include" />
+          <e p="home_screen.png" t="Include" />
+          <e p="home_screen@2x.png" t="Include" />
+          <e p="home_screen@3x.png" t="Include" />
+          <e p="home_sign.png" t="Include" />
+          <e p="home_sign@2x.png" t="Include" />
+          <e p="home_sign@3x.png" t="Include" />
+          <e p="home_welcome.png" t="Include" />
+          <e p="home_welcome@2x.png" t="Include" />
+          <e p="home_welcome@3x.png" t="Include" />
+          <e p="hygiene.png" t="Include" />
+          <e p="hygiene@2x.png" t="Include" />
+          <e p="hygiene@3x.png" t="Include" />
+          <e p="Icon-60@2x.png" t="Include" />
+          <e p="Icon-60@3x.png" t="Include" />
+          <e p="Icon-76.png" t="Include" />
+          <e p="Icon-76@2x.png" t="Include" />
+          <e p="Icon-Small-40.png" t="Include" />
+          <e p="Icon-Small-40@2x.png" t="Include" />
+          <e p="Icon-Small-40@3x.png" t="Include" />
+          <e p="Icon-Small.png" t="Include" />
+          <e p="Icon-Small@2x.png" t="Include" />
+          <e p="Icon-Small@3x.png" t="Include" />
+          <e p="icon.png" t="Include" />
+          <e p="importance.png" t="Include" />
+          <e p="importance@2x.png" t="Include" />
+          <e p="importance@3x.png" t="Include" />
+          <e p="info.png" t="Include" />
+          <e p="info@2x.png" t="Include" />
+          <e p="info@3x.png" t="Include" />
+          <e p="LaunchScreen.storyboard" t="Include" />
+          <e p="meat.png" t="Include" />
+          <e p="meat@2x.png" t="Include" />
+          <e p="meat@3x.png" t="Include" />
+          <e p="medicine.png" t="Include" />
+          <e p="medicine@2x.png" t="Include" />
+          <e p="medicine@3x.png" t="Include" />
+          <e p="money.png" t="Include" />
+          <e p="money@2x.png" t="Include" />
+          <e p="money@3x.png" t="Include" />
+          <e p="olive.png" t="Include" />
+          <e p="olive@2x.png" t="Include" />
+          <e p="olive@3x.png" t="Include" />
+          <e p="open_list.png" t="Include" />
+          <e p="open_list@2x.png" t="Include" />
+          <e p="open_list@3x.png" t="Include" />
+          <e p="outgoings.png" t="Include" />
+          <e p="outgoings@2x.png" t="Include" />
+          <e p="outgoings@3x.png" t="Include" />
+          <e p="plant.png" t="Include" />
+          <e p="plant@2x.png" t="Include" />
+          <e p="plant@3x.png" t="Include" />
+          <e p="set_closed_list.png" t="Include" />
+          <e p="set_closed_list@2x.png" t="Include" />
+          <e p="set_closed_list@3x.png" t="Include" />
+          <e p="set_closed_list_white.png" t="Include" />
+          <e p="set_closed_list_white@2x.png" t="Include" />
+          <e p="set_closed_list_white@3x.png" t="Include" />
+          <e p="settings.png" t="Include" />
+          <e p="settings@2x.png" t="Include" />
+          <e p="settings@3x.png" t="Include" />
+          <e p="shopping.png" t="Include" />
+          <e p="shopping@2x.png" t="Include" />
+          <e p="shopping@3x.png" t="Include" />
+          <e p="shopping_bar.png" t="Include" />
+          <e p="shopping_bar@2x.png" t="Include" />
+          <e p="shopping_bar@3x.png" t="Include" />
+          <e p="snack.png" t="Include" />
+          <e p="snack@2x.png" t="Include" />
+          <e p="snack@3x.png" t="Include" />
+          <e p="spice.png" t="Include" />
+          <e p="spice@2x.png" t="Include" />
+          <e p="spice@3x.png" t="Include" />
+          <e p="sweets.png" t="Include" />
+          <e p="sweets@2x.png" t="Include" />
+          <e p="sweets@3x.png" t="Include" />
+          <e p="todo.png" t="Include" />
+          <e p="todo@2x.png" t="Include" />
+          <e p="todo@3x.png" t="Include" />
+          <e p="unchecked.png" t="Include" />
+          <e p="unchecked@2x.png" t="Include" />
+          <e p="unchecked@3x.png" t="Include" />
+          <e p="vege.png" t="Include" />
+          <e p="vege@2x.png" t="Include" />
+          <e p="vege@3x.png" t="Include" />
+        </e>
+        <e p="ViewModel" t="Include">
+          <e p="MainViewModel.cs" t="Include" />
+          <e p="ViewModelLocator.cs" t="Include" />
+        </e>
+      </e>
+      <e p="HappyCoupleMobile.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+    <e p="$PROJECT_DIR$/../Resources/iOS/add_to_list_white.png" t="Include" />
+    <e p="$PROJECT_DIR$/../Resources/iOS/add_to_list_white@2x.png" t="Include" />
+    <e p="$PROJECT_DIR$/../Resources/iOS/add_to_list_white@3x.png" t="Include" />
+    <e p="$USER_HOME$/Library/Caches/Rider2018.1/resharper-host/local/Transient/ReSharperHost/v12/SolutionCaches/_HappyCoupleMobile.1690328738.00" t="ExcludeRecursive" />
+  </component>
   <component name="RiderRiderContentModelStore">
     <excludedPaths />
   </component>
